@@ -21,7 +21,7 @@
 #include <QWaitCondition>
 MapNetwork::MapNetwork(ImageManager* parent)
 	:parent(parent), http(new QHttp(this)), loaded(0)
-{	
+{
 	connect(http, SIGNAL(requestFinished(int, bool)),
 			  this, SLOT(requestFinished(int, bool)));
 // 	http->setProxy("www-cache.mi.fh-wiesbaden.de", 8080);
@@ -45,7 +45,7 @@ void MapNetwork::loadImage(const QString& host, const QString& url)
 	header.setValue("User-Agent", "Mozilla");
 	header.setValue("Host", host);
 	int getId = http->request(header);
-	
+
 	if (vectorMutex.tryLock())
 	{
 		loadingMap[getId] = url;
@@ -61,25 +61,25 @@ void MapNetwork::requestFinished(int id, bool error)
 	{
 		qDebug() << "network error: " << http->errorString();
 		//restart query
-		
+
 	}
 	else if (vectorMutex.tryLock())
 	{
 	// check if id is in map?
 	if (loadingMap.contains(id))
 	{
-		
+
 		QString url = loadingMap[id];
 		loadingMap.remove(id);
 		vectorMutex.unlock();
 // 		qDebug() << "request finished for id: " << id << ", belongs to: " << notifier.url << endl;
 		QByteArray ax;
-		
+
 		if (http->bytesAvailable()>0)
 		{
 			QPixmap pm;
 			ax = http->readAll();
-			
+
 			if (pm.loadFromData(ax))
 			{
 				loaded += pm.size().width()*pm.size().height()*pm.depth()/8/1024;
@@ -95,7 +95,7 @@ void MapNetwork::requestFinished(int id, bool error)
 	}
 	else
 		vectorMutex.unlock();
-	
+
 	}
 	if (loadingMap.size() == 0)
 	{
@@ -122,5 +122,7 @@ bool MapNetwork::imageIsLoading(QString url)
 
 void MapNetwork::setProxy(QString host, int port)
 {
+#ifndef Q_WS_QWS
 	http->setProxy(host, port);
+#endif
 }
