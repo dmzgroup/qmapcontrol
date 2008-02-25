@@ -51,7 +51,7 @@ QPixmap LayerManager::getImage() const
 Layer* LayerManager::getLayer() const
 {
 	Q_ASSERT_X(layers.size()>0, "LayerManager::getLayer()", "No layers were added!");
-	return layers.at(0);
+	return layers.first();
 }
 
 Layer* LayerManager::getLayer(const QString& layername) const
@@ -308,6 +308,7 @@ void LayerManager::zoomOut()
 	QCoreApplication::processEvents();
 	ImageManager::instance()->abortLoading();
 	zoomImageScroll = QPoint(0,0);
+	zoomImage.fill(Qt::white);
 	QPixmap tmpImg = composedOffscreenImage.copy(screenmiddle.x()+scroll.x(),screenmiddle.y()+scroll.y(), size.width(), size.height());
 	QPainter painter(&zoomImage);
 	painter.translate(screenmiddle);
@@ -427,4 +428,9 @@ void LayerManager::drawImage(QPainter* painter)
 	painter->drawPixmap(-scroll.x()-screenmiddle.x(),
 								-scroll.y()-screenmiddle.y(),
 									  composedOffscreenImage);
+}
+
+int LayerManager::getCurrentZoom() const
+{
+	return getLayer()->getMapAdapter()->getZoom();
 }

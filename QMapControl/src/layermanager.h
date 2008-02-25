@@ -145,6 +145,12 @@ class LayerManager : public QObject
 		 */
 		void addLayer(Layer* layer);
 		
+		//! returns the current zoom level
+		/*!
+		 * @return returns the current zoom level
+		 */
+		int getCurrentZoom() const;
+		
 		void drawGeoms(QPainter* painter);
 		void drawImage(QPainter* painter);
 	
