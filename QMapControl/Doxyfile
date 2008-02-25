@@ -25,7 +25,7 @@ ABBREVIATE_BRIEF       = "The $name class" \
 ALWAYS_DETAILED_SEC    = NO
 INLINE_INHERITED_MEMB  = YES
 FULL_PATH_NAMES        = NO
-STRIP_FROM_PATH        = /home/kai/kwint001/trunk/code/
+STRIP_FROM_PATH        = .
 STRIP_FROM_INC_PATH    = 
 SHORT_NAMES            = NO
 JAVADOC_AUTOBRIEF      = NO
@@ -82,7 +82,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/kai/kwint001/trunk/code/MapAPI
+INPUT                  = .
 FILE_PATTERNS          = *.c \
                          *.cc \
                          *.cxx \
@@ -133,61 +133,25 @@ FILE_PATTERNS          = *.c \
                          *.xpm \
                          *.dox
 RECURSIVE              = YES
-EXCLUDE                = /home/kai/kwint001/trunk/code/MapAPI/src/busplan.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/busplan.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/mercatorprojection.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/mercatorprojection.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/projection.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/projection.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_busplan.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_busplan.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_curve.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_curve.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_geometry.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_geometry.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_gps_modul.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_gps_modul.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_imagemanager.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_imagemanager.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_layer.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_layermanager.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_layermanager.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_layer.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_linestring.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_linestring.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapadapter.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapadapter.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapcontrol.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapcontrol.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapnetwork.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapnetwork.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mappainter.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mappainter.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapview.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_mapview.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_point.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_point.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_tilemapadapter.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/moc_tilemapadapter.o \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/layermanager.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/layermanager.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/imagemanager.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/imagemanager.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/src/gps_modul.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/src/gps_modul.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/yahooadapter.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/src/yahooadapter.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/GPS/src/gps_neo.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/GPS/src/gps_neo.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/src/gps_modul.cpp \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/src/gps_modul.h \
-                         /home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/src/gps_modul.cpp
+EXCLUDE                = ./src/layermanager.cpp \
+                         ./src/layermanager.h \
+                         ./src/imagemanager.cpp \
+                         ./src/imagemanager.h \
+                         ./Samples/Multidemo/src/gps_modul.cpp \
+                         ./Samples/Multidemo/src/gps_modul.h \
+                         ./Samples/GPS/src/gps_neo.cpp \
+                         ./Samples/GPS/src/gps_neo.h \
+                         ./Samples/Multidemo/src/gps_modul.cpp \
+                         ./Samples/Multidemo/src/gps_modul.h \
+                         ./Samples/Multidemo/src/gps_modul.cpp \
+			 ./Samples/Citymap/src/dialogs.h \
+			 ./Samples/Citymap/src/dialogs.cpp
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = 
-EXAMPLE_PATH           = /home/kai/kwint001/trunk/code/MapAPI/Samples
+EXAMPLE_PATH           = ./Samples
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = YES
-IMAGE_PATH             = /home/kai/kwint001/trunk/code/MapAPI/images
+IMAGE_PATH             = ./images
 INPUT_FILTER           = 
 FILTER_PATTERNS        = 
 FILTER_SOURCE_FILES    = NO
@@ -294,7 +258,7 @@ SKIP_FUNCTION_MACROS   = YES
 # Configuration::additions related to external references   
 #---------------------------------------------------------------------------
 TAGFILES               = 
-GENERATE_TAGFILE       = MapAPI.tag
+GENERATE_TAGFILE       = QMapControl.tag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
 PERL_PATH              = /usr/bin/perl

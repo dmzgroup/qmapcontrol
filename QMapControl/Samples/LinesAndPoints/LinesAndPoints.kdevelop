@@ -152,10 +152,10 @@
     </general>
     <run>
       <directoryradio>executable</directoryradio>
-      <mainprogram>/home/kai/kwint001/trunk/code/MapAPI/Samples/LinesAndPoints/bin/Linesandpoints</mainprogram>
+      <mainprogram>./bin/Linesandpoints</mainprogram>
       <programargs/>
       <globaldebugarguments/>
-      <globalcwd>/home/kai/kwint001/trunk/code/MapAPI/Samples/LinesAndPoints/bin/</globalcwd>
+      <globalcwd>./bin/</globalcwd>
       <useglobalprogram>true</useglobalprogram>
       <terminal>false</terminal>
       <autocompile>false</autocompile>

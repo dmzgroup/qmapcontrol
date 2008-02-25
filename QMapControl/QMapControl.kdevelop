@@ -9,12 +9,12 @@
     <keywords>
       <keyword>Qt</keyword>
     </keywords>
-    <projectname>MapAPI</projectname>
+    <projectname>QMapControl</projectname>
     <ignoreparts/>
-    <projectdirectory>.</projectdirectory>
+    <projectdirectory>src</projectdirectory>
     <absoluteprojectpath>false</absoluteprojectpath>
-    <description></description>
-    <defaultencoding></defaultencoding>
+    <description/>
+    <defaultencoding/>
   </general>
   <kdevfileview>
     <groups>
@@ -70,11 +70,11 @@
   </kdevdoctreeview>
   <kdevdebugger>
     <general>
-      <dbgshell></dbgshell>
-      <gdbpath></gdbpath>
-      <configGdbScript></configGdbScript>
-      <runShellScript></runShellScript>
-      <runGdbScript></runGdbScript>
+      <dbgshell/>
+      <gdbpath/>
+      <configGdbScript/>
+      <runShellScript/>
+      <runGdbScript/>
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
@@ -121,7 +121,7 @@
       <includePaths>.;</includePaths>
     </codecompletion>
     <creategettersetter>
-      <prefixGet></prefixGet>
+      <prefixGet/>
       <prefixSet>set</prefixSet>
       <prefixVariable>m_,_</prefixVariable>
       <parameterName>theValue</parameterName>
@@ -148,14 +148,14 @@
   </kdevfilecreate>
   <kdevtrollproject>
     <general>
-      <activedir>Samples</activedir>
+      <activedir></activedir>
     </general>
     <run>
       <directoryradio>executable</directoryradio>
-      <mainprogram>/home/kai/kwint001/trunk/code/MapAPI</mainprogram>
-      <programargs></programargs>
-      <globaldebugarguments></globaldebugarguments>
-      <globalcwd>/home/kai/kwint001/trunk/code/MapAPI</globalcwd>
+      <mainprogram>.</mainprogram>
+      <programargs/>
+      <globaldebugarguments/>
+      <globalcwd>.</globalcwd>
       <useglobalprogram>true</useglobalprogram>
       <terminal>false</terminal>
       <autocompile>false</autocompile>
@@ -168,7 +168,7 @@
       <runmultiplejobs>false</runmultiplejobs>
       <numberofjobs>1</numberofjobs>
       <dontact>false</dontact>
-      <makebin></makebin>
+      <makebin/>
       <prio>0</prio>
       <envvars/>
     </make>
@@ -187,7 +187,7 @@
   </cppsupportpart>
   <ctagspart>
     <customArguments/>
-    <customTagfilePath>/home/kai/kwint001/trunk/code/MapAPI/tags</customTagfilePath>
+    <customTagfilePath>.</customTagfilePath>
     <activeTagsFiles/>
   </ctagspart>
 </kdevelop>

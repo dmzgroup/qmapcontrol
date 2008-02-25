@@ -154,10 +154,10 @@
     </general>
     <run>
       <directoryradio>executable</directoryradio>
-      <mainprogram>/home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/bin/Multidemo</mainprogram>
+      <mainprogram>./bin/Multidemo</mainprogram>
       <programargs/>
       <globaldebugarguments/>
-      <globalcwd>/home/kai/kwint001/trunk/code/MapAPI/Samples/Multidemo/bin</globalcwd>
+      <globalcwd>./bin</globalcwd>
       <useglobalprogram>true</useglobalprogram>
       <terminal>false</terminal>
       <autocompile>false</autocompile>

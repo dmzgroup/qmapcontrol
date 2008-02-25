@@ -196,25 +196,25 @@ Citymap::Citymap(QWidget* parent)
         <span class="keywordflow">if</span> (ignoreClicks || addingNote)
                 <span class="keywordflow">return</span>;
         
-        <a name="_a11"></a><a class="code" href="classInfoDialog.html">InfoDialog</a>* infodialog = <span class="keyword">new</span> <a class="code" href="classInfoDialog.html">InfoDialog</a>(<span class="keyword">this</span>);
+        InfoDialog* infodialog = <span class="keyword">new</span> InfoDialog(<span class="keyword">this</span>);
         infodialog-&gt;setWindowTitle(geometry-&gt;getName());
         
         <span class="keywordflow">if</span> (geometry-&gt;getName() == <span class="stringliteral">"Mainzer Dom"</span>)
         {
-                infodialog-&gt;<a name="a12"></a><a class="code" href="classInfoDialog.html#d129f4a056212b16e021c427269f9e45">setInfotext</a>(<span class="stringliteral">"&lt;h1&gt;Mainzer Dom&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-dom.jpg\" align=\"left\"/&gt;Der Hohe Dom zu Mainz ist die Bischofskirche der Diözese Mainz und steht unter dem Patrozinium des heiligen Martin von Tours. Der Ostchor ist dem Hl. Stephan geweiht. Der zu den Kaiserdomen zählende Bau ist in seiner heutigen Form eine dreischiffige romanische Säulenbasilika, die in ihren Anbauten sowohl gotische als auch barocke Elemente aufweist.&lt;/p&gt;"</span>);
+                infodialog-&gt;setInfotext(<span class="stringliteral">"&lt;h1&gt;Mainzer Dom&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-dom.jpg\" align=\"left\"/&gt;Der Hohe Dom zu Mainz ist die Bischofskirche der Diözese Mainz und steht unter dem Patrozinium des heiligen Martin von Tours. Der Ostchor ist dem Hl. Stephan geweiht. Der zu den Kaiserdomen zählende Bau ist in seiner heutigen Form eine dreischiffige romanische Säulenbasilika, die in ihren Anbauten sowohl gotische als auch barocke Elemente aufweist.&lt;/p&gt;"</span>);
                 
         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geometry-&gt;getName() == <span class="stringliteral">"St. Stephan"</span>)
         {
-                infodialog-&gt;<a class="code" href="classInfoDialog.html#d129f4a056212b16e021c427269f9e45">setInfotext</a>(<span class="stringliteral">"&lt;h1&gt;St. Stephan&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-stephan.jpg\" align=\"left\"/&gt;Die katholische Pfarrkirche Sankt Stephan in Mainz wurde 990 von Erzbischof Willigis auf der höchsten Erhebung der Stadt gegründet. Auftraggeberin war höchstwahrscheinlich die Kaiserwitwe Theophanu. Willigis wollte mit ihr die Gebetsstätte des Reiches schaffen. In der Kirche war ursprünglich ein Stift untergebracht. Der Propst des Stiftes verwaltete eines der Archidiakonate (mittelalterliche Organisationseinheit, ähnlich den heutigen Dekanaten) des Erzbistums.&lt;/p&gt;"</span>);
+                infodialog-&gt;setInfotext(<span class="stringliteral">"&lt;h1&gt;St. Stephan&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-stephan.jpg\" align=\"left\"/&gt;Die katholische Pfarrkirche Sankt Stephan in Mainz wurde 990 von Erzbischof Willigis auf der höchsten Erhebung der Stadt gegründet. Auftraggeberin war höchstwahrscheinlich die Kaiserwitwe Theophanu. Willigis wollte mit ihr die Gebetsstätte des Reiches schaffen. In der Kirche war ursprünglich ein Stift untergebracht. Der Propst des Stiftes verwaltete eines der Archidiakonate (mittelalterliche Organisationseinheit, ähnlich den heutigen Dekanaten) des Erzbistums.&lt;/p&gt;"</span>);
         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geometry-&gt;getName() == <span class="stringliteral">"St. Quintin"</span>)
         {
-                infodialog-&gt;<a class="code" href="classInfoDialog.html#d129f4a056212b16e021c427269f9e45">setInfotext</a>(<span class="stringliteral">"&lt;h1&gt;St. Quintin&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-quintin.jpg\" align=\"left\"/&gt;Die Kirche St. Quintin in Mainz ist die Pfarrkirche der ältesten nachgewiesenen Pfarrei der Stadt."</span>);
+                infodialog-&gt;setInfotext(<span class="stringliteral">"&lt;h1&gt;St. Quintin&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-quintin.jpg\" align=\"left\"/&gt;Die Kirche St. Quintin in Mainz ist die Pfarrkirche der ältesten nachgewiesenen Pfarrei der Stadt."</span>);
         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geometry-&gt;getName() == <span class="stringliteral">"rgzm"</span>)
         {
-                infodialog-&gt;<a class="code" href="classInfoDialog.html#d129f4a056212b16e021c427269f9e45">setInfotext</a>(<span class="stringliteral">"&lt;h1&gt;Römisch-Germanisches Zentralmuseum&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-rgzm.jpg\" align=\"left\"/&gt;Das Römisch-Germanische Zentralmuseum (RGZM) in Mainz ist ein Forschungsinstitut für Vor- und Frühgeschichte, das von Bund und Ländern getragen wird und zur Leibniz-Gemeinschaft deutscher Forschungseinrichtungen gehört. Gegliedert in mehrere Abteilungen, arbeitet das Institut im Bereich der Alten Welt sowie seiner Kontaktzonen von der Altsteinzeit bis ins Mittelalter."</span>);
+                infodialog-&gt;setInfotext(<span class="stringliteral">"&lt;h1&gt;Römisch-Germanisches Zentralmuseum&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-rgzm.jpg\" align=\"left\"/&gt;Das Römisch-Germanische Zentralmuseum (RGZM) in Mainz ist ein Forschungsinstitut für Vor- und Frühgeschichte, das von Bund und Ländern getragen wird und zur Leibniz-Gemeinschaft deutscher Forschungseinrichtungen gehört. Gegliedert in mehrere Abteilungen, arbeitet das Institut im Bereich der Alten Welt sowie seiner Kontaktzonen von der Altsteinzeit bis ins Mittelalter."</span>);
         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geometry-&gt;getName() == <span class="stringliteral">"lm"</span>)
         {
-                infodialog-&gt;<a class="code" href="classInfoDialog.html#d129f4a056212b16e021c427269f9e45">setInfotext</a>(<span class="stringliteral">"&lt;h1&gt;Landesmuseum Mainz&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-lm.jpg\" align=\"left\"/&gt;Das Landesmuseum Mainz ist eines der ältesten Museen in Deutschland. Eine seiner Vorgängerinstitutionen, die Städtische Gemäldesammlung, wurde bereits 1803 von Jean-Antoine Chaptal auf Veranlassung Napoléon Bonapartes durch eine Schenkung von 36 Gemälden gegründet. Das Museum, welches sich heute im ehemaligen kurfürstlichen Marstall befindet, gehört zusammen mit dem Römisch-Germanischen Zentralmuseum und dem Gutenbergmuseum zu den bedeutenden Museen in Mainz. Seine kunst- und kulturgeschichtliche Sammlung erstreckt sich von der Vorgeschichte über die römische Zeit, dem Mittelalter und Barock bis hin zur Jugendstilzeit und der Kunst des 20. Jahrhunderts."</span>);
+                infodialog-&gt;setInfotext(<span class="stringliteral">"&lt;h1&gt;Landesmuseum Mainz&lt;/h1&gt;&lt;p&gt;&lt;img src=\"images/180-lm.jpg\" align=\"left\"/&gt;Das Landesmuseum Mainz ist eines der ältesten Museen in Deutschland. Eine seiner Vorgängerinstitutionen, die Städtische Gemäldesammlung, wurde bereits 1803 von Jean-Antoine Chaptal auf Veranlassung Napoléon Bonapartes durch eine Schenkung von 36 Gemälden gegründet. Das Museum, welches sich heute im ehemaligen kurfürstlichen Marstall befindet, gehört zusammen mit dem Römisch-Germanischen Zentralmuseum und dem Gutenbergmuseum zu den bedeutenden Museen in Mainz. Seine kunst- und kulturgeschichtliche Sammlung erstreckt sich von der Vorgeschichte über die römische Zeit, dem Mittelalter und Barock bis hin zur Jugendstilzeit und der Kunst des 20. Jahrhunderts."</span>);
         }
         <span class="keywordflow">if</span> (geometry-&gt;getName() != <span class="stringliteral">""</span>)
                 infodialog-&gt;showMaximized();
@@ -224,9 +224,9 @@ Citymap::Citymap(QWidget* parent)
 {
         <span class="keywordflow">if</span> (ignoreClicks || addingNote)
                 <span class="keywordflow">return</span>;
-        <a class="code" href="classInfoDialog.html">InfoDialog</a>* infodialog = <span class="keyword">new</span> <a class="code" href="classInfoDialog.html">InfoDialog</a>(<span class="keyword">this</span>);
+        InfoDialog* infodialog = <span class="keyword">new</span> InfoDialog(<span class="keyword">this</span>);
         infodialog-&gt;setWindowTitle(geometry-&gt;getName());
-        infodialog-&gt;<a class="code" href="classInfoDialog.html#d129f4a056212b16e021c427269f9e45">setInfotext</a>(<span class="stringliteral">"&lt;h1&gt;"</span> + geometry-&gt;getName() + <span class="stringliteral">"&lt;/h1&gt;"</span>);
+        infodialog-&gt;setInfotext(<span class="stringliteral">"&lt;h1&gt;"</span> + geometry-&gt;getName() + <span class="stringliteral">"&lt;/h1&gt;"</span>);
         infodialog-&gt;showNormal();
 }
 
@@ -352,11 +352,11 @@ Citymap::Citymap(QWidget* parent)
 
 <span class="keywordtype">void</span> Citymap::writeNote(<span class="keyword">const</span> QMouseEvent* event, <span class="keyword">const</span> QPointF coord)
 {
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* p = <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(coord.x(), coord.y(), notepixmap, QString::number(++noteID), <a name="a13"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>);
+        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* p = <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(coord.x(), coord.y(), notepixmap, QString::number(++noteID), <a name="a11"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>);
         currentnoteID = noteID;
         p-&gt;<a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(16);
-        p-&gt;<a name="a14"></a><a class="code" href="classPoint.html#9d7f9233cab0b4688c8e563c6faf7754" title="sets a minimal size for the pixmap">setMinsize</a>(QSize(12, 10));
-        p-&gt;<a name="a15"></a><a class="code" href="classPoint.html#9401794ee6bce2fd5a18024dffd480fd" title="sets a maximal size for the pixmap">setMaxsize</a>(QSize(47, 40));
+        p-&gt;<a name="a12"></a><a class="code" href="classPoint.html#9d7f9233cab0b4688c8e563c6faf7754" title="sets a minimal size for the pixmap">setMinsize</a>(QSize(12, 10));
+        p-&gt;<a name="a13"></a><a class="code" href="classPoint.html#9401794ee6bce2fd5a18024dffd480fd" title="sets a maximal size for the pixmap">setMaxsize</a>(QSize(47, 40));
         notes-&gt;addGeometry(p);
         
         notetextedit-&gt;clear();
@@ -414,7 +414,7 @@ Citymap::Citymap(QWidget* parent)
         <span class="keywordflow">if</span> (coord1 == QPointF() &amp;&amp; evnt-&gt;type() == QEvent::MouseButtonPress)
         {
                 coord1 = coord;
-                l-&gt;addGeometry(<span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(coord1.x(), coord1.y(), QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/flag.png"</span>, <span class="stringliteral">""</span>, <a name="a16"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b447d35fa0b835edeebe05c0bd8777a31">Point::BottomRight</a>));
+                l-&gt;addGeometry(<span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(coord1.x(), coord1.y(), QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/flag.png"</span>, <span class="stringliteral">""</span>, <a name="a14"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b447d35fa0b835edeebe05c0bd8777a31">Point::BottomRight</a>));
                 mc-&gt;updateRequestNew();
         }
         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (coord2 == QPointF() &amp;&amp; evnt-&gt;type() == QEvent::MouseButtonPress)
@@ -507,7 +507,7 @@ Citymap::Citymap(QWidget* parent)
         {
                 <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
                 mc-&gt;setZoom(0);
-                mapadapter = <span class="keyword">new</span> <a name="_a17"></a><a class="code" href="classGoogleMapAdapter.html" title="MapAdapter for Google.">GoogleMapAdapter</a>();
+                mapadapter = <span class="keyword">new</span> <a name="_a15"></a><a class="code" href="classGoogleMapAdapter.html" title="MapAdapter for Google.">GoogleMapAdapter</a>();
                 l-&gt;setMapAdapter(mapadapter);
                 sights-&gt;setMapAdapter(mapadapter);
                 museum-&gt;setMapAdapter(mapadapter);
@@ -532,7 +532,7 @@ Citymap::~Citymap()
         <span class="keyword">delete</span> museum;
 }
 
-</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Sun Jan 13 02:25:44 2008 for QMapControl by&nbsp;
+</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Fri Feb 22 23:51:19 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

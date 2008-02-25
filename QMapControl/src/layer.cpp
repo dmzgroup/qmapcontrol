@@ -196,9 +196,12 @@ void Layer::_draw(QPainter* painter, const QPoint mapmiddle_px) const
 
 	offscreenViewport = QRect(from, to);
 	
-	painter->drawPixmap(-cross_x+size.width(),
+	if (mapAdapter->isValid(mapmiddle_tile_x, mapmiddle_tile_y, mapAdapter->getZoom()))
+	{
+		painter->drawPixmap(-cross_x+size.width(),
 								-cross_y+size.height(),
 															ImageManager::instance()->getImage(mapAdapter->getHost(), mapAdapter->getQuery(mapmiddle_tile_x, mapmiddle_tile_y, mapAdapter->getZoom())));
+	}
 	
 	for (int i=-tiles_left+mapmiddle_tile_x; i<=tiles_right+mapmiddle_tile_x; i++)
 	{
@@ -228,22 +231,26 @@ void Layer::_draw(QPainter* painter, const QPoint mapmiddle_px) const
 	int j = upper;
 	for (int i=left; i<=right; i++)
 	{
-		ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
+		if (mapAdapter->isValid(i, j, mapAdapter->getZoom()))
+			ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
 	}
 	j = lower;
 	for (int i=left; i<=right; i++)
 	{
-		ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
+		if (mapAdapter->isValid(i, j, mapAdapter->getZoom()))
+			ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
 	}
 	int i = left;
 	for (int j=upper+1; j<=lower-1; j++)
 	{
-		ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
+		if (mapAdapter->isValid(i, j, mapAdapter->getZoom()))
+			ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
 	}
 	i = right;
 	for (int j=upper+1; j<=lower-1; j++)
 	{
-		ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
+		if (mapAdapter->isValid(i, j, mapAdapter->getZoom()))
+			ImageManager::instance()->prefetchImage(mapAdapter->getHost(), mapAdapter->getQuery(i, j, mapAdapter->getZoom()));
 	}
 	
 }

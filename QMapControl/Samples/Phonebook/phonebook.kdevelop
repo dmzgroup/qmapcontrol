@@ -143,11 +143,11 @@
   </kdevdebugger>
   <kdevtrollproject>
     <run>
-      <mainprogram>/home/kai/kwint001/trunk/code/MapAPI/Samples/Phonebook/bin/Phonebook</mainprogram>
+      <mainprogram>./bin/Phonebook</mainprogram>
       <programargs/>
       <directoryradio>executable</directoryradio>
       <globaldebugarguments/>
-      <globalcwd>/home/kai/kwint001/trunk/code/MapAPI/Samples/Phonebook/src/bin/</globalcwd>
+      <globalcwd>./bin/</globalcwd>
       <useglobalprogram>true</useglobalprogram>
       <terminal>false</terminal>
       <autocompile>false</autocompile>

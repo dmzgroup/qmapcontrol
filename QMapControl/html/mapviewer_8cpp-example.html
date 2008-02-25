@@ -19,28 +19,33 @@ You can find this example here: MapAPI/Samples/Mapviewer <div align="center">
 <p><strong>screenshot</strong></p></div>
  <div class="fragment"><pre class="fragment"><span class="preprocessor">#include "mapviewer.h"</span>
 Mapviewer::Mapviewer(QWidget *parent)
-        : QWidget(parent)
+        : QMainWindow(parent)
 {
         <span class="comment">// create MapControl</span>
-        mc = <span class="keyword">new</span> <a name="_a0"></a><a class="code" href="classMapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a>(QSize(480,640));
-        
-        <span class="comment">// create MapAdapter to get maps from</span>
-        <a name="_a1"></a><a class="code" href="classTileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a>* mapadapter = <span class="keyword">new</span> <a class="code" href="classTileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a>(<span class="stringliteral">"tile.openstreetmap.org"</span>, <span class="stringliteral">"/%1/%2/%3.png"</span>, 256, 0, 17);
+        mc = <span class="keyword">new</span> <a name="_a0"></a><a class="code" href="classMapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a>(QSize(380, 540));
+
+        <span class="comment">// create mapadapter, for mainlayer and overlay</span>
+        mapadapter = <span class="keyword">new</span> <a name="_a1"></a><a class="code" href="classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap.">OSMMapAdapter</a>();
+        <a name="_a2"></a><a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter_overlay = <span class="keyword">new</span> <a name="_a3"></a><a class="code" href="classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps.">YahooMapAdapter</a>(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=2.2&amp;t=h&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
         
         <span class="comment">// create a layer with the mapadapter and type MapLayer</span>
-        <a name="_a2"></a><a class="code" href="classLayer.html" title="Layer class.">Layer</a>* l = <span class="keyword">new</span> <a class="code" href="classLayer.html" title="Layer class.">Layer</a>(<span class="stringliteral">"Custom Layer"</span>, mapadapter, <a name="a3"></a><a class="code" href="classLayer.html#dba4e65e925a52914ac3400c81847fb7ac91d761c44e641bcbafd56aee1a7c3a">Layer::MapLayer</a>);
+        mainlayer = <span class="keyword">new</span> <a name="_a4"></a><a class="code" href="classMapLayer.html" title="MapLayer class.">MapLayer</a>(<span class="stringliteral">"Custom Layer"</span>, mapadapter);
+        
+        <span class="comment">// create yahoo satellite overlay</span>
+        overlay = <span class="keyword">new</span> <a class="code" href="classMapLayer.html" title="MapLayer class.">MapLayer</a>(<span class="stringliteral">"Overlay"</span>, mapadapter_overlay);
+        overlay-&gt;setVisible(<span class="keyword">false</span>);
         
         <span class="comment">// add Layer to the MapControl</span>
-        mc-&gt;addLayer(l);
-        
-        <span class="comment">// display the MapControl in the application</span>
-        QHBoxLayout* layout = <span class="keyword">new</span> QHBoxLayout;
-        layout-&gt;addWidget(mc);
-        setLayout(layout);
-        
-        addZoomButtons();
-}
+        mc-&gt;addLayer(mainlayer);
+        mc-&gt;addLayer(overlay);
 
+        addZoomButtons();
+        createActions();
+        createMenu();
+        
+        <span class="comment">// show mapcontrol in mainwindow</span>
+        setCentralWidget(mc);
+}
 <span class="keywordtype">void</span> Mapviewer::addZoomButtons()
 {
         <span class="comment">// create buttons as controls for zoom</span>
@@ -61,10 +66,99 @@ Mapviewer::Mapviewer(QWidget *parent)
         mc-&gt;setLayout(innerlayout);
 }
 
+<span class="keywordtype">void</span> Mapviewer::createActions()
+{
+        QActionGroup* mapproviderGroup = <span class="keyword">new</span> QActionGroup(<span class="keyword">this</span>);
+        osmAction = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"OpenStreetMap"</span>), mapproviderGroup);
+        yahooActionMap = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: Map"</span>), mapproviderGroup);
+        yahooActionSatellite = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: Satellite"</span>), mapproviderGroup);
+        googleActionMap = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Google: Map"</span>), mapproviderGroup);
+        osmAction-&gt;setCheckable(<span class="keyword">true</span>);
+        yahooActionMap-&gt;setCheckable(<span class="keyword">true</span>);
+        yahooActionSatellite-&gt;setCheckable(<span class="keyword">true</span>);
+        googleActionMap-&gt;setCheckable(<span class="keyword">true</span>);
+        osmAction-&gt;setChecked(<span class="keyword">true</span>);
+        connect(mapproviderGroup, SIGNAL(triggered(QAction*)),
+                          <span class="keyword">this</span>, SLOT(mapproviderSelected(QAction*)));
+        
+        yahooActionOverlay = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: street overlay"</span>), <span class="keyword">this</span>);
+        yahooActionOverlay-&gt;setCheckable(<span class="keyword">true</span>);
+        yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
+        connect(yahooActionOverlay, SIGNAL(toggled(<span class="keywordtype">bool</span>)),
+                          overlay, SLOT(setVisible(<span class="keywordtype">bool</span>)));
+}
+
+<span class="keywordtype">void</span> Mapviewer::createMenu()
+{
+        mapMenu = menuBar()-&gt;addMenu(tr(<span class="stringliteral">"&amp;Map Provider"</span>));
+        mapMenu-&gt;addAction(osmAction);
+        mapMenu-&gt;addAction(yahooActionMap);
+        mapMenu-&gt;addAction(yahooActionSatellite);
+        mapMenu-&gt;addAction(googleActionMap);
+        mapMenu-&gt;addSeparator();
+        mapMenu-&gt;addAction(yahooActionOverlay);
+}
+
+<span class="keywordtype">void</span> Mapviewer::mapproviderSelected(QAction* action)
+{
+        <span class="keywordflow">if</span> (action == osmAction)
+        {
+                <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
+                mc-&gt;setZoom(0);
+                
+                mapadapter = <span class="keyword">new</span> <a class="code" href="classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap.">OSMMapAdapter</a>();
+                mainlayer-&gt;setMapAdapter(mapadapter);
+                
+                mc-&gt;updateRequestNew();
+                mc-&gt;setZoom(zoom);
+                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
+                overlay-&gt;setVisible(<span class="keyword">false</span>);
+                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
+                
+        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == yahooActionMap)
+        {
+                <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
+                mc-&gt;setZoom(0);
+                
+                mapadapter = <span class="keyword">new</span> <a class="code" href="classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps.">YahooMapAdapter</a>();
+                mainlayer-&gt;setMapAdapter(mapadapter);
+        
+                mc-&gt;updateRequestNew();
+                mc-&gt;setZoom(zoom);
+                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
+                overlay-&gt;setVisible(<span class="keyword">false</span>);
+                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
+        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == yahooActionSatellite)
+        {
+                <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
+                QPointF a = mc-&gt;getCurrentCoordinate();
+                mc-&gt;setZoom(0);
+                
+                mapadapter = <span class="keyword">new</span> <a class="code" href="classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps.">YahooMapAdapter</a>(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=1.7&amp;t=a&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
+                mainlayer-&gt;setMapAdapter(mapadapter);
+                
+                mc-&gt;updateRequestNew();
+                mc-&gt;setZoom(zoom);
+                yahooActionOverlay-&gt;setEnabled(<span class="keyword">true</span>);
+        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == googleActionMap)
+        {
+                <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
+                mc-&gt;setZoom(0);
+                mapadapter = <span class="keyword">new</span> <a name="_a5"></a><a class="code" href="classGoogleMapAdapter.html" title="MapAdapter for Google.">GoogleMapAdapter</a>();
+                mainlayer-&gt;setMapAdapter(mapadapter);
+                
+                mc-&gt;updateRequestNew();
+                mc-&gt;setZoom(zoom);
+                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
+                overlay-&gt;setVisible(<span class="keyword">false</span>);
+                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
+        }
+}
+
 Mapviewer::~Mapviewer()
 {
 }
-</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Sun Jan 13 02:25:45 2008 for QMapControl by&nbsp;
+</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Fri Feb 22 23:51:19 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

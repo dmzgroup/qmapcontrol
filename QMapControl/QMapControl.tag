@@ -630,10 +630,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>InfoDialog</name>
-    <filename>classInfoDialog.html</filename>
-  </compound>
-  <compound kind="class">
     <name>Layer</name>
     <filename>classLayer.html</filename>
     <member kind="enumeration">

@@ -1,14 +1,1 @@
-<area shape="rect" href="$classLayer.html" title="Layer class." alt="" coords="160,132,221,159">
-<area shape="rect" href="$classMapAdapter.html" title="Used to fit map servers into QMapControl." alt="" coords="136,208,245,235">
-<area shape="rect" href="$classCurve.html" title="A Curve Geometry, implemented to fullfil OGC Spec." alt="" coords="333,5,397,32">
-<area shape="rect" href="$classPoint.html" title="A geometric point to draw objects into maps." alt="" coords="337,56,393,83">
-<area shape="rect" href="$classLineString.html" title="A collection of Point objects to describe a line." alt="" coords="520,5,613,32">
-<area shape="rect" href="$classCirclePoint.html" title="Draws a circle into the map." alt="" coords="517,56,616,83">
-<area shape="rect" href="$classImagePoint.html" title="Draws an image into the map." alt="" coords="515,107,619,133">
-<area shape="rect" href="$classGeometryLayer.html" title="GeometryLayer class." alt="" coords="299,107,432,133">
-<area shape="rect" href="$classMapLayer.html" title="MapLayer class." alt="" coords="320,157,411,184">
-<area shape="rect" href="$classTileMapAdapter.html" title="MapAdapter for servers with image tiles." alt="" coords="297,208,433,235">
-<area shape="rect" href="$classWMSMapAdapter.html" title="MapAdapter for WMS servers." alt="" coords="293,259,437,285">
-<area shape="rect" href="$classGoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="487,157,647,184">
-<area shape="rect" href="$classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="496,208,637,235">
-<area shape="rect" href="$classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="489,259,644,285">
+<area shape="rect" href="$classMapControl.html" title="The control element of the widget and also the widget itself." alt="" coords="140,5,244,32">

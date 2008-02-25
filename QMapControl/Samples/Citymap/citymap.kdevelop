@@ -3,7 +3,7 @@
   <general>
     <author>Kai Winter</author>
     <email>kaiwinter@gmx.de</email>
-    <version>0.9</version>
+    <version>0.9.3</version>
     <projectmanagement>KDevTrollProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <keywords>
@@ -13,8 +13,8 @@
     <projectname>Citymap</projectname>
     <projectdirectory>.</projectdirectory>
     <absoluteprojectpath>false</absoluteprojectpath>
-    <description/>
-    <defaultencoding/>
+    <description></description>
+    <defaultencoding></defaultencoding>
     <versioncontrol/>
   </general>
   <kdevfileview>
@@ -66,7 +66,7 @@
       <includePaths>.;</includePaths>
     </codecompletion>
     <creategettersetter>
-      <prefixGet/>
+      <prefixGet></prefixGet>
       <prefixSet>set</prefixSet>
       <prefixVariable>m_,_</prefixVariable>
       <parameterName>theValue</parameterName>
@@ -123,16 +123,16 @@
   </kdevdoctreeview>
   <kdevdebugger>
     <general>
-      <dbgshell/>
+      <dbgshell></dbgshell>
       <breakpoints/>
       <programargs/>
       <gdbpath>/usr/bin/gdb</gdbpath>
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
-      <configGdbScript/>
-      <runShellScript/>
-      <runGdbScript/>
+      <configGdbScript></configGdbScript>
+      <runShellScript></runShellScript>
+      <runGdbScript></runGdbScript>
       <raiseGDBOnStart>false</raiseGDBOnStart>
     </general>
     <display>
@@ -144,12 +144,12 @@
   </kdevdebugger>
   <kdevtrollproject>
     <run>
-      <mainprogram/>
-      <programargs/>
+      <mainprogram>./bin/Citymap</mainprogram>
+      <programargs></programargs>
       <directoryradio>executable</directoryradio>
-      <globaldebugarguments/>
-      <globalcwd>/home/kai/kwint001/trunk/code/MapAPI/Samples/Citymap</globalcwd>
-      <useglobalprogram>false</useglobalprogram>
+      <globaldebugarguments></globaldebugarguments>
+      <globalcwd>./bin/</globalcwd>
+      <useglobalprogram>true</useglobalprogram>
       <terminal>false</terminal>
       <autocompile>false</autocompile>
       <autoinstall>false</autoinstall>
@@ -164,7 +164,7 @@
       <runmultiplejobs>false</runmultiplejobs>
       <numberofjobs>1</numberofjobs>
       <dontact>false</dontact>
-      <makebin/>
+      <makebin></makebin>
       <prio>0</prio>
       <envvars/>
     </make>
@@ -206,9 +206,9 @@
     <LICENSE>GPL</LICENSE>
     <LICENSEFILE>COPYING</LICENSEFILE>
     <QMAKE>/usr/lib/qt4/bin</QMAKE>
-    <VERSION>0.9</VERSION>
+    <VERSION>0.9.3</VERSION>
     <YEAR>2008</YEAR>
-    <dest>/home/kai/kwint001/trunk/code/MapAPI/Samples/Citymap</dest>
+    <dest>.</dest>
   </substmap>
   <cppsupportpart>
     <filetemplates>
