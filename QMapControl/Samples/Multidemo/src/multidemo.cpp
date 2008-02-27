@@ -27,9 +27,9 @@
  *  - Move To Click: moves the view middle to the clicked coordinate
  *  - GPS: starts a "pseudo" GPS receiver which emits new positions, these are connected to the ImagePoint
  *  - Follow Geom: Follows the ImagePoint, when it moves because of new GPS positions
- * 
+ *
  * A overview map lefts you see where you are. You can even click on it to change your position.
- * 
+ *
  * You can find this example here: MapAPI/Samples/Multimap
  * \image html sample_multidemo.png "screenshot"
  */
@@ -38,8 +38,8 @@ Multidemo::Multidemo(QWidget *parent)
 {
 	setupMaps();
 	createLayout();
-	
-	gm = new GPS_Modul();	
+
+	gm = new GPS_Modul();
 	connect(gm, SIGNAL(new_position(QPointF)),
 			  ip, SLOT(setCoordinate(QPointF)));
 
@@ -47,7 +47,7 @@ Multidemo::Multidemo(QWidget *parent)
 
 void Multidemo::setupMaps()
 {
-	QSize size = QSize(480,640);	
+	QSize size = QSize(480,640);
 
 	// main map control
 	mc = new MapControl(size);
@@ -59,14 +59,14 @@ void Multidemo::setupMaps()
 	// Geometry layer
 	Layer* l2 = new GeometryLayer("Geom Layer", mapadapter);
 	mc->addLayer(l2);
-	
-	
+
+
 	// "minimap" control
 	mc2 = new MapControl(QSize(150,150), MapControl::None);
 	MapAdapter* mapadapter_mini = new OSMMapAdapter();
 	Layer* layer_mini = new MapLayer("Custom Layer", mapadapter_mini);
 	mc2->addLayer(layer_mini);
-	
+
 	// create points
 	QPen* pen = new QPen(QColor(255, 0, 0, 100));
 	pen->setWidth(5);
@@ -83,27 +83,27 @@ void Multidemo::setupMaps()
 	points.append(new CirclePoint(8.270476, 50.021426,	"Wiesbaden-Mainz-Kastel, Ruthof", Point::Middle, pen));
 	points.append(new CirclePoint(8.266445, 50.025913,	"Wiesbaden-Mainz-Kastel, Mudra Kaserne", Point::Middle, pen));
 	points.append(new CirclePoint(8.260378, 50.030345,	"Wiesbaden-Mainz-Amoneburg, Dyckerhoffstraße", Point::Middle, pen));
-	
+
 	// add points to linestring
 	pen = new QPen(QColor(0, 0, 255, 100));
 	pen->setWidth(5);
 	LineString* ls = new LineString(points, "Busline 54", pen);
 	// the linestring is added to the MapLayer l, since it doenst change its points
 	l->addGeometry(ls);
-	
+
 	// this point receives position changes from the "gps modul"
 	ip = new ImagePoint(0,0, QCoreApplication::applicationDirPath() + "/images/marker1.png", "image point", Point::TopRight);
-	
+
 	// so if have to be added to the GeometryLayer l2
-	l->addGeometry(ip);
+	l2->addGeometry(ip);
 	QPushButton* pb = new QPushButton("test button", mc);
-	
+
 	// widget example
 	Point* wpoint = new  Point(-20,-20, pb, ".", Point::TopLeft);
 	wpoint->setBaselevel(3);
  	l->addGeometry(wpoint);
 	pb->setGeometry(0,0,100,50);
-	
+
 	connect(l, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
 			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
 	connect(l2, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
@@ -125,25 +125,25 @@ void Multidemo::createLayout()
 	btn1->setMaximumWidth(80);
 	btn1->setMaximumHeight(20);
 	btn1->setFont(QFont("Verdana", 5));
-	
+
 	btn2 = new QPushButton("Drag Rect");
 	btn2->setCheckable(true);
 	btn2->setMaximumHeight(20);
 	btn2->setFont(QFont("Verdana", 5));
 	btn2->setMaximumWidth(80);
-	
+
 	btn3 = new QPushButton("Move to Click");
 	btn3->setCheckable(true);
 	btn3->setMaximumHeight(20);
 	btn3->setFont(QFont("Verdana", 5));
 	btn3->setMaximumWidth(80);
-	
+
 	btn4 = new QPushButton("Follow Geom");
 	btn4->setCheckable(true);
 	btn4->setMaximumHeight(20);
 	btn4->setFont(QFont("Verdana", 5));
 	btn4->setMaximumWidth(80);
-	
+
 	btn5 = new QPushButton("GPS");
 	btn5->setCheckable(true);
 	btn5->setMaximumHeight(20);
@@ -154,10 +154,10 @@ void Multidemo::createLayout()
 	btn3->setFocusPolicy(Qt::NoFocus);
 	btn4->setFocusPolicy(Qt::NoFocus);
 	btn5->setFocusPolicy(Qt::NoFocus);
-	
+
 	QHBoxLayout* layout = new QHBoxLayout;
 	QVBoxLayout* layoutinner = new QVBoxLayout;
-	
+
 	layoutinner->addWidget(mc2);
 	layoutinner->addWidget(btn1);
 	layoutinner->addWidget(btn2);
@@ -171,15 +171,15 @@ void Multidemo::createLayout()
 	mclayout->addWidget(mc);
 	mclayout->setMargin(0);
 	setLayout(mclayout);
-	
+
 	mc->setLayout(layoutinner);
-	
+
 	connect(btn2, SIGNAL(toggled( bool )),
 			  this, SLOT(buttonToggled(bool)));
-	
+
 	connect(btn4, SIGNAL(toggled( bool )),
 			  this, SLOT(toggleFollow(bool)));
-	
+
 	connect(btn5, SIGNAL(toggled( bool )),
 			  this, SLOT(toggleGPS(bool)));
 }
@@ -274,7 +274,7 @@ void Multidemo::toggleGPS(bool gps)
 		gm->start();
 	else
 		gm->stop();
-		
+
 }
 
 void Multidemo::draggedRect(QRectF rect)
