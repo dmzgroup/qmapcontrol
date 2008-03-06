@@ -26,76 +26,76 @@
 #include <QMutex>
 #include "mapnetwork.h"
 
-class MapNetwork;
-/**
-	@author Kai Winter <kaiwinter@gmx.de>
-*/
-class ImageManager : public QObject
+namespace qmapcontrol
 {
-	Q_OBJECT;
-	public:
-		static ImageManager* instance()
-		{
-			if(!m_Instance)
+	class MapNetwork;
+	/**
+	@author Kai Winter <kaiwinter@gmx.de>
+	 */
+	class ImageManager : public QObject
+	{
+		Q_OBJECT;
+		public:
+			static ImageManager* instance()
 			{
-				m_Instance = new ImageManager;
+				if(!m_Instance)
+				{
+					m_Instance = new ImageManager;
+				}
+				return m_Instance;
 			}
-			return m_Instance;
-		}
 		
-		~ImageManager();
+			~ImageManager();
 
 		//! returns a QPixmap of the asked image
 		/*!
-		 * If this component doesn´t have the image a network query gets started to load it.
-		 * @param host the host of the image
-		 * @param path the path to the image
-		 * @return the pixmap of the asked image
+			 * If this component doesn´t have the image a network query gets started to load it.
+			 * @param host the host of the image
+			 * @param path the path to the image
+			 * @return the pixmap of the asked image
 		 */
-		QPixmap getImage(const QString& host, const QString& path);
+			QPixmap getImage(const QString& host, const QString& path);
 		
-		QPixmap prefetchImage(const QString& host, const QString& path);
+			QPixmap prefetchImage(const QString& host, const QString& path);
 		
-		void receivedImage(const QPixmap pixmap, const QString& url);
+			void receivedImage(const QPixmap pixmap, const QString& url);
 		
 		/*!
-		 * This method is called by MapNetwork, after all images in its queue were loaded.
-		 * The ImageManager emits a signal, which is used in MapControl to remove the zoom image.
-		 * The zoom image should be removed on Tile Images with transparency.
-		 * Else the zoom image stay visible behind the newly loaded tiles.
+			 * This method is called by MapNetwork, after all images in its queue were loaded.
+			 * The ImageManager emits a signal, which is used in MapControl to remove the zoom image.
+			 * The zoom image should be removed on Tile Images with transparency.
+			 * Else the zoom image stay visible behind the newly loaded tiles.
 		 */
-		void loadingQueueEmpty();
+			void loadingQueueEmpty();
 		
 		/*!
-		 * Aborts all current loading threads.
-		 * This is useful when changing the zoom-factor, though newly needed images loads faster
+			 * Aborts all current loading threads.
+			 * This is useful when changing the zoom-factor, though newly needed images loads faster
 		 */
-		void abortLoading();
+			void abortLoading();
 		
 		//! sets the proxy for HTTP connections
 		/*!
-		 * This method sets the proxy for HTTP connections.
-		 * This is not provided by the current Qtopia version!
-		 * @param host the proxy´s hostname or ip
-		 * @param port the proxy´s port
+			 * This method sets the proxy for HTTP connections.
+			 * This is not provided by the current Qtopia version!
+			 * @param host the proxy´s hostname or ip
+			 * @param port the proxy´s port
 		 */
-		void setProxy(QString host, int port);
+			void setProxy(QString host, int port);
 
-	private:
-		ImageManager(QObject* parent = 0);
-		ImageManager(const ImageManager&);
-		ImageManager& operator=(const ImageManager&);
-		QPixmap emptyPixmap;
-		MapNetwork* net;
-		QVector<QString> prefetch;
+		private:
+			ImageManager(QObject* parent = 0);
+			ImageManager(const ImageManager&);
+			ImageManager& operator=(const ImageManager&);
+			QPixmap emptyPixmap;
+			MapNetwork* net;
+			QVector<QString> prefetch;
 	
-		static ImageManager* m_Instance;
+			static ImageManager* m_Instance;
 		
-// 		QHash<QString, QImage> images;
-		
-	signals:
-		void imageReceived();
-		void loadingFinished();
-};
-
+		signals:
+			void imageReceived();
+			void loadingFinished();
+	};
+}
 #endif

@@ -27,179 +27,188 @@
 #include "mapadapter.h"
 #include "geometry.h"
 #include "imagemanager.h"
-class LayerManager;
-class MapAdapter;
-class Layer;
 
-
-//! The control element of the widget and also the widget itself
-/*!
- * This is the main widget.
- * To this control layers can be added.
- * A MapControl have to be instantiated with a QSize which sets the size the widget takes in a layout.
- * The given size is also the size, which is asured to be filled with map images.
- *
- * @author Kai Winter <kaiwinter@gmx.de>
-*/
-class MapControl : public QWidget
+//! QMapControl namespace
+namespace qmapcontrol
 {
-	Q_OBJECT
+	class LayerManager;
+	class MapAdapter;
+	class Layer;
+	
+	//! The control element of the widget and also the widget itself
+	/*!
+	 * This is the main widget.
+	 * To this control layers can be added.
+	 * A MapControl have to be instantiated with a QSize which sets the size the widget takes in a layout.
+	 * The given size is also the size, which is asured to be filled with map images.
+	 *
+	 * @author Kai Winter <kaiwinter@gmx.de>
+ 	 */
+	class MapControl : public QWidget
+	{
+		Q_OBJECT
 
-	public:
+		public:
 		//! Declares what actions the mouse move has on the map
-		enum MouseMode
-		{
-			Panning, /*!< The map is moved */
-			Dragging, /*!< A rectangular can be drawn */
-			None, /*!< Mouse move events have no efect to the map */
-		};
+			enum MouseMode
+			{
+				Panning, /*!< The map is moved */
+				Dragging, /*!< A rectangular can be drawn */
+  				None, /*!< Mouse move events have no efect to the map */
+			};
 
 		//! The constructor of MapControl
 		/*!
-		 * The MapControl is the widget which displays the maps.
-		 * The size describes the area, which gets filled with map data
-		 * When you give no MouseMode, the mouse is moving the map.
-		 * You can change the MouseMode on runtime, to e.g. Dragging, which lets the user drag a rectangular box.
-		 * After the dragging a signal with the size of the box is emitted.
-		 * The mousemode ´None´ can be used, to completely define the control of the map yourself.
-		 * @param size the size which the widget should fill with map data
-		 * @param mousemode the way mouseevents are handled
+			 * The MapControl is the widget which displays the maps.
+			 * The size describes the area, which gets filled with map data
+			 * When you give no MouseMode, the mouse is moving the map.
+			 * You can change the MouseMode on runtime, to e.g. Dragging, which lets the user drag a rectangular box.
+			 * After the dragging a signal with the size of the box is emitted.
+			 * The mousemode ´None´ can be used, to completely define the control of the map yourself.
+			 * @param size the size which the widget should fill with map data
+			 * @param mousemode the way mouseevents are handled
 		 */
-		MapControl(QSize size, MouseMode mousemode = Panning);
+			MapControl(QSize size, MouseMode mousemode = Panning);
 		
-		~MapControl();
+			~MapControl();
 		
 		//! adds a layer
 		/*!
-		 * If multiple layers are added, they are painted in the added order.
-		 * @param layer the layer which should be added
+			 * If multiple layers are added, they are painted in the added order.
+			 * @param layer the layer which should be added
 		 */
-		void addLayer(Layer* layer);
+			void addLayer(Layer* layer);
 		
 		//! returns the layer with the given name
 		/*!
-		 * @param  layername name of the wanted layer
-		 * @return the layer with the given name
+			 * @param  layername name of the wanted layer
+			 * @return the layer with the given name
 		 */
-		Layer* getLayer(const QString& layername) const;
+			Layer* getLayer(const QString& layername) const;
 		
 		//! returns the names of all layers
 		/*!
-		 * @return returns a QList with the names of all layers
+			 * @return returns a QList with the names of all layers
 		 */
-		QList<QString> getLayers() const;
+			QList<QString> getLayers() const;
 		
 		//! returns the number of existing layers
 		/*!
-		 * @return returns the number of existing layers
+			 * @return returns the number of existing layers
 		 */
-		int getNumberOfLayers() const;
+			int getNumberOfLayers() const;
 		
 		//! returns the coordinate of the center of the map
 		/*!
-		 * @return returns the coordinate of the middle of the screen
+			 * @return returns the coordinate of the middle of the screen
 		 */
-		QPointF	getCurrentCoordinate() const;
+			QPointF	getCurrentCoordinate() const;
 		
 		//! returns the current zoom level
 		/*!
-		 * @return returns the current zoom level
+			 * @return returns the current zoom level
 		 */
-		int getCurrentZoom() const;
+			int getCurrentZoom() const;
 		
 		//! sets the middle of the map to the given coordinate
 		/*!
-		 * @param  coordinate the coordinate which the view´s middle should be set to
+			 * @param  coordinate the coordinate which the view´s middle should be set to
 		 */
-		void setView(const QPointF& coordinate) const;
+			void setView(const QPointF& coordinate) const;
 		
 		//! sets the view, so all coordinates are visible
 		/*!
-		 * The code of setting the view to multiple coordinates is "brute force" and pretty slow.
-		 * Have to be reworked.
-		 * @param  coordinates the Coorinates which should be visible
+			 * @param  coordinates the Coorinates which should be visible
 		 */
-		void setView(const QList<QPointF> coordinates) const;
+			void setView(const QList<QPointF> coordinates) const;
+		
+		//! sets the view and zooms in, so all coordinates are visible
+		/*!
+			 * The code of setting the view to multiple coordinates is "brute force" and pretty slow.
+			 * Have to be reworked.
+			 * @param  coordinates the Coorinates which should be visible
+		 */
+			void setViewAndZoomIn(const QList<QPointF> coordinates) const;
 		
 		//! sets the view to the given Point
 		/*!
-		 * 
-		 * @param point the geometric point the view should be set to
+			 * 
+			 * @param point the geometric point the view should be set to
 		 */
-		void setView(const Point* point) const;
+			void setView(const Point* point) const;
 		
 		//! Keeps the center of the map on the Geometry, even when it moves
 		/*!
-		 * To stop the following the method stopFollowing() have to be called
-		 * @param  geometry the Geometry which should stay centered.
+			 * To stop the following the method stopFollowing() have to be called
+			 * @param  geometry the Geometry which should stay centered.
 		 */
-		void followGeometry(const Geometry* geometry) const;
+			void followGeometry(const Geometry* geometry) const;
 		//TODO:
 // 		void			followGeometry(const QList<Geometry*>) const;
 		
 		//! Stops the following of a Geometry
 		/*!
-		 * if the view is set to follow a Geometry this method stops the trace.
-		 * See followGeometry().
-		 * @param geometry the Geometry which should not followed anymore
+			 * if the view is set to follow a Geometry this method stops the trace.
+			 * See followGeometry().
+			 * @param geometry the Geometry which should not followed anymore
 		 */
-		void stopFollowing(Geometry* geometry);
+			void stopFollowing(Geometry* geometry);
 		
 		//! Smoothly moves the center of the view to the given Coordinate
 		/*!
-		 * @param  coordinate the Coordinate which the center of the view should moved to
+			 * @param  coordinate the Coordinate which the center of the view should moved to
 		 */
-		void moveTo	(QPointF coordinate);
+			void moveTo	(QPointF coordinate);
 		
 		//! sets the Mouse Mode of the MapControl
 		/*!
-		 * There are three MouseModes declard by an enum.
-		 * The MouesMode Dragging draws an rectangular in the map while the MouseButton is pressed.
-		 * When the Button is released a draggedRect() signal is emitted.
-		 * 
-		 * The second MouseMode (the default) is Panning, which allows to drag the map around.
-		 * @param mousemode the MouseMode
+			 * There are three MouseModes declard by an enum.
+			 * The MouesMode Dragging draws an rectangular in the map while the MouseButton is pressed.
+			 * When the Button is released a draggedRect() signal is emitted.
+			 * 
+			 * The second MouseMode (the default) is Panning, which allows to drag the map around.
+			 * @param mousemode the MouseMode
 		 */
-		void setMouseMode(MouseMode mousemode);
+			void setMouseMode(MouseMode mousemode);
 		
 		//! returns the current MouseMode
 		/*!
-		 * For a explanation for the MouseModes see setMouseMode()
-		 * @return the current MouseMode
+			 * For a explanation for the MouseModes see setMouseMode()
+			 * @return the current MouseMode
 		 */
-		MapControl::MouseMode getMouseMode();
+			MapControl::MouseMode getMouseMode();
 		
-		int rotation;
+			int rotation;
 		
-	private:
-		LayerManager*	layermanager;
-		QPoint screen_middle;	// middle of the widget (half size)
+		private:
+			LayerManager*	layermanager;
+			QPoint screen_middle;	// middle of the widget (half size)
 		
-		QPoint pre_click_px;			// used for scrolling (MouseMode Panning)
-		QPoint current_mouse_pos;	// used for scrolling and dragging (MouseMode Panning/Dragging)
+			QPoint pre_click_px;			// used for scrolling (MouseMode Panning)
+			QPoint current_mouse_pos;	// used for scrolling and dragging (MouseMode Panning/Dragging)
 		
-		QSize size;		// size of the widget
+			QSize size;		// size of the widget
 		
-		bool mousepressed;
+			bool mousepressed;
 		
-		MouseMode mousemode;
+			MouseMode mousemode;
 		
-		QMutex moveMutex;	// used for method moveTo()
-		QPointF target;	// used for method moveTo()
-		int steps;			// used for method moveTo()
+			QMutex moveMutex;	// used for method moveTo()
+			QPointF target;	// used for method moveTo()
+			int steps;			// used for method moveTo()
 		
-		QPointF clickToWorldCoordinate(QPoint click);
-		MapControl& operator=(const MapControl& rhs);
-		MapControl(const MapControl& old);
+			QPointF clickToWorldCoordinate(QPoint click);
+			MapControl& operator=(const MapControl& rhs);
+			MapControl(const MapControl& old);
 	
-	protected:			
-		void paintEvent(QPaintEvent* evnt);
-		void mousePressEvent(QMouseEvent* evnt);
-		void mouseReleaseEvent(QMouseEvent* evnt);
-		void mouseMoveEvent(QMouseEvent* evnt);
+		protected:			
+			void paintEvent(QPaintEvent* evnt);
+			void mousePressEvent(QMouseEvent* evnt);
+			void mouseReleaseEvent(QMouseEvent* evnt);
+			void mouseMoveEvent(QMouseEvent* evnt);
 		
 
-	signals:		
+		signals:		
 // 		void mouseEvent(const QMouseEvent* evnt);
 		
 		//! Emitted AFTER a MouseEvent occured
@@ -210,67 +219,67 @@ class MapControl : public QWidget
 		 * @param  evnt the QMouseEvent that occured
 		 * @param  coordinate the corresponding world coordinate
 		 */
-		void mouseEventCoordinate(const QMouseEvent* evnt, const QPointF coordinate);
+			void mouseEventCoordinate(const QMouseEvent* evnt, const QPointF coordinate);
 		
 		//! Emitted, after a Rectangular is dragged.
 		/*!
-		 * It is possible to select a rectangular area in the map, if the MouseMode is set to Dragging.
-		 * The coordinates are in world coordinates
-		 * @param  QRectF the dragged Rect
+			 * It is possible to select a rectangular area in the map, if the MouseMode is set to Dragging.
+			 * The coordinates are in world coordinates
+			 * @param  QRectF the dragged Rect
 		 */
-		void draggedRect(const QRectF);
+			void draggedRect(const QRectF);
 		
 		//! This signal is emmited, when a Geometry is clicked
 		/*!
-		 * @param geometry 
-		 * @param coord_px  asd
+			 * @param geometry 
+			 * @param coord_px  asd
 		 */
-		void geometryClickEvent(Geometry* geometry, QPoint coord_px);
+			void geometryClickEvent(Geometry* geometry, QPoint coord_px);
 		
-	public slots:
+		public slots:
 		//! zooms in one step
-		void zoomIn();
+			void zoomIn();
 		
 		//! zooms out one step
-		void zoomOut();
+			void zoomOut();
 		
 		//! sets the given zoomlevel
 		/*!
-		 * @param zoomlevel the zoomlevel
-		*/
-		void setZoom(int zoomlevel);
+			 * @param zoomlevel the zoomlevel
+		 */
+			void setZoom(int zoomlevel);
 		
 		//! scrolls the view to the left
-		void scrollLeft(int pixel=10);
+			void scrollLeft(int pixel=10);
 		
 		//! scrolls the view to the right
-		void scrollRight(int pixel=10);
+			void scrollRight(int pixel=10);
 		
 		//! scrolls the view up
-		void scrollUp(int pixel=10);
+			void scrollUp(int pixel=10);
 		
 		//! scrolls the view down
-		void scrollDown(int pixel=10);
+			void scrollDown(int pixel=10);
 		
 		//! scrolls the view by the given point
-		void scroll(const QPoint scroll);
+			void scroll(const QPoint scroll);
 		
 		//! updates the map for the given rect
 		/*!
-		 * @param rect the area which should be repainted
+			 * @param rect the area which should be repainted
 		 */
-		void updateRequest(QRect rect);
+			void updateRequest(QRect rect);
 		
 		//! updates the hole map by creating a new offscreen image
 		/*!
-		 * 
+			 * 
 		 */
-		void updateRequestNew();
+			void updateRequestNew();
 		
-	private slots:
-		void tick();
-		void loadingFinished();
-		void positionChanged(Geometry* geom);
-};
-
+		private slots:
+			void tick();
+			void loadingFinished();
+			void positionChanged(Geometry* geom);
+	};
+}
 #endif

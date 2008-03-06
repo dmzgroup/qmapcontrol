@@ -8,6 +8,7 @@
 <div class="tabs">
   <ul>
     <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="namespaces.html"><span>Namespaces</span></a></li>
     <li><a href="annotated.html"><span>Classes</span></a></li>
     <li class="current"><a href="files.html"><span>Files</span></a></li>
     <li><a href="examples.html"><span>Examples</span></a></li>
@@ -36,36 +37,39 @@
 <a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#define TILEMAPADAPTER_H</span>
 <a name="l00022"></a>00022 <span class="preprocessor"></span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include "mapadapter.h"</span>
-<a name="l00025"></a>00025 
-<a name="l00029"></a><a class="code" href="classTileMapAdapter.html">00029</a> <span class="keyword">class </span><a class="code" href="classTileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a> : <span class="keyword">public</span> <a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>
-<a name="l00030"></a>00030 {
-<a name="l00031"></a>00031 Q_OBJECT
-<a name="l00032"></a>00032 <span class="keyword">public</span>:
-<a name="l00034"></a>00034 
-<a name="l00045"></a>00045         <a class="code" href="classTileMapAdapter.html#ddd46726cfd692dd0839cde82fd54c37" title="constructor">TileMapAdapter</a>(<span class="keyword">const</span> QString&amp; host, <span class="keyword">const</span> QString&amp; serverPath, <span class="keywordtype">int</span> tilesize, <span class="keywordtype">int</span> minZoom = 0, <span class="keywordtype">int</span> maxZoom = 17);
-<a name="l00046"></a>00046         
-<a name="l00047"></a>00047         <span class="keyword">virtual</span> ~<a class="code" href="classTileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a>();
-<a name="l00048"></a>00048         
-<a name="l00049"></a>00049         <span class="keyword">virtual</span> QPoint          <a class="code" href="classTileMapAdapter.html#5f91f669ab4e937a7c14a57764c9dbfa" title="translates a world coordinate to display coordinate">coordinateToDisplay</a>(<span class="keyword">const</span> QPointF&amp;) <span class="keyword">const</span>;
-<a name="l00050"></a>00050         <span class="keyword">virtual</span> QPointF <a class="code" href="classTileMapAdapter.html#6a3a77aa1903447bf095fd6b6da3d3fd" title="translates display coordinate to world coordinate">displayToCoordinate</a>(<span class="keyword">const</span> QPoint&amp;) <span class="keyword">const</span>;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="keyword">namespace </span>qmapcontrol
+<a name="l00026"></a>00026 {
+<a name="l00028"></a>00028 
+<a name="l00032"></a><a class="code" href="classqmapcontrol_1_1TileMapAdapter.html">00032</a>         <span class="keyword">class </span><a class="code" href="classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a> : <span class="keyword">public</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>
+<a name="l00033"></a>00033         {
+<a name="l00034"></a>00034                 Q_OBJECT
+<a name="l00035"></a>00035                 <span class="keyword">public</span>:
+<a name="l00037"></a>00037 
+<a name="l00048"></a>00048                         <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#1233007f4393d3ae476a5284f9294e8c" title="constructor">TileMapAdapter</a>(<span class="keyword">const</span> QString&amp; host, <span class="keyword">const</span> QString&amp; serverPath, <span class="keywordtype">int</span> tilesize, <span class="keywordtype">int</span> minZoom = 0, <span class="keywordtype">int</span> maxZoom = 17);
+<a name="l00049"></a>00049         
+<a name="l00050"></a>00050                         <span class="keyword">virtual</span> ~<a class="code" href="classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a>();
 <a name="l00051"></a>00051         
-<a name="l00052"></a>00052         <span class="keywordtype">double</span> PI;
-<a name="l00053"></a>00053         
-<a name="l00054"></a>00054 <span class="keyword">protected</span>:
-<a name="l00055"></a>00055         <span class="keywordtype">double</span> rad_deg(<span class="keywordtype">double</span>) <span class="keyword">const</span>;
-<a name="l00056"></a>00056         <span class="keywordtype">double</span> deg_rad(<span class="keywordtype">double</span>) <span class="keyword">const</span>;
-<a name="l00057"></a>00057         
-<a name="l00058"></a>00058         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValid(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
-<a name="l00059"></a>00059         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_in();
-<a name="l00060"></a>00060         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_out();
-<a name="l00061"></a>00061         <span class="keyword">virtual</span> QString getQuery(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
-<a name="l00062"></a>00062         <span class="keyword">virtual</span> <span class="keywordtype">int</span> tilesonzoomlevel(<span class="keywordtype">int</span> zoomlevel) <span class="keyword">const</span>;
-<a name="l00063"></a>00063         <span class="keyword">virtual</span> <span class="keywordtype">int</span> getxoffset(<span class="keywordtype">int</span> x) <span class="keyword">const</span>;
-<a name="l00064"></a>00064         <span class="keyword">virtual</span> <span class="keywordtype">int</span> getyoffset(<span class="keywordtype">int</span> y) <span class="keyword">const</span>;
-<a name="l00065"></a>00065 };
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Fri Feb 22 23:51:20 2008 for QMapControl by&nbsp;
+<a name="l00052"></a>00052                         <span class="keyword">virtual</span> QPoint          <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#94134b06e350d302f5b3a63f0016aa60" title="translates a world coordinate to display coordinate">coordinateToDisplay</a>(<span class="keyword">const</span> QPointF&amp;) <span class="keyword">const</span>;
+<a name="l00053"></a>00053                         <span class="keyword">virtual</span> QPointF <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#601b4631d9d891eabffb063c510cc088" title="translates display coordinate to world coordinate">displayToCoordinate</a>(<span class="keyword">const</span> QPoint&amp;) <span class="keyword">const</span>;
+<a name="l00054"></a>00054         
+<a name="l00055"></a>00055                         <span class="keywordtype">double</span> PI;
+<a name="l00056"></a>00056         
+<a name="l00057"></a>00057                 <span class="keyword">protected</span>:
+<a name="l00058"></a>00058                         <span class="keywordtype">double</span> rad_deg(<span class="keywordtype">double</span>) <span class="keyword">const</span>;
+<a name="l00059"></a>00059                         <span class="keywordtype">double</span> deg_rad(<span class="keywordtype">double</span>) <span class="keyword">const</span>;
+<a name="l00060"></a>00060         
+<a name="l00061"></a>00061                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValid(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
+<a name="l00062"></a>00062                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_in();
+<a name="l00063"></a>00063                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_out();
+<a name="l00064"></a>00064                         <span class="keyword">virtual</span> QString getQuery(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
+<a name="l00065"></a>00065                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> tilesonzoomlevel(<span class="keywordtype">int</span> zoomlevel) <span class="keyword">const</span>;
+<a name="l00066"></a>00066                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> getxoffset(<span class="keywordtype">int</span> x) <span class="keyword">const</span>;
+<a name="l00067"></a>00067                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> getyoffset(<span class="keywordtype">int</span> y) <span class="keyword">const</span>;
+<a name="l00068"></a>00068         };
+<a name="l00069"></a>00069 }
+<a name="l00070"></a>00070 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

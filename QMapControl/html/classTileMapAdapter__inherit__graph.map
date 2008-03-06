@@ -1,4 +1,0 @@
-<area shape="rect" href="$classGoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="5,239,165,265">
-<area shape="rect" href="$classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="189,239,331,265">
-<area shape="rect" href="$classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="355,239,509,265">
-<area shape="rect" href="$classMapAdapter.html" title="Used to fit map servers into QMapControl." alt="" coords="205,84,315,111">

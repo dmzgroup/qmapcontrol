@@ -8,6 +8,7 @@
 <div class="tabs">
   <ul>
     <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="namespaces.html"><span>Namespaces</span></a></li>
     <li><a href="annotated.html"><span>Classes</span></a></li>
     <li class="current"><a href="files.html"><span>Files</span></a></li>
     <li><a href="examples.html"><span>Examples</span></a></li>
@@ -38,94 +39,96 @@
 <a name="l00023"></a>00023 
 <a name="l00024"></a>00024 <span class="preprocessor">#include "geometry.h"</span>
 <a name="l00025"></a>00025 
-<a name="l00027"></a>00027 
-<a name="l00050"></a><a class="code" href="classPoint.html">00050</a> <span class="keyword">class </span><a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a> : <span class="keyword">public</span> Geometry
-<a name="l00051"></a>00051 {
-<a name="l00052"></a>00052         Q_OBJECT
-<a name="l00053"></a>00053         <span class="keyword">public</span>:
-<a name="l00054"></a>00054                 <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classLayer.html" title="Layer class.">Layer</a>;
-<a name="l00055"></a>00055                 <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>;
-<a name="l00056"></a>00056                 
-<a name="l00058"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b">00058</a>                 <span class="keyword">enum</span> <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b" title="sets where the point should be aligned">Alignment</a>
-<a name="l00059"></a>00059                 {
-<a name="l00060"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b17169b771577dce920f56126a9b2f2e1">00060</a>                         <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b17169b771577dce920f56126a9b2f2e1">TopLeft</a>, 
-<a name="l00061"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b2ec212c3c2807b5c22b227d538685d17">00061</a>                         <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b2ec212c3c2807b5c22b227d538685d17">TopRight</a>, 
-<a name="l00062"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">00062</a>                         <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">BottomLeft</a>, 
-<a name="l00063"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b447d35fa0b835edeebe05c0bd8777a31">00063</a>                         <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b447d35fa0b835edeebe05c0bd8777a31">BottomRight</a>,
-<a name="l00064"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">00064</a>                         <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Middle</a> 
-<a name="l00065"></a>00065                 };              
-<a name="l00066"></a>00066                 
-<a name="l00067"></a>00067                 <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>();
-<a name="l00068"></a>00068                 <span class="keyword">explicit</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keyword">const</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>&amp;);
-<a name="l00070"></a>00070 
-<a name="l00077"></a>00077                 <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, QString name = QString(), <span class="keyword">enum</span> <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b" title="sets where the point should be aligned">Alignment</a> alignment=<a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Middle</a>);
-<a name="l00078"></a>00078                 
-<a name="l00080"></a>00080 
-<a name="l00091"></a>00091                 <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, QWidget* widget, QString name = QString(), <span class="keyword">enum</span> <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b" title="sets where the point should be aligned">Alignment</a> alignment = <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Middle</a>);
-<a name="l00092"></a>00092                 
-<a name="l00094"></a>00094 
-<a name="l00103"></a>00103                 <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, QPixmap* pixmap, QString name = QString(), <span class="keyword">enum</span> <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b" title="sets where the point should be aligned">Alignment</a> alignment = <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Middle</a>);
-<a name="l00104"></a>00104                 <span class="keyword">virtual</span> ~<a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>();
-<a name="l00105"></a>00105                 
-<a name="l00107"></a>00107 
-<a name="l00112"></a>00112                 <span class="keyword">virtual</span> QRectF          <a class="code" href="classPoint.html#e4ca142dc6a65982883fbe1425b17e57" title="returns the bounding box of the point">getBoundingBox</a>();
-<a name="l00113"></a>00113                 
-<a name="l00115"></a>00115 
-<a name="l00118"></a>00118                 <span class="keywordtype">double</span>  <a class="code" href="classPoint.html#881db202379ef461a25d740c3194fae8" title="returns the longitude of the point">getLongitude</a>() <span class="keyword">const</span>;
-<a name="l00119"></a>00119                 
-<a name="l00121"></a>00121 
-<a name="l00124"></a>00124                 <span class="keywordtype">double</span>  <a class="code" href="classPoint.html#95c56354c86ccf7e2ae5a38a20c8bee4" title="returns the latitude of the point">getLatitude</a>() <span class="keyword">const</span>;
-<a name="l00125"></a>00125                 
-<a name="l00127"></a>00127 
-<a name="l00132"></a>00132                 QPointF <a class="code" href="classPoint.html#56b44f835aa0c4968cdfa62f11504e1f" title="returns the coordinate of the point">getCoordinate</a>() <span class="keyword">const</span>;
-<a name="l00133"></a>00133                 
-<a name="l00134"></a>00134                 <span class="keyword">virtual</span> QList&lt;Point*&gt; <a class="code" href="classLineString.html#158eddbc8ef80f8a94b8d5df05123907" title="returns the points of the LineString">getPoints</a>();
-<a name="l00135"></a>00135 
-<a name="l00139"></a>00139                 QWidget* <a class="code" href="classPoint.html#3bda2c83657034281bae789307945be0" title="returns the widget of the point">getWidget</a>();
-<a name="l00140"></a>00140                 
-<a name="l00142"></a>00142 
-<a name="l00145"></a>00145                 QPixmap* <a class="code" href="classPoint.html#239366be0abac43e3ec789ba7bab0d17" title="returns the pixmap of the point">getPixmap</a>();
-<a name="l00146"></a>00146                 
-<a name="l00148"></a>00148 
-<a name="l00154"></a>00154                 <span class="keywordtype">void</span> <a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(<span class="keywordtype">int</span> zoomlevel);
-<a name="l00155"></a>00155 
-<a name="l00157"></a>00157 
-<a name="l00162"></a>00162                 <span class="keywordtype">void</span> <a class="code" href="classPoint.html#9d7f9233cab0b4688c8e563c6faf7754" title="sets a minimal size for the pixmap">setMinsize</a>(QSize minsize);
-<a name="l00163"></a>00163                 
-<a name="l00165"></a>00165 
-<a name="l00170"></a>00170                 <span class="keywordtype">void</span> <a class="code" href="classPoint.html#9401794ee6bce2fd5a18024dffd480fd" title="sets a maximal size for the pixmap">setMaxsize</a>(QSize maxsize);
-<a name="l00171"></a>00171                 
-<a name="l00172"></a>00172                 <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b" title="sets where the point should be aligned">Point::Alignment</a> getAlignment() <span class="keyword">const</span>;
-<a name="l00173"></a>00173                 
-<a name="l00174"></a>00174         <span class="keyword">protected</span>:
-<a name="l00175"></a>00175                 <span class="keywordtype">double</span>  X;
-<a name="l00176"></a>00176                 <span class="keywordtype">double</span>  Y;
-<a name="l00177"></a>00177                 QSize           size;
-<a name="l00178"></a>00178                 
-<a name="l00179"></a>00179                 QWidget* mywidget;
-<a name="l00180"></a>00180                 QPixmap* mypixmap;
-<a name="l00181"></a>00181                 <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b" title="sets where the point should be aligned">Alignment</a> alignment;
-<a name="l00182"></a>00182                 <span class="keywordtype">int</span> homelevel;
-<a name="l00183"></a>00183                 QSize displaysize;
-<a name="l00184"></a>00184                 QSize minsize;
-<a name="l00185"></a>00185                 QSize maxsize;
-<a name="l00186"></a>00186                 
+<a name="l00026"></a>00026 <span class="keyword">namespace </span>qmapcontrol
+<a name="l00027"></a>00027 {
+<a name="l00029"></a>00029 
+<a name="l00051"></a><a class="code" href="classqmapcontrol_1_1Point.html">00051</a>         <span class="keyword">class </span><a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> : <span class="keyword">public</span> <a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>
+<a name="l00052"></a>00052         {
+<a name="l00053"></a>00053                 Q_OBJECT
+<a name="l00054"></a>00054                 <span class="keyword">public</span>:
+<a name="l00055"></a>00055                         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>;
+<a name="l00056"></a>00056                         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>;
+<a name="l00057"></a>00057                 
+<a name="l00059"></a><a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726">00059</a>                         <span class="keyword">enum</span> <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726" title="sets where the point should be aligned">Alignment</a>
+<a name="l00060"></a>00060                         {
+<a name="l00061"></a><a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d798272661f66ddc6702462a94d3e231f02b9017">00061</a>                                 <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d798272661f66ddc6702462a94d3e231f02b9017">TopLeft</a>, 
+<a name="l00062"></a><a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d79827267e42a96f07eab63a8c9fa8a0526f34f4">00062</a>                                 <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d79827267e42a96f07eab63a8c9fa8a0526f34f4">TopRight</a>, 
+<a name="l00063"></a><a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726e61b9b6ea2fa75ca500d5bb1eaf6f6fc">00063</a>                                 <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726e61b9b6ea2fa75ca500d5bb1eaf6f6fc">BottomLeft</a>, 
+<a name="l00064"></a><a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d79827261640f649d644701a2f4633e6bd88b20c">00064</a>                                 <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d79827261640f649d644701a2f4633e6bd88b20c">BottomRight</a>,
+<a name="l00065"></a><a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726673e6efef9aafe98078c5552e99c923c">00065</a>                                 <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726673e6efef9aafe98078c5552e99c923c">Middle</a> 
+<a name="l00066"></a>00066                         };
+<a name="l00067"></a>00067                 
+<a name="l00068"></a>00068                         <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>();
+<a name="l00069"></a>00069                         <span class="keyword">explicit</span> <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>&amp;);
+<a name="l00071"></a>00071 
+<a name="l00078"></a>00078                         <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, QString name = QString(), <span class="keyword">enum</span> <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726" title="sets where the point should be aligned">Alignment</a> alignment=<a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726673e6efef9aafe98078c5552e99c923c">Middle</a>);
+<a name="l00079"></a>00079                 
+<a name="l00081"></a>00081 
+<a name="l00092"></a>00092                         <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, QWidget* widget, QString name = QString(), <span class="keyword">enum</span> <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726" title="sets where the point should be aligned">Alignment</a> alignment = <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726673e6efef9aafe98078c5552e99c923c">Middle</a>);
+<a name="l00093"></a>00093                 
+<a name="l00095"></a>00095 
+<a name="l00104"></a>00104                         <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, QPixmap* pixmap, QString name = QString(), <span class="keyword">enum</span> <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726" title="sets where the point should be aligned">Alignment</a> alignment = <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726673e6efef9aafe98078c5552e99c923c">Middle</a>);
+<a name="l00105"></a>00105                         <span class="keyword">virtual</span> ~<a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>();
+<a name="l00106"></a>00106                 
+<a name="l00108"></a>00108 
+<a name="l00113"></a>00113                         <span class="keyword">virtual</span> QRectF          <a class="code" href="classqmapcontrol_1_1Point.html#b06601b3a0eddcb0bf4d56deb74d8a3d" title="returns the bounding box of the point">getBoundingBox</a>();
+<a name="l00114"></a>00114                 
+<a name="l00116"></a>00116 
+<a name="l00119"></a>00119                         <span class="keywordtype">double</span>  <a class="code" href="classqmapcontrol_1_1Point.html#6c5a4634d917ad7a8715e55ad540e18d" title="returns the longitude of the point">getLongitude</a>() <span class="keyword">const</span>;
+<a name="l00120"></a>00120                 
+<a name="l00122"></a>00122 
+<a name="l00125"></a>00125                         <span class="keywordtype">double</span>  <a class="code" href="classqmapcontrol_1_1Point.html#a30355ce4b33ea11338d38d2af8e0bbf" title="returns the latitude of the point">getLatitude</a>() <span class="keyword">const</span>;
+<a name="l00126"></a>00126                 
+<a name="l00128"></a>00128 
+<a name="l00133"></a>00133                         QPointF <a class="code" href="classqmapcontrol_1_1Point.html#b08a6099dabf147fa8800e3c8daa2fb7" title="returns the coordinate of the point">getCoordinate</a>() <span class="keyword">const</span>;
+<a name="l00134"></a>00134                 
+<a name="l00135"></a>00135                         <span class="keyword">virtual</span> QList&lt;Point*&gt; getPoints();
+<a name="l00136"></a>00136 
+<a name="l00140"></a>00140                         QWidget* <a class="code" href="classqmapcontrol_1_1Point.html#6dc1ce5915d5464c5c08dd761362595e" title="returns the widget of the point">getWidget</a>();
+<a name="l00141"></a>00141                 
+<a name="l00143"></a>00143 
+<a name="l00146"></a>00146                         QPixmap* <a class="code" href="classqmapcontrol_1_1Point.html#f048bd187c6c771c6b3e95a3ef1060f7" title="returns the pixmap of the point">getPixmap</a>();
+<a name="l00147"></a>00147                 
+<a name="l00149"></a>00149 
+<a name="l00155"></a>00155                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1Point.html#91f1496833bfda9f7a7ec5fcb02a1895" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(<span class="keywordtype">int</span> zoomlevel);
+<a name="l00156"></a>00156 
+<a name="l00158"></a>00158 
+<a name="l00163"></a>00163                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1Point.html#c40b3e44f54fab1330b9309ac7bd84d2" title="sets a minimal size for the pixmap">setMinsize</a>(QSize minsize);
+<a name="l00164"></a>00164                 
+<a name="l00166"></a>00166 
+<a name="l00171"></a>00171                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1Point.html#dc2724c4e195727b823ff55c940283de" title="sets a maximal size for the pixmap">setMaxsize</a>(QSize maxsize);
+<a name="l00172"></a>00172                 
+<a name="l00173"></a>00173                         <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726" title="sets where the point should be aligned">Point::Alignment</a> getAlignment() <span class="keyword">const</span>;
+<a name="l00174"></a>00174                 
+<a name="l00175"></a>00175                 <span class="keyword">protected</span>:
+<a name="l00176"></a>00176                         <span class="keywordtype">double</span>  X;
+<a name="l00177"></a>00177                         <span class="keywordtype">double</span>  Y;
+<a name="l00178"></a>00178                         QSize           size;
+<a name="l00179"></a>00179                 
+<a name="l00180"></a>00180                         QWidget* mywidget;
+<a name="l00181"></a>00181                         QPixmap* mypixmap;
+<a name="l00182"></a>00182                         <a class="code" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726" title="sets where the point should be aligned">Alignment</a> alignment;
+<a name="l00183"></a>00183                         <span class="keywordtype">int</span> homelevel;
+<a name="l00184"></a>00184                         QSize displaysize;
+<a name="l00185"></a>00185                         QSize minsize;
+<a name="l00186"></a>00186                         QSize maxsize;
 <a name="l00187"></a>00187                 
-<a name="l00188"></a>00188                 <span class="keywordtype">void</span> drawWidget(<span class="keyword">const</span> <a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter, <span class="keyword">const</span> QPoint offset);
-<a name="l00189"></a>00189 <span class="comment">//              void drawPixmap(QPainter* painter, const MapAdapter* mapadapter, const QRect &amp;viewport, const QPoint versch);</span>
-<a name="l00190"></a>00190                 <span class="keyword">virtual</span> <span class="keywordtype">void</span> draw(QPainter* painter, <span class="keyword">const</span> <a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter, <span class="keyword">const</span> QRect &amp;viewport, <span class="keyword">const</span> QPoint offset);
-<a name="l00191"></a>00191                 QPoint getAlignedPoint(<span class="keyword">const</span> QPoint point) <span class="keyword">const</span>;
-<a name="l00192"></a>00192                 
-<a name="l00194"></a>00194 
-<a name="l00200"></a>00200                 <span class="keyword">virtual</span> <span class="keywordtype">bool</span>                    <a class="code" href="classPoint.html#1b40f3c2b69d7b0c35daa2b96c3ab30d" title="returns true if the given Point touches this Point">Touches</a>(<a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* geom, <span class="keyword">const</span> <a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter);
-<a name="l00201"></a>00201                 
-<a name="l00202"></a>00202         <span class="keyword">public</span> slots:
-<a name="l00203"></a>00203                 <span class="keywordtype">void</span> setCoordinate(QPointF point);
-<a name="l00204"></a>00204                 <span class="keyword">virtual</span> <span class="keywordtype">void</span> setVisible(<span class="keywordtype">bool</span> visible);
-<a name="l00205"></a>00205 };
-<a name="l00206"></a>00206 
-<a name="l00207"></a>00207 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Fri Feb 22 23:51:20 2008 for QMapControl by&nbsp;
+<a name="l00188"></a>00188                 
+<a name="l00189"></a>00189                         <span class="keywordtype">void</span> drawWidget(<span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter, <span class="keyword">const</span> QPoint offset);
+<a name="l00190"></a>00190 <span class="comment">//              void drawPixmap(QPainter* painter, const MapAdapter* mapadapter, const QRect &amp;viewport, const QPoint versch);</span>
+<a name="l00191"></a>00191                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> draw(QPainter* painter, <span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter, <span class="keyword">const</span> QRect &amp;viewport, <span class="keyword">const</span> QPoint offset);
+<a name="l00192"></a>00192                         QPoint getAlignedPoint(<span class="keyword">const</span> QPoint point) <span class="keyword">const</span>;
+<a name="l00193"></a>00193                 
+<a name="l00195"></a>00195 
+<a name="l00201"></a>00201                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span>                    <a class="code" href="classqmapcontrol_1_1Point.html#73504541bf9e21ceceb82c6b4c3f2b04" title="returns true if the given Point touches this Point">Touches</a>(<a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>* geom, <span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter);
+<a name="l00202"></a>00202                 
+<a name="l00203"></a>00203                 <span class="keyword">public</span> slots:
+<a name="l00204"></a>00204                         <span class="keywordtype">void</span> setCoordinate(QPointF point);
+<a name="l00205"></a>00205                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1Point.html#18e44e30b31525a243960ca3928125aa" title="if visible is true, the layer is made visible">setVisible</a>(<span class="keywordtype">bool</span> visible);
+<a name="l00206"></a>00206         };
+<a name="l00207"></a>00207 }
+<a name="l00208"></a>00208 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

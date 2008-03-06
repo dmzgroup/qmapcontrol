@@ -13,7 +13,7 @@
 
 #include "citymap.h"
 
-Citymap::Citymap(QWidget* parent)
+Citymap::Citymap(QWidget*)
 {
 	// create MapControl
 	mc = new MapControl(QSize(380,540));
@@ -180,7 +180,7 @@ void Citymap::addMuseums()
 			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
 }
 
-void Citymap::geometryClickEvent(Geometry* geometry, QPoint point)
+void Citymap::geometryClickEvent(Geometry* geometry, QPoint)
 {
 	if (ignoreClicks || addingNote)
 		return;
@@ -209,7 +209,7 @@ void Citymap::geometryClickEvent(Geometry* geometry, QPoint point)
 		infodialog->showMaximized();
 }
 
-void Citymap::geometryClickEventKneipe(Geometry* geometry, QPoint point)
+void Citymap::geometryClickEventKneipe(Geometry* geometry, QPoint)
 {
 	if (ignoreClicks || addingNote)
 		return;
@@ -339,7 +339,7 @@ void Citymap::addNote()
 			  this, SLOT(writeNote(const QMouseEvent*, const QPointF)));
 }
 
-void Citymap::writeNote(const QMouseEvent* event, const QPointF coord)
+void Citymap::writeNote(const QMouseEvent*, const QPointF coord)
 {
 	Point* p = new Point(coord.x(), coord.y(), notepixmap, QString::number(++noteID), Point::BottomLeft);
 	currentnoteID = noteID;
@@ -362,7 +362,7 @@ void Citymap::writeNote(const QMouseEvent* event, const QPointF coord)
 			  this, SLOT(hideNote(const QMouseEvent*, const QPointF)));
 }
 
-void Citymap::hideNote(const QMouseEvent* evnt, const QPointF coordinate)
+void Citymap::hideNote(const QMouseEvent* evnt, const QPointF)
 {
 	if (addingNote && evnt->type() == QEvent::MouseButtonDblClick)
 	{
@@ -379,7 +379,7 @@ void Citymap::hideNote(const QMouseEvent* evnt, const QPointF coordinate)
 	}
 }
 
-void Citymap::editNote(Geometry* geom, QPoint point)
+void Citymap::editNote(Geometry* geom, QPoint)
 {
 	addingNote = true;
 	currentnoteID = QVariant(geom->getName()).toInt();

@@ -22,7 +22,7 @@
 
 #include <QtGui>
 #include "../../../qmapcontrol.h"
-
+using namespace qmapcontrol;
 class Phonebook: public QMainWindow
 {
 	Q_OBJECT

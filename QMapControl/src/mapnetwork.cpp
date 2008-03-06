@@ -19,110 +19,113 @@
  ***************************************************************************/
 #include "mapnetwork.h"
 #include <QWaitCondition>
-MapNetwork::MapNetwork(ImageManager* parent)
+namespace qmapcontrol
+{
+	MapNetwork::MapNetwork(ImageManager* parent)
 	:parent(parent), http(new QHttp(this)), loaded(0)
-{
-	connect(http, SIGNAL(requestFinished(int, bool)),
-			  this, SLOT(requestFinished(int, bool)));
+	{
+		connect(http, SIGNAL(requestFinished(int, bool)),
+				  this, SLOT(requestFinished(int, bool)));
 // 	http->setProxy("www-cache.mi.fh-wiesbaden.de", 8080);
-}
+	}
 
-MapNetwork::~MapNetwork()
-{
-	http->clearPendingRequests();
-	delete http;
-}
+	MapNetwork::~MapNetwork()
+	{
+		http->clearPendingRequests();
+		delete http;
+	}
 
 
-void MapNetwork::loadImage(const QString& host, const QString& url)
-{
+	void MapNetwork::loadImage(const QString& host, const QString& url)
+	{
 // 	qDebug() << "getting: " << QString(host).append(url);
 // 	http->setHost(host);
 // 	int getId = http->get(url);
 
-	http->setHost(host);
-	QHttpRequestHeader header("GET", url);
-	header.setValue("User-Agent", "Mozilla");
-	header.setValue("Host", host);
-	int getId = http->request(header);
+		http->setHost(host);
+		QHttpRequestHeader header("GET", url);
+		header.setValue("User-Agent", "Mozilla");
+		header.setValue("Host", host);
+		int getId = http->request(header);
 
-	if (vectorMutex.tryLock())
-	{
-		loadingMap[getId] = url;
-		vectorMutex.unlock();
+		if (vectorMutex.tryLock())
+		{
+			loadingMap[getId] = url;
+			vectorMutex.unlock();
+		}
 	}
-}
 
-void MapNetwork::requestFinished(int id, bool error)
-{
+	void MapNetwork::requestFinished(int id, bool error)
+	{
 // 	sleep(1);
 // 	qDebug() << "MapNetwork::requestFinished" << http->state() << ", id: " << id;
-	if (error)
-	{
-		qDebug() << "network error: " << http->errorString();
+		if (error)
+		{
+			qDebug() << "network error: " << http->errorString();
 		//restart query
 
-	}
-	else if (vectorMutex.tryLock())
-	{
-	// check if id is in map?
-	if (loadingMap.contains(id))
-	{
-
-		QString url = loadingMap[id];
-		loadingMap.remove(id);
-		vectorMutex.unlock();
-// 		qDebug() << "request finished for id: " << id << ", belongs to: " << notifier.url << endl;
-		QByteArray ax;
-
-		if (http->bytesAvailable()>0)
+		}
+		else if (vectorMutex.tryLock())
 		{
-			QPixmap pm;
-			ax = http->readAll();
-
-			if (pm.loadFromData(ax))
+	// check if id is in map?
+			if (loadingMap.contains(id))
 			{
-				loaded += pm.size().width()*pm.size().height()*pm.depth()/8/1024;
+
+				QString url = loadingMap[id];
+				loadingMap.remove(id);
+				vectorMutex.unlock();
+// 		qDebug() << "request finished for id: " << id << ", belongs to: " << notifier.url << endl;
+				QByteArray ax;
+
+				if (http->bytesAvailable()>0)
+				{
+					QPixmap pm;
+					ax = http->readAll();
+
+					if (pm.loadFromData(ax))
+					{
+						loaded += pm.size().width()*pm.size().height()*pm.depth()/8/1024;
 // 				qDebug() << "Network loaded: " << (loaded);
-				parent->receivedImage(pm, url);
+						parent->receivedImage(pm, url);
+					}
+					else
+					{
+						qDebug() << "NETWORK_PIXMAP_ERROR: " << ax;
+					}
+				}
+
 			}
 			else
-			{
-				qDebug() << "NETWORK_PIXMAP_ERROR: " << ax;
-			}
+				vectorMutex.unlock();
+
 		}
-
-	}
-	else
-		vectorMutex.unlock();
-
-	}
-	if (loadingMap.size() == 0)
-	{
+		if (loadingMap.size() == 0)
+		{
 // 		qDebug () << "all loaded";
-		parent->loadingQueueEmpty();
+			parent->loadingQueueEmpty();
+		}
 	}
-}
 
-void MapNetwork::abortLoading()
-{
-	http->clearPendingRequests();
-// 	http->abort();
-	if (vectorMutex.tryLock())
+	void MapNetwork::abortLoading()
 	{
-		loadingMap.clear();
-		vectorMutex.unlock();
+		http->clearPendingRequests();
+// 	http->abort();
+		if (vectorMutex.tryLock())
+		{
+			loadingMap.clear();
+			vectorMutex.unlock();
+		}
 	}
-}
 
-bool MapNetwork::imageIsLoading(QString url)
-{
-	return loadingMap.values().contains(url);
-}
+	bool MapNetwork::imageIsLoading(QString url)
+	{
+		return loadingMap.values().contains(url);
+	}
 
-void MapNetwork::setProxy(QString host, int port)
-{
+	void MapNetwork::setProxy(QString host, int port)
+	{
 #ifndef Q_WS_QWS
-	http->setProxy(host, port);
+		http->setProxy(host, port);
 #endif
+	}
 }

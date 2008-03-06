@@ -18,79 +18,82 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "imagemanager.h"
-ImageManager* ImageManager::m_Instance = 0;
-ImageManager::ImageManager(QObject* parent)
+namespace qmapcontrol
+{
+	ImageManager* ImageManager::m_Instance = 0;
+	ImageManager::ImageManager(QObject* parent)
 	:QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this))
-{
-	emptyPixmap.fill(Qt::transparent);
-	
-	if (QPixmapCache::cacheLimit() <= 20000)
 	{
-		QPixmapCache::setCacheLimit(20000);	// in kb
+		emptyPixmap.fill(Qt::transparent);
+	
+		if (QPixmapCache::cacheLimit() <= 20000)
+		{
+			QPixmapCache::setCacheLimit(20000);	// in kb
+		}
 	}
-}
 
 
-ImageManager::~ImageManager()
-{
-	delete net;
-}
+	ImageManager::~ImageManager()
+	{
+		delete net;
+	}
 
-QPixmap ImageManager::getImage(const QString& host, const QString& url)
-{
+	QPixmap ImageManager::getImage(const QString& host, const QString& url)
+	{
 // 	qDebug() << "ImageManager::getImage";
-	QPixmap pm;
-	pm.fill(Qt::black);
+		QPixmap pm;
+		pm.fill(Qt::black);
 	
 	// is image cached or currently loading?
-	if (!QPixmapCache::find(url, pm) && !net->imageIsLoading(url))
+		if (!QPixmapCache::find(url, pm) && !net->imageIsLoading(url))
 // 	if (!images.contains(url) && !net->imageIsLoading(url))
-	{
+		{
 		// load from net, add empty image
-		net->loadImage(host, url);
+			net->loadImage(host, url);
 // 		QPixmapCache::insert(url, emptyPixmap);
-		return emptyPixmap;
+			return emptyPixmap;
+		}
+		return pm;
 	}
-	return pm;
-}
 
-QPixmap ImageManager::prefetchImage(const QString& host, const QString& url)
-{
-	prefetch.append(url);
-	return getImage(host, url);
-}
+	QPixmap ImageManager::prefetchImage(const QString& host, const QString& url)
+	{
+		prefetch.append(url);
+		return getImage(host, url);
+	}
 
-void ImageManager::receivedImage(const QPixmap pixmap, const QString& url)
-{
+	void ImageManager::receivedImage(const QPixmap pixmap, const QString& url)
+	{
 // 	qDebug() << "ImageManager::receivedImage";
-	QPixmapCache::insert(url, pixmap);
+		QPixmapCache::insert(url, pixmap);
 // 	images[url] = pixmap;
 	
 // 	((Layer*)this->parent())->imageReceived();
 	
-	if (!prefetch.contains(url))
-	{
-		emit(imageReceived());
+		if (!prefetch.contains(url))
+		{
+			emit(imageReceived());
+		}
+		else
+		{
+			prefetch.remove(prefetch.indexOf(url));
+		}
 	}
-	else
-	{
-		prefetch.remove(prefetch.indexOf(url));
-	}
-}
 
-void ImageManager::loadingQueueEmpty()
-{
-	emit(loadingFinished());
+	void ImageManager::loadingQueueEmpty()
+	{
+		emit(loadingFinished());
 // 	((Layer*)this->parent())->removeZoomImage();
 // 	qDebug() << "size of image-map: " << images.size();
 // 	qDebug() << "size: " << QPixmapCache::cacheLimit();
-}
+	}
 
-void ImageManager::abortLoading()
-{
-	net->abortLoading();
-}
-void ImageManager::setProxy(QString host, int port)
-{
-	net->setProxy(host, port);
+	void ImageManager::abortLoading()
+	{
+		net->abortLoading();
+	}
+	void ImageManager::setProxy(QString host, int port)
+	{
+		net->setProxy(host, port);
+	}
 }

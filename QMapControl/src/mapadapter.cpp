@@ -18,44 +18,46 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "mapadapter.h"
-
-MapAdapter::MapAdapter(const QString& host, const QString& serverPath, int tilesize, int minZoom, int maxZoom)
+namespace qmapcontrol
+{
+	MapAdapter::MapAdapter(const QString& host, const QString& serverPath, int tilesize, int minZoom, int maxZoom)
 	:host(host), serverPath(serverPath), tilesize(tilesize), min_zoom(minZoom), max_zoom(maxZoom)
-{	
-	current_zoom = min_zoom;
-	loc = QLocale(QLocale::English);
-}
+	{	
+		current_zoom = min_zoom;
+		loc = QLocale(QLocale::English);
+	}
 
-MapAdapter::~MapAdapter()
-{
-}
+	MapAdapter::~MapAdapter()
+	{
+	}
 
-QString MapAdapter::getHost() const
-{
-	return host;
-}
+	QString MapAdapter::getHost() const
+	{
+		return host;
+	}
 
-int MapAdapter::getTileSize() const
-{
-	return tilesize;
-}
+	int MapAdapter::getTileSize() const
+	{
+		return tilesize;
+	}
 
-int MapAdapter::getMinZoom() const
-{
-	return min_zoom;
-}
+	int MapAdapter::getMinZoom() const
+	{
+		return min_zoom;
+	}
 
-int MapAdapter::getMaxZoom() const
-{
-	return max_zoom;
-}
+	int MapAdapter::getMaxZoom() const
+	{
+		return max_zoom;
+	}
 
-int MapAdapter::getZoom() const
-{
-	return current_zoom;
-}
+	int MapAdapter::getZoom() const
+	{
+		return current_zoom;
+	}
 
-int MapAdapter::getAdaptedZoom() const
-{
-	return max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
+	int MapAdapter::getAdaptedZoom() const
+	{
+		return max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
+	}
 }

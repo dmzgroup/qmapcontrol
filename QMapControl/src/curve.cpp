@@ -18,17 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "curve.h"
-
-Curve::Curve(QString name)
- : Geometry(name)
+namespace qmapcontrol
 {
+	Curve::Curve(QString name)
+	: Geometry(name)
+	{
+	}
+
+
+	Curve::~Curve()
+	{
+	}
 }
-
-
-Curve::~Curve()
-{
-}
-
 // Geometry		Curve::Clone(){}
 
 // QRectF	Curve::GetBoundingBox(){}

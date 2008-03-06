@@ -114,7 +114,7 @@ void LinesAndPoints::addZoomButtons()
 	mc->setLayout(innerlayout);
 }
 
-void LinesAndPoints::geometryClickEvent(Geometry* geom, QPoint coord_px)
+void LinesAndPoints::geometryClickEvent(Geometry* geom, QPoint)
 {
 	qDebug() << "parent: " << geom->getParentGeometry();
 	qDebug() << "Element clicked: " << geom->getName();

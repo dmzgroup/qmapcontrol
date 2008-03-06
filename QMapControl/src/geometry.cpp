@@ -18,63 +18,65 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "geometry.h"
-
-Geometry::Geometry(QString name)
+namespace qmapcontrol
+{
+	Geometry::Geometry(QString name)
 	: GeometryType("Geometry"), parentGeometry(0), pen(0), visible(true), name(name)
-{
-}
+	{
+	}
 
 
-Geometry::~Geometry()
-{
-}
+	Geometry::~Geometry()
+	{
+	}
 
-QString		Geometry::getName() const
-{
-	return name;
-}
-Geometry*	Geometry::getParentGeometry() const
-{
-	return parentGeometry;
-}
-void	Geometry::setParentGeometry(Geometry* geom)
-{
-	parentGeometry = geom;
-}
-bool			Geometry::hasPoints() const
-{
-	return false;
-}
-bool			Geometry::hasClickedPoints() const
-{
-	return false;
-}
-QList<Geometry*> Geometry::getClickedPoints()
-{
-	QList<Geometry*> tmp;
-	return tmp;
-}
+	QString		Geometry::getName() const
+	{
+		return name;
+	}
+	Geometry*	Geometry::getParentGeometry() const
+	{
+		return parentGeometry;
+	}
+	void	Geometry::setParentGeometry(Geometry* geom)
+	{
+		parentGeometry = geom;
+	}
+	bool			Geometry::hasPoints() const
+	{
+		return false;
+	}
+	bool			Geometry::hasClickedPoints() const
+	{
+		return false;
+	}
+	QList<Geometry*> Geometry::getClickedPoints()
+	{
+		QList<Geometry*> tmp;
+		return tmp;
+	}
 
-bool Geometry::isVisible() const
-{
-	return visible;
-}
-void Geometry::setVisible(bool visible)
-{
-	this->visible = visible;
-	emit(updateRequest(getBoundingBox()));
-}
+	bool Geometry::isVisible() const
+	{
+		return visible;
+	}
+	void Geometry::setVisible(bool visible)
+	{
+		this->visible = visible;
+		emit(updateRequest(getBoundingBox()));
+	}
 
-void Geometry::setName(QString name)
-{
-	this->name = name;
-}
+	void Geometry::setName(QString name)
+	{
+		this->name = name;
+	}
 
-void Geometry::setPen(QPen* pen)
-{
-	this->pen = pen;
-}
-QPen* Geometry::getPen() const
-{
-	return pen;
+	void Geometry::setPen(QPen* pen)
+	{
+		this->pen = pen;
+	}
+	QPen* Geometry::getPen() const
+	{
+		return pen;
+	}
 }

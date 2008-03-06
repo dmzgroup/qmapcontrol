@@ -21,47 +21,50 @@
 #define TILEMAPADAPTER_H
 
 #include "mapadapter.h"
-//! MapAdapter for servers with image tiles
-/*!
- * Use this derived MapAdapter to display maps from OpenStreetMap
- *	@author Kai Winter <kaiwinter@gmx.de>
-*/
-class TileMapAdapter : public MapAdapter
+
+namespace qmapcontrol
 {
-Q_OBJECT
-public:
+	//! MapAdapter for servers with image tiles
+	/*!
+	 * Use this derived MapAdapter to display maps from OpenStreetMap
+	 *	@author Kai Winter <kaiwinter@gmx.de>
+	 */
+	class TileMapAdapter : public MapAdapter
+	{
+		Q_OBJECT
+		public:
 	//! constructor
 	/*!
-	 * Sample of a correct initialization of a MapAdapter:<br/>
-	 * TileMapAdapter* ta = new TileMapAdapter("192.168.8.1", "/img/img_cache.php/%1/%2/%3.png", 256, 0,17);<br/>
- 	 * The placeholders %1, %2, %3 stands for x, y, z<br/>
- 	 * The minZoom is 0 (means the whole world is visible). The maxZoom is 17 (means it is zoomed in to the max)
- 	 * @param host The servers URL
- 	 * @param serverPath The path to the tiles with placeholders
- 	 * @param tilesize the size of the tiles
- 	 * @param minZoom the minimum zoom level
- 	 * @param maxZoom the maximum zoom level
+		 * Sample of a correct initialization of a MapAdapter:<br/>
+		 * TileMapAdapter* ta = new TileMapAdapter("192.168.8.1", "/img/img_cache.php/%1/%2/%3.png", 256, 0,17);<br/>
+		 * The placeholders %1, %2, %3 stands for x, y, z<br/>
+		 * The minZoom is 0 (means the whole world is visible). The maxZoom is 17 (means it is zoomed in to the max)
+		 * @param host The servers URL
+		 * @param serverPath The path to the tiles with placeholders
+		 * @param tilesize the size of the tiles
+		 * @param minZoom the minimum zoom level
+		 * @param maxZoom the maximum zoom level
 	 */
-	TileMapAdapter(const QString& host, const QString& serverPath, int tilesize, int minZoom = 0, int maxZoom = 17);
+			TileMapAdapter(const QString& host, const QString& serverPath, int tilesize, int minZoom = 0, int maxZoom = 17);
 	
-	virtual ~TileMapAdapter();
+			virtual ~TileMapAdapter();
 	
-	virtual QPoint		coordinateToDisplay(const QPointF&) const;
-	virtual QPointF	displayToCoordinate(const QPoint&) const;
+			virtual QPoint		coordinateToDisplay(const QPointF&) const;
+			virtual QPointF	displayToCoordinate(const QPoint&) const;
 	
-	double PI;
+			double PI;
 	
-protected:
-	double rad_deg(double) const;
-	double deg_rad(double) const;
+		protected:
+			double rad_deg(double) const;
+			double deg_rad(double) const;
 	
-	virtual bool isValid(int x, int y, int z) const;
-	virtual void zoom_in();
-	virtual void zoom_out();
-	virtual QString getQuery(int x, int y, int z) const;
-	virtual int tilesonzoomlevel(int zoomlevel) const;
-	virtual int getxoffset(int x) const;
-	virtual int getyoffset(int y) const;
-};
-
+			virtual bool isValid(int x, int y, int z) const;
+			virtual void zoom_in();
+			virtual void zoom_out();
+			virtual QString getQuery(int x, int y, int z) const;
+			virtual int tilesonzoomlevel(int zoomlevel) const;
+			virtual int getxoffset(int x) const;
+			virtual int getyoffset(int y) const;
+	};
+}
 #endif

@@ -8,6 +8,7 @@
 <div class="tabs">
   <ul>
     <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="namespaces.html"><span>Namespaces</span></a></li>
     <li><a href="annotated.html"><span>Classes</span></a></li>
     <li><a href="files.html"><span>Files</span></a></li>
     <li><a href="examples.html"><span>Examples</span></a></li>
@@ -15,7 +16,7 @@
 </div>
 <h1>linesandpoints.cpp</h1>This application demonstrates how to use Geometry objects and how to add them to a layer.<p>
 Here are used three different point types:<ul>
-<li>One which displays a image</li><li>One which draws a plain circle</li><li>One which uses a QPen to draw a circle</li><li>One which has no markers Then these Points were added to a <a class="el" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a></li></ul>
+<li>One which displays a image</li><li>One which draws a plain circle</li><li>One which uses a QPen to draw a circle</li><li>One which has no markers Then these Points were added to a LineString</li></ul>
 <p>
 Also there is a keylistener.<p>
 You can find this example here: MapAPI/Samples/LinesAndPoints <div align="center">
@@ -47,46 +48,46 @@ LinesAndPoints::LinesAndPoints(QWidget *parent)
         <span class="comment">// the size which the QMapControl should fill</span>
         QSize size = QSize(480,640);
         
-        mc = <span class="keyword">new</span> <a name="_a0"></a><a class="code" href="classMapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a>(size);
+        mc = <span class="keyword">new</span> MapControl(size);
         <span class="comment">// create layout</span>
         QHBoxLayout* layout = <span class="keyword">new</span> QHBoxLayout;
         layout-&gt;addWidget(mc);
         setLayout(layout);
         
         <span class="comment">// create layer</span>
-        <a name="_a1"></a><a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter = <span class="keyword">new</span> <a name="_a2"></a><a class="code" href="classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap.">OSMMapAdapter</a>();
-        <a name="_a3"></a><a class="code" href="classLayer.html" title="Layer class.">Layer</a>* l = <span class="keyword">new</span> <a name="_a4"></a><a class="code" href="classMapLayer.html" title="MapLayer class.">MapLayer</a>(<span class="stringliteral">"Custom Layer"</span>, mapadapter);
+        MapAdapter* mapadapter = <span class="keyword">new</span> OSMMapAdapter();
+        Layer* l = <span class="keyword">new</span> MapLayer(<span class="stringliteral">"Custom Layer"</span>, mapadapter);
         
         mc-&gt;addLayer(l);
         
         <span class="comment">// create a LineString</span>
         QList&lt;Point*&gt; points;
         <span class="comment">// Points with image</span>
-        points.append(<span class="keyword">new</span> <a name="_a5"></a><a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.259959, 50.001781, <span class="stringliteral">"images/bus_stop.png"</span>, <span class="stringliteral">"Mainz, Hauptbahnhof"</span>, <a name="a6"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>));
-        points.append(<span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.263758, 49.998917, <span class="stringliteral">"images/bus_stop.png"</span>, <span class="stringliteral">"Mainz, Münsterplatz"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>));
-        points.append(<span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.265812, 50.001952, <span class="stringliteral">"images/bus_stop.png"</span>,<span class="stringliteral">"Mainz, Neubrunnenplatz"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>));
+        points.append(<span class="keyword">new</span> ImagePoint(8.259959, 50.001781, <span class="stringliteral">"images/bus_stop.png"</span>, <span class="stringliteral">"Mainz, Hauptbahnhof"</span>, Point::BottomLeft));
+        points.append(<span class="keyword">new</span> ImagePoint(8.263758, 49.998917, <span class="stringliteral">"images/bus_stop.png"</span>, <span class="stringliteral">"Mainz, Münsterplatz"</span>, Point::BottomLeft));
+        points.append(<span class="keyword">new</span> ImagePoint(8.265812, 50.001952, <span class="stringliteral">"images/bus_stop.png"</span>,<span class="stringliteral">"Mainz, Neubrunnenplatz"</span>, Point::BottomLeft));
         <span class="comment">// Points with a circle</span>
-        points.append(<span class="keyword">new</span> <a name="_a7"></a><a class="code" href="classCirclePoint.html" title="Draws a circle into the map.">CirclePoint</a>(8.2688, 50.004015, <span class="stringliteral">"Mainz, Bauhofstraße LRP"</span>, <a name="a8"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Point::Middle</a>));
-        points.append(<span class="keyword">new</span> <a class="code" href="classCirclePoint.html" title="Draws a circle into the map.">CirclePoint</a>(8.272845, 50.00495, <span class="stringliteral">"Mainz, Landtag"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Point::Middle</a>));
-        points.append(<span class="keyword">new</span> <a class="code" href="classCirclePoint.html" title="Draws a circle into the map.">CirclePoint</a>(8.280349, 50.008173, <span class="stringliteral">"Mainz, Brückenkopf"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Point::Middle</a>));
+        points.append(<span class="keyword">new</span> CirclePoint(8.2688, 50.004015, <span class="stringliteral">"Mainz, Bauhofstraße LRP"</span>, Point::Middle));
+        points.append(<span class="keyword">new</span> CirclePoint(8.272845, 50.00495, <span class="stringliteral">"Mainz, Landtag"</span>, Point::Middle));
+        points.append(<span class="keyword">new</span> CirclePoint(8.280349, 50.008173, <span class="stringliteral">"Mainz, Brückenkopf"</span>, Point::Middle));
         <span class="comment">// A QPen can be used to customize the </span>
         QPen* pointpen = <span class="keyword">new</span> QPen(QColor(0,255,0));
         pointpen-&gt;setWidth(3);
-        points.append(<span class="keyword">new</span> <a class="code" href="classCirclePoint.html" title="Draws a circle into the map.">CirclePoint</a>(8.273573, 50.016315, 15, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Eleonorenstraße"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Point::Middle</a>, pointpen));
-        points.append(<span class="keyword">new</span> <a class="code" href="classCirclePoint.html" title="Draws a circle into the map.">CirclePoint</a>(8.275145, 50.016992, 15, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Johannes-Goßner-Straße"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Point::Middle</a>, pointpen));
-        points.append(<span class="keyword">new</span> <a class="code" href="classCirclePoint.html" title="Draws a circle into the map.">CirclePoint</a>(8.270476, 50.021426, 15, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Ruthof"</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b04f08207b30738dc0ea5fe8d648c9b02">Point::Middle</a>, pointpen));
+        points.append(<span class="keyword">new</span> CirclePoint(8.273573, 50.016315, 15, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Eleonorenstraße"</span>, Point::Middle, pointpen));
+        points.append(<span class="keyword">new</span> CirclePoint(8.275145, 50.016992, 15, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Johannes-Goßner-Straße"</span>, Point::Middle, pointpen));
+        points.append(<span class="keyword">new</span> CirclePoint(8.270476, 50.021426, 15, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Ruthof"</span>, Point::Middle, pointpen));
         <span class="comment">// "Blind" Points</span>
-        points.append(<span class="keyword">new</span> <a name="_a9"></a><a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.266445, 50.025913, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Mudra Kaserne"</span>));
-        points.append(<span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.260378, 50.030345, <span class="stringliteral">"Wiesbaden-Mainz-Amoneburg, Dyckerhoffstraße"</span>));
+        points.append(<span class="keyword">new</span> Point(8.266445, 50.025913, <span class="stringliteral">"Wiesbaden-Mainz-Kastel, Mudra Kaserne"</span>));
+        points.append(<span class="keyword">new</span> Point(8.260378, 50.030345, <span class="stringliteral">"Wiesbaden-Mainz-Amoneburg, Dyckerhoffstraße"</span>));
 
         <span class="comment">// A QPen also can use transparency</span>
         QPen* linepen = <span class="keyword">new</span> QPen(QColor(0, 0, 255, 100));
         linepen-&gt;setWidth(5);
         <span class="comment">// Add the Points and the QPen to a LineString </span>
-        <a name="_a10"></a><a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>* ls = <span class="keyword">new</span> <a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>(points, <span class="stringliteral">"Busline 54"</span>, linepen);
+        LineString* ls = <span class="keyword">new</span> LineString(points, <span class="stringliteral">"Busline 54"</span>, linepen);
         
         <span class="comment">// Add the LineString to the layer</span>
-        l-&gt;<a name="a11"></a><a class="code" href="classLayer.html#ea38a79cf4aa35676faeb09240a1d2ea" title="adds a Geometry object to this Layer">addGeometry</a>(ls);
+        l-&gt;addGeometry(ls);
         
         <span class="comment">// Connect click events of the layer to this object</span>
         connect(l, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
@@ -121,7 +122,7 @@ LinesAndPoints::LinesAndPoints(QWidget *parent)
         mc-&gt;setLayout(innerlayout);
 }
 
-<span class="keywordtype">void</span> LinesAndPoints::geometryClickEvent(Geometry* geom, QPoint coord_px)
+<span class="keywordtype">void</span> LinesAndPoints::geometryClickEvent(Geometry* geom, QPoint)
 {
         qDebug() &lt;&lt; <span class="stringliteral">"parent: "</span> &lt;&lt; geom-&gt;getParentGeometry();
         qDebug() &lt;&lt; <span class="stringliteral">"Element clicked: "</span> &lt;&lt; geom-&gt;getName();
@@ -187,7 +188,7 @@ LinesAndPoints::~LinesAndPoints()
                 qDebug() &lt;&lt; evnt-&gt;key() &lt;&lt; endl;
         }
 }
-</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Fri Feb 22 23:51:19 2008 for QMapControl by&nbsp;
+</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

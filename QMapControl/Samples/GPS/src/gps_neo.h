@@ -30,7 +30,7 @@
  * @see http://3rdparty.downloads.openmoko.org
  *	@author Kai Winter <kaiwinter@gmx.de>
 */
-
+using namespace qmapcontrol;
 class GPS_Neo: public QObject
 {
 	Q_OBJECT

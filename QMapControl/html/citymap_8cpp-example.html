@@ -8,6 +8,7 @@
 <div class="tabs">
   <ul>
     <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="namespaces.html"><span>Namespaces</span></a></li>
     <li><a href="annotated.html"><span>Classes</span></a></li>
     <li><a href="files.html"><span>Files</span></a></li>
     <li><a href="examples.html"><span>Examples</span></a></li>
@@ -24,10 +25,10 @@
  <div class="fragment"><pre class="fragment">
 <span class="preprocessor">#include "citymap.h"</span>
 
-Citymap::Citymap(QWidget* parent)
+Citymap::Citymap(QWidget*)
 {
         <span class="comment">// create MapControl</span>
-        mc = <span class="keyword">new</span> <a name="_a0"></a><a class="code" href="classMapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a>(QSize(380,540));
+        mc = <span class="keyword">new</span> MapControl(QSize(380,540));
 <span class="comment">//      mc = new MapControl(QSize(480,480));</span>
 <span class="comment">//      mc-&gt;setMinimumHeight(400);</span>
         
@@ -47,21 +48,21 @@ Citymap::Citymap(QWidget* parent)
 <span class="comment">//      OSMMapAdapter* mapadapter = new OSMMapAdapter();</span>
 <span class="comment">//      mapadapter = new WMSMapAdapter("online.mainz.de", "/gint-cgi/mapserv?map=/data/mapbender2-int/umn-www/client/uebersicht.map&amp;VERSION=1.1.0&amp;REQUEST=GetMap&amp;SERVICE=WMS&amp;LAYERS=Stadtgrenzen_01,Bebauung_01,Bebauung_02,Kreisstrassen,Landstrassen,Bundesstrassen,Autobahn,Stadtgrenzen_02,Autobahn_Label,Totaltxt&amp;STYLES=,,,,,,,,,&amp;SRS=EPSG:4326&amp;FORMAT=image/png&amp;BGCOLOR=0xffffff&amp;TRANSPARENT=TRUE&amp;EXCEPTIONS=application/vnd.ogc.se_xml", 256);</span>
         
-        mapadapter = <span class="keyword">new</span> <a name="_a1"></a><a class="code" href="classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap.">OSMMapAdapter</a>();
-        <a name="_a2"></a><a class="code" href="classMapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter_overlay = <span class="keyword">new</span> <a name="_a3"></a><a class="code" href="classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps.">YahooMapAdapter</a>(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=2.2&amp;t=h&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
+        mapadapter = <span class="keyword">new</span> OSMMapAdapter();
+        MapAdapter* mapadapter_overlay = <span class="keyword">new</span> YahooMapAdapter(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=2.2&amp;t=h&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
 <span class="comment">//      mapadapter = new YahooMapAdapter();</span>
 <span class="comment">//      mapadapter = new GoogleMapAdapter();</span>
 <span class="comment">//      MapAdapter* mapadapter2 = new TileMapAdapter("mt0.google.com", "/mt?n=404&amp;v=w2t.66&amp;x=%2&amp;s=&amp;y=%3&amp;zoom=%1", 256, 17, 0);</span>
         
         <span class="comment">// create a layer with the mapadapter and type MapLayer</span>
-        l = <span class="keyword">new</span> <a name="_a4"></a><a class="code" href="classMapLayer.html" title="MapLayer class.">MapLayer</a>(<span class="stringliteral">"Custom Layer"</span>, mapadapter);
-        overlay = <span class="keyword">new</span> <a class="code" href="classMapLayer.html" title="MapLayer class.">MapLayer</a>(<span class="stringliteral">"Overlay"</span>, mapadapter_overlay);
+        l = <span class="keyword">new</span> MapLayer(<span class="stringliteral">"Custom Layer"</span>, mapadapter);
+        overlay = <span class="keyword">new</span> MapLayer(<span class="stringliteral">"Overlay"</span>, mapadapter_overlay);
         overlay-&gt;setVisible(<span class="keyword">false</span>);
 
         mc-&gt;addLayer(l);
         mc-&gt;addLayer(overlay);
                 
-        notes = <span class="keyword">new</span> <a name="_a5"></a><a class="code" href="classGeometryLayer.html" title="GeometryLayer class.">GeometryLayer</a>(<span class="stringliteral">"Notes"</span>, mapadapter);
+        notes = <span class="keyword">new</span> GeometryLayer(<span class="stringliteral">"Notes"</span>, mapadapter);
         
         
         createTours();
@@ -87,7 +88,7 @@ Citymap::Citymap(QWidget* parent)
         
         notetextedit = <span class="keyword">new</span> QTextEdit(mc);
         notetextedit-&gt;setGeometry(0,0,200,100);
-        notepoint = <span class="keyword">new</span> <a name="_a6"></a><a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(0, 0, notetextedit, <span class="stringliteral">"."</span>, <a name="a7"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b17169b771577dce920f56126a9b2f2e1">Point::TopLeft</a>);
+        notepoint = <span class="keyword">new</span> Point(0, 0, notetextedit, <span class="stringliteral">"."</span>, Point::TopLeft);
         notepoint-&gt;setVisible(<span class="keyword">false</span>);
         notes-&gt;addGeometry(notepoint);
         
@@ -99,77 +100,77 @@ Citymap::Citymap(QWidget* parent)
         pen-&gt;setWidth(5);
         
         QList&lt;Point*&gt; points;
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2606, 50.0051);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2602, 50.0050);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2598, 50.0044);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2569, 50.0057);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2595, 50.0083);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2587, 50.0086);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2589, 50.0100);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2590, 50.0105);
-        pub_tour = <span class="keyword">new</span> <a name="_a8"></a><a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>(points, <span class="stringliteral">""</span>, pen);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2606, 50.0051);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2602, 50.0050);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2598, 50.0044);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2569, 50.0057);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2595, 50.0083);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2587, 50.0086);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2589, 50.0100);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2590, 50.0105);
+        pub_tour = <span class="keyword">new</span> LineString(points, <span class="stringliteral">""</span>, pen);
         notes-&gt;addGeometry(pub_tour);
         
         points.clear();
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.25987, 50.0018);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26192, 50.0019);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26301, 50.0031);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26459, 50.0026);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26601, 50.004);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26781, 50.0033);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27052, 50.0054);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2697, 50.0059);
-        museum_tour = <span class="keyword">new</span> <a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>(points, <span class="stringliteral">""</span>, pen);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.25987, 50.0018);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26192, 50.0019);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26301, 50.0031);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26459, 50.0026);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26601, 50.004);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26781, 50.0033);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27052, 50.0054);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2697, 50.0059);
+        museum_tour = <span class="keyword">new</span> LineString(points, <span class="stringliteral">""</span>, pen);
         notes-&gt;addGeometry(museum_tour);
         
         points.clear();
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26015, 50.0015);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2617, 50.0012);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26423, 50.0002);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26698, 50.0024);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27065, 50.0012);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27152, 50.0016);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27225, 50.0004);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27333, 49.9994);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26946, 49.9983);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27105, 49.9973);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.27024, 49.9972);
-        points &lt;&lt; <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.26833, 49.9958);
-        sights_tour = <span class="keyword">new</span> <a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>(points, <span class="stringliteral">""</span>, pen);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26015, 50.0015);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.2617, 50.0012);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26423, 50.0002);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26698, 50.0024);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27065, 50.0012);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27152, 50.0016);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27225, 50.0004);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27333, 49.9994);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26946, 49.9983);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27105, 49.9973);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.27024, 49.9972);
+        points &lt;&lt; <span class="keyword">new</span> Point(8.26833, 49.9958);
+        sights_tour = <span class="keyword">new</span> LineString(points, <span class="stringliteral">""</span>, pen);
         notes-&gt;addGeometry(sights_tour);
 }
 
 <span class="keywordtype">void</span> Citymap::addSights()
 {
-        sights = <span class="keyword">new</span> <a class="code" href="classGeometryLayer.html" title="GeometryLayer class.">GeometryLayer</a>(<span class="stringliteral">"Sehenswürdigkeiten"</span>, mapadapter);
+        sights = <span class="keyword">new</span> GeometryLayer(<span class="stringliteral">"Sehenswürdigkeiten"</span>, mapadapter);
         mc-&gt;addLayer(sights);
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* dom = <span class="keyword">new</span> <a name="_a9"></a><a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.274167, 49.998889, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-dom.jpg"</span>, <span class="stringliteral">"Mainzer Dom"</span>);
-        dom-&gt;<a name="a10"></a><a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(17);
+        Point* dom = <span class="keyword">new</span> ImagePoint(8.274167, 49.998889, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-dom.jpg"</span>, <span class="stringliteral">"Mainzer Dom"</span>);
+        dom-&gt;setBaselevel(17);
         sights-&gt;addGeometry(dom);
         
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* stephan = <span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.268611, 49.995556, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-stephan.jpg"</span>,<span class="stringliteral">"St. Stephan"</span>);
-        stephan-&gt;<a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(17);
+        Point* stephan = <span class="keyword">new</span> ImagePoint(8.268611, 49.995556, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-stephan.jpg"</span>,<span class="stringliteral">"St. Stephan"</span>);
+        stephan-&gt;setBaselevel(17);
         sights-&gt;addGeometry(stephan);
         
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* quitin = <span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.272222, 50.000833, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-quintin.jpg"</span>,<span class="stringliteral">"St. Quintin"</span>);
-        quitin-&gt;<a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(17);
+        Point* quitin = <span class="keyword">new</span> ImagePoint(8.272222, 50.000833, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-quintin.jpg"</span>,<span class="stringliteral">"St. Quintin"</span>);
+        quitin-&gt;setBaselevel(17);
         sights-&gt;addGeometry(quitin);    
         connect(sights, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
                           <span class="keyword">this</span>, SLOT(geometryClickEvent(Geometry*, QPoint)));
 }
 <span class="keywordtype">void</span> Citymap::addPubs()
 {
-        pubs = <span class="keyword">new</span> <a class="code" href="classGeometryLayer.html" title="GeometryLayer class.">GeometryLayer</a>(<span class="stringliteral">"Kneipe"</span>, mapadapter);
+        pubs = <span class="keyword">new</span> GeometryLayer(<span class="stringliteral">"Kneipe"</span>, mapadapter);
         mc-&gt;addLayer(pubs);
         QPixmap* pub = <span class="keyword">new</span> QPixmap(QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/pub.png"</span>);
         
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* bagatelle = <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2606, 50.0052, pub, <span class="stringliteral">"Bagatelle"</span>);
+        Point* bagatelle = <span class="keyword">new</span> Point(8.2606, 50.0052, pub, <span class="stringliteral">"Bagatelle"</span>);
         pubs-&gt;addGeometry(bagatelle);
         
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* nirgendwo = <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2595, 50.0048, pub, <span class="stringliteral">"Nirgendwo"</span>);
+        Point* nirgendwo = <span class="keyword">new</span> Point(8.2595, 50.0048, pub, <span class="stringliteral">"Nirgendwo"</span>);
         pubs-&gt;addGeometry(nirgendwo);
         
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* krokodil = <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(8.2594,50.0106, pub, <span class="stringliteral">"Krokodil"</span>);
+        Point* krokodil = <span class="keyword">new</span> Point(8.2594,50.0106, pub, <span class="stringliteral">"Krokodil"</span>);
         pubs-&gt;addGeometry(krokodil);
         
         connect(pubs, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
@@ -177,21 +178,21 @@ Citymap::Citymap(QWidget* parent)
 }
 <span class="keywordtype">void</span> Citymap::addMuseums()
 {
-        museum = <span class="keyword">new</span> <a class="code" href="classGeometryLayer.html" title="GeometryLayer class.">GeometryLayer</a>(<span class="stringliteral">"Museen"</span>, mapadapter);
+        museum = <span class="keyword">new</span> GeometryLayer(<span class="stringliteral">"Museen"</span>, mapadapter);
         mc-&gt;addLayer(museum);
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* rgzm = <span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.269722, 50.006111, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-rgzm.jpg"</span>, <span class="stringliteral">"rgzm"</span>);
-        rgzm-&gt;<a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(17);
+        Point* rgzm = <span class="keyword">new</span> ImagePoint(8.269722, 50.006111, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-rgzm.jpg"</span>, <span class="stringliteral">"rgzm"</span>);
+        rgzm-&gt;setBaselevel(17);
         museum-&gt;addGeometry(rgzm);
         
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* lm= <span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(8.26778, 50.00385, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-lm.jpg"</span>, <span class="stringliteral">"lm"</span>);
-        lm -&gt;<a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(17);
+        Point* lm= <span class="keyword">new</span> ImagePoint(8.26778, 50.00385, QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/180-lm.jpg"</span>, <span class="stringliteral">"lm"</span>);
+        lm -&gt;setBaselevel(17);
         museum-&gt;addGeometry(lm);        
         
         connect(museum, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
                           <span class="keyword">this</span>, SLOT(geometryClickEvent(Geometry*, QPoint)));
 }
 
-<span class="keywordtype">void</span> Citymap::geometryClickEvent(Geometry* geometry, QPoint point)
+<span class="keywordtype">void</span> Citymap::geometryClickEvent(Geometry* geometry, QPoint)
 {
         <span class="keywordflow">if</span> (ignoreClicks || addingNote)
                 <span class="keywordflow">return</span>;
@@ -220,7 +221,7 @@ Citymap::Citymap(QWidget* parent)
                 infodialog-&gt;showMaximized();
 }
 
-<span class="keywordtype">void</span> Citymap::geometryClickEventKneipe(Geometry* geometry, QPoint point)
+<span class="keywordtype">void</span> Citymap::geometryClickEventKneipe(Geometry* geometry, QPoint)
 {
         <span class="keywordflow">if</span> (ignoreClicks || addingNote)
                 <span class="keywordflow">return</span>;
@@ -350,13 +351,13 @@ Citymap::Citymap(QWidget* parent)
                           <span class="keyword">this</span>, SLOT(writeNote(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPointF)));
 }
 
-<span class="keywordtype">void</span> Citymap::writeNote(<span class="keyword">const</span> QMouseEvent* event, <span class="keyword">const</span> QPointF coord)
+<span class="keywordtype">void</span> Citymap::writeNote(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPointF coord)
 {
-        <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>* p = <span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(coord.x(), coord.y(), notepixmap, QString::number(++noteID), <a name="a11"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>);
+        Point* p = <span class="keyword">new</span> Point(coord.x(), coord.y(), notepixmap, QString::number(++noteID), Point::BottomLeft);
         currentnoteID = noteID;
-        p-&gt;<a class="code" href="classPoint.html#b09e5ca63eac0060963a9ca7ae5e9394" title="Sets the zoom level on which the point´s pixmap gets displayed on full size.">setBaselevel</a>(16);
-        p-&gt;<a name="a12"></a><a class="code" href="classPoint.html#9d7f9233cab0b4688c8e563c6faf7754" title="sets a minimal size for the pixmap">setMinsize</a>(QSize(12, 10));
-        p-&gt;<a name="a13"></a><a class="code" href="classPoint.html#9401794ee6bce2fd5a18024dffd480fd" title="sets a maximal size for the pixmap">setMaxsize</a>(QSize(47, 40));
+        p-&gt;setBaselevel(16);
+        p-&gt;setMinsize(QSize(12, 10));
+        p-&gt;setMaxsize(QSize(47, 40));
         notes-&gt;addGeometry(p);
         
         notetextedit-&gt;clear();
@@ -373,7 +374,7 @@ Citymap::Citymap(QWidget* parent)
                           <span class="keyword">this</span>, SLOT(hideNote(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPointF)));
 }
 
-<span class="keywordtype">void</span> Citymap::hideNote(<span class="keyword">const</span> QMouseEvent* evnt, <span class="keyword">const</span> QPointF coordinate)
+<span class="keywordtype">void</span> Citymap::hideNote(<span class="keyword">const</span> QMouseEvent* evnt, <span class="keyword">const</span> QPointF)
 {
         <span class="keywordflow">if</span> (addingNote &amp;&amp; evnt-&gt;type() == QEvent::MouseButtonDblClick)
         {
@@ -390,7 +391,7 @@ Citymap::Citymap(QWidget* parent)
         }
 }
 
-<span class="keywordtype">void</span> Citymap::editNote(Geometry* geom, QPoint point)
+<span class="keywordtype">void</span> Citymap::editNote(Geometry* geom, QPoint)
 {
         addingNote = <span class="keyword">true</span>;
         currentnoteID = QVariant(geom-&gt;getName()).toInt();
@@ -414,7 +415,7 @@ Citymap::Citymap(QWidget* parent)
         <span class="keywordflow">if</span> (coord1 == QPointF() &amp;&amp; evnt-&gt;type() == QEvent::MouseButtonPress)
         {
                 coord1 = coord;
-                l-&gt;addGeometry(<span class="keyword">new</span> <a class="code" href="classImagePoint.html" title="Draws an image into the map.">ImagePoint</a>(coord1.x(), coord1.y(), QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/flag.png"</span>, <span class="stringliteral">""</span>, <a name="a14"></a><a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b447d35fa0b835edeebe05c0bd8777a31">Point::BottomRight</a>));
+                l-&gt;addGeometry(<span class="keyword">new</span> ImagePoint(coord1.x(), coord1.y(), QCoreApplication::applicationDirPath() + <span class="stringliteral">"/images/flag.png"</span>, <span class="stringliteral">""</span>, Point::BottomRight));
                 mc-&gt;updateRequestNew();
         }
         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (coord2 == QPointF() &amp;&amp; evnt-&gt;type() == QEvent::MouseButtonPress)
@@ -431,15 +432,15 @@ Citymap::Citymap(QWidget* parent)
                 
                 
                 QList&lt;Point*&gt; points;
-                points.append(<span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(coord1.x(), coord1.y()));
+                points.append(<span class="keyword">new</span> Point(coord1.x(), coord1.y()));
                 QPixmap* pixm = <span class="keyword">new</span> QPixmap(100,20);
                 pixm-&gt;fill(Qt::transparent);
                 QPainter pain(pixm);
                 pain.setFont(QFont(<span class="stringliteral">"Helvetiva"</span>, 6));
                 pain.drawText(pixm-&gt;rect(), QString().setNum(km, <span class="charliteral">'f'</span>, 3) + <span class="stringliteral">" km"</span>);
                 pain.end();
-                points.append(<span class="keyword">new</span> <a class="code" href="classPoint.html" title="A geometric point to draw objects into maps.">Point</a>(coord2.x(), coord2.y(), pixm, <span class="stringliteral">""</span>, <a class="code" href="classPoint.html#fe6fde4b2ffe257aa3261164592e1c8b385e3189e98ce0dbc0c8f672671b8bfc">Point::BottomLeft</a>));
-                l-&gt;addGeometry(<span class="keyword">new</span> <a class="code" href="classLineString.html" title="A collection of Point objects to describe a line.">LineString</a>(points));
+                points.append(<span class="keyword">new</span> Point(coord2.x(), coord2.y(), pixm, <span class="stringliteral">""</span>, Point::BottomLeft));
+                l-&gt;addGeometry(<span class="keyword">new</span> LineString(points));
                 mc-&gt;updateRequestNew();
                 coord1 = QPointF();
                 coord2 = QPointF();
@@ -457,7 +458,7 @@ Citymap::Citymap(QWidget* parent)
                 <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
                 mc-&gt;setZoom(0);
                 
-                mapadapter = <span class="keyword">new</span> <a class="code" href="classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap.">OSMMapAdapter</a>();
+                mapadapter = <span class="keyword">new</span> OSMMapAdapter();
                 l-&gt;setMapAdapter(mapadapter);
                 sights-&gt;setMapAdapter(mapadapter);
                 museum-&gt;setMapAdapter(mapadapter);
@@ -475,7 +476,7 @@ Citymap::Citymap(QWidget* parent)
                 <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
                 mc-&gt;setZoom(0);
                 
-                mapadapter = <span class="keyword">new</span> <a class="code" href="classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps.">YahooMapAdapter</a>();
+                mapadapter = <span class="keyword">new</span> YahooMapAdapter();
                 l-&gt;setMapAdapter(mapadapter);
                 sights-&gt;setMapAdapter(mapadapter);
                 museum-&gt;setMapAdapter(mapadapter);
@@ -493,7 +494,7 @@ Citymap::Citymap(QWidget* parent)
                 QPointF a = mc-&gt;getCurrentCoordinate();
                 mc-&gt;setZoom(0);
                 
-                mapadapter = <span class="keyword">new</span> <a class="code" href="classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps.">YahooMapAdapter</a>(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=1.7&amp;t=a&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
+                mapadapter = <span class="keyword">new</span> YahooMapAdapter(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=1.7&amp;t=a&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
                 l-&gt;setMapAdapter(mapadapter);
                 sights-&gt;setMapAdapter(mapadapter);
                 museum-&gt;setMapAdapter(mapadapter);
@@ -507,7 +508,7 @@ Citymap::Citymap(QWidget* parent)
         {
                 <span class="keywordtype">int</span> zoom = mapadapter-&gt;getAdaptedZoom();
                 mc-&gt;setZoom(0);
-                mapadapter = <span class="keyword">new</span> <a name="_a15"></a><a class="code" href="classGoogleMapAdapter.html" title="MapAdapter for Google.">GoogleMapAdapter</a>();
+                mapadapter = <span class="keyword">new</span> GoogleMapAdapter();
                 l-&gt;setMapAdapter(mapadapter);
                 sights-&gt;setMapAdapter(mapadapter);
                 museum-&gt;setMapAdapter(mapadapter);
@@ -532,7 +533,7 @@ Citymap::~Citymap()
         <span class="keyword">delete</span> museum;
 }
 
-</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Fri Feb 22 23:51:19 2008 for QMapControl by&nbsp;
+</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

@@ -18,26 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "imagepoint.h"
-
-ImagePoint::ImagePoint(double x, double y, QString filename, QString name, Alignment alignment)
- : Point(x, y, name, alignment)
+namespace qmapcontrol
 {
-// 	qDebug() << "loading image: " << filename;
-	mypixmap = new QPixmap(filename);
-	size = mypixmap->size();
-// 	qDebug() << "image size: " << size;
-}
-
-ImagePoint::ImagePoint(double x, double y, QPixmap* pixmap, QString name, Alignment alignment)
+	ImagePoint::ImagePoint(double x, double y, QString filename, QString name, Alignment alignment)
 	: Point(x, y, name, alignment)
-{
-	mypixmap = pixmap;
-	size = mypixmap->size();
+	{
+// 	qDebug() << "loading image: " << filename;
+		mypixmap = new QPixmap(filename);
+		size = mypixmap->size();
+// 	qDebug() << "image size: " << size;
+	}
+
+	ImagePoint::ImagePoint(double x, double y, QPixmap* pixmap, QString name, Alignment alignment)
+	: Point(x, y, name, alignment)
+	{
+		mypixmap = pixmap;
+		size = mypixmap->size();
+	}
+
+
+	ImagePoint::~ImagePoint()
+	{
+	}
 }
-
-
-ImagePoint::~ImagePoint()
-{
-}
-
-

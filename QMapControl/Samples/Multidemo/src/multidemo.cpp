@@ -193,7 +193,7 @@ void Multidemo::coordinateClicked(const QMouseEvent* evnt, const QPointF coord)
 	}
 }
 
-void Multidemo::geometryClickEvent(Geometry* geom, QPoint coord_px)
+void Multidemo::geometryClickEvent(Geometry* geom, QPoint)
 {
 	if (geom->hasClickedPoints())
 	{

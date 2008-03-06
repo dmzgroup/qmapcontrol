@@ -23,24 +23,26 @@
 #include "geometry.h"
 #include "point.h"
 
-//! A Curve Geometry, implemented to fullfil OGC Spec
-/*!
- * The Curve class is used by LineString as parent class.
- * This class could not be used directly.
- * 
- * From the OGC Candidate Implementation Specification:
- * "A Curve is a 1-dimensional geometric object usually stored as a sequence of Points, with the subtype of Curve
- * specifying the form of the interpolation between Points. This specification defines only one subclass of Curve,
- * LineString, which uses a linear interpolation between Points."
- *	@author Kai Winter <kaiwinter@gmx.de>
-*/
-class Curve : public Geometry
+namespace qmapcontrol
 {
-	Q_OBJECT
-	public:
-		virtual ~Curve();
+	//! A Curve Geometry, implemented to fullfil OGC Spec
+	/*!
+	 * The Curve class is used by LineString as parent class.
+	 * This class could not be used directly.
+	 *
+	 * From the OGC Candidate Implementation Specification:
+	 * "A Curve is a 1-dimensional geometric object usually stored as a sequence of Points, with the subtype of Curve
+	 * specifying the form of the interpolation between Points. This specification defines only one subclass of Curve,
+	 * LineString, which uses a linear interpolation between Points."
+	 *	@author Kai Winter <kaiwinter@gmx.de>
+	 */
+	class Curve : public Geometry
+	{
+		Q_OBJECT
+		public:
+			virtual ~Curve();
 	
-		double Length;
+			double Length;
 
 // 		virtual	Geometry	Clone();
 // 		virtual	QRectF	GetBoundingBox();
@@ -49,9 +51,9 @@ class Curve : public Geometry
 // 		virtual Point StartPoint() = 0;
 // 		virtual Point Value() = 0;
 		
-	protected:
-		Curve(QString name = QString());
-		virtual void draw(QPainter* painter, const MapAdapter* mapadapter, const QRect &screensize, const QPoint offset) = 0;
-};
-
+		protected:
+			Curve(QString name = QString());
+			virtual void draw(QPainter* painter, const MapAdapter* mapadapter, const QRect &screensize, const QPoint offset) = 0;
+	};
+}
 #endif

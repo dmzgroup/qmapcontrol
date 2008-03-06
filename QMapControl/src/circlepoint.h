@@ -22,16 +22,18 @@
 
 #include "point.h"
 
-//! Draws a circle into the map
-/*! This is a conveniece class for Point.
- * It configures the pixmap of a Point to draw a circle.
- * A QPen could be used to change the color or line-width of the circle
- * 
- * @author Kai Winter <kaiwinter@gmx.de>
-*/
-class CirclePoint : public Point
+namespace qmapcontrol
 {
-	public:
+	//! Draws a circle into the map
+	/*! This is a conveniece class for Point.
+	 * It configures the pixmap of a Point to draw a circle.
+	 * A QPen could be used to change the color or line-width of the circle
+	 * 
+	 * @author Kai Winter <kaiwinter@gmx.de>
+ 	 */
+	class CirclePoint : public Point
+	{
+		public:
 		//!
 		/*!
 		 * 
@@ -41,29 +43,29 @@ class CirclePoint : public Point
 		 * @param alignment alignment (Middle or TopLeft)
 		 * @param pen QPen for drawing
 		 */
-		CirclePoint(double x, double y, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
+			CirclePoint(double x, double y, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
 		
 		//!
 		/*!
-		 * 
-		 * @param x longitude
-		 * @param y latitude
-		 * @param radius the radius of the circle
-		 * @param name name of the circle point
-		 * @param alignment alignment (Middle or TopLeft)
-		 * @param pen QPen for drawing
+			 * 
+			 * @param x longitude
+			 * @param y latitude
+			 * @param radius the radius of the circle
+			 * @param name name of the circle point
+			 * @param alignment alignment (Middle or TopLeft)
+			 * @param pen QPen for drawing
 		 */
-		CirclePoint(double x, double y, int radius = 10, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
-		virtual ~CirclePoint();
+			CirclePoint(double x, double y, int radius = 10, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
+			virtual ~CirclePoint();
 		
 		//! sets the QPen which is used for drawing the circle
 		/*!
-		 * A QPen can be used to modify the look of the drawn circle
-		 * @param pen the QPen which should be used for drawing
-		 * @see http://doc.trolltech.com/4.3/qpen.html
+			 * A QPen can be used to modify the look of the drawn circle
+			 * @param pen the QPen which should be used for drawing
+			 * @see http://doc.trolltech.com/4.3/qpen.html
 		 */
-		virtual void setPen(QPen* pen);
+			virtual void setPen(QPen* pen);
 
-};
-
+	};
+}
 #endif

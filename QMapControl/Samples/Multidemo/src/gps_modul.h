@@ -27,7 +27,7 @@
 /**
 	@author Kai Winter <kaiwinter@gmx.de>
 */
-
+using namespace qmapcontrol;
 class GPS_Modul : public QObject
 {
 	Q_OBJECT

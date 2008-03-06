@@ -1,5 +1,0 @@
-<area shape="rect" href="$classTileMapAdapter.html" title="MapAdapter for servers with image tiles." alt="" coords="192,161,328,188">
-<area shape="rect" href="$classWMSMapAdapter.html" title="MapAdapter for WMS servers." alt="" coords="352,161,496,188">
-<area shape="rect" href="$classGoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="5,239,165,265">
-<area shape="rect" href="$classOSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="189,239,331,265">
-<area shape="rect" href="$classYahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="355,239,509,265">

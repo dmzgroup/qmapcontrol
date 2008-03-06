@@ -23,7 +23,7 @@
 #include <QtGui>
 #include "../../../qmapcontrol.h"
 #include "dialogs.h"
-
+using namespace qmapcontrol;
 class Citymap: public QMainWindow
 {
 	Q_OBJECT

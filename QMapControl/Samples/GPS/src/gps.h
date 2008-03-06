@@ -23,7 +23,7 @@
 #include <QtGui>
 #include "../../../qmapcontrol.h"
 #include "gps_neo.h"
-
+using namespace qmapcontrol;
 class GPS: public QWidget
 {
 	Q_OBJECT

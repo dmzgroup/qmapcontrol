@@ -28,42 +28,44 @@
 #include "imagemanager.h"
 /**
 	@author Kai Winter <kaiwinter@gmx.de>
-*/
-class ImageManager;
-class MapNetwork : QObject
+ */
+namespace qmapcontrol
 {
-	Q_OBJECT
-	public:
-		MapNetwork(ImageManager* parent);
-		~MapNetwork();
+	class ImageManager;
+	class MapNetwork : QObject
+	{
+		Q_OBJECT
+		public:
+			MapNetwork(ImageManager* parent);
+			~MapNetwork();
 		
-		void loadImage(const QString& host, const QString& url);
+			void loadImage(const QString& host, const QString& url);
 		
 		/*!
-		 * checks if the given url is already loading
-		 * @param url the url of the image
-		 * @return boolean, if the image is already loading
+			 * checks if the given url is already loading
+			 * @param url the url of the image
+			 * @return boolean, if the image is already loading
 		 */
-		bool imageIsLoading(QString url);
+			bool imageIsLoading(QString url);
 		
 		/*!
-		 * Aborts all current loading threads.
-		 * This is useful when changing the zoom-factor, though newly needed images loads faster
- 		*/
-		void abortLoading();
-		void setProxy(QString host, int port);
+			 * Aborts all current loading threads.
+			 * This is useful when changing the zoom-factor, though newly needed images loads faster
+		 */
+			void abortLoading();
+			void setProxy(QString host, int port);
 		
-	private:
-		ImageManager* parent;
-		QHttp* http;
-		QMap<int, QString> loadingMap;
-		double loaded;
-		QMutex vectorMutex;
-		MapNetwork& operator=(const MapNetwork& rhs);
-		MapNetwork(const MapNetwork& old);
+		private:
+			ImageManager* parent;
+			QHttp* http;
+			QMap<int, QString> loadingMap;
+			double loaded;
+			QMutex vectorMutex;
+			MapNetwork& operator=(const MapNetwork& rhs);
+			MapNetwork(const MapNetwork& old);
 		
-	private slots:
-		void requestFinished(int id, bool error);
-};
-
+		private slots:
+			void requestFinished(int id, bool error);
+	};
+}
 #endif

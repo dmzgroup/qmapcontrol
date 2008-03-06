@@ -22,16 +22,19 @@
 
 #include "point.h"
 
-//! Draws an image into the map
-/*! This is a convenience class for Point.
- * It configures the pixmap of a Point to draw the given image.
- * The image will be loaded from the given path and written in the points pixmap.
- * 
- * @author Kai Winter <kaiwinter@gmx.de>
-*/
-class ImagePoint : public Point
+namespace qmapcontrol
 {
-	public:
+	
+	//! Draws an image into the map
+	/*! This is a convenience class for Point.
+	 * It configures the pixmap of a Point to draw the given image.
+	 * The image will be loaded from the given path and written in the points pixmap.
+	 * 
+	 * @author Kai Winter <kaiwinter@gmx.de>
+ 	 */
+	class ImagePoint : public Point
+	{
+		public:
 		//! Creates a point which loads and displays the given image file
 		/*!
 		 * Use this contructor to load the given image file and let the point display it.
@@ -42,21 +45,21 @@ class ImagePoint : public Point
 		 * @param name the name of the image point
 		 * @param alignment alignment (Middle or TopLeft)
 		 */
-		ImagePoint(double x, double y, QString filename, QString name = QString(), Alignment alignment = Middle);
+			ImagePoint(double x, double y, QString filename, QString name = QString(), Alignment alignment = Middle);
 		
 		//! Creates a point which displays the given image
 		/*!
-		 * Use this contructor to display the given image.
-		 * You have to load that image yourself, but can use it for multiple points.
-		 * @param x longitude
-		 * @param y latitude
-		 * @param pixmap pointer to the image pixmap
-		 * @param name the name of the image point
-		 * @param alignment alignment (Middle or TopLeft)
+			 * Use this contructor to display the given image.
+			 * You have to load that image yourself, but can use it for multiple points.
+			 * @param x longitude
+			 * @param y latitude
+			 * @param pixmap pointer to the image pixmap
+			 * @param name the name of the image point
+			 * @param alignment alignment (Middle or TopLeft)
 		 */
-		ImagePoint(double x, double y, QPixmap* pixmap, QString name = QString(), Alignment alignment = Middle);
-		virtual ~ImagePoint();
+			ImagePoint(double x, double y, QPixmap* pixmap, QString name = QString(), Alignment alignment = Middle);
+			virtual ~ImagePoint();
 
-};
-
+	};
+}
 #endif
