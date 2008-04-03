@@ -84,12 +84,12 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">zooms out one step <br></td></tr>
 <tr><td colspan="2"><br><h2>Signals</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#4c90936080512ae5bd7ddbb1c4b6b91c">draggedRect</a> (const QRectF)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#1fd82da86a16f8932d45f4a0cadb60d1">boxDragged</a> (const QRectF)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Emitted, after a Rectangular is dragged.  <a href="#4c90936080512ae5bd7ddbb1c4b6b91c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#96601964ef5957d96d0c45bf9cdef066">geometryClickEvent</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint coord_px)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Emitted, after a Rectangular is dragged.  <a href="#1fd82da86a16f8932d45f4a0cadb60d1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#cc9ddd8e1721682682f85e73dae5f768">geometryClicked</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint coord_px)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emmited, when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#96601964ef5957d96d0c45bf9cdef066"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emmited, when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#cc9ddd8e1721682682f85e73dae5f768"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#a463d9dfa43fa385b48aab115d374637">mouseEventCoordinate</a> (const QMouseEvent *evnt, const QPointF coordinate)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Emitted AFTER a MouseEvent occured.  <a href="#a463d9dfa43fa385b48aab115d374637"></a><br></td></tr>
@@ -97,33 +97,33 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#87c6ef3c45ee9c21e173db2aa16cf567">addLayer</a> (<a class="el" href="classqmapcontrol_1_1Layer.html">Layer</a> *layer)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">adds a layer  <a href="#87c6ef3c45ee9c21e173db2aa16cf567"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPointF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#010c83996ab94a3db104aecf0550d480">currentCoordinate</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the coordinate of the center of the map  <a href="#010c83996ab94a3db104aecf0550d480"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#8c7b803b9faa35db237e40c361e1c036">currentZoom</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the current zoom level  <a href="#8c7b803b9faa35db237e40c361e1c036"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#6f7a69381097c74928af4ab3aa970386">followGeometry</a> (const <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry) const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Keeps the center of the map on the <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>, even when it moves.  <a href="#6f7a69381097c74928af4ab3aa970386"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QPointF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#6c5cbc54fff3e8e41ff6a5d683bb98f1">getCurrentCoordinate</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#8e22ad201cb035fda7d7fefd8f348b11">layer</a> (const QString &amp;layername) const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the coordinate of the center of the map  <a href="#6c5cbc54fff3e8e41ff6a5d683bb98f1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#959a546e1d930fa3bf0d35f50f94a944">getCurrentZoom</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the layer with the given name  <a href="#8e22ad201cb035fda7d7fefd8f348b11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QList&lt; QString &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#ee9467ec4674af32aed2fbeb1175e0b5">layers</a> () const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the current zoom level  <a href="#959a546e1d930fa3bf0d35f50f94a944"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#d029e96ce3812b48f1e41140a01ccf82">getLayer</a> (const QString &amp;layername) const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the layer with the given name  <a href="#d029e96ce3812b48f1e41140a01ccf82"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QList&lt; QString &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#17099829e22aaca051f8187d228734b8">getLayers</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the names of all layers  <a href="#17099829e22aaca051f8187d228734b8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1MapControl.html#034ae8169a2202325de4ef39ffd3e431">MapControl::MouseMode</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#54d121e10f3f360f21221fc16ef1bb64">getMouseMode</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the current MouseMode  <a href="#54d121e10f3f360f21221fc16ef1bb64"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#41cbe90eca4bb897715ba88657bb8ef4">getNumberOfLayers</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the number of existing layers  <a href="#41cbe90eca4bb897715ba88657bb8ef4"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the names of all layers  <a href="#ee9467ec4674af32aed2fbeb1175e0b5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#738341656ae7554bad78f0085c62c1f0">MapControl</a> (QSize size, <a class="el" href="classqmapcontrol_1_1MapControl.html#034ae8169a2202325de4ef39ffd3e431">MouseMode</a> mousemode=Panning)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The constructor of <a class="el" href="classqmapcontrol_1_1MapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a>.  <a href="#738341656ae7554bad78f0085c62c1f0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1MapControl.html#034ae8169a2202325de4ef39ffd3e431">MapControl::MouseMode</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#9106ab9dcac042b57fc4e797c94d84dc">mouseMode</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the current MouseMode  <a href="#9106ab9dcac042b57fc4e797c94d84dc"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#f7e3575f01f98a4096ccf48ac6bd4a50">moveTo</a> (QPointF coordinate)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Smoothly moves the center of the view to the given Coordinate.  <a href="#f7e3575f01f98a4096ccf48ac6bd4a50"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#f3950823abbdf717124c279a386ca280">numberOfLayers</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the number of existing layers  <a href="#f3950823abbdf717124c279a386ca280"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#346037e336da8525fe41ec30bf216d82">setMouseMode</a> (<a class="el" href="classqmapcontrol_1_1MapControl.html#034ae8169a2202325de4ef39ffd3e431">MouseMode</a> mousemode)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sets the Mouse Mode of the <a class="el" href="classqmapcontrol_1_1MapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a>  <a href="#346037e336da8525fe41ec30bf216d82"></a><br></td></tr>
@@ -242,12 +242,12 @@ If multiple layers are added, they are painted in the added order. <dl compact><
 
 </div>
 </div><p>
-<a class="anchor" name="4c90936080512ae5bd7ddbb1c4b6b91c"></a><!-- doxytag: member="qmapcontrol::MapControl::draggedRect" ref="4c90936080512ae5bd7ddbb1c4b6b91c" args="(const QRectF)" -->
+<a class="anchor" name="1fd82da86a16f8932d45f4a0cadb60d1"></a><!-- doxytag: member="qmapcontrol::MapControl::boxDragged" ref="1fd82da86a16f8932d45f4a0cadb60d1" args="(const QRectF)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void draggedRect           </td>
+          <td class="memname">void boxDragged           </td>
           <td>(</td>
           <td class="paramtype">const &nbsp;</td>
           <td class="paramname"> <em>QRectF</em>          </td>
@@ -266,6 +266,50 @@ It is possible to select a rectangular area in the map, if the MouseMode is set 
     <tr><td valign="top"></td><td valign="top"><em>QRectF</em>&nbsp;</td><td>the dragged Rect </td></tr>
   </table>
 </dl>
+
+</div>
+</div><p>
+<a class="anchor" name="010c83996ab94a3db104aecf0550d480"></a><!-- doxytag: member="qmapcontrol::MapControl::currentCoordinate" ref="010c83996ab94a3db104aecf0550d480" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPointF currentCoordinate           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the coordinate of the center of the map 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the coordinate of the middle of the screen </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8c7b803b9faa35db237e40c361e1c036"></a><!-- doxytag: member="qmapcontrol::MapControl::currentZoom" ref="8c7b803b9faa35db237e40c361e1c036" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int currentZoom           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the current zoom level 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the current zoom level </dd></dl>
 
 </div>
 </div><p>
@@ -296,12 +340,12 @@ To stop the following the method <a class="el" href="classqmapcontrol_1_1MapCont
 
 </div>
 </div><p>
-<a class="anchor" name="96601964ef5957d96d0c45bf9cdef066"></a><!-- doxytag: member="qmapcontrol::MapControl::geometryClickEvent" ref="96601964ef5957d96d0c45bf9cdef066" args="(Geometry *geometry, QPoint coord_px)" -->
+<a class="anchor" name="cc9ddd8e1721682682f85e73dae5f768"></a><!-- doxytag: member="qmapcontrol::MapControl::geometryClicked" ref="cc9ddd8e1721682682f85e73dae5f768" args="(Geometry *geometry, QPoint coord_px)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void geometryClickEvent           </td>
+          <td class="memname">void geometryClicked           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td>
           <td class="paramname"> <em>geometry</em>, </td>
@@ -333,56 +377,12 @@ This signal is emmited, when a <a class="el" href="classqmapcontrol_1_1Geometry.
 
 </div>
 </div><p>
-<a class="anchor" name="6c5cbc54fff3e8e41ff6a5d683bb98f1"></a><!-- doxytag: member="qmapcontrol::MapControl::getCurrentCoordinate" ref="6c5cbc54fff3e8e41ff6a5d683bb98f1" args="() const " -->
+<a class="anchor" name="8e22ad201cb035fda7d7fefd8f348b11"></a><!-- doxytag: member="qmapcontrol::MapControl::layer" ref="8e22ad201cb035fda7d7fefd8f348b11" args="(const QString &amp;layername) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QPointF getCurrentCoordinate           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the coordinate of the center of the map 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the coordinate of the middle of the screen </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="959a546e1d930fa3bf0d35f50f94a944"></a><!-- doxytag: member="qmapcontrol::MapControl::getCurrentZoom" ref="959a546e1d930fa3bf0d35f50f94a944" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int getCurrentZoom           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the current zoom level 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the current zoom level </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="d029e96ce3812b48f1e41140a01ccf82"></a><!-- doxytag: member="qmapcontrol::MapControl::getLayer" ref="d029e96ce3812b48f1e41140a01ccf82" args="(const QString &amp;layername) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classqmapcontrol_1_1Layer.html">Layer</a> * getLayer           </td>
+          <td class="memname"><a class="el" href="classqmapcontrol_1_1Layer.html">Layer</a> * layer           </td>
           <td>(</td>
           <td class="paramtype">const QString &amp;&nbsp;</td>
           <td class="paramname"> <em>layername</em>          </td>
@@ -405,12 +405,12 @@ returns the layer with the given name
 
 </div>
 </div><p>
-<a class="anchor" name="17099829e22aaca051f8187d228734b8"></a><!-- doxytag: member="qmapcontrol::MapControl::getLayers" ref="17099829e22aaca051f8187d228734b8" args="() const " -->
+<a class="anchor" name="ee9467ec4674af32aed2fbeb1175e0b5"></a><!-- doxytag: member="qmapcontrol::MapControl::layers" ref="ee9467ec4674af32aed2fbeb1175e0b5" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QList&lt; QString &gt; getLayers           </td>
+          <td class="memname">QList&lt; QString &gt; layers           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -424,50 +424,6 @@ returns the layer with the given name
 returns the names of all layers 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>returns a QList with the names of all layers </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="54d121e10f3f360f21221fc16ef1bb64"></a><!-- doxytag: member="qmapcontrol::MapControl::getMouseMode" ref="54d121e10f3f360f21221fc16ef1bb64" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classqmapcontrol_1_1MapControl.html#034ae8169a2202325de4ef39ffd3e431">MapControl::MouseMode</a> getMouseMode           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the current MouseMode 
-<p>
-For a explanation for the MouseModes see <a class="el" href="classqmapcontrol_1_1MapControl.html#346037e336da8525fe41ec30bf216d82" title="sets the Mouse Mode of the MapControl">setMouseMode()</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the current MouseMode </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="41cbe90eca4bb897715ba88657bb8ef4"></a><!-- doxytag: member="qmapcontrol::MapControl::getNumberOfLayers" ref="41cbe90eca4bb897715ba88657bb8ef4" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int getNumberOfLayers           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the number of existing layers 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the number of existing layers </dd></dl>
 
 </div>
 </div><p>
@@ -508,6 +464,28 @@ This signals allows to receive click events within the MapWidget together with t
 
 </div>
 </div><p>
+<a class="anchor" name="9106ab9dcac042b57fc4e797c94d84dc"></a><!-- doxytag: member="qmapcontrol::MapControl::mouseMode" ref="9106ab9dcac042b57fc4e797c94d84dc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classqmapcontrol_1_1MapControl.html#034ae8169a2202325de4ef39ffd3e431">MapControl::MouseMode</a> mouseMode           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the current MouseMode 
+<p>
+For a explanation for the MouseModes see <a class="el" href="classqmapcontrol_1_1MapControl.html#346037e336da8525fe41ec30bf216d82" title="sets the Mouse Mode of the MapControl">setMouseMode()</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the current MouseMode </dd></dl>
+
+</div>
+</div><p>
 <a class="anchor" name="f7e3575f01f98a4096ccf48ac6bd4a50"></a><!-- doxytag: member="qmapcontrol::MapControl::moveTo" ref="f7e3575f01f98a4096ccf48ac6bd4a50" args="(QPointF coordinate)" -->
 <div class="memitem">
 <div class="memproto">
@@ -535,6 +513,28 @@ Smoothly moves the center of the view to the given Coordinate.
 
 </div>
 </div><p>
+<a class="anchor" name="f3950823abbdf717124c279a386ca280"></a><!-- doxytag: member="qmapcontrol::MapControl::numberOfLayers" ref="f3950823abbdf717124c279a386ca280" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int numberOfLayers           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the number of existing layers 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the number of existing layers </dd></dl>
+
+</div>
+</div><p>
 <a class="anchor" name="346037e336da8525fe41ec30bf216d82"></a><!-- doxytag: member="qmapcontrol::MapControl::setMouseMode" ref="346037e336da8525fe41ec30bf216d82" args="(MouseMode mousemode)" -->
 <div class="memitem">
 <div class="memproto">
@@ -554,7 +554,7 @@ Smoothly moves the center of the view to the given Coordinate.
 <p>
 sets the Mouse Mode of the <a class="el" href="classqmapcontrol_1_1MapControl.html" title="The control element of the widget and also the widget itself.">MapControl</a> 
 <p>
-There are three MouseModes declard by an enum. The MouesMode Dragging draws an rectangular in the map while the MouseButton is pressed. When the Button is released a <a class="el" href="classqmapcontrol_1_1MapControl.html#4c90936080512ae5bd7ddbb1c4b6b91c" title="Emitted, after a Rectangular is dragged.">draggedRect()</a> signal is emitted.<p>
+There are three MouseModes declard by an enum. The MouesMode Dragging draws an rectangular in the map while the MouseButton is pressed. When the Button is released a <a class="el" href="classqmapcontrol_1_1MapControl.html#1fd82da86a16f8932d45f4a0cadb60d1" title="Emitted, after a Rectangular is dragged.">boxDragged()</a> signal is emitted.<p>
 The second MouseMode (the default) is Panning, which allows to drag the map around. <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>mousemode</em>&nbsp;</td><td>the MouseMode </td></tr>
@@ -752,7 +752,7 @@ updates the map for the given rect
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:20 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

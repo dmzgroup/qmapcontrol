@@ -82,8 +82,8 @@ LinesAndPoints::LinesAndPoints(QWidget *parent)
 	l->addGeometry(ls);
 	
 	// Connect click events of the layer to this object
-	connect(l, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
-			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
+	connect(l, SIGNAL(geometryClicked(Geometry*, QPoint)),
+			  this, SLOT(geometryClicked(Geometry*, QPoint)));
 	
 	// Sets the view to the interesting area
 	QList<QPointF> view;
@@ -114,22 +114,22 @@ void LinesAndPoints::addZoomButtons()
 	mc->setLayout(innerlayout);
 }
 
-void LinesAndPoints::geometryClickEvent(Geometry* geom, QPoint)
+void LinesAndPoints::geometryClicked(Geometry* geom, QPoint)
 {
-	qDebug() << "parent: " << geom->getParentGeometry();
-	qDebug() << "Element clicked: " << geom->getName();
+	qDebug() << "parent: " << geom->parentGeometry();
+	qDebug() << "Element clicked: " << geom->name();
 	if (geom->hasClickedPoints())
 	{
-		QList<Geometry*> pp = geom->getClickedPoints();
+		QList<Geometry*> pp = geom->clickedPoints();
 		qDebug() << "number of child elements: " << pp.size();
 		for (int i=0; i<pp.size(); i++)
 		{
-			QMessageBox::information(this, geom->getName(), pp.at(i)->getName());
+			QMessageBox::information(this, geom->name(), pp.at(i)->name());
 		}
 	}
 	else if (geom->GeometryType == "Point")
 	{
-		QMessageBox::information(this, geom->getName(), "just a point");
+		QMessageBox::information(this, geom->name(), "just a point");
 	}
 }
 

@@ -36,10 +36,10 @@ namespace qmapcontrol
 
 	LayerManager::~LayerManager()
 	{
-		layers.clear();
+		mylayers.clear();
 	}
 
-	QPointF LayerManager::getCurrentCoordinate() const
+	QPointF LayerManager::currentCoordinate() const
 	{
 		return mapmiddle;
 	}
@@ -49,31 +49,31 @@ namespace qmapcontrol
 		return composedOffscreenImage;
 	}
 
-	Layer* LayerManager::getLayer() const
+	Layer* LayerManager::layer() const
 	{
-		Q_ASSERT_X(layers.size()>0, "LayerManager::getLayer()", "No layers were added!");
-		return layers.first();
+		Q_ASSERT_X(mylayers.size()>0, "LayerManager::getLayer()", "No layers were added!");
+		return mylayers.first();
 	}
 
-	Layer* LayerManager::getLayer(const QString& layername) const
+	Layer* LayerManager::layer(const QString& layername) const
 	{
-		QListIterator<Layer*> layerit(layers);
+		QListIterator<Layer*> layerit(mylayers);
 		while (layerit.hasNext())
 		{
 			Layer* l = layerit.next();
-			if (l->getLayername() == layername)
+			if (l->layername() == layername)
 				return l;
 		}
 		return 0;
 	}
 
-	QList<QString> LayerManager::getLayers() const
+	QList<QString> LayerManager::layers() const
 	{
 		QList<QString> keys;
-		QListIterator<Layer*> layerit(layers);
+		QListIterator<Layer*> layerit(mylayers);
 		while (layerit.hasNext())
 		{
-			keys.append(layerit.next()->getLayername());
+			keys.append(layerit.next()->layername());
 		}
 		return keys;
 	}
@@ -89,7 +89,7 @@ namespace qmapcontrol
 			mapmiddle_px += point;
 // 	scrollMutex.unlock();
 		}
-		mapmiddle = getLayer()->getMapAdapter()->displayToCoordinate(mapmiddle_px);
+		mapmiddle = layer()->mapadapter()->displayToCoordinate(mapmiddle_px);
 		if (!checkOffscreen())
 		{
 		
@@ -103,7 +103,7 @@ namespace qmapcontrol
 
 	void LayerManager::moveWidgets()
 	{
-		QListIterator<Layer*> it(layers);
+		QListIterator<Layer*> it(mylayers);
 		while (it.hasNext())
 		{
 			it.next()->moveWidgets(mapmiddle_px);	
@@ -112,7 +112,7 @@ namespace qmapcontrol
 
 	void LayerManager::setView(const QPointF& coordinate)
 	{
-		mapmiddle_px = getLayer()->getMapAdapter()->coordinateToDisplay(coordinate);
+		mapmiddle_px = layer()->mapadapter()->coordinateToDisplay(coordinate);
 		mapmiddle = coordinate;
 	
 	//TODO: muss wegen moveTo() raus
@@ -159,11 +159,11 @@ namespace qmapcontrol
 		for (int i=0; i<coordinates.size(); i++)
 		{
 		// mitte muss in px umgerechnet werden, da aufgrund der projektion die mittebestimmung aus koordinaten ungenau ist
-			QPoint p = getLayer()->getMapAdapter()->coordinateToDisplay(coordinates.at(i));
+			QPoint p = layer()->mapadapter()->coordinateToDisplay(coordinates.at(i));
 			sum_x += p.x();
 			sum_y += p.y();
 		}
-		QPointF middle = getLayer()->getMapAdapter()->displayToCoordinate(QPoint(sum_x/coordinates.size(), sum_y/coordinates.size()));
+		QPointF middle = layer()->mapadapter()->displayToCoordinate(QPoint(sum_x/coordinates.size(), sum_y/coordinates.size()));
 	// middle in px rechnen!
 	
 		setView(middle);
@@ -190,8 +190,8 @@ namespace qmapcontrol
 		QPoint upperLeft = QPoint(mapmiddle_px.x()-screenmiddle.x(), mapmiddle_px.y()+screenmiddle.y());
 		QPoint lowerRight = QPoint(mapmiddle_px.x()+screenmiddle.x(), mapmiddle_px.y()-screenmiddle.y());
 		
-		QPointF ulCoord = getLayer()->getMapAdapter()->displayToCoordinate(upperLeft);
-		QPointF lrCoord = getLayer()->getMapAdapter()->displayToCoordinate(lowerRight);
+		QPointF ulCoord = layer()->mapadapter()->displayToCoordinate(upperLeft);
+		QPointF lrCoord = layer()->mapadapter()->displayToCoordinate(lowerRight);
 	
 		QRectF coordinateBB = QRectF(ulCoord, QSizeF( (lrCoord-ulCoord).x(), (lrCoord-ulCoord).y()));
 		return coordinateBB;
@@ -199,7 +199,7 @@ namespace qmapcontrol
 
 	void LayerManager::addLayer(Layer* layer)
 	{
-		layers.append(layer);
+		mylayers.append(layer);
 	
 		layer->setSize(size);
 	
@@ -208,7 +208,7 @@ namespace qmapcontrol
 		connect(layer, SIGNAL(updateRequest()),
 				  this, SLOT(updateRequest()));
 	
-		if (layers.size()==1)
+		if (mylayers.size()==1)
 		{
 			setView(QPointF(0,0));
 		}
@@ -231,12 +231,12 @@ namespace qmapcontrol
 				painter.drawPixmap(screenmiddle.x()-zoomImageScroll.x(), screenmiddle.y()-zoomImageScroll.y(),zoomImage);
 			}
 	//only draw basemaps
-			for (int i=0; i<layers.count(); i++)
+			for (int i=0; i<mylayers.count(); i++)
 			{
-				Layer* l = layers.at(i);
+				Layer* l = mylayers.at(i);
 				if (l->isVisible())
 				{
-					if (l->getLayertype() == Layer::MapLayer)
+					if (l->layertype() == Layer::MapLayer)
 					{
 						l->drawYourImage(&painter, whilenewscroll);
 					}
@@ -276,19 +276,19 @@ namespace qmapcontrol
 		painter.drawPixmap(0,0,tmpImg);
 		painter.restore();
 	
-		QListIterator<Layer*> it(layers);
+		QListIterator<Layer*> it(mylayers);
 	//TODO: remove hack, that mapadapters wont get set zoom multiple times
 		QList<const MapAdapter*> doneadapters;
 		while (it.hasNext())
 		{
 			Layer* l = it.next();
-			if (!doneadapters.contains(l->getMapAdapter()))
+			if (!doneadapters.contains(l->mapadapter()))
 			{
 				l->zoomIn();
-				doneadapters.append(l->getMapAdapter());
+				doneadapters.append(l->mapadapter());
 			}
 		}
-		mapmiddle_px = getLayer()->getMapAdapter()->coordinateToDisplay(mapmiddle);
+		mapmiddle_px = layer()->mapadapter()->coordinateToDisplay(mapmiddle);
 		whilenewscroll = mapmiddle_px;
 // 	zoomImageScroll = mapmiddle_px;
 		newOffscreenImage();
@@ -302,7 +302,7 @@ namespace qmapcontrol
 		QPoint lowerRight = mapmiddle_px + screenmiddle;
 		QRect viewport = QRect(upperLeft, lowerRight);
 	
-		QRect testRect = getLayer()->getOffscreenViewport();
+		QRect testRect = layer()->offscreenViewport();
 
 		if (!testRect.contains(viewport))
 		{
@@ -328,19 +328,19 @@ namespace qmapcontrol
 		painter.scale(2,2);
 		painter.translate(-screenmiddle);
 	
-		QListIterator<Layer*> it(layers);
+		QListIterator<Layer*> it(mylayers);
 	//TODO: remove hack, that mapadapters wont get set zoom multiple times
 		QList<const MapAdapter*> doneadapters;
 		while (it.hasNext())
 		{
 			Layer* l = it.next();
-			if (!doneadapters.contains(l->getMapAdapter()))
+			if (!doneadapters.contains(l->mapadapter()))
 			{
 				l->zoomOut();
-				doneadapters.append(l->getMapAdapter());
+				doneadapters.append(l->mapadapter());
 			}
 		}
-		mapmiddle_px = getLayer()->getMapAdapter()->coordinateToDisplay(mapmiddle);
+		mapmiddle_px = layer()->mapadapter()->coordinateToDisplay(mapmiddle);
 		whilenewscroll = mapmiddle_px;
 		newOffscreenImage();
 	}
@@ -348,13 +348,13 @@ namespace qmapcontrol
 	void LayerManager::setZoom(int zoomlevel)
 	{
 		int current_zoom;
-		if (getLayer()->getMapAdapter()->getMinZoom() < getLayer()->getMapAdapter()->getMaxZoom())
+		if (layer()->mapadapter()->minZoom() < layer()->mapadapter()->maxZoom())
 		{
-			current_zoom = getLayer()->getMapAdapter()->getZoom();
+			current_zoom = layer()->mapadapter()->currentZoom();
 		}
 		else
 		{
-			current_zoom = getLayer()->getMapAdapter()->getMinZoom() - getLayer()->getMapAdapter()->getZoom();
+			current_zoom = layer()->mapadapter()->minZoom() - layer()->mapadapter()->currentZoom();
 		}
 	
 	
@@ -376,7 +376,7 @@ namespace qmapcontrol
 
 	void LayerManager::mouseEvent(const QMouseEvent* evnt)
 	{	
-		QListIterator<Layer*> it(layers);
+		QListIterator<Layer*> it(mylayers);
 		while (it.hasNext())
 		{
 			Layer* l = it.next();
@@ -421,13 +421,13 @@ namespace qmapcontrol
 
 	void LayerManager::drawGeoms(QPainter* painter)
 	{
-		QListIterator<Layer*> it(layers);
+		QListIterator<Layer*> it(mylayers);
 		while (it.hasNext())
 		{
 			Layer* l = it.next();
-			if (l->getLayertype() == Layer::GeometryLayer && l->isVisible())
+			if (l->layertype() == Layer::GeometryLayer && l->isVisible())
 			{
-				l->drawYourGeometries(painter, mapmiddle_px, getLayer()->getOffscreenViewport());
+				l->drawYourGeometries(painter, mapmiddle_px, layer()->offscreenViewport());
 			}
 		}
 	}
@@ -438,8 +438,8 @@ namespace qmapcontrol
 												 composedOffscreenImage);
 	}
 
-	int LayerManager::getCurrentZoom() const
+	int LayerManager::currentZoom() const
 	{
-		return getLayer()->getMapAdapter()->getZoom();
+		return layer()->mapadapter()->currentZoom();
 	}
 }

@@ -96,7 +96,7 @@ class Citymap: public QMainWindow
 		
 	public slots:
 		void hideNote(const QMouseEvent* evnt, const QPointF coordinate);
-		void geometryClickEvent(Geometry* geometry, QPoint point);
+		void geometryClicked(Geometry* geometry, QPoint point);
 		void geometryClickEventKneipe(Geometry* geometry, QPoint point);
 		void addNote();
 		void writeNote(const QMouseEvent*, const QPointF);

@@ -46,30 +46,30 @@
 <a name="l00034"></a>00034                 Q_OBJECT
 <a name="l00035"></a>00035                 <span class="keyword">public</span>:
 <a name="l00037"></a>00037 
-<a name="l00048"></a>00048                         <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#1233007f4393d3ae476a5284f9294e8c" title="constructor">TileMapAdapter</a>(<span class="keyword">const</span> QString&amp; host, <span class="keyword">const</span> QString&amp; serverPath, <span class="keywordtype">int</span> tilesize, <span class="keywordtype">int</span> minZoom = 0, <span class="keywordtype">int</span> maxZoom = 17);
+<a name="l00048"></a>00048                         <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#1233007f4393d3ae476a5284f9294e8c" title="constructor">TileMapAdapter</a>(<span class="keyword">const</span> QString&amp; <a class="code" href="classqmapcontrol_1_1MapAdapter.html#7ee8388c7880d8a3466967464f5034b6" title="returns the host of this MapAdapter">host</a>, <span class="keyword">const</span> QString&amp; serverPath, <span class="keywordtype">int</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html#f105c5a0cf588a3f60d67744bd353391" title="returns the size of the tiles">tilesize</a>, <span class="keywordtype">int</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html#7457f51db57914a85bbefcc8c9fa97b4" title="returns the min zoom value">minZoom</a> = 0, <span class="keywordtype">int</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html#3a33e897bc474405772d17a7c81f8747" title="returns the max zoom value">maxZoom</a> = 17);
 <a name="l00049"></a>00049         
 <a name="l00050"></a>00050                         <span class="keyword">virtual</span> ~<a class="code" href="classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles.">TileMapAdapter</a>();
 <a name="l00051"></a>00051         
 <a name="l00052"></a>00052                         <span class="keyword">virtual</span> QPoint          <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#94134b06e350d302f5b3a63f0016aa60" title="translates a world coordinate to display coordinate">coordinateToDisplay</a>(<span class="keyword">const</span> QPointF&amp;) <span class="keyword">const</span>;
 <a name="l00053"></a>00053                         <span class="keyword">virtual</span> QPointF <a class="code" href="classqmapcontrol_1_1TileMapAdapter.html#601b4631d9d891eabffb063c510cc088" title="translates display coordinate to world coordinate">displayToCoordinate</a>(<span class="keyword">const</span> QPoint&amp;) <span class="keyword">const</span>;
 <a name="l00054"></a>00054         
-<a name="l00055"></a>00055                         <span class="keywordtype">double</span> PI;
+<a name="l00055"></a>00055                         qreal PI;
 <a name="l00056"></a>00056         
 <a name="l00057"></a>00057                 <span class="keyword">protected</span>:
-<a name="l00058"></a>00058                         <span class="keywordtype">double</span> rad_deg(<span class="keywordtype">double</span>) <span class="keyword">const</span>;
-<a name="l00059"></a>00059                         <span class="keywordtype">double</span> deg_rad(<span class="keywordtype">double</span>) <span class="keyword">const</span>;
+<a name="l00058"></a>00058                         qreal rad_deg(qreal) <span class="keyword">const</span>;
+<a name="l00059"></a>00059                         qreal deg_rad(qreal) <span class="keyword">const</span>;
 <a name="l00060"></a>00060         
 <a name="l00061"></a>00061                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValid(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
 <a name="l00062"></a>00062                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_in();
 <a name="l00063"></a>00063                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_out();
-<a name="l00064"></a>00064                         <span class="keyword">virtual</span> QString getQuery(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
+<a name="l00064"></a>00064                         <span class="keyword">virtual</span> QString query(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
 <a name="l00065"></a>00065                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> tilesonzoomlevel(<span class="keywordtype">int</span> zoomlevel) <span class="keyword">const</span>;
-<a name="l00066"></a>00066                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> getxoffset(<span class="keywordtype">int</span> x) <span class="keyword">const</span>;
-<a name="l00067"></a>00067                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> getyoffset(<span class="keywordtype">int</span> y) <span class="keyword">const</span>;
+<a name="l00066"></a>00066                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> xoffset(<span class="keywordtype">int</span> x) <span class="keyword">const</span>;
+<a name="l00067"></a>00067                         <span class="keyword">virtual</span> <span class="keywordtype">int</span> yoffset(<span class="keywordtype">int</span> y) <span class="keyword">const</span>;
 <a name="l00068"></a>00068         };
 <a name="l00069"></a>00069 }
 <a name="l00070"></a>00070 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:16 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

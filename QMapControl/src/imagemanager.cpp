@@ -42,7 +42,7 @@ namespace qmapcontrol
 	{
 // 	qDebug() << "ImageManager::getImage";
 		QPixmap pm;
-		pm.fill(Qt::black);
+// 		pm.fill(Qt::black);
 	
 	// is image cached or currently loading?
 		if (!QPixmapCache::find(url, pm) && !net->imageIsLoading(url))
@@ -58,7 +58,12 @@ namespace qmapcontrol
 
 	QPixmap ImageManager::prefetchImage(const QString& host, const QString& url)
 	{
+#ifdef Q_WS_QWS
+		// on mobile devices we don´t want the display resfreshing when tiles are received which are 
+		// prefetched... This is a performance issue, because mobile devices are very slow in 
+		// repainting the screen
 		prefetch.append(url);
+#endif
 		return getImage(host, url);
 	}
 
@@ -76,7 +81,10 @@ namespace qmapcontrol
 		}
 		else
 		{
+			
+#ifdef Q_WS_QWS
 			prefetch.remove(prefetch.indexOf(url));
+#endif
 		}
 	}
 

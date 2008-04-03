@@ -27,7 +27,7 @@ namespace qmapcontrol
 		return int(pow(2, zoomlevel+1));
 	}
 
-	int YahooMapAdapter::getyoffset(int y) const
+	int YahooMapAdapter::yoffset(int y) const
 	{
 		int zoom = max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
 	

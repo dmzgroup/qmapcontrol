@@ -50,25 +50,25 @@ Inheritance diagram for MapLayer:</div>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">if visible is true, the layer is made visible  <a href="#18e44e30b31525a243960ca3928125aa"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Signals</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#f15230a2ebf28ee8dd609967478c9b7b">geometryClickEvent</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint point)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#685dcab83356e5cc449475f177bb487d">geometryClicked</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint point)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#f15230a2ebf28ee8dd609967478c9b7b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#685dcab83356e5cc449475f177bb487d"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#b692d7d08414ed2b744946b88872827f">addGeometry</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">adds a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> object to this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>  <a href="#b692d7d08414ed2b744946b88872827f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#08982c11f5c5d96071be8778dbe614f2">getLayername</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the layer's name  <a href="#08982c11f5c5d96071be8778dbe614f2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4">Layer::LayerType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#6a4a9aa2a843217076d590184219fd6a">getLayertype</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the LayerType of the <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>  <a href="#6a4a9aa2a843217076d590184219fd6a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">const <a class="el" href="classqmapcontrol_1_1MapAdapter.html">MapAdapter</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#c0088eb49769ad0a6715fbdf85dbc50d">getMapAdapter</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the layer´s <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>  <a href="#c0088eb49769ad0a6715fbdf85dbc50d"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#08422ee75ab02691943c1ca87e2bc563">isVisible</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">return true if the layer is visible  <a href="#08422ee75ab02691943c1ca87e2bc563"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#414e94fdd70490d75ddccb6923ae3410">layername</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the layer's name  <a href="#414e94fdd70490d75ddccb6923ae3410"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4">Layer::LayerType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#1cfbd8a5c27cf9cb400fa458a1f70ba5">layertype</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the LayerType of the <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>  <a href="#1cfbd8a5c27cf9cb400fa458a1f70ba5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const <a class="el" href="classqmapcontrol_1_1MapAdapter.html">MapAdapter</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Layer.html#23cb6462136a0920739cdeb5f1709fa7">mapadapter</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the layer´s <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>  <a href="#23cb6462136a0920739cdeb5f1709fa7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapLayer.html#c50a4fcff04c6859ce5601543b8ac821">MapLayer</a> (QString layername, <a class="el" href="classqmapcontrol_1_1MapAdapter.html">MapAdapter</a> *mapadapter, bool takeevents=true)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classqmapcontrol_1_1MapLayer.html" title="MapLayer class.">MapLayer</a> constructor.  <a href="#c50a4fcff04c6859ce5601543b8ac821"></a><br></td></tr>
@@ -181,12 +181,12 @@ Please notice the different LayerTypes (<a class="el" href="classqmapcontrol_1_1
 
 </div>
 </div><p>
-<a class="anchor" name="f15230a2ebf28ee8dd609967478c9b7b"></a><!-- doxytag: member="qmapcontrol::MapLayer::geometryClickEvent" ref="f15230a2ebf28ee8dd609967478c9b7b" args="(Geometry *geometry, QPoint point)" -->
+<a class="anchor" name="685dcab83356e5cc449475f177bb487d"></a><!-- doxytag: member="qmapcontrol::MapLayer::geometryClicked" ref="685dcab83356e5cc449475f177bb487d" args="(Geometry *geometry, QPoint point)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void geometryClickEvent           </td>
+          <td class="memname">void geometryClicked           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td>
           <td class="paramname"> <em>geometry</em>, </td>
@@ -218,72 +218,6 @@ A <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for o
 
 </div>
 </div><p>
-<a class="anchor" name="08982c11f5c5d96071be8778dbe614f2"></a><!-- doxytag: member="qmapcontrol::MapLayer::getLayername" ref="08982c11f5c5d96071be8778dbe614f2" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString getLayername           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the layer's name 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the name of this layer </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="6a4a9aa2a843217076d590184219fd6a"></a><!-- doxytag: member="qmapcontrol::MapLayer::getLayertype" ref="6a4a9aa2a843217076d590184219fd6a" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4">Layer::LayerType</a> getLayertype           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the LayerType of the <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a> 
-<p>
-There are two LayerTypes: <a class="el" href="classqmapcontrol_1_1MapLayer.html" title="MapLayer class.">MapLayer</a> and <a class="el" href="classqmapcontrol_1_1GeometryLayer.html" title="GeometryLayer class.">GeometryLayer</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the LayerType of this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="c0088eb49769ad0a6715fbdf85dbc50d"></a><!-- doxytag: member="qmapcontrol::MapLayer::getMapAdapter" ref="c0088eb49769ad0a6715fbdf85dbc50d" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="classqmapcontrol_1_1MapAdapter.html">MapAdapter</a> * getMapAdapter           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the layer´s <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a> 
-<p>
-This method returns the <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a> of this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>, which can be useful to do coordinate transformations. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a> which us used by this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a> </dd></dl>
-
-</div>
-</div><p>
 <a class="anchor" name="08422ee75ab02691943c1ca87e2bc563"></a><!-- doxytag: member="qmapcontrol::MapLayer::isVisible" ref="08422ee75ab02691943c1ca87e2bc563" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -303,6 +237,72 @@ This method returns the <a class="el" href="classqmapcontrol_1_1MapAdapter.html"
 return true if the layer is visible 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>if the layer is visible </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="414e94fdd70490d75ddccb6923ae3410"></a><!-- doxytag: member="qmapcontrol::MapLayer::layername" ref="414e94fdd70490d75ddccb6923ae3410" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString layername           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the layer's name 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the name of this layer </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1cfbd8a5c27cf9cb400fa458a1f70ba5"></a><!-- doxytag: member="qmapcontrol::MapLayer::layertype" ref="1cfbd8a5c27cf9cb400fa458a1f70ba5" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4">Layer::LayerType</a> layertype           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the LayerType of the <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a> 
+<p>
+There are two LayerTypes: <a class="el" href="classqmapcontrol_1_1MapLayer.html" title="MapLayer class.">MapLayer</a> and <a class="el" href="classqmapcontrol_1_1GeometryLayer.html" title="GeometryLayer class.">GeometryLayer</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the LayerType of this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="23cb6462136a0920739cdeb5f1709fa7"></a><!-- doxytag: member="qmapcontrol::MapLayer::mapadapter" ref="23cb6462136a0920739cdeb5f1709fa7" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classqmapcontrol_1_1MapAdapter.html">MapAdapter</a> * mapadapter           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the layer´s <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a> 
+<p>
+This method returns the <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a> of this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>, which can be useful to do coordinate transformations. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the <a class="el" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a> which us used by this <a class="el" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a> </dd></dl>
 
 </div>
 </div><p>
@@ -333,7 +333,7 @@ if visible is true, the layer is made visible
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:20 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

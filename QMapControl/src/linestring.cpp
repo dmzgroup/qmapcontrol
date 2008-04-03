@@ -29,7 +29,7 @@ namespace qmapcontrol
 	LineString::LineString(QList<Point*> const points, QString name, QPen* pen)
 	:Curve(name)
 	{
-		this->pen = pen;
+		mypen = pen;
 		LineString();
 		setPoints(points);
 	
@@ -53,7 +53,7 @@ namespace qmapcontrol
 		vertices.append(point);
 	}
 
-	QList<Point*>	LineString::getPoints()
+	QList<Point*>	LineString::points()
 	{
 		return vertices;
 	}
@@ -77,16 +77,16 @@ namespace qmapcontrol
 		QPointF c;
 		for (int i=0; i<vertices.size(); i++)
 		{
-			c = vertices[i]->getCoordinate();
+			c = vertices[i]->coordinate();
 			p.append(mapadapter->coordinateToDisplay(c));
 		}
-		if (pen != 0)
+		if (mypen != 0)
 		{
 			painter->save();
-			painter->setPen(*pen);
+			painter->setPen(*mypen);
 		}
 		painter->drawPolyline(p);
-		if (pen != 0)
+		if (mypen != 0)
 		{
 			painter->restore();
 		}
@@ -96,7 +96,7 @@ namespace qmapcontrol
 		}
 	}
 
-	int LineString::getNumberOfPoints() const
+	int LineString::numberOfPoints() const
 	{
 		return vertices.count();
 	}
@@ -117,7 +117,7 @@ namespace qmapcontrol
 		}
 		if (touches)
 		{
-			emit(geometryClickEvent(this, QPoint(0,0)));
+			emit(geometryClicked(this, QPoint(0,0)));
 		}
 		return touches;
 	}
@@ -129,7 +129,7 @@ namespace qmapcontrol
 		return false;
 	}
 
-	QList<Geometry*> LineString::getClickedPoints()
+	QList<Geometry*> LineString::clickedPoints()
 	{
 		return touchedPoints;
 	}
@@ -142,19 +142,19 @@ namespace qmapcontrol
 		return touchedPoints.size() > 0 ? true : false;
 	}
 
-	QRectF	LineString::getBoundingBox()
+	QRectF	LineString::boundingBox()
 	{
-		double minlon=180;
-		double maxlon=-180;
-		double minlat=90;
-		double maxlat=-90;
+		qreal minlon=180;
+		qreal maxlon=-180;
+		qreal minlat=90;
+		qreal maxlat=-90;
 		for (int i=0; i<vertices.size(); i++)
 		{
 			Point* tmp = vertices.at(i);
-			if (tmp->getLongitude() < minlon) minlon = tmp->getLongitude();
-			if (tmp->getLongitude() > maxlon) maxlon = tmp->getLongitude();
-			if (tmp->getLatitude() < minlat) minlat = tmp->getLatitude();
-			if (tmp->getLatitude() > maxlat) maxlat = tmp->getLatitude();
+			if (tmp->longitude() < minlon) minlon = tmp->longitude();
+			if (tmp->longitude() > maxlon) maxlon = tmp->longitude();
+			if (tmp->latitude() < minlat) minlat = tmp->latitude();
+			if (tmp->latitude() > maxlat) maxlat = tmp->latitude();
 		}
 		QPointF min = QPointF(minlon, minlat);
 		QPointF max = QPointF(maxlon, maxlat);

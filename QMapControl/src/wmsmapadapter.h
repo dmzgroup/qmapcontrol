@@ -52,14 +52,14 @@ namespace qmapcontrol
 		protected:
 			virtual void zoom_in();
 			virtual void zoom_out();
-			virtual QString getQuery(int x, int y, int z) const;
+			virtual QString query(int x, int y, int z) const;
 			virtual bool isValid(int x, int y, int z) const;
 		
 		private:
-			virtual QString getQ(double ux, double uy, double ox, double oy) const;
+				virtual QString getQ(qreal ux, qreal uy, qreal ox, qreal oy) const;
 		
-			double coord_per_x_tile;
-			double coord_per_y_tile;
+			qreal coord_per_x_tile;
+			qreal coord_per_y_tile;
 	};
 }
 #endif

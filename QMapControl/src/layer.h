@@ -55,7 +55,6 @@ namespace qmapcontrol
 		Q_OBJECT
 		public:
 			friend class LayerManager;
-			friend class RenderThread;
 	
 	//! sets the type of a layer, see Layer class doc for further information
 			enum LayerType
@@ -81,7 +80,7 @@ namespace qmapcontrol
 	/*!
 			 * @return the name of this layer
 	 */
-			QString	getLayername() const;
+			QString	layername() const;
 	
 	//! returns the layer´s MapAdapter
 	/*!
@@ -89,7 +88,7 @@ namespace qmapcontrol
 			 * to do coordinate transformations.
 			 * @return the MapAdapter which us used by this Layer
 	 */
-			const MapAdapter*	getMapAdapter() const;
+			const MapAdapter*	mapadapter() const;
 	
 	//! adds a Geometry object to this Layer
 	/*!
@@ -111,7 +110,7 @@ namespace qmapcontrol
 			 * There are two LayerTypes: MapLayer and GeometryLayer
 			 * @return the LayerType of this Layer
 	 */
-			Layer::LayerType getLayertype() const;
+			Layer::LayerType layertype() const;
 	
 			void setMapAdapter(MapAdapter* mapadapter);
 	
@@ -123,7 +122,7 @@ namespace qmapcontrol
 			void drawYourImage(QPainter* painter, const QPoint mapmiddle_px) const;
 			void drawYourGeometries(QPainter* painter, const QPoint mapmiddle_px, QRect viewport) const;
 			void setSize(QSize size);
-			QRect getOffscreenViewport() const;
+			QRect offscreenViewport() const;
 			bool takesMouseEvents() const;
 			void mouseEvent(const QMouseEvent*, const QPoint mapmiddle_px);
 			void zoomIn() const;
@@ -131,15 +130,15 @@ namespace qmapcontrol
 			void _draw(QPainter* painter, const QPoint mapmiddle_px) const;
 	
 			bool visible;
-			QString layername;
-			LayerType layertype;
+			QString mylayername;
+			LayerType mylayertype;
 			QSize size;	
 			QPoint screenmiddle;
 	
 			QList<Geometry*> geometries;
 			MapAdapter*	mapAdapter;
 			bool takeevents;
-			mutable QRect offscreenViewport;
+			mutable QRect myoffscreenViewport;
 
 	
 	
@@ -151,7 +150,7 @@ namespace qmapcontrol
 		 * @param  geometry The clicked Geometry
 		 * @param  point The coordinate (in widget coordinates) of the click
 		 */
-			void geometryClickEvent(Geometry* geometry, QPoint point);
+			void geometryClicked(Geometry* geometry, QPoint point);
 	
 			void updateRequest(QRectF rect);
 			void updateRequest();

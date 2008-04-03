@@ -8,6 +8,7 @@
     <class kind="class">qmapcontrol::Geometry</class>
     <class kind="class">qmapcontrol::GeometryLayer</class>
     <class kind="class">qmapcontrol::GoogleMapAdapter</class>
+    <class kind="class">qmapcontrol::GoogleSatMapAdapter</class>
     <class kind="class">qmapcontrol::GPS_Position</class>
     <class kind="class">qmapcontrol::ImagePoint</class>
     <class kind="class">qmapcontrol::Layer</class>
@@ -71,9 +72,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="signal">
@@ -83,19 +84,33 @@
       <anchor>807f9cfb1b9d680ca76cf825cc9cf46a</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
-    <member kind="function">
-      <type></type>
-      <name>CirclePoint</name>
-      <anchorfile>classqmapcontrol_1_1CirclePoint.html</anchorfile>
-      <anchor>90382a0d82bcee9641350f4233824f3d</anchor>
-      <arglist>(double x, double y, int radius=10, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)</arglist>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cbb256b5f9f888e9cd3bb475108ece24</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>CirclePoint</name>
       <anchorfile>classqmapcontrol_1_1CirclePoint.html</anchorfile>
-      <anchor>f971749563491f6afdfebe61183429d3</anchor>
-      <arglist>(double x, double y, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)</arglist>
+      <anchor>13300765d52da11cc8cbb4384e8e9e23</anchor>
+      <arglist>(qreal x, qreal y, int radius=10, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>CirclePoint</name>
+      <anchorfile>classqmapcontrol_1_1CirclePoint.html</anchorfile>
+      <anchor>a0dd3496708e507c8185d5ae5f5e79ad</anchor>
+      <arglist>(qreal x, qreal y, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)</arglist>
+    </member>
+    <member kind="function">
+      <type>QPointF</type>
+      <name>coordinate</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2fbb44b2ed047287d715484d2fda7299</anchor>
+      <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -104,75 +119,54 @@
       <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual QRectF</type>
-      <name>getBoundingBox</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>b06601b3a0eddcb0bf4d56deb74d8a3d</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>QPointF</type>
-      <name>getCoordinate</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>b08a6099dabf147fa8800e3c8daa2fb7</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>double</type>
-      <name>getLatitude</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>a30355ce4b33ea11338d38d2af8e0bbf</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>double</type>
-      <name>getLongitude</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>6c5a4634d917ad7a8715e55ad540e18d</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getName</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>ebd19108ae7957a2c5f4f55aa4a8737e</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Geometry *</type>
-      <name>getParentGeometry</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>55f87f3bc60d7cc98914077b2b812679</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPen *</type>
-      <name>getPen</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>2307393519f57b0b734bc7fd4475a1c2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPixmap *</type>
-      <name>getPixmap</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>f048bd187c6c771c6b3e95a3ef1060f7</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>QWidget *</type>
-      <name>getWidget</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>6dc1ce5915d5464c5c08dd761362595e</anchor>
-      <arglist>()</arglist>
-    </member>
     <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
       <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>latitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>6311aabecac471455760aae4790cff91</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>longitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2b0f7ec9068af09bcf151af61a785845</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPixmap *</type>
+      <name>pixmap</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>166d4272301d85cc53e114ce4d26caf5</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -211,9 +205,16 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>ToString</name>
+      <name>toString</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f4dc3059f9ee9b3af63f0bbfe7dea848</anchor>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QWidget *</type>
+      <name>widget</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>d1eaabeb2b227cd055ccf4b4e2818480</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="virtual">
@@ -237,9 +238,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="signal">
@@ -249,6 +250,13 @@
       <anchor>807f9cfb1b9d680ca76cf825cc9cf46a</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>f92c4fa46f711bea92efe5ab80f9084d</anchor>
+      <arglist>()=0</arglist>
+    </member>
     <member kind="function">
       <type>bool</type>
       <name>Equals</name>
@@ -256,39 +264,32 @@
       <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
-    <member kind="function" virtualness="pure">
-      <type>virtual QRectF</type>
-      <name>getBoundingBox</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>6095466094dc64253155567a98f20035</anchor>
-      <arglist>()=0</arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getName</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>ebd19108ae7957a2c5f4f55aa4a8737e</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Geometry *</type>
-      <name>getParentGeometry</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>55f87f3bc60d7cc98914077b2b812679</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPen *</type>
-      <name>getPen</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>2307393519f57b0b734bc7fd4475a1c2</anchor>
-      <arglist>() const </arglist>
-    </member>
     <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -300,9 +301,9 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>ToString</name>
+      <name>toString</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f4dc3059f9ee9b3af63f0bbfe7dea848</anchor>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -318,9 +319,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="signal">
@@ -330,6 +331,13 @@
       <anchor>807f9cfb1b9d680ca76cf825cc9cf46a</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>f92c4fa46f711bea92efe5ab80f9084d</anchor>
+      <arglist>()=0</arglist>
+    </member>
     <member kind="function">
       <type>bool</type>
       <name>Equals</name>
@@ -337,39 +345,32 @@
       <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
-    <member kind="function" virtualness="pure">
-      <type>virtual QRectF</type>
-      <name>getBoundingBox</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>6095466094dc64253155567a98f20035</anchor>
-      <arglist>()=0</arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getName</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>ebd19108ae7957a2c5f4f55aa4a8737e</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Geometry *</type>
-      <name>getParentGeometry</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>55f87f3bc60d7cc98914077b2b812679</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPen *</type>
-      <name>getPen</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>2307393519f57b0b734bc7fd4475a1c2</anchor>
-      <arglist>() const </arglist>
-    </member>
     <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -381,9 +382,9 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>ToString</name>
+      <name>toString</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f4dc3059f9ee9b3af63f0bbfe7dea848</anchor>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -418,9 +419,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="function">
@@ -438,31 +439,31 @@
       <arglist>(QString layername, MapAdapter *mapadapter, bool takeevents=true)</arglist>
     </member>
     <member kind="function">
-      <type>QString</type>
-      <name>getLayername</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>08982c11f5c5d96071be8778dbe614f2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Layer::LayerType</type>
-      <name>getLayertype</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>6a4a9aa2a843217076d590184219fd6a</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>const MapAdapter *</type>
-      <name>getMapAdapter</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>c0088eb49769ad0a6715fbdf85dbc50d</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
       <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>layername</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>414e94fdd70490d75ddccb6923ae3410</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Layer::LayerType</type>
+      <name>layertype</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>1cfbd8a5c27cf9cb400fa458a1f70ba5</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const MapAdapter *</type>
+      <name>mapadapter</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>23cb6462136a0920739cdeb5f1709fa7</anchor>
       <arglist>() const </arglist>
     </member>
   </compound>
@@ -477,6 +478,13 @@
       <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
       <arglist>(const QPointF &amp;) const </arglist>
     </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function" virtualness="virtual">
       <type>virtual QPointF</type>
       <name>displayToCoordinate</name>
@@ -485,46 +493,107 @@
       <arglist>(const QPoint &amp;) const </arglist>
     </member>
     <member kind="function">
-      <type>QString</type>
-      <name>getHost</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getMaxZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>684e4d8c7fd3473fd2b9715a35acc524</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getMinZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>8125e1d95331d68ac8b47ae000587672</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getTileSize</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>4534935475bf8921f4e05ab1b40f317b</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>ced60888f5b4649ab4917befbd83c8e7</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
       <type></type>
       <name>GoogleMapAdapter</name>
       <anchorfile>classqmapcontrol_1_1GoogleMapAdapter.html</anchorfile>
       <anchor>cce53053ca2cbe6b91836ee24fc98b22</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>host</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>maxZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>minZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tilesize</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
+      <arglist>() const </arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>qmapcontrol::GoogleSatMapAdapter</name>
+    <filename>classqmapcontrol_1_1GoogleSatMapAdapter.html</filename>
+    <base>qmapcontrol::MapAdapter</base>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QPoint</type>
+      <name>coordinateToDisplay</name>
+      <anchorfile>classqmapcontrol_1_1GoogleSatMapAdapter.html</anchorfile>
+      <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
+      <arglist>(const QPointF &amp;) const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QPointF</type>
+      <name>displayToCoordinate</name>
+      <anchorfile>classqmapcontrol_1_1GoogleSatMapAdapter.html</anchorfile>
+      <anchor>601b4631d9d891eabffb063c510cc088</anchor>
+      <arglist>(const QPoint &amp;) const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>getHost</name>
+      <anchorfile>classqmapcontrol_1_1GoogleSatMapAdapter.html</anchorfile>
+      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>GoogleSatMapAdapter</name>
+      <anchorfile>classqmapcontrol_1_1GoogleSatMapAdapter.html</anchorfile>
+      <anchor>3f7fb833b8e1325d5164c88e07425b94</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>host</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>maxZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>minZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tilesize</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
+      <arglist>() const </arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -601,9 +670,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="signal">
@@ -613,6 +682,20 @@
       <anchor>807f9cfb1b9d680ca76cf825cc9cf46a</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cbb256b5f9f888e9cd3bb475108ece24</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QPointF</type>
+      <name>coordinate</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2fbb44b2ed047287d715484d2fda7299</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function">
       <type>bool</type>
       <name>Equals</name>
@@ -620,82 +703,19 @@
       <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual QRectF</type>
-      <name>getBoundingBox</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>b06601b3a0eddcb0bf4d56deb74d8a3d</anchor>
-      <arglist>()</arglist>
-    </member>
     <member kind="function">
-      <type>QPointF</type>
-      <name>getCoordinate</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>b08a6099dabf147fa8800e3c8daa2fb7</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>double</type>
-      <name>getLatitude</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>a30355ce4b33ea11338d38d2af8e0bbf</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>double</type>
-      <name>getLongitude</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>6c5a4634d917ad7a8715e55ad540e18d</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getName</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>ebd19108ae7957a2c5f4f55aa4a8737e</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Geometry *</type>
-      <name>getParentGeometry</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>55f87f3bc60d7cc98914077b2b812679</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPen *</type>
-      <name>getPen</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>2307393519f57b0b734bc7fd4475a1c2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPixmap *</type>
-      <name>getPixmap</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>f048bd187c6c771c6b3e95a3ef1060f7</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>QWidget *</type>
-      <name>getWidget</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>6dc1ce5915d5464c5c08dd761362595e</anchor>
-      <arglist>()</arglist>
+      <type></type>
+      <name>ImagePoint</name>
+      <anchorfile>classqmapcontrol_1_1ImagePoint.html</anchorfile>
+      <anchor>27a768be97d6147e8a7ac92f23ce4a48</anchor>
+      <arglist>(qreal x, qreal y, QPixmap *pixmap, QString name=QString(), Alignment alignment=Middle)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ImagePoint</name>
       <anchorfile>classqmapcontrol_1_1ImagePoint.html</anchorfile>
-      <anchor>b21d2058e3102a98e41ac3e43ff4b4ca</anchor>
-      <arglist>(double x, double y, QPixmap *pixmap, QString name=QString(), Alignment alignment=Middle)</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>ImagePoint</name>
-      <anchorfile>classqmapcontrol_1_1ImagePoint.html</anchorfile>
-      <anchor>bb4f4823b6c32ff69a84e674f8edb844</anchor>
-      <arglist>(double x, double y, QString filename, QString name=QString(), Alignment alignment=Middle)</arglist>
+      <anchor>a5121dbb37cf1b8924a376e4c7edd728</anchor>
+      <arglist>(qreal x, qreal y, QString filename, QString name=QString(), Alignment alignment=Middle)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -703,6 +723,48 @@
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
       <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>latitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>6311aabecac471455760aae4790cff91</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>longitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2b0f7ec9068af09bcf151af61a785845</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPixmap *</type>
+      <name>pixmap</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>166d4272301d85cc53e114ce4d26caf5</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -734,9 +796,16 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>ToString</name>
+      <name>toString</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f4dc3059f9ee9b3af63f0bbfe7dea848</anchor>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QWidget *</type>
+      <name>widget</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>d1eaabeb2b227cd055ccf4b4e2818480</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="virtual">
@@ -777,9 +846,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="function">
@@ -788,27 +857,6 @@
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
       <anchor>b692d7d08414ed2b744946b88872827f</anchor>
       <arglist>(Geometry *geometry)</arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getLayername</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>08982c11f5c5d96071be8778dbe614f2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Layer::LayerType</type>
-      <name>getLayertype</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>6a4a9aa2a843217076d590184219fd6a</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>const MapAdapter *</type>
-      <name>getMapAdapter</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>c0088eb49769ad0a6715fbdf85dbc50d</anchor>
-      <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -824,6 +872,27 @@
       <anchor>7ffb001076dc500ad13e523836bda23d</anchor>
       <arglist>(QString layername, MapAdapter *mapadapter, enum LayerType layertype, bool takeevents=true)</arglist>
     </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>layername</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>414e94fdd70490d75ddccb6923ae3410</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Layer::LayerType</type>
+      <name>layertype</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>1cfbd8a5c27cf9cb400fa458a1f70ba5</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const MapAdapter *</type>
+      <name>mapadapter</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>23cb6462136a0920739cdeb5f1709fa7</anchor>
+      <arglist>() const </arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>qmapcontrol::LineString</name>
@@ -838,9 +907,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="signal">
@@ -857,61 +926,26 @@
       <anchor>8694ab9a03b0ed4986c98ad727755f8a</anchor>
       <arglist>(Point *point)</arglist>
     </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
+      <anchor>cbb256b5f9f888e9cd3bb475108ece24</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QList&lt; Geometry * &gt;</type>
+      <name>clickedPoints</name>
+      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
+      <anchor>c1cdf207019e92f289e62e9abb5ba2c3</anchor>
+      <arglist>()</arglist>
+    </member>
     <member kind="function">
       <type>bool</type>
       <name>Equals</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
       <arglist>(Geometry *geom)</arglist>
-    </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual QRectF</type>
-      <name>getBoundingBox</name>
-      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
-      <anchor>b06601b3a0eddcb0bf4d56deb74d8a3d</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual QList&lt; Geometry * &gt;</type>
-      <name>getClickedPoints</name>
-      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
-      <anchor>568664858600004fc5a20c86cec8199c</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getName</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>ebd19108ae7957a2c5f4f55aa4a8737e</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getNumberOfPoints</name>
-      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
-      <anchor>17a7d7c66a35212597d3220e1a661be3</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Geometry *</type>
-      <name>getParentGeometry</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>55f87f3bc60d7cc98914077b2b812679</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPen *</type>
-      <name>getPen</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>2307393519f57b0b734bc7fd4475a1c2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QList&lt; Point * &gt;</type>
-      <name>getPoints</name>
-      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
-      <anchor>334f085bf653b9e517cc5a38ce8b2173</anchor>
-      <arglist>()</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual bool</type>
@@ -942,6 +976,41 @@
       <arglist>(QList&lt; Point * &gt; const points, QString name=QString(), QPen *pen=0)</arglist>
     </member>
     <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>numberOfPoints</name>
+      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
+      <anchor>06b5ac0b597b8d1cb7e8817f7e66c2eb</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QList&lt; Point * &gt;</type>
+      <name>points</name>
+      <anchorfile>classqmapcontrol_1_1LineString.html</anchorfile>
+      <anchor>18d4d26904bca7c54fb9d2a1b054c2fb</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>setName</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
@@ -957,9 +1026,9 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>ToString</name>
+      <name>toString</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f4dc3059f9ee9b3af63f0bbfe7dea848</anchor>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -973,6 +1042,13 @@
       <anchor>0a7f30d12395e615eec9440070795349</anchor>
       <arglist>(const QPointF &amp;coordinate) const =0</arglist>
     </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function" virtualness="pure">
       <type>virtual QPointF</type>
       <name>displayToCoordinate</name>
@@ -982,37 +1058,30 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>getHost</name>
+      <name>host</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMaxZoom</name>
+      <name>maxZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>684e4d8c7fd3473fd2b9715a35acc524</anchor>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMinZoom</name>
+      <name>minZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>8125e1d95331d68ac8b47ae000587672</anchor>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getTileSize</name>
+      <name>tilesize</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>4534935475bf8921f4e05ab1b40f317b</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>ced60888f5b4649ab4917befbd83c8e7</anchor>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
       <arglist>() const </arglist>
     </member>
   </compound>
@@ -1115,16 +1184,16 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>draggedRect</name>
+      <name>boxDragged</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>4c90936080512ae5bd7ddbb1c4b6b91c</anchor>
+      <anchor>1fd82da86a16f8932d45f4a0cadb60d1</anchor>
       <arglist>(const QRectF)</arglist>
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>96601964ef5957d96d0c45bf9cdef066</anchor>
+      <anchor>cc9ddd8e1721682682f85e73dae5f768</anchor>
       <arglist>(Geometry *geometry, QPoint coord_px)</arglist>
     </member>
     <member kind="signal">
@@ -1142,6 +1211,20 @@
       <arglist>(Layer *layer)</arglist>
     </member>
     <member kind="function">
+      <type>QPointF</type>
+      <name>currentCoordinate</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>010c83996ab94a3db104aecf0550d480</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>followGeometry</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
@@ -1149,45 +1232,17 @@
       <arglist>(const Geometry *geometry) const </arglist>
     </member>
     <member kind="function">
-      <type>QPointF</type>
-      <name>getCurrentCoordinate</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>6c5cbc54fff3e8e41ff6a5d683bb98f1</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getCurrentZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>959a546e1d930fa3bf0d35f50f94a944</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
       <type>Layer *</type>
-      <name>getLayer</name>
+      <name>layer</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>d029e96ce3812b48f1e41140a01ccf82</anchor>
+      <anchor>8e22ad201cb035fda7d7fefd8f348b11</anchor>
       <arglist>(const QString &amp;layername) const </arglist>
     </member>
     <member kind="function">
       <type>QList&lt; QString &gt;</type>
-      <name>getLayers</name>
+      <name>layers</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>17099829e22aaca051f8187d228734b8</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>MapControl::MouseMode</type>
-      <name>getMouseMode</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>54d121e10f3f360f21221fc16ef1bb64</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getNumberOfLayers</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>41cbe90eca4bb897715ba88657bb8ef4</anchor>
+      <anchor>ee9467ec4674af32aed2fbeb1175e0b5</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -1198,11 +1253,25 @@
       <arglist>(QSize size, MouseMode mousemode=Panning)</arglist>
     </member>
     <member kind="function">
+      <type>MapControl::MouseMode</type>
+      <name>mouseMode</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>9106ab9dcac042b57fc4e797c94d84dc</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>moveTo</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
       <anchor>f7e3575f01f98a4096ccf48ac6bd4a50</anchor>
       <arglist>(QPointF coordinate)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>numberOfLayers</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>f3950823abbdf717124c279a386ca280</anchor>
+      <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -1278,9 +1347,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="function">
@@ -1291,31 +1360,31 @@
       <arglist>(Geometry *geometry)</arglist>
     </member>
     <member kind="function">
-      <type>QString</type>
-      <name>getLayername</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>08982c11f5c5d96071be8778dbe614f2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Layer::LayerType</type>
-      <name>getLayertype</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>6a4a9aa2a843217076d590184219fd6a</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>const MapAdapter *</type>
-      <name>getMapAdapter</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>c0088eb49769ad0a6715fbdf85dbc50d</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
       <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>layername</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>414e94fdd70490d75ddccb6923ae3410</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Layer::LayerType</type>
+      <name>layertype</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>1cfbd8a5c27cf9cb400fa458a1f70ba5</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>const MapAdapter *</type>
+      <name>mapadapter</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>23cb6462136a0920739cdeb5f1709fa7</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -1337,6 +1406,13 @@
       <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
       <arglist>(const QPointF &amp;) const </arglist>
     </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function" virtualness="virtual">
       <type>virtual QPointF</type>
       <name>displayToCoordinate</name>
@@ -1346,37 +1422,23 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>getHost</name>
+      <name>host</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMaxZoom</name>
+      <name>maxZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>684e4d8c7fd3473fd2b9715a35acc524</anchor>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMinZoom</name>
+      <name>minZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>8125e1d95331d68ac8b47ae000587672</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getTileSize</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>4534935475bf8921f4e05ab1b40f317b</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>ced60888f5b4649ab4917befbd83c8e7</anchor>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -1385,6 +1447,13 @@
       <anchorfile>classqmapcontrol_1_1OSMMapAdapter.html</anchorfile>
       <anchor>b6f5dd078b96030385b14d2a5d777092</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tilesize</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
+      <arglist>() const </arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -1436,9 +1505,9 @@
     </member>
     <member kind="signal">
       <type>void</type>
-      <name>geometryClickEvent</name>
+      <name>geometryClicked</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f15230a2ebf28ee8dd609967478c9b7b</anchor>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
       <arglist>(Geometry *geometry, QPoint point)</arglist>
     </member>
     <member kind="signal">
@@ -1448,75 +1517,26 @@
       <anchor>807f9cfb1b9d680ca76cf825cc9cf46a</anchor>
       <arglist>(Geometry *geom)</arglist>
     </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cbb256b5f9f888e9cd3bb475108ece24</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QPointF</type>
+      <name>coordinate</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2fbb44b2ed047287d715484d2fda7299</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function">
       <type>bool</type>
       <name>Equals</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
       <arglist>(Geometry *geom)</arglist>
-    </member>
-    <member kind="function" virtualness="virtual">
-      <type>virtual QRectF</type>
-      <name>getBoundingBox</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>b06601b3a0eddcb0bf4d56deb74d8a3d</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>QPointF</type>
-      <name>getCoordinate</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>b08a6099dabf147fa8800e3c8daa2fb7</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>double</type>
-      <name>getLatitude</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>a30355ce4b33ea11338d38d2af8e0bbf</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>double</type>
-      <name>getLongitude</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>6c5a4634d917ad7a8715e55ad540e18d</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QString</type>
-      <name>getName</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>ebd19108ae7957a2c5f4f55aa4a8737e</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>Geometry *</type>
-      <name>getParentGeometry</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>55f87f3bc60d7cc98914077b2b812679</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPen *</type>
-      <name>getPen</name>
-      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>2307393519f57b0b734bc7fd4475a1c2</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>QPixmap *</type>
-      <name>getPixmap</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>f048bd187c6c771c6b3e95a3ef1060f7</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>QWidget *</type>
-      <name>getWidget</name>
-      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>6dc1ce5915d5464c5c08dd761362595e</anchor>
-      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -1526,25 +1546,67 @@
       <arglist>() const </arglist>
     </member>
     <member kind="function">
-      <type></type>
-      <name>Point</name>
+      <type>qreal</type>
+      <name>latitude</name>
       <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>35f85bdf48ad32143f39a4043f2c697d</anchor>
-      <arglist>(double x, double y, QPixmap *pixmap, QString name=QString(), enum Alignment alignment=Middle)</arglist>
+      <anchor>6311aabecac471455760aae4790cff91</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>longitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2b0f7ec9068af09bcf151af61a785845</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPixmap *</type>
+      <name>pixmap</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>166d4272301d85cc53e114ce4d26caf5</anchor>
+      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>Point</name>
       <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>55ea1318afec3d0dbd66d5e5d4460dcf</anchor>
-      <arglist>(double x, double y, QWidget *widget, QString name=QString(), enum Alignment alignment=Middle)</arglist>
+      <anchor>735b9dc17b1ba1595e7d29cadb4d18c1</anchor>
+      <arglist>(qreal x, qreal y, QPixmap *pixmap, QString name=QString(), enum Alignment alignment=Middle)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>Point</name>
       <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
-      <anchor>d24fa3f7225cac0ddb80b13cadfbd388</anchor>
-      <arglist>(double x, double y, QString name=QString(), enum Alignment alignment=Middle)</arglist>
+      <anchor>a1767675df0bc3c13c75b3a48241125e</anchor>
+      <arglist>(qreal x, qreal y, QWidget *widget, QString name=QString(), enum Alignment alignment=Middle)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Point</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>47257eee92b14e7c7f9b778c67bcb9a5</anchor>
+      <arglist>(qreal x, qreal y, QString name=QString(), enum Alignment alignment=Middle)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -1576,9 +1638,16 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>ToString</name>
+      <name>toString</name>
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
-      <anchor>f4dc3059f9ee9b3af63f0bbfe7dea848</anchor>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QWidget *</type>
+      <name>widget</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>d1eaabeb2b227cd055ccf4b4e2818480</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="virtual">
@@ -1600,6 +1669,13 @@
       <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
       <arglist>(const QPointF &amp;) const </arglist>
     </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function" virtualness="virtual">
       <type>virtual QPointF</type>
       <name>displayToCoordinate</name>
@@ -1609,37 +1685,23 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>getHost</name>
+      <name>host</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMaxZoom</name>
+      <name>maxZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>684e4d8c7fd3473fd2b9715a35acc524</anchor>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMinZoom</name>
+      <name>minZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>8125e1d95331d68ac8b47ae000587672</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getTileSize</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>4534935475bf8921f4e05ab1b40f317b</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>ced60888f5b4649ab4917befbd83c8e7</anchor>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -1648,6 +1710,13 @@
       <anchorfile>classqmapcontrol_1_1TileMapAdapter.html</anchorfile>
       <anchor>1233007f4393d3ae476a5284f9294e8c</anchor>
       <arglist>(const QString &amp;host, const QString &amp;serverPath, int tilesize, int minZoom=0, int maxZoom=17)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tilesize</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
+      <arglist>() const </arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -1661,6 +1730,13 @@
       <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
       <arglist>(const QPointF &amp;) const </arglist>
     </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function" virtualness="virtual">
       <type>virtual QPointF</type>
       <name>displayToCoordinate</name>
@@ -1670,37 +1746,30 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>getHost</name>
+      <name>host</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMaxZoom</name>
+      <name>maxZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>684e4d8c7fd3473fd2b9715a35acc524</anchor>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMinZoom</name>
+      <name>minZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>8125e1d95331d68ac8b47ae000587672</anchor>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getTileSize</name>
+      <name>tilesize</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>4534935475bf8921f4e05ab1b40f317b</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>ced60888f5b4649ab4917befbd83c8e7</anchor>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
@@ -1722,6 +1791,13 @@
       <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
       <arglist>(const QPointF &amp;) const </arglist>
     </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
     <member kind="function" virtualness="virtual">
       <type>virtual QPointF</type>
       <name>displayToCoordinate</name>
@@ -1731,37 +1807,30 @@
     </member>
     <member kind="function">
       <type>QString</type>
-      <name>getHost</name>
+      <name>host</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>47a82056e29973632b3f3323c1fa5e30</anchor>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMaxZoom</name>
+      <name>maxZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>684e4d8c7fd3473fd2b9715a35acc524</anchor>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getMinZoom</name>
+      <name>minZoom</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>8125e1d95331d68ac8b47ae000587672</anchor>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>getTileSize</name>
+      <name>tilesize</name>
       <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>4534935475bf8921f4e05ab1b40f317b</anchor>
-      <arglist>() const </arglist>
-    </member>
-    <member kind="function">
-      <type>int</type>
-      <name>getZoom</name>
-      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
-      <anchor>ced60888f5b4649ab4917befbd83c8e7</anchor>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">

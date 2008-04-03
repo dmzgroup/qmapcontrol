@@ -21,7 +21,7 @@
 namespace qmapcontrol
 {
 	Geometry::Geometry(QString name)
-	: GeometryType("Geometry"), parentGeometry(0), pen(0), visible(true), name(name)
+	: GeometryType("Geometry"), myparentGeometry(0), mypen(0), visible(true), myname(name)
 	{
 	}
 
@@ -30,17 +30,17 @@ namespace qmapcontrol
 	{
 	}
 
-	QString		Geometry::getName() const
+	QString		Geometry::name() const
 	{
-		return name;
+		return myname;
 	}
-	Geometry*	Geometry::getParentGeometry() const
+	Geometry*	Geometry::parentGeometry() const
 	{
-		return parentGeometry;
+		return myparentGeometry;
 	}
 	void	Geometry::setParentGeometry(Geometry* geom)
 	{
-		parentGeometry = geom;
+		myparentGeometry = geom;
 	}
 	bool			Geometry::hasPoints() const
 	{
@@ -50,7 +50,7 @@ namespace qmapcontrol
 	{
 		return false;
 	}
-	QList<Geometry*> Geometry::getClickedPoints()
+	QList<Geometry*> Geometry::clickedPoints()
 	{
 		QList<Geometry*> tmp;
 		return tmp;
@@ -63,20 +63,20 @@ namespace qmapcontrol
 	void Geometry::setVisible(bool visible)
 	{
 		this->visible = visible;
-		emit(updateRequest(getBoundingBox()));
+		emit(updateRequest(boundingBox()));
 	}
 
 	void Geometry::setName(QString name)
 	{
-		this->name = name;
+		myname = name;
 	}
 
 	void Geometry::setPen(QPen* pen)
 	{
-		this->pen = pen;
+		mypen = pen;
 	}
-	QPen* Geometry::getPen() const
+	QPen* Geometry::pen() const
 	{
-		return pen;
+		return mypen;
 	}
 }

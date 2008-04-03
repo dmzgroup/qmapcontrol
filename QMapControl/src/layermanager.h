@@ -52,7 +52,7 @@ namespace qmapcontrol
 		/*!
 			 * @return returns the coordinate of the middle of the screen
 		 */
-			QPointF		getCurrentCoordinate	() const;
+			QPointF		currentCoordinate	() const;
 		
 		//! returns the current offscreen image
 		/*!
@@ -65,7 +65,7 @@ namespace qmapcontrol
 			 * @param  layername name of the wanted layer
 			 * @return the layer with the given name
 		 */
-			Layer*		getLayer					(const QString&) const;
+			Layer*		layer					(const QString&) const;
 		
 		//! returns the base layer
 		/*!
@@ -73,13 +73,13 @@ namespace qmapcontrol
 			 * The base layer is the one which is used to do internal coordinate calculations.
 			 * @return the base layer 
 		 */
-			Layer*		getLayer					() const;
+			Layer*		layer					() const;
 		
 		//! returns the names of all layers
 		/*!
 			 * @return returns a QList with the names of all layers
 		 */
-			QList<QString> getLayers			() const;
+			QList<QString> layers			() const;
 
 		//! sets the middle of the map to the given coordinate
 		/*!
@@ -156,7 +156,7 @@ namespace qmapcontrol
 		/*!
 			 * @return returns the current zoom level
 		 */
-			int getCurrentZoom() const;
+			int currentZoom() const;
 		
 			void drawGeoms(QPainter* painter);
 			void drawImage(QPainter* painter);
@@ -187,11 +187,7 @@ namespace qmapcontrol
 			QPixmap composedOffscreenImage2;
 			QPixmap zoomImage;
 		
-			QList<Layer*>	layers;
-		
-
-		
-
+			QList<Layer*>	mylayers;
 		
 			QPoint mapmiddle_px;	// projection-display coordinates
 			QPointF mapmiddle;	// world coordinate

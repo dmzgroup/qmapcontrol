@@ -12,3 +12,4 @@
 #include "src/geometrylayer.h"
 #include "src/yahoomapadapter.h"
 #include "src/googlemapadapter.h"
+#include "src/googlesatmapadapter.h"

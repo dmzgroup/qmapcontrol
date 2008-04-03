@@ -43,7 +43,7 @@ namespace qmapcontrol
 		 * @param alignment alignment (Middle or TopLeft)
 		 * @param pen QPen for drawing
 		 */
-			CirclePoint(double x, double y, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
+			CirclePoint(qreal x, qreal y, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
 		
 		//!
 		/*!
@@ -55,7 +55,7 @@ namespace qmapcontrol
 			 * @param alignment alignment (Middle or TopLeft)
 			 * @param pen QPen for drawing
 		 */
-			CirclePoint(double x, double y, int radius = 10, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
+			CirclePoint(qreal x, qreal y, int radius = 10, QString name = QString(), Alignment alignment = Middle, QPen* pen=0);
 			virtual ~CirclePoint();
 		
 		//! sets the QPen which is used for drawing the circle

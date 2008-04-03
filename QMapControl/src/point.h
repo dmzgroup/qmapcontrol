@@ -75,7 +75,7 @@ namespace qmapcontrol
 			 * @param name name of the point
 			 * @param alignment allignment of the point (Middle or TopLeft)
 		 */
-			Point(double x, double y, QString name = QString(), enum Alignment alignment=Middle);
+			Point(qreal x, qreal y, QString name = QString(), enum Alignment alignment=Middle);
 		
 		//! Constructor
 		/*!
@@ -89,7 +89,7 @@ namespace qmapcontrol
 			 * @param name name of the point
 			 * @param alignment allignment of the point (Middle or TopLeft)
 		 */
-			Point(double x, double y, QWidget* widget, QString name = QString(), enum Alignment alignment = Middle);
+			Point(qreal x, qreal y, QWidget* widget, QString name = QString(), enum Alignment alignment = Middle);
 		
 		//! Constructor
 		/*!
@@ -101,7 +101,7 @@ namespace qmapcontrol
 			 * @param name name of the point
 			 * @param alignment allignment of the point (Middle or TopLeft)
 		 */
-			Point(double x, double y, QPixmap* pixmap, QString name = QString(), enum Alignment alignment = Middle);
+			Point(qreal x, qreal y, QPixmap* pixmap, QString name = QString(), enum Alignment alignment = Middle);
 			virtual ~Point();
 		
 		//! returns the bounding box of the point
@@ -110,19 +110,19 @@ namespace qmapcontrol
 			 * The size is set, if the point contains a pixmap or a widget 
 			 * @return the bounding box of the point
 		 */
-			virtual	QRectF		getBoundingBox();
+			virtual	QRectF		boundingBox();
 		
 		//! returns the longitude of the point
 		/*!
 			 * @return the longitude of the point
 		 */
-			double	getLongitude() const;
+			qreal	longitude() const;
 		
 		//! returns the latitude of the point
 		/*!
 			 * @return the latitude of the point
 		 */
-			double	getLatitude() const;
+			qreal	latitude() const;
 		
 		//! returns the coordinate of the point
 		/*!
@@ -130,20 +130,20 @@ namespace qmapcontrol
 			 * the y component the latitude
 			 * @return the coordinate of a point
 		 */
-			QPointF	getCoordinate() const;
+			QPointF	coordinate() const;
 		
-			virtual QList<Point*> getPoints();
+			virtual QList<Point*> points();
 
 		/*! \brief returns the widget of the point
 			@return the widget of the point
 		 */
-			QWidget* getWidget();
+			QWidget* widget();
 		
 		//! returns the pixmap of the point
 		/*!
 			 * @return the pixmap of the point
 		 */
-			QPixmap* getPixmap();
+			QPixmap* pixmap();
 		
 		//! Sets the zoom level on which the point´s pixmap gets displayed on full size
 		/*!
@@ -170,16 +170,16 @@ namespace qmapcontrol
 		 */
 			void setMaxsize(QSize maxsize);
 		
-			Point::Alignment getAlignment() const;
+			Point::Alignment alignment() const;
 		
 		protected:
-			double	X;
-			double	Y;
+			qreal		X;
+			qreal		Y;
 			QSize		size;
 		
 			QWidget* mywidget;
 			QPixmap* mypixmap;
-			Alignment alignment;
+			Alignment myalignment;
 			int homelevel;
 			QSize displaysize;
 			QSize minsize;
@@ -189,7 +189,7 @@ namespace qmapcontrol
 			void drawWidget(const MapAdapter* mapadapter, const QPoint offset);
 // 		void drawPixmap(QPainter* painter, const MapAdapter* mapadapter, const QRect &viewport, const QPoint versch);
 			virtual void draw(QPainter* painter, const MapAdapter* mapadapter, const QRect &viewport, const QPoint offset);
-			QPoint getAlignedPoint(const QPoint point) const;
+			QPoint alignedPoint(const QPoint point) const;
 		
 		//! returns true if the given Point touches this Point
 		/*!

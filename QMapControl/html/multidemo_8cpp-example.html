@@ -112,11 +112,11 @@ Multidemo::Multidemo(QWidget *parent)
         l-&gt;addGeometry(wpoint);
         pb-&gt;setGeometry(0,0,100,50);
 
-        connect(l, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
+        connect(l, SIGNAL(geometryClicked(Geometry*, QPoint)),
                           <span class="keyword">this</span>, SLOT(geometryClickEvent(Geometry*, QPoint)));
-        connect(l2, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
+        connect(l2, SIGNAL(geometryClicked(Geometry*, QPoint)),
                           <span class="keyword">this</span>, SLOT(geometryClickEvent(Geometry*, QPoint)));
-        connect(mc, SIGNAL(draggedRect(<span class="keyword">const</span> QRectF)),
+        connect(mc, SIGNAL(boxDragged(<span class="keyword">const</span> QRectF)),
                           <span class="keyword">this</span>, SLOT(draggedRect(QRectF)));
         connect(mc, SIGNAL(mouseEventCoordinate(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPointF)),
                           <span class="keyword">this</span>, SLOT(mouseEventCoordinate(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPointF)));
@@ -196,7 +196,7 @@ Multidemo::Multidemo(QWidget *parent)
 {
         <span class="keywordflow">if</span> (btn1-&gt;isChecked() &amp;&amp; evnt-&gt;type()==QEvent::MouseButtonPress)
         {
-                mc-&gt;getLayer(<span class="stringliteral">"Geom Layer"</span>)-&gt;addGeometry(<span class="keyword">new</span> CirclePoint(coord.x(), coord.y(), 10, <span class="stringliteral">"added point"</span>));
+                mc-&gt;layer(<span class="stringliteral">"Geom Layer"</span>)-&gt;addGeometry(<span class="keyword">new</span> CirclePoint(coord.x(), coord.y(), 10, <span class="stringliteral">"added point"</span>));
                 mc-&gt;updateRequestNew();
         }
 }
@@ -205,15 +205,15 @@ Multidemo::Multidemo(QWidget *parent)
 {
         <span class="keywordflow">if</span> (geom-&gt;hasClickedPoints())
         {
-                QList&lt;Geometry*&gt; pp = geom-&gt;getClickedPoints();
+                QList&lt;Geometry*&gt; pp = geom-&gt;clickedPoints();
                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;pp.size(); i++)
                 {
-                        QMessageBox::information(<span class="keyword">this</span>, geom-&gt;getName(), pp.at(i)-&gt;getName());
+                        QMessageBox::information(<span class="keyword">this</span>, geom-&gt;name(), pp.at(i)-&gt;name());
                 }
         }
         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geom-&gt;GeometryType == <span class="stringliteral">"Point"</span>)
         {
-                QMessageBox::information(<span class="keyword">this</span>, geom-&gt;getName(), QString(<span class="stringliteral">"Position: "</span>).append(QString().setNum(((Point*)geom)-&gt;getLongitude())).append(QString(<span class="stringliteral">"/"</span>)).append(QString().setNum(((Point*)geom)-&gt;getLatitude())));
+                QMessageBox::information(<span class="keyword">this</span>, geom-&gt;name(), QString(<span class="stringliteral">"Position: "</span>).append(QString().setNum(((Point*)geom)-&gt;longitude())).append(QString(<span class="stringliteral">"/"</span>)).append(QString().setNum(((Point*)geom)-&gt;latitude())));
         }
 
 }
@@ -290,7 +290,7 @@ Multidemo::~Multidemo()
         QList&lt;QPointF&gt; coords;
         coords.append(rect.topLeft());
         coords.append(rect.bottomRight());
-        mc-&gt;setView(coords);
+        mc-&gt;setViewAndZoomIn(coords);
 }
 
 <span class="keywordtype">void</span> Multidemo::mouseEventCoordinate(<span class="keyword">const</span> QMouseEvent* evnt, <span class="keyword">const</span> QPointF coordinate)
@@ -302,7 +302,7 @@ Multidemo::~Multidemo()
         <span class="comment">//update mini-window</span>
         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(evnt-&gt;type() == QEvent::MouseButtonRelease)
         {
-                mc2-&gt;setView(mc-&gt;getCurrentCoordinate());
+                mc2-&gt;setView(mc-&gt;currentCoordinate());
         }
 }
 <span class="keywordtype">void</span> Multidemo::coordinateClicked_mc2(<span class="keyword">const</span> QMouseEvent* evnt, <span class="keyword">const</span> QPointF coordinate)
@@ -313,7 +313,7 @@ Multidemo::~Multidemo()
                 mc-&gt;setView(coordinate);
         }
 }
-</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:16 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

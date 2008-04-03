@@ -23,7 +23,7 @@ namespace qmapcontrol
 			bool isValid(int x, int y, int z) const;
 		protected:
 			virtual int tilesonzoomlevel(int zoomlevel) const;
-			virtual int getyoffset(int y) const;
+			virtual int yoffset(int y) const;
 	};
 }
 #endif

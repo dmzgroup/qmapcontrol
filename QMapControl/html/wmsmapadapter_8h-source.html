@@ -45,7 +45,7 @@
 <a name="l00033"></a>00033         {
 <a name="l00034"></a>00034                 <span class="keyword">public</span>:
 <a name="l00036"></a>00036 
-<a name="l00045"></a>00045                         <a class="code" href="classqmapcontrol_1_1WMSMapAdapter.html#0bfce681fddbae34a9fae6fc8c2f0a38" title="constructor">WMSMapAdapter</a>(QString host, QString serverPath, <span class="keywordtype">int</span> tilesize = 256);
+<a name="l00045"></a>00045                         <a class="code" href="classqmapcontrol_1_1WMSMapAdapter.html#0bfce681fddbae34a9fae6fc8c2f0a38" title="constructor">WMSMapAdapter</a>(QString <a class="code" href="classqmapcontrol_1_1MapAdapter.html#7ee8388c7880d8a3466967464f5034b6" title="returns the host of this MapAdapter">host</a>, QString serverPath, <span class="keywordtype">int</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html#f105c5a0cf588a3f60d67744bd353391" title="returns the size of the tiles">tilesize</a> = 256);
 <a name="l00046"></a>00046                         <span class="keyword">virtual</span> ~<a class="code" href="classqmapcontrol_1_1WMSMapAdapter.html" title="MapAdapter for WMS servers.">WMSMapAdapter</a>();
 <a name="l00047"></a>00047                 
 <a name="l00048"></a>00048                         <span class="keyword">virtual</span> QPoint          <a class="code" href="classqmapcontrol_1_1WMSMapAdapter.html#94134b06e350d302f5b3a63f0016aa60" title="translates a world coordinate to display coordinate">coordinateToDisplay</a>(<span class="keyword">const</span> QPointF&amp;) <span class="keyword">const</span>;
@@ -55,18 +55,18 @@
 <a name="l00052"></a>00052                 <span class="keyword">protected</span>:
 <a name="l00053"></a>00053                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_in();
 <a name="l00054"></a>00054                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_out();
-<a name="l00055"></a>00055                         <span class="keyword">virtual</span> QString getQuery(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
+<a name="l00055"></a>00055                         <span class="keyword">virtual</span> QString query(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
 <a name="l00056"></a>00056                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValid(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span>;
 <a name="l00057"></a>00057                 
 <a name="l00058"></a>00058                 <span class="keyword">private</span>:
-<a name="l00059"></a>00059                         <span class="keyword">virtual</span> QString getQ(<span class="keywordtype">double</span> ux, <span class="keywordtype">double</span> uy, <span class="keywordtype">double</span> ox, <span class="keywordtype">double</span> oy) <span class="keyword">const</span>;
+<a name="l00059"></a>00059                                 <span class="keyword">virtual</span> QString getQ(qreal ux, qreal uy, qreal ox, qreal oy) <span class="keyword">const</span>;
 <a name="l00060"></a>00060                 
-<a name="l00061"></a>00061                         <span class="keywordtype">double</span> coord_per_x_tile;
-<a name="l00062"></a>00062                         <span class="keywordtype">double</span> coord_per_y_tile;
+<a name="l00061"></a>00061                         qreal coord_per_x_tile;
+<a name="l00062"></a>00062                         qreal coord_per_y_tile;
 <a name="l00063"></a>00063         };
 <a name="l00064"></a>00064 }
 <a name="l00065"></a>00065 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:16 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

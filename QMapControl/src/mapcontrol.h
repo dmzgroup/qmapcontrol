@@ -84,31 +84,31 @@ namespace qmapcontrol
 			 * @param  layername name of the wanted layer
 			 * @return the layer with the given name
 		 */
-			Layer* getLayer(const QString& layername) const;
+			Layer* layer(const QString& layername) const;
 		
 		//! returns the names of all layers
 		/*!
 			 * @return returns a QList with the names of all layers
 		 */
-			QList<QString> getLayers() const;
+			QList<QString> layers() const;
 		
 		//! returns the number of existing layers
 		/*!
 			 * @return returns the number of existing layers
 		 */
-			int getNumberOfLayers() const;
+			int numberOfLayers() const;
 		
 		//! returns the coordinate of the center of the map
 		/*!
 			 * @return returns the coordinate of the middle of the screen
 		 */
-			QPointF	getCurrentCoordinate() const;
+			QPointF	currentCoordinate() const;
 		
 		//! returns the current zoom level
 		/*!
 			 * @return returns the current zoom level
 		 */
-			int getCurrentZoom() const;
+			int currentZoom() const;
 		
 		//! sets the middle of the map to the given coordinate
 		/*!
@@ -164,7 +164,7 @@ namespace qmapcontrol
 		/*!
 			 * There are three MouseModes declard by an enum.
 			 * The MouesMode Dragging draws an rectangular in the map while the MouseButton is pressed.
-			 * When the Button is released a draggedRect() signal is emitted.
+			 * When the Button is released a boxDragged() signal is emitted.
 			 * 
 			 * The second MouseMode (the default) is Panning, which allows to drag the map around.
 			 * @param mousemode the MouseMode
@@ -176,7 +176,7 @@ namespace qmapcontrol
 			 * For a explanation for the MouseModes see setMouseMode()
 			 * @return the current MouseMode
 		 */
-			MapControl::MouseMode getMouseMode();
+			MapControl::MouseMode mouseMode();
 		
 			int rotation;
 		
@@ -191,7 +191,7 @@ namespace qmapcontrol
 		
 			bool mousepressed;
 		
-			MouseMode mousemode;
+			MouseMode mymousemode;
 		
 			QMutex moveMutex;	// used for method moveTo()
 			QPointF target;	// used for method moveTo()
@@ -227,14 +227,14 @@ namespace qmapcontrol
 			 * The coordinates are in world coordinates
 			 * @param  QRectF the dragged Rect
 		 */
-			void draggedRect(const QRectF);
+			void boxDragged(const QRectF);
 		
 		//! This signal is emmited, when a Geometry is clicked
 		/*!
 			 * @param geometry 
 			 * @param coord_px  asd
 		 */
-			void geometryClickEvent(Geometry* geometry, QPoint coord_px);
+			void geometryClicked(Geometry* geometry, QPoint coord_px);
 		
 		public slots:
 		//! zooms in one step

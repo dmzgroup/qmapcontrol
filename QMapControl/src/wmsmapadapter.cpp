@@ -53,20 +53,14 @@ namespace qmapcontrol
 
 	QPoint WMSMapAdapter::coordinateToDisplay(const QPointF& coordinate) const
 	{
-// 	double x = ((coordinate.x()+180)*(tilesize*numberOfTiles/360));
-// 	double y = (((coordinate.y()*-1)+90)*(tilesize*numberOfTiles/180));
-	
-		double x = (coordinate.x()+180) * (numberOfTiles*tilesize)/360.;		// coord to pixel!
-		double y = -1*(coordinate.y()-90) * (numberOfTiles*tilesize)/180.;	// coord to pixel!
+		qreal x = (coordinate.x()+180) * (numberOfTiles*mytilesize)/360.;		// coord to pixel!
+		qreal y = -1*(coordinate.y()-90) * (numberOfTiles*mytilesize)/180.;	// coord to pixel!
 		return QPoint(int(x), int(y));
 	}
 	QPointF WMSMapAdapter::displayToCoordinate(const QPoint& point) const
 	{
-// 	double lon = ((point.x()/tilesize*numberOfTiles)*360)-180;
-// 	double lat = (((point.y()/tilesize*numberOfTiles)*180)-90)*-1;
-	
-		double lon = (point.x()*(360./(numberOfTiles*tilesize)))-180;
-		double lat = -(point.y()*(180./(numberOfTiles*tilesize)))+90;
+		qreal lon = (point.x()*(360./(numberOfTiles*mytilesize)))-180;
+		qreal lat = -(point.y()*(180./(numberOfTiles*mytilesize)))+90;
 		return QPointF(lon, lat);
 	}
 	void WMSMapAdapter::zoom_in()
@@ -92,14 +86,14 @@ namespace qmapcontrol
 		}
 // 	return false;
 	}
-	QString WMSMapAdapter::getQuery(int i, int j, int /*z*/) const
+	QString WMSMapAdapter::query(int i, int j, int /*z*/) const
 	{
 		return getQ(-180+i*coord_per_x_tile,
 						 90-(j+1)*coord_per_y_tile,
-							  -180+i*coord_per_x_tile+coord_per_x_tile,
-			90-(j+1)*coord_per_y_tile+coord_per_y_tile);
+						-180+i*coord_per_x_tile+coord_per_x_tile,
+						 90-(j+1)*coord_per_y_tile+coord_per_y_tile);
 	}
-	QString WMSMapAdapter::getQ(double ux, double uy, double ox, double oy) const
+	QString WMSMapAdapter::getQ(qreal ux, qreal uy, qreal ox, qreal oy) const
 	{
 		return QString().append(serverPath)
 				.append(loc.toString(ux)).append(",")

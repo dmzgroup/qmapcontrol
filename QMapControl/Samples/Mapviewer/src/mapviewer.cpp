@@ -63,11 +63,15 @@ void Mapviewer::createActions()
 	yahooActionMap = new QAction(tr("Yahoo: Map"), mapproviderGroup);
 	yahooActionSatellite = new QAction(tr("Yahoo: Satellite"), mapproviderGroup);
 	googleActionMap = new QAction(tr("Google: Map"), mapproviderGroup);
+	googleActionSat = new QAction(tr("Google: Satellite"), mapproviderGroup);
+	wmsAction = new QAction(tr("WMS"), mapproviderGroup);
 	osmAction->setCheckable(true);
 	yahooActionMap->setCheckable(true);
 	yahooActionSatellite->setCheckable(true);
 	googleActionMap->setCheckable(true);
+	googleActionSat->setCheckable(true);
 	osmAction->setChecked(true);
+	wmsAction->setCheckable(true);
 	connect(mapproviderGroup, SIGNAL(triggered(QAction*)),
 			  this, SLOT(mapproviderSelected(QAction*)));
 	
@@ -85,6 +89,8 @@ void Mapviewer::createMenu()
 	mapMenu->addAction(yahooActionMap);
 	mapMenu->addAction(yahooActionSatellite);
 	mapMenu->addAction(googleActionMap);
+	mapMenu->addAction(googleActionSat);
+	mapMenu->addAction(wmsAction);
 	mapMenu->addSeparator();
 	mapMenu->addAction(yahooActionOverlay);
 }
@@ -93,7 +99,7 @@ void Mapviewer::mapproviderSelected(QAction* action)
 {
 	if (action == osmAction)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
+		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		
 		mapadapter = new OSMMapAdapter();
@@ -107,7 +113,7 @@ void Mapviewer::mapproviderSelected(QAction* action)
 		
 	} else if (action == yahooActionMap)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
+		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		
 		mapadapter = new YahooMapAdapter();
@@ -120,8 +126,8 @@ void Mapviewer::mapproviderSelected(QAction* action)
 		yahooActionOverlay->setChecked(false);
 	} else if (action == yahooActionSatellite)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
-		QPointF a = mc->getCurrentCoordinate();
+		int zoom = mapadapter->adaptedZoom();
+		QPointF a = mc->currentCoordinate();
 		mc->setZoom(0);
 		
 		mapadapter = new YahooMapAdapter("us.maps3.yimg.com", "/aerial.maps.yimg.com/png?v=1.7&t=a&s=256&x=%2&y=%3&z=%1");
@@ -132,11 +138,36 @@ void Mapviewer::mapproviderSelected(QAction* action)
 		yahooActionOverlay->setEnabled(true);
 	} else if (action == googleActionMap)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
+		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		mapadapter = new GoogleMapAdapter();
 		mainlayer->setMapAdapter(mapadapter);
 		
+		mc->updateRequestNew();
+		mc->setZoom(zoom);
+		yahooActionOverlay->setEnabled(false);
+		overlay->setVisible(false);
+		yahooActionOverlay->setChecked(false);
+	} else if (action == googleActionSat)
+	{
+		int zoom = mapadapter->adaptedZoom();
+		mc->setZoom(0);
+		mapadapter = new GoogleSatMapAdapter();
+		mainlayer->setMapAdapter(mapadapter);
+		
+		mc->updateRequestNew();
+		mc->setZoom(zoom);
+		yahooActionOverlay->setEnabled(false);
+		overlay->setVisible(false);
+		yahooActionOverlay->setChecked(false);
+	} else if (action == wmsAction)
+	{
+		int zoom = mapadapter->adaptedZoom();
+		mc->setZoom(0);
+		
+		mapadapter = new WMSMapAdapter("www2.demis.nl", "/wms/wms.asp?wms=WorldMap&LAYERS=Countries,Borders,Cities,Rivers,Settlements,Hillshading,Waterbodies,Railroads,Highways,Roads&FORMAT=image/png&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&STYLES=&EXCEPTIONS=application/vnd.ogc.se_inimage&SRS=EPSG:4326&TRANSPARENT=FALSE", 256);
+		mainlayer->setMapAdapter(mapadapter);
+	
 		mc->updateRequestNew();
 		mc->setZoom(zoom);
 		yahooActionOverlay->setEnabled(false);

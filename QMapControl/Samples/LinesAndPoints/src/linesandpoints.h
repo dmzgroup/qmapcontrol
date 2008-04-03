@@ -35,7 +35,7 @@ class LinesAndPoints : public QWidget
 		void addZoomButtons();
 		
 	public slots:
-		void geometryClickEvent(Geometry* geom, QPoint coord_px);
+		void geometryClicked(Geometry* geom, QPoint coord_px);
 		
 	protected:
 		void keyPressEvent(QKeyEvent* evnt);

@@ -59,7 +59,7 @@ namespace qmapcontrol
 			ImageManager* parent;
 			QHttp* http;
 			QMap<int, QString> loadingMap;
-			double loaded;
+			qreal loaded;
 			QMutex vectorMutex;
 			MapNetwork& operator=(const MapNetwork& rhs);
 			MapNetwork(const MapNetwork& old);

@@ -21,7 +21,7 @@
 namespace qmapcontrol
 {
 	MapAdapter::MapAdapter(const QString& host, const QString& serverPath, int tilesize, int minZoom, int maxZoom)
-	:host(host), serverPath(serverPath), tilesize(tilesize), min_zoom(minZoom), max_zoom(maxZoom)
+	:myhost(host), serverPath(serverPath), mytilesize(tilesize), min_zoom(minZoom), max_zoom(maxZoom)
 	{	
 		current_zoom = min_zoom;
 		loc = QLocale(QLocale::English);
@@ -31,32 +31,32 @@ namespace qmapcontrol
 	{
 	}
 
-	QString MapAdapter::getHost() const
+	QString MapAdapter::host() const
 	{
-		return host;
+		return myhost;
 	}
 
-	int MapAdapter::getTileSize() const
+	int MapAdapter::tilesize() const
 	{
-		return tilesize;
+		return mytilesize;
 	}
 
-	int MapAdapter::getMinZoom() const
+	int MapAdapter::minZoom() const
 	{
 		return min_zoom;
 	}
 
-	int MapAdapter::getMaxZoom() const
+	int MapAdapter::maxZoom() const
 	{
 		return max_zoom;
 	}
 
-	int MapAdapter::getZoom() const
+	int MapAdapter::currentZoom() const
 	{
 		return current_zoom;
 	}
 
-	int MapAdapter::getAdaptedZoom() const
+	int MapAdapter::adaptedZoom() const
 	{
 		return max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
 	}

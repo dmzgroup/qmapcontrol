@@ -27,7 +27,8 @@ HEADERS += circlepoint.h \
            point.h \
            tilemapadapter.h \
            wmsmapadapter.h \
-           yahoomapadapter.h
+           yahoomapadapter.h \
+           yahooapimapadapter.h
 SOURCES += circlepoint.cpp \
            curve.cpp \
            geometry.cpp \
@@ -47,4 +48,5 @@ SOURCES += circlepoint.cpp \
            point.cpp \
            tilemapadapter.cpp \
            wmsmapadapter.cpp \
-           yahoomapadapter.cpp
+           yahoomapadapter.cpp \
+           yahooapimapadapter.cpp

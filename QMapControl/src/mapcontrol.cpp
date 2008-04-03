@@ -21,7 +21,7 @@
 namespace qmapcontrol
 {
 	MapControl::MapControl(QSize size, MouseMode mousemode)
-	: size(size), mousemode(mousemode)
+	: size(size), mymousemode(mousemode)
 	{
 		layermanager = new LayerManager(this, size);
 		screen_middle = QPoint(size.width()/2, size.height()/2);
@@ -42,24 +42,24 @@ namespace qmapcontrol
 		delete layermanager;	
 	}
 
-	QPointF	MapControl::getCurrentCoordinate() const
+	QPointF	MapControl::currentCoordinate() const
 	{
-		return layermanager->getCurrentCoordinate();
+		return layermanager->currentCoordinate();
 	}
 
-	Layer* MapControl::getLayer(const QString& layername) const
+	Layer* MapControl::layer(const QString& layername) const
 	{
-		return layermanager->getLayer(layername);
+		return layermanager->layer(layername);
 	}
 
-	QList<QString> MapControl::getLayers() const
+	QList<QString> MapControl::layers() const
 	{
-		return layermanager->getLayers();
+		return layermanager->layers();
 	}
 
-	int MapControl::getNumberOfLayers() const
+	int MapControl::numberOfLayers() const
 	{
-		return layermanager->getLayers().size();
+		return layermanager->layers().size();
 	}
 
 	void MapControl::followGeometry(const Geometry* geom) const
@@ -70,8 +70,8 @@ namespace qmapcontrol
 
 	void MapControl::positionChanged(Geometry* geom)
 	{
-		QPoint start = layermanager->getLayer()->getMapAdapter()->coordinateToDisplay(getCurrentCoordinate());
-		QPoint dest = layermanager->getLayer()->getMapAdapter()->coordinateToDisplay(((Point*)geom)->getCoordinate());
+		QPoint start = layermanager->layer()->mapadapter()->coordinateToDisplay(currentCoordinate());
+		QPoint dest = layermanager->layer()->mapadapter()->coordinateToDisplay(((Point*)geom)->coordinate());
 
 		QPoint step = (dest-start);
 
@@ -96,11 +96,11 @@ namespace qmapcontrol
 	}
 	void MapControl::tick()
 	{
-		QPoint start = layermanager->getLayer()->getMapAdapter()->coordinateToDisplay(getCurrentCoordinate());
-		QPoint dest = layermanager->getLayer()->getMapAdapter()->coordinateToDisplay(target);
+		QPoint start = layermanager->layer()->mapadapter()->coordinateToDisplay(currentCoordinate());
+		QPoint dest = layermanager->layer()->mapadapter()->coordinateToDisplay(target);
 	
 		QPoint step = (dest-start)/steps;
-		QPointF next = getCurrentCoordinate()- step;
+		QPointF next = currentCoordinate()- step;
 
 // 	setView(Coordinate(next.x(), next.y()));
 		layermanager->scrollView(step);
@@ -160,7 +160,7 @@ namespace qmapcontrol
 		qm = painter.combinedMatrix();
 	*/
 
-		if (mousepressed && mousemode == Dragging)
+		if (mousepressed && mymousemode == Dragging)
 		{
 			QRect rect = QRect(pre_click_px, current_mouse_pos);
 			painter.drawRect(rect);
@@ -179,17 +179,17 @@ namespace qmapcontrol
 	
 		layermanager->mouseEvent(evnt);
 	
-		if (layermanager->getLayers().size()>0)
+		if (layermanager->layers().size()>0)
 		{
 			if (evnt->button() == 1)
 			{
 				mousepressed = true;
 				pre_click_px = QPoint(evnt->x(), evnt->y());
 			}
-			else if (evnt->button() == 2 && mousemode != None)	// zoom in
+			else if (evnt->button() == 2 && mymousemode != None)	// zoom in
 			{
 				zoomIn();
-			} else if  (evnt->button() == 4 && mousemode != None)	// zoom out
+			} else if  (evnt->button() == 4 && mymousemode != None)	// zoom out
 			{
 				zoomOut();
 			}
@@ -202,14 +202,14 @@ namespace qmapcontrol
 	void MapControl::mouseReleaseEvent(QMouseEvent* evnt)
 	{
 		mousepressed = false;
-		if (mousemode == Dragging)
+		if (mymousemode == Dragging)
 		{
 			QPointF ulCoord = clickToWorldCoordinate(pre_click_px);
 			QPointF lrCoord = clickToWorldCoordinate(current_mouse_pos);
 		
 			QRectF coordinateBB = QRectF(ulCoord, QSizeF( (lrCoord-ulCoord).x(), (lrCoord-ulCoord).y()));
 
-			emit(draggedRect(coordinateBB));
+			emit(boxDragged(coordinateBB));
 		}
 	
 		emit(mouseEventCoordinate(evnt, clickToWorldCoordinate(evnt->pos())));
@@ -224,13 +224,13 @@ namespace qmapcontrol
 		QMouseEvent* me = new QMouseEvent(evnt->type(), qm.map(QPoint(evnt->x(),evnt->y())), evnt->button(), evnt->buttons(), evnt->modifiers());
 		evnt = me;
 	*/
-		if (mousepressed && mousemode == Panning)
+		if (mousepressed && mymousemode == Panning)
 		{
 			QPoint offset = pre_click_px - QPoint(evnt->x(), evnt->y());
 			layermanager->scrollView(offset);
 			pre_click_px = QPoint(evnt->x(), evnt->y());
 		}
-		else if (mousepressed && mousemode == Dragging)
+		else if (mousepressed && mymousemode == Dragging)
 		{
 			current_mouse_pos = QPoint(evnt->x(), evnt->y());
 		}
@@ -246,7 +246,7 @@ namespace qmapcontrol
 		QPoint displayToImage= QPoint(click.x()-screen_middle.x()+layermanager->getMapmiddle_px().x(),
 												click.y()-screen_middle.y()+layermanager->getMapmiddle_px().y());
 	// image coordinate to world coordinate
-		return layermanager->getLayer()->getMapAdapter()->displayToCoordinate(displayToImage);
+		return layermanager->layer()->mapadapter()->displayToCoordinate(displayToImage);
 	}
 
 	void MapControl::updateRequest(QRect rect)
@@ -275,9 +275,9 @@ namespace qmapcontrol
 		layermanager->setZoom(zoomlevel);
 		update();
 	}
-	int MapControl::getCurrentZoom() const
+	int MapControl::currentZoom() const
 	{
-		return layermanager->getCurrentZoom();
+		return layermanager->currentZoom();
 	}
 	void MapControl::scrollLeft(int pixel)
 	{
@@ -322,7 +322,7 @@ namespace qmapcontrol
 
 	void MapControl::setView(const Point* point) const
 	{
-		layermanager->setView(point->getCoordinate());
+		layermanager->setView(point->coordinate());
 	}
 
 	void MapControl::loadingFinished()
@@ -337,11 +337,11 @@ namespace qmapcontrol
 
 	void MapControl::setMouseMode(MouseMode mousemode)
 	{
-		this->mousemode = mousemode;
+		mymousemode = mousemode;
 	}
-	MapControl::MouseMode MapControl::getMouseMode()
+	MapControl::MouseMode MapControl::mouseMode()
 	{
-		return mousemode;
+		return mymousemode;
 	}
 
 	void MapControl::stopFollowing(Geometry* geom)

@@ -1,0 +1,5 @@
+0.9.4
+=====
+- removed "get" prefixes from ancessor functions, to improve Qt-like design
+- renamed event "geometryClickEvent()" to "geometryClicked()"
+- renamed event "draggedRect()" to "boxDragged()"

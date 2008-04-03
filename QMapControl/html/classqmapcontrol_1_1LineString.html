@@ -44,9 +44,9 @@ Inheritance diagram for LineString:</div>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">if visible is true, the layer is made visible  <a href="#18e44e30b31525a243960ca3928125aa"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Signals</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#f15230a2ebf28ee8dd609967478c9b7b">geometryClickEvent</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint point)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#685dcab83356e5cc449475f177bb487d">geometryClicked</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint point)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#f15230a2ebf28ee8dd609967478c9b7b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#685dcab83356e5cc449475f177bb487d"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#807f9cfb1b9d680ca76cf825cc9cf46a">positionChanged</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geom)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> emits this signal, when its position gets changed.  <a href="#807f9cfb1b9d680ca76cf825cc9cf46a"></a><br></td></tr>
@@ -54,29 +54,14 @@ Inheritance diagram for LineString:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#8694ab9a03b0ed4986c98ad727755f8a">addPoint</a> (<a class="el" href="classqmapcontrol_1_1Point.html">Point</a> *point)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">adds a point at the end of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>  <a href="#8694ab9a03b0ed4986c98ad727755f8a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual QRectF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#cbb256b5f9f888e9cd3bb475108ece24">boundingBox</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the BoundingBox  <a href="#cbb256b5f9f888e9cd3bb475108ece24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual QList&lt; <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#c1cdf207019e92f289e62e9abb5ba2c3">clickedPoints</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the clicked Points  <a href="#c1cdf207019e92f289e62e9abb5ba2c3"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#029a8b50c439c719aac173bffe4cfb71">Equals</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geom)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual QRectF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#b06601b3a0eddcb0bf4d56deb74d8a3d">getBoundingBox</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the BoundingBox  <a href="#b06601b3a0eddcb0bf4d56deb74d8a3d"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual QList&lt; <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#568664858600004fc5a20c86cec8199c">getClickedPoints</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the clicked Points  <a href="#568664858600004fc5a20c86cec8199c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#ebd19108ae7957a2c5f4f55aa4a8737e">getName</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#ebd19108ae7957a2c5f4f55aa4a8737e"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#17a7d7c66a35212597d3220e1a661be3">getNumberOfPoints</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the number of Points the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> consists of  <a href="#17a7d7c66a35212597d3220e1a661be3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#55f87f3bc60d7cc98914077b2b812679">getParentGeometry</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#55f87f3bc60d7cc98914077b2b812679"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QPen *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#2307393519f57b0b734bc7fd4475a1c2">getPen</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the QPen which is used on drawing  <a href="#2307393519f57b0b734bc7fd4475a1c2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QList&lt; <a class="el" href="classqmapcontrol_1_1Point.html">Point</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#334f085bf653b9e517cc5a38ce8b2173">getPoints</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>  <a href="#334f085bf653b9e517cc5a38ce8b2173"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#3f7357f0362b6bee75f8c8c623fb528e">hasClickedPoints</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns true if the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> has clicked Points  <a href="#3f7357f0362b6bee75f8c8c623fb528e"></a><br></td></tr>
@@ -89,15 +74,30 @@ Inheritance diagram for LineString:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#d8efdad1cc0ff6c63357cb72180c3a0a">LineString</a> (QList&lt; <a class="el" href="classqmapcontrol_1_1Point.html">Point</a> * &gt; const points, QString name=QString(), QPen *pen=0)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">constructor  <a href="#d8efdad1cc0ff6c63357cb72180c3a0a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#2b0a198f837184bf6fff555cee3ce770">name</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#2b0a198f837184bf6fff555cee3ce770"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#06b5ac0b597b8d1cb7e8817f7e66c2eb">numberOfPoints</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the number of Points the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> consists of  <a href="#06b5ac0b597b8d1cb7e8817f7e66c2eb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#771cc513dc079219d5da2c4b81019d7c">parentGeometry</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#771cc513dc079219d5da2c4b81019d7c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPen *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#ed7be2fcd2c1d7bccb55f5ac73d7a662">pen</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the QPen which is used on drawing  <a href="#ed7be2fcd2c1d7bccb55f5ac73d7a662"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QList&lt; <a class="el" href="classqmapcontrol_1_1Point.html">Point</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#18d4d26904bca7c54fb9d2a1b054c2fb">points</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>  <a href="#18d4d26904bca7c54fb9d2a1b054c2fb"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#6220fae15759fd0fa7d75e415df34e83">setName</a> (QString name)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sets the name of the geometry  <a href="#6220fae15759fd0fa7d75e415df34e83"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1LineString.html#6af8f478f54e6704e87dcf184a258a8c">setPoints</a> (QList&lt; <a class="el" href="classqmapcontrol_1_1Point.html">Point</a> * &gt; points)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sets the given list as points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>  <a href="#6af8f478f54e6704e87dcf184a258a8c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#f4dc3059f9ee9b3af63f0bbfe7dea848">ToString</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#3a013a6edb6d10a71297978bc31a796b">toString</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns a String representation of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#f4dc3059f9ee9b3af63f0bbfe7dea848"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns a String representation of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#3a013a6edb6d10a71297978bc31a796b"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 A collection of <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> objects to describe a line. 
@@ -177,6 +177,54 @@ adds a point at the end of the <a class="el" href="classqmapcontrol_1_1LineStrin
 
 </div>
 </div><p>
+<a class="anchor" name="cbb256b5f9f888e9cd3bb475108ece24"></a><!-- doxytag: member="qmapcontrol::LineString::boundingBox" ref="cbb256b5f9f888e9cd3bb475108ece24" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QRectF boundingBox           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the BoundingBox 
+<p>
+The bounding box in world coordinates <dl class="return" compact><dt><b>Returns:</b></dt><dd>the BoundingBox </dd></dl>
+
+<p>Implements <a class="el" href="classqmapcontrol_1_1Geometry.html#f92c4fa46f711bea92efe5ab80f9084d">Geometry</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c1cdf207019e92f289e62e9abb5ba2c3"></a><!-- doxytag: member="qmapcontrol::LineString::clickedPoints" ref="c1cdf207019e92f289e62e9abb5ba2c3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * &gt; clickedPoints           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the clicked Points 
+<p>
+If a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> was clicked it could be neccessary to figure out which of its points where clicked. Do do so the methods <a class="el" href="classqmapcontrol_1_1LineString.html#c3fc4ac8c80b5bf64c0bf095d7fde94b" title="returns true if the LineString has Childs">hasPoints()</a> and <a class="el" href="classqmapcontrol_1_1LineString.html#c1cdf207019e92f289e62e9abb5ba2c3" title="returns the clicked Points">clickedPoints()</a> can be used. When a point is added to a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> the <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> becomes its child. It is possible (depending on the zoomfactor) to click more than one <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> of a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>, so this method returns a list. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the clicked Points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="029a8b50c439c719aac173bffe4cfb71"></a><!-- doxytag: member="qmapcontrol::LineString::Equals" ref="029a8b50c439c719aac173bffe4cfb71" args="(Geometry *geom)" -->
 <div class="memitem">
 <div class="memproto">
@@ -203,12 +251,12 @@ returns true if the given <a class="el" href="classqmapcontrol_1_1Geometry.html"
 
 </div>
 </div><p>
-<a class="anchor" name="f15230a2ebf28ee8dd609967478c9b7b"></a><!-- doxytag: member="qmapcontrol::LineString::geometryClickEvent" ref="f15230a2ebf28ee8dd609967478c9b7b" args="(Geometry *geometry, QPoint point)" -->
+<a class="anchor" name="685dcab83356e5cc449475f177bb487d"></a><!-- doxytag: member="qmapcontrol::LineString::geometryClicked" ref="685dcab83356e5cc449475f177bb487d" args="(Geometry *geometry, QPoint point)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void geometryClickEvent           </td>
+          <td class="memname">void geometryClicked           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td>
           <td class="paramname"> <em>geometry</em>, </td>
@@ -240,166 +288,6 @@ A <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for o
 
 </div>
 </div><p>
-<a class="anchor" name="b06601b3a0eddcb0bf4d56deb74d8a3d"></a><!-- doxytag: member="qmapcontrol::LineString::getBoundingBox" ref="b06601b3a0eddcb0bf4d56deb74d8a3d" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QRectF getBoundingBox           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the BoundingBox 
-<p>
-The bounding box in world coordinates <dl class="return" compact><dt><b>Returns:</b></dt><dd>the BoundingBox </dd></dl>
-
-<p>Implements <a class="el" href="classqmapcontrol_1_1Geometry.html#6095466094dc64253155567a98f20035">Geometry</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="568664858600004fc5a20c86cec8199c"></a><!-- doxytag: member="qmapcontrol::LineString::getClickedPoints" ref="568664858600004fc5a20c86cec8199c" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QList&lt; <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * &gt; getClickedPoints           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the clicked Points 
-<p>
-If a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> was clicked it could be neccessary to figure out which of its points where clicked. Do do so the methods <a class="el" href="classqmapcontrol_1_1LineString.html#c3fc4ac8c80b5bf64c0bf095d7fde94b" title="returns true if the LineString has Childs">hasPoints()</a> and <a class="el" href="classqmapcontrol_1_1LineString.html#568664858600004fc5a20c86cec8199c" title="returns the clicked Points">getClickedPoints()</a> can be used. When a point is added to a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> the <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> becomes its child. It is possible (depending on the zoomfactor) to click more than one <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> of a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>, so this method returns a list. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the clicked Points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> </dd></dl>
-
-<p>Reimplemented from <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="ebd19108ae7957a2c5f4f55aa4a8737e"></a><!-- doxytag: member="qmapcontrol::LineString::getName" ref="ebd19108ae7957a2c5f4f55aa4a8737e" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString getName           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="17a7d7c66a35212597d3220e1a661be3"></a><!-- doxytag: member="qmapcontrol::LineString::getNumberOfPoints" ref="17a7d7c66a35212597d3220e1a661be3" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int getNumberOfPoints           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the number of Points the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> consists of 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the number of the LineStringÂ´s Points </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="55f87f3bc60d7cc98914077b2b812679"></a><!-- doxytag: member="qmapcontrol::LineString::getParentGeometry" ref="55f87f3bc60d7cc98914077b2b812679" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * getParentGeometry           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
-<p>
-A <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> is a composition of many Points. This methods returns the parent (the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>) of a <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="2307393519f57b0b734bc7fd4475a1c2"></a><!-- doxytag: member="qmapcontrol::LineString::getPen" ref="2307393519f57b0b734bc7fd4475a1c2" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPen * getPen           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the QPen which is used on drawing 
-<p>
-The pen is set depending on the <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>. A <a class="el" href="classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map.">CirclePoint</a> for example takes one with the constructor. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the QPen which is used for drawing </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="334f085bf653b9e517cc5a38ce8b2173"></a><!-- doxytag: member="qmapcontrol::LineString::getPoints" ref="334f085bf653b9e517cc5a38ce8b2173" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QList&lt; <a class="el" href="classqmapcontrol_1_1Point.html">Point</a> * &gt; getPoints           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>a list with the points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> </dd></dl>
-
-<p>Implements <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a>.</p>
-
-</div>
-</div><p>
 <a class="anchor" name="3f7357f0362b6bee75f8c8c623fb528e"></a><!-- doxytag: member="qmapcontrol::LineString::hasClickedPoints" ref="3f7357f0362b6bee75f8c8c623fb528e" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -419,7 +307,7 @@ returns the points of the <a class="el" href="classqmapcontrol_1_1LineString.htm
 returns true if the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> has clicked Points 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true if childs of a <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> were clicked </dd></dl>
-<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classqmapcontrol_1_1LineString.html#568664858600004fc5a20c86cec8199c" title="returns the clicked Points">getClickedPoints()</a> </dd></dl>
+<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classqmapcontrol_1_1LineString.html#c1cdf207019e92f289e62e9abb5ba2c3" title="returns the clicked Points">clickedPoints()</a> </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a>.</p>
 
@@ -443,8 +331,8 @@ returns true if the <a class="el" href="classqmapcontrol_1_1LineString.html" tit
 <p>
 returns true if the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> has Childs 
 <p>
-This is equal to: <a class="el" href="classqmapcontrol_1_1LineString.html#17a7d7c66a35212597d3220e1a661be3" title="returns the number of Points the LineString consists of">getNumberOfPoints()</a> &gt; 0 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true it the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> has Childs (=Points) </dd></dl>
-<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classqmapcontrol_1_1LineString.html#568664858600004fc5a20c86cec8199c" title="returns the clicked Points">getClickedPoints()</a> </dd></dl>
+This is equal to: <a class="el" href="classqmapcontrol_1_1LineString.html#06b5ac0b597b8d1cb7e8817f7e66c2eb" title="returns the number of Points the LineString consists of">numberOfPoints()</a> &gt; 0 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true it the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> has Childs (=Points) </dd></dl>
+<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classqmapcontrol_1_1LineString.html#c1cdf207019e92f289e62e9abb5ba2c3" title="returns the clicked Points">clickedPoints()</a> </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a>.</p>
 
@@ -469,6 +357,118 @@ This is equal to: <a class="el" href="classqmapcontrol_1_1LineString.html#17a7d7
 returns true if this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is visible 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true if this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is visible </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="2b0a198f837184bf6fff555cee3ce770"></a><!-- doxytag: member="qmapcontrol::LineString::name" ref="2b0a198f837184bf6fff555cee3ce770" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString name           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="06b5ac0b597b8d1cb7e8817f7e66c2eb"></a><!-- doxytag: member="qmapcontrol::LineString::numberOfPoints" ref="06b5ac0b597b8d1cb7e8817f7e66c2eb" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int numberOfPoints           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the number of Points the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> consists of 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the number of the LineStringÂ´s Points </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="771cc513dc079219d5da2c4b81019d7c"></a><!-- doxytag: member="qmapcontrol::LineString::parentGeometry" ref="771cc513dc079219d5da2c4b81019d7c" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * parentGeometry           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
+<p>
+A <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> is a composition of many Points. This methods returns the parent (the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>) of a <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ed7be2fcd2c1d7bccb55f5ac73d7a662"></a><!-- doxytag: member="qmapcontrol::LineString::pen" ref="ed7be2fcd2c1d7bccb55f5ac73d7a662" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPen * pen           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the QPen which is used on drawing 
+<p>
+The pen is set depending on the <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>. A <a class="el" href="classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map.">CirclePoint</a> for example takes one with the constructor. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the QPen which is used for drawing </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="18d4d26904bca7c54fb9d2a1b054c2fb"></a><!-- doxytag: member="qmapcontrol::LineString::points" ref="18d4d26904bca7c54fb9d2a1b054c2fb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="classqmapcontrol_1_1Point.html">Point</a> * &gt; points           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>a list with the points of the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> </dd></dl>
+
+<p>Implements <a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a>.</p>
 
 </div>
 </div><p>
@@ -582,12 +582,12 @@ if visible is true, the layer is made visible
 
 </div>
 </div><p>
-<a class="anchor" name="f4dc3059f9ee9b3af63f0bbfe7dea848"></a><!-- doxytag: member="qmapcontrol::LineString::ToString" ref="f4dc3059f9ee9b3af63f0bbfe7dea848" args="()" -->
+<a class="anchor" name="3a013a6edb6d10a71297978bc31a796b"></a><!-- doxytag: member="qmapcontrol::LineString::toString" ref="3a013a6edb6d10a71297978bc31a796b" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QString ToString           </td>
+          <td class="memname">QString toString           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -604,7 +604,7 @@ not implemented yet! <dl class="return" compact><dt><b>Returns:</b></dt><dd>a St
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:20 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

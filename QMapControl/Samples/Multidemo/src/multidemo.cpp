@@ -104,11 +104,11 @@ void Multidemo::setupMaps()
  	l->addGeometry(wpoint);
 	pb->setGeometry(0,0,100,50);
 
-	connect(l, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
+	connect(l, SIGNAL(geometryClicked(Geometry*, QPoint)),
 			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
-	connect(l2, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
+	connect(l2, SIGNAL(geometryClicked(Geometry*, QPoint)),
 			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
-	connect(mc, SIGNAL(draggedRect(const QRectF)),
+	connect(mc, SIGNAL(boxDragged(const QRectF)),
 			  this, SLOT(draggedRect(QRectF)));
 	connect(mc, SIGNAL(mouseEventCoordinate(const QMouseEvent*, const QPointF)),
 			  this, SLOT(mouseEventCoordinate(const QMouseEvent*, const QPointF)));
@@ -188,7 +188,7 @@ void Multidemo::coordinateClicked(const QMouseEvent* evnt, const QPointF coord)
 {
 	if (btn1->isChecked() && evnt->type()==QEvent::MouseButtonPress)
 	{
-		mc->getLayer("Geom Layer")->addGeometry(new CirclePoint(coord.x(), coord.y(), 10, "added point"));
+		mc->layer("Geom Layer")->addGeometry(new CirclePoint(coord.x(), coord.y(), 10, "added point"));
 		mc->updateRequestNew();
 	}
 }
@@ -197,15 +197,15 @@ void Multidemo::geometryClickEvent(Geometry* geom, QPoint)
 {
 	if (geom->hasClickedPoints())
 	{
-		QList<Geometry*> pp = geom->getClickedPoints();
+		QList<Geometry*> pp = geom->clickedPoints();
 		for (int i=0; i<pp.size(); i++)
 		{
-			QMessageBox::information(this, geom->getName(), pp.at(i)->getName());
+			QMessageBox::information(this, geom->name(), pp.at(i)->name());
 		}
 	}
 	else if (geom->GeometryType == "Point")
 	{
-		QMessageBox::information(this, geom->getName(), QString("Position: ").append(QString().setNum(((Point*)geom)->getLongitude())).append(QString("/")).append(QString().setNum(((Point*)geom)->getLatitude())));
+		QMessageBox::information(this, geom->name(), QString("Position: ").append(QString().setNum(((Point*)geom)->longitude())).append(QString("/")).append(QString().setNum(((Point*)geom)->latitude())));
 	}
 
 }
@@ -282,7 +282,7 @@ void Multidemo::draggedRect(QRectF rect)
 	QList<QPointF> coords;
 	coords.append(rect.topLeft());
 	coords.append(rect.bottomRight());
-	mc->setView(coords);
+	mc->setViewAndZoomIn(coords);
 }
 
 void Multidemo::mouseEventCoordinate(const QMouseEvent* evnt, const QPointF coordinate)
@@ -294,7 +294,7 @@ void Multidemo::mouseEventCoordinate(const QMouseEvent* evnt, const QPointF coor
 	//update mini-window
 	else if(evnt->type() == QEvent::MouseButtonRelease)
 	{
-		mc2->setView(mc->getCurrentCoordinate());
+		mc2->setView(mc->currentCoordinate());
 	}
 }
 void Multidemo::coordinateClicked_mc2(const QMouseEvent* evnt, const QPointF coordinate)

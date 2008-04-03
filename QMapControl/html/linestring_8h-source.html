@@ -47,11 +47,11 @@
 <a name="l00035"></a>00035                 <span class="keyword">public</span>:
 <a name="l00036"></a>00036                         <a class="code" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>();
 <a name="l00038"></a>00038 
-<a name="l00045"></a>00045                         <a class="code" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> ( QList&lt;Point*&gt; <span class="keyword">const</span> points, QString name = QString(), QPen* pen = 0 );
+<a name="l00045"></a>00045                         <a class="code" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> ( QList&lt;Point*&gt; <span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1LineString.html#18d4d26904bca7c54fb9d2a1b054c2fb" title="returns the points of the LineString">points</a>, QString <a class="code" href="classqmapcontrol_1_1Geometry.html#2b0a198f837184bf6fff555cee3ce770" title="returns the name of this Geometry">name</a> = QString(), QPen* <a class="code" href="classqmapcontrol_1_1Geometry.html#ed7be2fcd2c1d7bccb55f5ac73d7a662" title="returns the QPen which is used on drawing">pen</a> = 0 );
 <a name="l00046"></a>00046                         <span class="keyword">virtual</span> ~<a class="code" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>();
 <a name="l00047"></a>00047 
 <a name="l00049"></a>00049 
-<a name="l00052"></a>00052                         QList&lt;Point*&gt;   <a class="code" href="classqmapcontrol_1_1LineString.html#334f085bf653b9e517cc5a38ce8b2173" title="returns the points of the LineString">getPoints</a>();
+<a name="l00052"></a>00052                         QList&lt;Point*&gt;   <a class="code" href="classqmapcontrol_1_1LineString.html#18d4d26904bca7c54fb9d2a1b054c2fb" title="returns the points of the LineString">points</a>();
 <a name="l00053"></a>00053 
 <a name="l00055"></a>00055 
 <a name="l00058"></a>00058                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1LineString.html#8694ab9a03b0ed4986c98ad727755f8a" title="adds a point at the end of the LineString">addPoint</a> ( <a class="code" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a>* point );
@@ -60,10 +60,10 @@
 <a name="l00064"></a>00064                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1LineString.html#6af8f478f54e6704e87dcf184a258a8c" title="sets the given list as points of the LineString">setPoints</a> ( QList&lt;Point*&gt; points );
 <a name="l00065"></a>00065 
 <a name="l00067"></a>00067 
-<a name="l00070"></a>00070                         <span class="keywordtype">int</span> <a class="code" href="classqmapcontrol_1_1LineString.html#17a7d7c66a35212597d3220e1a661be3" title="returns the number of Points the LineString consists of">getNumberOfPoints</a>() <span class="keyword">const</span>;
+<a name="l00070"></a>00070                         <span class="keywordtype">int</span> <a class="code" href="classqmapcontrol_1_1LineString.html#06b5ac0b597b8d1cb7e8817f7e66c2eb" title="returns the number of Points the LineString consists of">numberOfPoints</a>() <span class="keyword">const</span>;
 <a name="l00071"></a>00071 
 <a name="l00072"></a>00072 <span class="comment">//              virtual Geometry        Clone();</span>
-<a name="l00073"></a>00073                         <span class="keyword">virtual</span> QRectF          <a class="code" href="classqmapcontrol_1_1LineString.html#b06601b3a0eddcb0bf4d56deb74d8a3d" title="returns the BoundingBox">getBoundingBox</a>();
+<a name="l00073"></a>00073                         <span class="keyword">virtual</span> QRectF          <a class="code" href="classqmapcontrol_1_1LineString.html#cbb256b5f9f888e9cd3bb475108ece24" title="returns the BoundingBox">boundingBox</a>();
 <a name="l00074"></a>00074 <span class="comment">//              virtual Point           EndPoint();</span>
 <a name="l00075"></a>00075 <span class="comment">//              virtual Point           StartPoint();</span>
 <a name="l00076"></a>00076 <span class="comment">//              virtual Point           Value();</span>
@@ -75,7 +75,7 @@
 <a name="l00091"></a>00091                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classqmapcontrol_1_1LineString.html#3f7357f0362b6bee75f8c8c623fb528e" title="returns true if the LineString has clicked Points">hasClickedPoints</a>() <span class="keyword">const</span>;
 <a name="l00092"></a>00092 
 <a name="l00094"></a>00094 
-<a name="l00101"></a>00101                         <span class="keyword">virtual</span> QList&lt;Geometry*&gt; <a class="code" href="classqmapcontrol_1_1LineString.html#568664858600004fc5a20c86cec8199c" title="returns the clicked Points">getClickedPoints</a>();
+<a name="l00101"></a>00101                         <span class="keyword">virtual</span> QList&lt;Geometry*&gt; <a class="code" href="classqmapcontrol_1_1LineString.html#c1cdf207019e92f289e62e9abb5ba2c3" title="returns the clicked Points">clickedPoints</a>();
 <a name="l00102"></a>00102 
 <a name="l00103"></a>00103                 <span class="keyword">protected</span>:
 <a name="l00104"></a>00104                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> Touches ( <a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>* geom, <span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* mapadapter );
@@ -89,7 +89,7 @@
 <a name="l00112"></a>00112         };
 <a name="l00113"></a>00113 }
 <a name="l00114"></a>00114 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:16 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

@@ -60,20 +60,20 @@ namespace qmapcontrol
 			 * not implemented yet!
 			 * @return a String representation of this Geometry
 		 */
-			QString	ToString();
+			QString	toString();
 		
 		//! returns the name of this Geometry
 		/*!
 			 * @return the name of this Geometry
 		 */
-			QString		getName() const;
+			QString		name() const;
 		
 		//! returns the parent Geometry of this Geometry
 		/*!
 			 * A LineString is a composition of many Points. This methods returns the parent (the LineString) of a Point
 			 * @return the parent Geometry of this Geometry
 		 */
-			Geometry*	getParentGeometry() const;
+			Geometry*	parentGeometry() const;
 		
 		//! returns true if this Geometry is visible
 		/*!
@@ -92,31 +92,31 @@ namespace qmapcontrol
 			 * The pen is set depending on the Geometry. A CirclePoint for example takes one with the constructor.
 			 * @return the QPen which is used for drawing
 		 */
-			QPen* 	getPen() const;
+			QPen* 	pen() const;
 
 		//! returns the BoundingBox
 		/*!
 			 * The bounding box in world coordinates
 			 * @return the BoundingBox
 		 */
-			virtual QRectF		getBoundingBox()=0;
+			virtual QRectF		boundingBox()=0;
 			virtual bool		Touches(Point* geom, const MapAdapter* mapadapter)=0;
 			virtual void		draw(QPainter* painter, const MapAdapter* mapadapter, const QRect &viewport, const QPoint offset)=0;
 			virtual bool		hasPoints() const;
 			virtual bool		hasClickedPoints() const;
-			virtual void setPen(QPen* pen);
-			virtual QList<Geometry*> getClickedPoints();
-			virtual QList<Point*> getPoints()=0;
+			virtual void 		setPen(QPen* pen);
+			virtual QList<Geometry*> clickedPoints();
+			virtual QList<Point*> points()=0;
 		
 		private:
-			Geometry* parentGeometry;
+			Geometry* myparentGeometry;
 			Geometry(const Geometry& old);
 			Geometry& operator=(const Geometry& rhs);
 		
 		protected:
-			QPen*		pen;
+			QPen*		mypen;
 			bool		visible;
-			QString	name;
+			QString	myname;
 			void setParentGeometry(Geometry* geom);
 		
 		
@@ -130,7 +130,7 @@ namespace qmapcontrol
 			 * @param  geometry The clicked Geometry
 			 * @param  point -unused-
 		 */
-			void geometryClickEvent(Geometry* geometry, QPoint point);
+			void geometryClicked(Geometry* geometry, QPoint point);
 		
 		//! A Geometry emits this signal, when its position gets changed
 		/*!

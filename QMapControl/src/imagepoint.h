@@ -45,7 +45,7 @@ namespace qmapcontrol
 		 * @param name the name of the image point
 		 * @param alignment alignment (Middle or TopLeft)
 		 */
-			ImagePoint(double x, double y, QString filename, QString name = QString(), Alignment alignment = Middle);
+			ImagePoint(qreal x, qreal y, QString filename, QString name = QString(), Alignment alignment = Middle);
 		
 		//! Creates a point which displays the given image
 		/*!
@@ -57,7 +57,7 @@ namespace qmapcontrol
 			 * @param name the name of the image point
 			 * @param alignment alignment (Middle or TopLeft)
 		 */
-			ImagePoint(double x, double y, QPixmap* pixmap, QString name = QString(), Alignment alignment = Middle);
+			ImagePoint(qreal x, qreal y, QPixmap* pixmap, QString name = QString(), Alignment alignment = Middle);
 			virtual ~ImagePoint();
 
 	};

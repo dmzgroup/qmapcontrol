@@ -1,5 +1,6 @@
-<area shape="rect" href="$classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles." alt="" coords="192,161,328,188">
-<area shape="rect" href="$classqmapcontrol_1_1WMSMapAdapter.html" title="MapAdapter for WMS servers." alt="" coords="352,161,496,188">
-<area shape="rect" href="$classqmapcontrol_1_1GoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="5,239,165,265">
-<area shape="rect" href="$classqmapcontrol_1_1OSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="189,239,331,265">
-<area shape="rect" href="$classqmapcontrol_1_1YahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="355,239,509,265">
+<area shape="rect" href="$classqmapcontrol_1_1GoogleSatMapAdapter.html" title="MapAdapter for Google." alt="" coords="5,161,189,188">
+<area shape="rect" href="$classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles." alt="" coords="213,161,349,188">
+<area shape="rect" href="$classqmapcontrol_1_1WMSMapAdapter.html" title="MapAdapter for WMS servers." alt="" coords="373,161,517,188">
+<area shape="rect" href="$classqmapcontrol_1_1GoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="27,239,187,265">
+<area shape="rect" href="$classqmapcontrol_1_1OSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="211,239,352,265">
+<area shape="rect" href="$classqmapcontrol_1_1YahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="376,239,531,265">

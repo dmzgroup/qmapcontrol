@@ -43,6 +43,8 @@ class Mapviewer : public QMainWindow
 		QAction* yahooActionSatellite;
 		QAction* yahooActionOverlay;
 		QAction* googleActionMap;
+		QAction* googleActionSat;
+		QAction* wmsAction;
 		
 		void addZoomButtons();
 		void createActions();

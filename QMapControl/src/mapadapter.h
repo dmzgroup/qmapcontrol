@@ -57,33 +57,33 @@ namespace qmapcontrol
 	/*!
 			 * @return  the host of this MapAdapter
 	 */
-			QString	getHost		() const;
+			QString	host		() const;
 	
 	//! returns the size of the tiles
 	/*!
 			 * @return the size of the tiles
 	 */
-			int		getTileSize	() const;
+			int		tilesize	() const;
 	
 	//! returns the min zoom value
 	/*!
 			 * @return the min zoom value
 	 */
-			int 		getMinZoom	() const;
+			int 		minZoom	() const;
 	
 	//! returns the max zoom value
 	/*!
 			 * @return the max zoom value
 	 */
-			int		getMaxZoom	() const;
+			int		maxZoom	() const;
 	
 	//! returns the current zoom
 	/*!
 			 * @return the current zoom
 	 */
-			int 		getZoom		() const;
+			int 		currentZoom		() const;
 	
-			virtual int		getAdaptedZoom()const;
+			virtual int		adaptedZoom()const;
 	
 
 	//! translates a world coordinate to display coordinate
@@ -108,13 +108,13 @@ namespace qmapcontrol
 			MapAdapter(const QString& host, const QString& serverPath, int tilesize, int minZoom = 0, int maxZoom = 0);
 			virtual void zoom_in() = 0;
 			virtual void zoom_out() = 0;
-			virtual bool 		isValid(int x, int y, int z) const = 0;
-			virtual QString getQuery(int x, int y, int z) const = 0;
+			virtual bool isValid(int x, int y, int z) const = 0;
+			virtual QString query(int x, int y, int z) const = 0;
 		
-			QSize size;
-			QString	host;
+			QSize 	size;
+			QString	myhost;
 			QString	serverPath;
-			int		tilesize;
+			int		mytilesize;
 			int min_zoom;
 			int max_zoom;
 			int current_zoom;
@@ -138,7 +138,7 @@ namespace qmapcontrol
 			int middle_x;
 			int middle_y;
 	
-			double numberOfTiles;
+			qreal numberOfTiles;
 			QLocale loc;
 	};
 }

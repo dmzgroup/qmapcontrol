@@ -90,8 +90,8 @@ LinesAndPoints::LinesAndPoints(QWidget *parent)
         l-&gt;addGeometry(ls);
         
         <span class="comment">// Connect click events of the layer to this object</span>
-        connect(l, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
-                          <span class="keyword">this</span>, SLOT(geometryClickEvent(Geometry*, QPoint)));
+        connect(l, SIGNAL(geometryClicked(Geometry*, QPoint)),
+                          <span class="keyword">this</span>, SLOT(geometryClicked(Geometry*, QPoint)));
         
         <span class="comment">// Sets the view to the interesting area</span>
         QList&lt;QPointF&gt; view;
@@ -122,22 +122,22 @@ LinesAndPoints::LinesAndPoints(QWidget *parent)
         mc-&gt;setLayout(innerlayout);
 }
 
-<span class="keywordtype">void</span> LinesAndPoints::geometryClickEvent(Geometry* geom, QPoint)
+<span class="keywordtype">void</span> LinesAndPoints::geometryClicked(Geometry* geom, QPoint)
 {
-        qDebug() &lt;&lt; <span class="stringliteral">"parent: "</span> &lt;&lt; geom-&gt;getParentGeometry();
-        qDebug() &lt;&lt; <span class="stringliteral">"Element clicked: "</span> &lt;&lt; geom-&gt;getName();
+        qDebug() &lt;&lt; <span class="stringliteral">"parent: "</span> &lt;&lt; geom-&gt;parentGeometry();
+        qDebug() &lt;&lt; <span class="stringliteral">"Element clicked: "</span> &lt;&lt; geom-&gt;name();
         <span class="keywordflow">if</span> (geom-&gt;hasClickedPoints())
         {
-                QList&lt;Geometry*&gt; pp = geom-&gt;getClickedPoints();
+                QList&lt;Geometry*&gt; pp = geom-&gt;clickedPoints();
                 qDebug() &lt;&lt; <span class="stringliteral">"number of child elements: "</span> &lt;&lt; pp.size();
                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;pp.size(); i++)
                 {
-                        QMessageBox::information(<span class="keyword">this</span>, geom-&gt;getName(), pp.at(i)-&gt;getName());
+                        QMessageBox::information(<span class="keyword">this</span>, geom-&gt;name(), pp.at(i)-&gt;name());
                 }
         }
         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (geom-&gt;GeometryType == <span class="stringliteral">"Point"</span>)
         {
-                QMessageBox::information(<span class="keyword">this</span>, geom-&gt;getName(), <span class="stringliteral">"just a point"</span>);
+                QMessageBox::information(<span class="keyword">this</span>, geom-&gt;name(), <span class="stringliteral">"just a point"</span>);
         }
 }
 
@@ -188,7 +188,7 @@ LinesAndPoints::~LinesAndPoints()
                 qDebug() &lt;&lt; evnt-&gt;key() &lt;&lt; endl;
         }
 }
-</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+</pre></div> <hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:15 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

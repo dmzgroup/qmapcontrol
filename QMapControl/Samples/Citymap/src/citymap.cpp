@@ -63,7 +63,7 @@ Citymap::Citymap(QWidget*)
 	createMenus();
 	
 	mc->addLayer(notes);
-	connect(notes, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
+	connect(notes, SIGNAL(geometryClicked(Geometry*, QPoint)),
 			  this, SLOT(editNote(Geometry*, QPoint)));
 
 	
@@ -143,8 +143,8 @@ void Citymap::addSights()
 	Point* quitin = new ImagePoint(8.272222, 50.000833, QCoreApplication::applicationDirPath() + "/images/180-quintin.jpg","St. Quintin");
 	quitin->setBaselevel(17);
 	sights->addGeometry(quitin);	
-	connect(sights, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
-			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
+	connect(sights, SIGNAL(geometryClicked(Geometry*, QPoint)),
+			  this, SLOT(geometryClicked(Geometry*, QPoint)));
 }
 void Citymap::addPubs()
 {
@@ -161,7 +161,7 @@ void Citymap::addPubs()
 	Point* krokodil = new Point(8.2594,50.0106, pub, "Krokodil");
 	pubs->addGeometry(krokodil);
 	
-	connect(pubs, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
+	connect(pubs, SIGNAL(geometryClicked(Geometry*, QPoint)),
 			  this, SLOT(geometryClickEventKneipe(Geometry*, QPoint)));
 }
 void Citymap::addMuseums()
@@ -176,36 +176,36 @@ void Citymap::addMuseums()
 	lm ->setBaselevel(17);
 	museum->addGeometry(lm);	
 	
-	connect(museum, SIGNAL(geometryClickEvent(Geometry*, QPoint)),
-			  this, SLOT(geometryClickEvent(Geometry*, QPoint)));
+	connect(museum, SIGNAL(geometryClicked(Geometry*, QPoint)),
+			  this, SLOT(geometryClicked(Geometry*, QPoint)));
 }
 
-void Citymap::geometryClickEvent(Geometry* geometry, QPoint)
+void Citymap::geometryClicked(Geometry* geometry, QPoint)
 {
 	if (ignoreClicks || addingNote)
 		return;
 	
 	InfoDialog* infodialog = new InfoDialog(this);
-	infodialog->setWindowTitle(geometry->getName());
+	infodialog->setWindowTitle(geometry->name());
 	
-	if (geometry->getName() == "Mainzer Dom")
+	if (geometry->name() == "Mainzer Dom")
 	{
 		infodialog->setInfotext("<h1>Mainzer Dom</h1><p><img src=\"images/180-dom.jpg\" align=\"left\"/>Der Hohe Dom zu Mainz ist die Bischofskirche der Diözese Mainz und steht unter dem Patrozinium des heiligen Martin von Tours. Der Ostchor ist dem Hl. Stephan geweiht. Der zu den Kaiserdomen zählende Bau ist in seiner heutigen Form eine dreischiffige romanische Säulenbasilika, die in ihren Anbauten sowohl gotische als auch barocke Elemente aufweist.</p>");
 		
-	} else if (geometry->getName() == "St. Stephan")
+	} else if (geometry->name() == "St. Stephan")
 	{
 		infodialog->setInfotext("<h1>St. Stephan</h1><p><img src=\"images/180-stephan.jpg\" align=\"left\"/>Die katholische Pfarrkirche Sankt Stephan in Mainz wurde 990 von Erzbischof Willigis auf der höchsten Erhebung der Stadt gegründet. Auftraggeberin war höchstwahrscheinlich die Kaiserwitwe Theophanu. Willigis wollte mit ihr die Gebetsstätte des Reiches schaffen. In der Kirche war ursprünglich ein Stift untergebracht. Der Propst des Stiftes verwaltete eines der Archidiakonate (mittelalterliche Organisationseinheit, ähnlich den heutigen Dekanaten) des Erzbistums.</p>");
-	} else if (geometry->getName() == "St. Quintin")
+	} else if (geometry->name() == "St. Quintin")
 	{
 		infodialog->setInfotext("<h1>St. Quintin</h1><p><img src=\"images/180-quintin.jpg\" align=\"left\"/>Die Kirche St. Quintin in Mainz ist die Pfarrkirche der ältesten nachgewiesenen Pfarrei der Stadt.");
-	} else if (geometry->getName() == "rgzm")
+	} else if (geometry->name() == "rgzm")
 	{
 		infodialog->setInfotext("<h1>Römisch-Germanisches Zentralmuseum</h1><p><img src=\"images/180-rgzm.jpg\" align=\"left\"/>Das Römisch-Germanische Zentralmuseum (RGZM) in Mainz ist ein Forschungsinstitut für Vor- und Frühgeschichte, das von Bund und Ländern getragen wird und zur Leibniz-Gemeinschaft deutscher Forschungseinrichtungen gehört. Gegliedert in mehrere Abteilungen, arbeitet das Institut im Bereich der Alten Welt sowie seiner Kontaktzonen von der Altsteinzeit bis ins Mittelalter.");
-	} else if (geometry->getName() == "lm")
+	} else if (geometry->name() == "lm")
 	{
 		infodialog->setInfotext("<h1>Landesmuseum Mainz</h1><p><img src=\"images/180-lm.jpg\" align=\"left\"/>Das Landesmuseum Mainz ist eines der ältesten Museen in Deutschland. Eine seiner Vorgängerinstitutionen, die Städtische Gemäldesammlung, wurde bereits 1803 von Jean-Antoine Chaptal auf Veranlassung Napoléon Bonapartes durch eine Schenkung von 36 Gemälden gegründet. Das Museum, welches sich heute im ehemaligen kurfürstlichen Marstall befindet, gehört zusammen mit dem Römisch-Germanischen Zentralmuseum und dem Gutenbergmuseum zu den bedeutenden Museen in Mainz. Seine kunst- und kulturgeschichtliche Sammlung erstreckt sich von der Vorgeschichte über die römische Zeit, dem Mittelalter und Barock bis hin zur Jugendstilzeit und der Kunst des 20. Jahrhunderts.");
 	}
-	if (geometry->getName() != "")
+	if (geometry->name() != "")
 		infodialog->showMaximized();
 }
 
@@ -214,8 +214,8 @@ void Citymap::geometryClickEventKneipe(Geometry* geometry, QPoint)
 	if (ignoreClicks || addingNote)
 		return;
 	InfoDialog* infodialog = new InfoDialog(this);
-	infodialog->setWindowTitle(geometry->getName());
-	infodialog->setInfotext("<h1>" + geometry->getName() + "</h1>");
+	infodialog->setWindowTitle(geometry->name());
+	infodialog->setInfotext("<h1>" + geometry->name() + "</h1>");
 	infodialog->showNormal();
 }
 
@@ -382,9 +382,9 @@ void Citymap::hideNote(const QMouseEvent* evnt, const QPointF)
 void Citymap::editNote(Geometry* geom, QPoint)
 {
 	addingNote = true;
-	currentnoteID = QVariant(geom->getName()).toInt();
+	currentnoteID = QVariant(geom->name()).toInt();
 	notetextedit->setPlainText(notestext[currentnoteID]);
-	notepoint->setCoordinate(geom->getPoints().at(0)->getCoordinate());
+	notepoint->setCoordinate(geom->points().at(0)->coordinate());
 	notepoint->setVisible(true);
 	
 	mc->updateRequestNew();
@@ -443,7 +443,7 @@ void Citymap::mapproviderSelected(QAction* action)
 {
 	if (action == osmAction)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
+		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		
 		mapadapter = new OSMMapAdapter();
@@ -461,7 +461,7 @@ void Citymap::mapproviderSelected(QAction* action)
 		
 	} else if (action == yahooActionMap)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
+		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		
 		mapadapter = new YahooMapAdapter();
@@ -478,8 +478,8 @@ void Citymap::mapproviderSelected(QAction* action)
 		yahooActionOverlay->setChecked(false);
 	} else if (action == yahooActionSatellite)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
-		QPointF a = mc->getCurrentCoordinate();
+		int zoom = mapadapter->adaptedZoom();
+		QPointF a = mc->currentCoordinate();
 		mc->setZoom(0);
 		
 		mapadapter = new YahooMapAdapter("us.maps3.yimg.com", "/aerial.maps.yimg.com/png?v=1.7&t=a&s=256&x=%2&y=%3&z=%1");
@@ -494,7 +494,7 @@ void Citymap::mapproviderSelected(QAction* action)
 		yahooActionOverlay->setEnabled(true);
 	} else if (action == googleActionMap)
 	{
-		int zoom = mapadapter->getAdaptedZoom();
+		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		mapadapter = new GoogleMapAdapter();
 		l->setMapAdapter(mapadapter);

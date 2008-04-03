@@ -56,21 +56,21 @@
 <a name="l00054"></a>00054                         <span class="keyword">virtual</span> ~<a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>();
 <a name="l00055"></a>00055         
 <a name="l00057"></a>00057 
-<a name="l00060"></a>00060                         QString <a class="code" href="classqmapcontrol_1_1MapAdapter.html#47a82056e29973632b3f3323c1fa5e30" title="returns the host of this MapAdapter">getHost</a>         () <span class="keyword">const</span>;
+<a name="l00060"></a>00060                         QString <a class="code" href="classqmapcontrol_1_1MapAdapter.html#7ee8388c7880d8a3466967464f5034b6" title="returns the host of this MapAdapter">host</a>            () <span class="keyword">const</span>;
 <a name="l00061"></a>00061         
 <a name="l00063"></a>00063 
-<a name="l00066"></a>00066                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#4534935475bf8921f4e05ab1b40f317b" title="returns the size of the tiles">getTileSize</a>     () <span class="keyword">const</span>;
+<a name="l00066"></a>00066                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#f105c5a0cf588a3f60d67744bd353391" title="returns the size of the tiles">tilesize</a>        () <span class="keyword">const</span>;
 <a name="l00067"></a>00067         
 <a name="l00069"></a>00069 
-<a name="l00072"></a>00072                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#8125e1d95331d68ac8b47ae000587672" title="returns the min zoom value">getMinZoom</a>      () <span class="keyword">const</span>;
+<a name="l00072"></a>00072                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#7457f51db57914a85bbefcc8c9fa97b4" title="returns the min zoom value">minZoom</a> () <span class="keyword">const</span>;
 <a name="l00073"></a>00073         
 <a name="l00075"></a>00075 
-<a name="l00078"></a>00078                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#684e4d8c7fd3473fd2b9715a35acc524" title="returns the max zoom value">getMaxZoom</a>      () <span class="keyword">const</span>;
+<a name="l00078"></a>00078                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#3a33e897bc474405772d17a7c81f8747" title="returns the max zoom value">maxZoom</a> () <span class="keyword">const</span>;
 <a name="l00079"></a>00079         
 <a name="l00081"></a>00081 
-<a name="l00084"></a>00084                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#ced60888f5b4649ab4917befbd83c8e7" title="returns the current zoom">getZoom</a>         () <span class="keyword">const</span>;
+<a name="l00084"></a>00084                         <span class="keywordtype">int</span>             <a class="code" href="classqmapcontrol_1_1MapAdapter.html#8c7b803b9faa35db237e40c361e1c036" title="returns the current zoom">currentZoom</a>             () <span class="keyword">const</span>;
 <a name="l00085"></a>00085         
-<a name="l00086"></a>00086                         <span class="keyword">virtual</span> <span class="keywordtype">int</span>             getAdaptedZoom()<span class="keyword">const</span>;
+<a name="l00086"></a>00086                         <span class="keyword">virtual</span> <span class="keywordtype">int</span>             adaptedZoom()<span class="keyword">const</span>;
 <a name="l00087"></a>00087         
 <a name="l00088"></a>00088 
 <a name="l00090"></a>00090 
@@ -83,13 +83,13 @@
 <a name="l00108"></a>00108                         <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>(<span class="keyword">const</span> QString&amp; host, <span class="keyword">const</span> QString&amp; serverPath, <span class="keywordtype">int</span> tilesize, <span class="keywordtype">int</span> minZoom = 0, <span class="keywordtype">int</span> maxZoom = 0);
 <a name="l00109"></a>00109                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_in() = 0;
 <a name="l00110"></a>00110                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> zoom_out() = 0;
-<a name="l00111"></a>00111                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span>            isValid(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span> = 0;
-<a name="l00112"></a>00112                         <span class="keyword">virtual</span> QString getQuery(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span> = 0;
+<a name="l00111"></a>00111                         <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValid(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span> = 0;
+<a name="l00112"></a>00112                         <span class="keyword">virtual</span> QString query(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) <span class="keyword">const</span> = 0;
 <a name="l00113"></a>00113                 
-<a name="l00114"></a>00114                         QSize size;
-<a name="l00115"></a>00115                         QString host;
+<a name="l00114"></a>00114                         QSize   size;
+<a name="l00115"></a>00115                         QString myhost;
 <a name="l00116"></a>00116                         QString serverPath;
-<a name="l00117"></a>00117                         <span class="keywordtype">int</span>             tilesize;
+<a name="l00117"></a>00117                         <span class="keywordtype">int</span>             mytilesize;
 <a name="l00118"></a>00118                         <span class="keywordtype">int</span> min_zoom;
 <a name="l00119"></a>00119                         <span class="keywordtype">int</span> max_zoom;
 <a name="l00120"></a>00120                         <span class="keywordtype">int</span> current_zoom;
@@ -113,12 +113,12 @@
 <a name="l00138"></a>00138                         <span class="keywordtype">int</span> middle_x;
 <a name="l00139"></a>00139                         <span class="keywordtype">int</span> middle_y;
 <a name="l00140"></a>00140         
-<a name="l00141"></a>00141                         <span class="keywordtype">double</span> numberOfTiles;
+<a name="l00141"></a>00141                         qreal numberOfTiles;
 <a name="l00142"></a>00142                         QLocale loc;
 <a name="l00143"></a>00143         };
 <a name="l00144"></a>00144 }
 <a name="l00145"></a>00145 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:16 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

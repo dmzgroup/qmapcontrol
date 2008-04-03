@@ -56,49 +56,46 @@ Inheritance diagram for CirclePoint:</div>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">if visible is true, the layer is made visible  <a href="#18e44e30b31525a243960ca3928125aa"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Signals</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#f15230a2ebf28ee8dd609967478c9b7b">geometryClickEvent</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint point)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#685dcab83356e5cc449475f177bb487d">geometryClicked</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint point)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#f15230a2ebf28ee8dd609967478c9b7b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#685dcab83356e5cc449475f177bb487d"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#807f9cfb1b9d680ca76cf825cc9cf46a">positionChanged</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geom)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> emits this signal, when its position gets changed.  <a href="#807f9cfb1b9d680ca76cf825cc9cf46a"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1CirclePoint.html#90382a0d82bcee9641350f4233824f3d">CirclePoint</a> (double x, double y, int radius=10, QString name=QString(), <a class="el" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726">Alignment</a> alignment=Middle, QPen *pen=0)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual QRectF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#cbb256b5f9f888e9cd3bb475108ece24">boundingBox</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1CirclePoint.html#f971749563491f6afdfebe61183429d3">CirclePoint</a> (double x, double y, QString name=QString(), <a class="el" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726">Alignment</a> alignment=Middle, QPen *pen=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the bounding box of the point  <a href="#cbb256b5f9f888e9cd3bb475108ece24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1CirclePoint.html#13300765d52da11cc8cbb4384e8e9e23">CirclePoint</a> (qreal x, qreal y, int radius=10, QString name=QString(), <a class="el" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726">Alignment</a> alignment=Middle, QPen *pen=0)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1CirclePoint.html#a0dd3496708e507c8185d5ae5f5e79ad">CirclePoint</a> (qreal x, qreal y, QString name=QString(), <a class="el" href="classqmapcontrol_1_1Point.html#cdfaca60ec19c0265bac2692d7982726">Alignment</a> alignment=Middle, QPen *pen=0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPointF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#2fbb44b2ed047287d715484d2fda7299">coordinate</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the coordinate of the point  <a href="#2fbb44b2ed047287d715484d2fda7299"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#029a8b50c439c719aac173bffe4cfb71">Equals</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geom)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual QRectF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#b06601b3a0eddcb0bf4d56deb74d8a3d">getBoundingBox</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the bounding box of the point  <a href="#b06601b3a0eddcb0bf4d56deb74d8a3d"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QPointF&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#b08a6099dabf147fa8800e3c8daa2fb7">getCoordinate</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the coordinate of the point  <a href="#b08a6099dabf147fa8800e3c8daa2fb7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#a30355ce4b33ea11338d38d2af8e0bbf">getLatitude</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the latitude of the point  <a href="#a30355ce4b33ea11338d38d2af8e0bbf"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#6c5a4634d917ad7a8715e55ad540e18d">getLongitude</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the longitude of the point  <a href="#6c5a4634d917ad7a8715e55ad540e18d"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#ebd19108ae7957a2c5f4f55aa4a8737e">getName</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#ebd19108ae7957a2c5f4f55aa4a8737e"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#55f87f3bc60d7cc98914077b2b812679">getParentGeometry</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#55f87f3bc60d7cc98914077b2b812679"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QPen *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#2307393519f57b0b734bc7fd4475a1c2">getPen</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the QPen which is used on drawing  <a href="#2307393519f57b0b734bc7fd4475a1c2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QPixmap *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#f048bd187c6c771c6b3e95a3ef1060f7">getPixmap</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the pixmap of the point  <a href="#f048bd187c6c771c6b3e95a3ef1060f7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QWidget *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#6dc1ce5915d5464c5c08dd761362595e">getWidget</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the widget of the point  <a href="#6dc1ce5915d5464c5c08dd761362595e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#08422ee75ab02691943c1ca87e2bc563">isVisible</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns true if this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is visible  <a href="#08422ee75ab02691943c1ca87e2bc563"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">qreal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#6311aabecac471455760aae4790cff91">latitude</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the latitude of the point  <a href="#6311aabecac471455760aae4790cff91"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">qreal&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#2b0f7ec9068af09bcf151af61a785845">longitude</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the longitude of the point  <a href="#2b0f7ec9068af09bcf151af61a785845"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#2b0a198f837184bf6fff555cee3ce770">name</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#2b0a198f837184bf6fff555cee3ce770"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#771cc513dc079219d5da2c4b81019d7c">parentGeometry</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#771cc513dc079219d5da2c4b81019d7c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPen *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#ed7be2fcd2c1d7bccb55f5ac73d7a662">pen</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the QPen which is used on drawing  <a href="#ed7be2fcd2c1d7bccb55f5ac73d7a662"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPixmap *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#166d4272301d85cc53e114ce4d26caf5">pixmap</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the pixmap of the point  <a href="#166d4272301d85cc53e114ce4d26caf5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#91f1496833bfda9f7a7ec5fcb02a1895">setBaselevel</a> (int zoomlevel)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the zoom level on which the point´s pixmap gets displayed on full size.  <a href="#91f1496833bfda9f7a7ec5fcb02a1895"></a><br></td></tr>
@@ -114,9 +111,12 @@ Inheritance diagram for CirclePoint:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1CirclePoint.html#a92f0f1b5d2fd424196a33012ffe8ea1">setPen</a> (QPen *pen)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sets the QPen which is used for drawing the circle  <a href="#a92f0f1b5d2fd424196a33012ffe8ea1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#f4dc3059f9ee9b3af63f0bbfe7dea848">ToString</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Geometry.html#3a013a6edb6d10a71297978bc31a796b">toString</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns a String representation of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#f4dc3059f9ee9b3af63f0bbfe7dea848"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns a String representation of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>  <a href="#3a013a6edb6d10a71297978bc31a796b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QWidget *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#d1eaabeb2b227cd055ccf4b4e2818480">widget</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns the widget of the point  <a href="#d1eaabeb2b227cd055ccf4b4e2818480"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1Point.html#73504541bf9e21ceceb82c6b4c3f2b04">Touches</a> (<a class="el" href="classqmapcontrol_1_1Point.html">Point</a> *geom, const <a class="el" href="classqmapcontrol_1_1MapAdapter.html">MapAdapter</a> *mapadapter)</td></tr>
 
@@ -160,20 +160,20 @@ Align on Middle </td></tr>
 </div>
 </div><p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="f971749563491f6afdfebe61183429d3"></a><!-- doxytag: member="qmapcontrol::CirclePoint::CirclePoint" ref="f971749563491f6afdfebe61183429d3" args="(double x, double y, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)" -->
+<a class="anchor" name="a0dd3496708e507c8185d5ae5f5e79ad"></a><!-- doxytag: member="qmapcontrol::CirclePoint::CirclePoint" ref="a0dd3496708e507c8185d5ae5f5e79ad" args="(qreal x, qreal y, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classqmapcontrol_1_1CirclePoint.html">CirclePoint</a>           </td>
           <td>(</td>
-          <td class="paramtype">double&nbsp;</td>
+          <td class="paramtype">qreal&nbsp;</td>
           <td class="paramname"> <em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&nbsp;</td>
+          <td class="paramtype">qreal&nbsp;</td>
           <td class="paramname"> <em>y</em>, </td>
         </tr>
         <tr>
@@ -216,20 +216,20 @@ Align on Middle </td></tr>
 
 </div>
 </div><p>
-<a class="anchor" name="90382a0d82bcee9641350f4233824f3d"></a><!-- doxytag: member="qmapcontrol::CirclePoint::CirclePoint" ref="90382a0d82bcee9641350f4233824f3d" args="(double x, double y, int radius=10, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)" -->
+<a class="anchor" name="13300765d52da11cc8cbb4384e8e9e23"></a><!-- doxytag: member="qmapcontrol::CirclePoint::CirclePoint" ref="13300765d52da11cc8cbb4384e8e9e23" args="(qreal x, qreal y, int radius=10, QString name=QString(), Alignment alignment=Middle, QPen *pen=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classqmapcontrol_1_1CirclePoint.html">CirclePoint</a>           </td>
           <td>(</td>
-          <td class="paramtype">double&nbsp;</td>
+          <td class="paramtype">qreal&nbsp;</td>
           <td class="paramname"> <em>x</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&nbsp;</td>
+          <td class="paramtype">qreal&nbsp;</td>
           <td class="paramname"> <em>y</em>, </td>
         </tr>
         <tr>
@@ -280,6 +280,52 @@ Align on Middle </td></tr>
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="cbb256b5f9f888e9cd3bb475108ece24"></a><!-- doxytag: member="qmapcontrol::CirclePoint::boundingBox" ref="cbb256b5f9f888e9cd3bb475108ece24" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QRectF boundingBox           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [virtual, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the bounding box of the point 
+<p>
+The Bounding contains the coordinate of the point and its size. The size is set, if the point contains a pixmap or a widget <dl class="return" compact><dt><b>Returns:</b></dt><dd>the bounding box of the point </dd></dl>
+
+<p>Implements <a class="el" href="classqmapcontrol_1_1Geometry.html#f92c4fa46f711bea92efe5ab80f9084d">Geometry</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2fbb44b2ed047287d715484d2fda7299"></a><!-- doxytag: member="qmapcontrol::CirclePoint::coordinate" ref="2fbb44b2ed047287d715484d2fda7299" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPointF coordinate           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the coordinate of the point 
+<p>
+The x component of the returned QPointF is the longitude value, the y component the latitude <dl class="return" compact><dt><b>Returns:</b></dt><dd>the coordinate of a point </dd></dl>
+
+</div>
+</div><p>
 <a class="anchor" name="029a8b50c439c719aac173bffe4cfb71"></a><!-- doxytag: member="qmapcontrol::CirclePoint::Equals" ref="029a8b50c439c719aac173bffe4cfb71" args="(Geometry *geom)" -->
 <div class="memitem">
 <div class="memproto">
@@ -306,12 +352,12 @@ returns true if the given <a class="el" href="classqmapcontrol_1_1Geometry.html"
 
 </div>
 </div><p>
-<a class="anchor" name="f15230a2ebf28ee8dd609967478c9b7b"></a><!-- doxytag: member="qmapcontrol::CirclePoint::geometryClickEvent" ref="f15230a2ebf28ee8dd609967478c9b7b" args="(Geometry *geometry, QPoint point)" -->
+<a class="anchor" name="685dcab83356e5cc449475f177bb487d"></a><!-- doxytag: member="qmapcontrol::CirclePoint::geometryClicked" ref="685dcab83356e5cc449475f177bb487d" args="(Geometry *geometry, QPoint point)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void geometryClickEvent           </td>
+          <td class="memname">void geometryClicked           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *&nbsp;</td>
           <td class="paramname"> <em>geometry</em>, </td>
@@ -343,206 +389,6 @@ A <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for o
 
 </div>
 </div><p>
-<a class="anchor" name="b06601b3a0eddcb0bf4d56deb74d8a3d"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getBoundingBox" ref="b06601b3a0eddcb0bf4d56deb74d8a3d" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QRectF getBoundingBox           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [virtual, inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the bounding box of the point 
-<p>
-The Bounding contains the coordinate of the point and its size. The size is set, if the point contains a pixmap or a widget <dl class="return" compact><dt><b>Returns:</b></dt><dd>the bounding box of the point </dd></dl>
-
-<p>Implements <a class="el" href="classqmapcontrol_1_1Geometry.html#6095466094dc64253155567a98f20035">Geometry</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="b08a6099dabf147fa8800e3c8daa2fb7"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getCoordinate" ref="b08a6099dabf147fa8800e3c8daa2fb7" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPointF getCoordinate           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the coordinate of the point 
-<p>
-The x component of the returned QPointF is the longitude value, the y component the latitude <dl class="return" compact><dt><b>Returns:</b></dt><dd>the coordinate of a point </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="a30355ce4b33ea11338d38d2af8e0bbf"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getLatitude" ref="a30355ce4b33ea11338d38d2af8e0bbf" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double getLatitude           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the latitude of the point 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the latitude of the point </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="6c5a4634d917ad7a8715e55ad540e18d"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getLongitude" ref="6c5a4634d917ad7a8715e55ad540e18d" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double getLongitude           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the longitude of the point 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the longitude of the point </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="ebd19108ae7957a2c5f4f55aa4a8737e"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getName" ref="ebd19108ae7957a2c5f4f55aa4a8737e" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString getName           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="55f87f3bc60d7cc98914077b2b812679"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getParentGeometry" ref="55f87f3bc60d7cc98914077b2b812679" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * getParentGeometry           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
-<p>
-A <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> is a composition of many Points. This methods returns the parent (the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>) of a <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="2307393519f57b0b734bc7fd4475a1c2"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getPen" ref="2307393519f57b0b734bc7fd4475a1c2" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPen * getPen           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"> const<code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the QPen which is used on drawing 
-<p>
-The pen is set depending on the <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>. A <a class="el" href="classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map.">CirclePoint</a> for example takes one with the constructor. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the QPen which is used for drawing </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="f048bd187c6c771c6b3e95a3ef1060f7"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getPixmap" ref="f048bd187c6c771c6b3e95a3ef1060f7" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QPixmap * getPixmap           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the pixmap of the point 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the pixmap of the point </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="6dc1ce5915d5464c5c08dd761362595e"></a><!-- doxytag: member="qmapcontrol::CirclePoint::getWidget" ref="6dc1ce5915d5464c5c08dd761362595e" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QWidget * getWidget           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"><code> [inherited]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-returns the widget of the point 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>the widget of the point </dd></dl>
-
-</div>
-</div><p>
 <a class="anchor" name="08422ee75ab02691943c1ca87e2bc563"></a><!-- doxytag: member="qmapcontrol::CirclePoint::isVisible" ref="08422ee75ab02691943c1ca87e2bc563" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -562,6 +408,138 @@ returns the widget of the point
 returns true if this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is visible 
 <p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>true if this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is visible </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="6311aabecac471455760aae4790cff91"></a><!-- doxytag: member="qmapcontrol::CirclePoint::latitude" ref="6311aabecac471455760aae4790cff91" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">qreal latitude           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the latitude of the point 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the latitude of the point </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="2b0f7ec9068af09bcf151af61a785845"></a><!-- doxytag: member="qmapcontrol::CirclePoint::longitude" ref="2b0f7ec9068af09bcf151af61a785845" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">qreal longitude           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the longitude of the point 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the longitude of the point </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="2b0a198f837184bf6fff555cee3ce770"></a><!-- doxytag: member="qmapcontrol::CirclePoint::name" ref="2b0a198f837184bf6fff555cee3ce770" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString name           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the name of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="771cc513dc079219d5da2c4b81019d7c"></a><!-- doxytag: member="qmapcontrol::CirclePoint::parentGeometry" ref="771cc513dc079219d5da2c4b81019d7c" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> * parentGeometry           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> 
+<p>
+A <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a> is a composition of many Points. This methods returns the parent (the <a class="el" href="classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line.">LineString</a>) of a <a class="el" href="classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps.">Point</a> <dl class="return" compact><dt><b>Returns:</b></dt><dd>the parent <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> of this <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ed7be2fcd2c1d7bccb55f5ac73d7a662"></a><!-- doxytag: member="qmapcontrol::CirclePoint::pen" ref="ed7be2fcd2c1d7bccb55f5ac73d7a662" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPen * pen           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"> const<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the QPen which is used on drawing 
+<p>
+The pen is set depending on the <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>. A <a class="el" href="classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map.">CirclePoint</a> for example takes one with the constructor. <dl class="return" compact><dt><b>Returns:</b></dt><dd>the QPen which is used for drawing </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="166d4272301d85cc53e114ce4d26caf5"></a><!-- doxytag: member="qmapcontrol::CirclePoint::pixmap" ref="166d4272301d85cc53e114ce4d26caf5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPixmap * pixmap           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the pixmap of the point 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the pixmap of the point </dd></dl>
 
 </div>
 </div><p>
@@ -762,12 +740,12 @@ if visible is true, the layer is made visible
 
 </div>
 </div><p>
-<a class="anchor" name="f4dc3059f9ee9b3af63f0bbfe7dea848"></a><!-- doxytag: member="qmapcontrol::CirclePoint::ToString" ref="f4dc3059f9ee9b3af63f0bbfe7dea848" args="()" -->
+<a class="anchor" name="3a013a6edb6d10a71297978bc31a796b"></a><!-- doxytag: member="qmapcontrol::CirclePoint::toString" ref="3a013a6edb6d10a71297978bc31a796b" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">QString ToString           </td>
+          <td class="memname">QString toString           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -824,7 +802,29 @@ The collision detection checks for the bounding rectangulars. <dl compact><dt><b
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Mar 3 20:20:09 2008 for QMapControl by&nbsp;
+<a class="anchor" name="d1eaabeb2b227cd055ccf4b4e2818480"></a><!-- doxytag: member="qmapcontrol::CirclePoint::widget" ref="d1eaabeb2b227cd055ccf4b4e2818480" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QWidget * widget           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns the widget of the point 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the widget of the point </dd></dl>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Mar 29 05:59:17 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

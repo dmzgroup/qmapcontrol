@@ -52,19 +52,19 @@ namespace qmapcontrol
 			virtual QPoint		coordinateToDisplay(const QPointF&) const;
 			virtual QPointF	displayToCoordinate(const QPoint&) const;
 	
-			double PI;
+			qreal PI;
 	
 		protected:
-			double rad_deg(double) const;
-			double deg_rad(double) const;
+			qreal rad_deg(qreal) const;
+			qreal deg_rad(qreal) const;
 	
 			virtual bool isValid(int x, int y, int z) const;
 			virtual void zoom_in();
 			virtual void zoom_out();
-			virtual QString getQuery(int x, int y, int z) const;
+			virtual QString query(int x, int y, int z) const;
 			virtual int tilesonzoomlevel(int zoomlevel) const;
-			virtual int getxoffset(int x) const;
-			virtual int getyoffset(int y) const;
+			virtual int xoffset(int x) const;
+			virtual int yoffset(int y) const;
 	};
 }
 #endif

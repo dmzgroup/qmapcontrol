@@ -49,7 +49,7 @@ namespace qmapcontrol
 			/*!
 				 * @return  a list with the points of the LineString
 			 */
-			QList<Point*>	getPoints();
+			QList<Point*>	points();
 
 			//! adds a point at the end of the LineString
 			/*!
@@ -67,38 +67,38 @@ namespace qmapcontrol
 			/*!
 				 * @return the number of the LineStringÂ´s Points
 			 */
-			int getNumberOfPoints() const;
+			int numberOfPoints() const;
 
 // 		virtual Geometry	Clone();
-			virtual QRectF		getBoundingBox();
+			virtual QRectF		boundingBox();
 // 		virtual Point 		EndPoint();
 // 		virtual Point 		StartPoint();
 // 		virtual Point 		Value();
 
 			//! returns true if the LineString has Childs
 			/*!
-				 * This is equal to: getNumberOfPoints() > 0
+				 * This is equal to: numberOfPoints() > 0
 				 * @return true it the LineString has Childs (=Points)
-				 * @see getClickedPoints()
+				 * @see clickedPoints()
 			 */
 			virtual bool hasPoints() const;
 
 			//! returns true if the LineString has clicked Points
 			/*!
 				 * @return true if childs of a LineString were clicked
-				 * @see getClickedPoints()
+				 * @see clickedPoints()
 			 */
 			virtual bool hasClickedPoints() const;
 
 			//! returns the clicked Points
 			/*!
 				 * If a LineString was clicked it could be neccessary to figure out which of its points where clicked.
-				 * Do do so the methods hasPoints() and getClickedPoints() can be used.
+				 * Do do so the methods hasPoints() and clickedPoints() can be used.
 				 * When a point is added to a LineString the Point becomes its child.
 				 * It is possible (depending on the zoomfactor) to click more than one Point of a LineString, so this method returns a list.
 				 * @return the clicked Points of the LineString
 			 */
-			virtual QList<Geometry*> getClickedPoints();
+			virtual QList<Geometry*> clickedPoints();
 
 		protected:
 			virtual bool Touches ( Geometry* geom, const MapAdapter* mapadapter );

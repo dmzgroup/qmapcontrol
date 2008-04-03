@@ -23,19 +23,19 @@ namespace qmapcontrol
 	Point::Point()
 	{}
 	Point::Point(const Point& point)
-	:Geometry(point.getName()), X(point.getLongitude()), Y(point.getLatitude())
+	:Geometry(point.name()), X(point.longitude()), Y(point.latitude())
 	{
 		visible = point.isVisible();
 		mywidget = 0;
 		mypixmap = 0;
-		this->pen = point.pen;
+		mypen = point.mypen;
 		homelevel = -1;
 		minsize = QSize(-1,-1);
 		maxsize = QSize(-1,-1);
 	}
 //protected: 
-	Point::Point(double x, double y, QString name, enum Alignment alignment)
-	: Geometry(name), X(x), Y(y), alignment(alignment)
+	Point::Point(qreal x, qreal y, QString name, enum Alignment alignment)
+	: Geometry(name), X(x), Y(y), myalignment(alignment)
 	{
 		GeometryType = "Point";
 		mywidget = 0;
@@ -46,8 +46,8 @@ namespace qmapcontrol
 		maxsize = QSize(-1,-1);
 	}
 
-	Point::Point(double x, double y, QWidget* widget, QString name, enum Alignment alignment)
-	: Geometry(name), X(x), Y(y), mywidget(widget), alignment(alignment)
+	Point::Point(qreal x, qreal y, QWidget* widget, QString name, enum Alignment alignment)
+	: Geometry(name), X(x), Y(y), mywidget(widget), myalignment(alignment)
 	{
 // 	Point(x, y, name, alignment);
 		GeometryType = "Point";
@@ -59,8 +59,8 @@ namespace qmapcontrol
 		maxsize = QSize(-1,-1);
 		mywidget->show();
 	}
-	Point::Point(double x, double y, QPixmap* pixmap, QString name, enum Alignment alignment)
-	: Geometry(name), X(x), Y(y), mypixmap(pixmap), alignment(alignment)
+	Point::Point(qreal x, qreal y, QPixmap* pixmap, QString name, enum Alignment alignment)
+	: Geometry(name), X(x), Y(y), mypixmap(pixmap), myalignment(alignment)
 	{
 		GeometryType = "Point";
 		mywidget = 0;
@@ -105,21 +105,21 @@ namespace qmapcontrol
 		}
 	}
 
-	QRectF Point::getBoundingBox()
+	QRectF Point::boundingBox()
 	{
 	//TODO: have to be calculated in relation to alignment...
 		return QRectF(QPointF(X, Y), displaysize);
 	}
 
-	double Point::getLongitude() const
+	qreal Point::longitude() const
 	{
 		return X;
 	}
-	double Point::getLatitude() const
+	qreal Point::latitude() const
 	{
 		return Y;
 	}
-	QPointF Point::getCoordinate() const
+	QPointF Point::coordinate() const
 	{
 		return QPointF(X, Y);
 	}
@@ -132,7 +132,7 @@ namespace qmapcontrol
 		if (homelevel > 0)
 		{
 
-			int currentzoom = mapadapter->getMaxZoom() < mapadapter->getMinZoom() ? mapadapter->getMinZoom() - mapadapter->getZoom() : mapadapter->getZoom();
+			int currentzoom = mapadapter->maxZoom() < mapadapter->minZoom() ? mapadapter->minZoom() - mapadapter->currentZoom() : mapadapter->currentZoom();
 				
 // 		int currentzoom = mapadapter->getZoom();
 			int diffzoom = homelevel-currentzoom;
@@ -168,7 +168,7 @@ namespace qmapcontrol
 
 			if (viewport.contains(point))
 			{
-				QPoint alignedtopleft = getAlignedPoint(point);
+				QPoint alignedtopleft = alignedPoint(point);
 				painter->drawPixmap(alignedtopleft.x(), alignedtopleft.y(), displaysize.width(), displaysize.height(), *mypixmap);
 			}
 		
@@ -186,34 +186,34 @@ namespace qmapcontrol
 		QPoint point = mapadapter->coordinateToDisplay(c);
 		point -= offset;
 
-		QPoint alignedtopleft = getAlignedPoint(point);
+		QPoint alignedtopleft = alignedPoint(point);
 		mywidget->setGeometry(alignedtopleft.x(), alignedtopleft.y(), displaysize.width(), displaysize.height());
 	}
 
-	QPoint Point::getAlignedPoint(const QPoint point) const
+	QPoint Point::alignedPoint(const QPoint point) const
 	{
 		QPoint alignedtopleft;
-		if (alignment == Middle)
+		if (myalignment == Middle)
 		{
 			alignedtopleft.setX(point.x()-displaysize.width()/2);
 			alignedtopleft.setY(point.y()-displaysize.height()/2);
 		}
-		else if (alignment == TopLeft)
+		else if (myalignment == TopLeft)
 		{
 			alignedtopleft.setX(point.x());
 			alignedtopleft.setY(point.y());
 		}
-		else if (alignment == TopRight)
+		else if (myalignment == TopRight)
 		{
 			alignedtopleft.setX(point.x()-displaysize.width());
 			alignedtopleft.setY(point.y());
 		}
-		else if (alignment == BottomLeft)
+		else if (myalignment == BottomLeft)
 		{
 			alignedtopleft.setX(point.x());
 			alignedtopleft.setY(point.y()-displaysize.height());
 		}
-		else if (alignment == BottomRight)
+		else if (myalignment == BottomRight)
 		{
 			alignedtopleft.setX(point.x()-displaysize.width());
 			alignedtopleft.setY(point.y()-displaysize.height());
@@ -229,14 +229,14 @@ namespace qmapcontrol
 		if (mypixmap == 0)
 			return false;
 	
-		QPointF c = p->getCoordinate();
+		QPointF c = p->coordinate();
 				// coordinate nach pixel umrechnen
 		QPoint pxOfPoint = mapadapter->coordinateToDisplay(c);
 		// size/2 Pixel toleranz aufaddieren
 		QPoint p1;
 		QPoint p2;
 
-		switch (alignment)
+		switch (myalignment)
 		{
 			case Middle:
 				p1 = pxOfPoint - QPoint(displaysize.width()/2,displaysize.height()/2);
@@ -265,11 +265,11 @@ namespace qmapcontrol
 		QPointF c2 = mapadapter->displayToCoordinate(p2);
 		
 
-		if(this->getLongitude()>=c1.x() && this->getLongitude()<=c2.x())
+		if(this->longitude()>=c1.x() && this->longitude()<=c2.x())
 		{
-			if (this->getLatitude()<=c1.y() && this->getLatitude()>=c2.y())
+			if (this->latitude()<=c1.y() && this->latitude()>=c2.y())
 			{
-				emit(geometryClickEvent(this, QPoint(0,0)));
+				emit(geometryClicked(this, QPoint(0,0)));
 				return true;
 			}
 		}
@@ -287,7 +287,7 @@ namespace qmapcontrol
 	
 		emit(positionChanged(this));
 	}
-	QList<Point*> Point::getPoints()
+	QList<Point*> Point::points()
 	{
 	//TODO: assigning temp?!
 		QList<Point*> points;
@@ -295,12 +295,12 @@ namespace qmapcontrol
 		return points;
 	}
 
-	QWidget* Point::getWidget()
+	QWidget* Point::widget()
 	{
 		return mywidget;
 	}
 
-	QPixmap* Point::getPixmap()
+	QPixmap* Point::pixmap()
 	{
 		return mypixmap;
 	}
@@ -317,8 +317,8 @@ namespace qmapcontrol
 	{
 		this->maxsize = maxsize;
 	}
-	Point::Alignment Point::getAlignment() const
+	Point::Alignment Point::alignment() const
 	{
-		return alignment;
+		return myalignment;
 	}
 }

@@ -20,7 +20,7 @@
 #include "circlepoint.h"
 namespace qmapcontrol
 {
-	CirclePoint::CirclePoint(double x, double y, int radius, QString name, Alignment alignment, QPen* pen)
+	CirclePoint::CirclePoint(qreal x, qreal y, int radius, QString name, Alignment alignment, QPen* pen)
 	: Point(x, y, name, alignment)
 	{
 		size = QSize(radius, radius);
@@ -34,7 +34,7 @@ namespace qmapcontrol
 		painter.drawEllipse(0,0,radius, radius);
 	}
 
-	CirclePoint::CirclePoint(double x, double y, QString name, Alignment alignment, QPen* pen)
+	CirclePoint::CirclePoint(qreal x, qreal y, QString name, Alignment alignment, QPen* pen)
 	: Point(x, y, name, alignment)
 	{
 		int radius = 10;
@@ -56,7 +56,7 @@ namespace qmapcontrol
 
 	void CirclePoint::setPen(QPen* pen)
 	{
-		this->pen = pen;
+		mypen = pen;
 		mypixmap = new QPixmap(size.width()+1, size.height()+1);
 		mypixmap->fill(Qt::transparent);
 		QPainter painter(mypixmap);

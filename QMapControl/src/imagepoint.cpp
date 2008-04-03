@@ -20,7 +20,7 @@
 #include "imagepoint.h"
 namespace qmapcontrol
 {
-	ImagePoint::ImagePoint(double x, double y, QString filename, QString name, Alignment alignment)
+	ImagePoint::ImagePoint(qreal x, qreal y, QString filename, QString name, Alignment alignment)
 	: Point(x, y, name, alignment)
 	{
 // 	qDebug() << "loading image: " << filename;
@@ -29,7 +29,7 @@ namespace qmapcontrol
 // 	qDebug() << "image size: " << size;
 	}
 
-	ImagePoint::ImagePoint(double x, double y, QPixmap* pixmap, QString name, Alignment alignment)
+	ImagePoint::ImagePoint(qreal x, qreal y, QPixmap* pixmap, QString name, Alignment alignment)
 	: Point(x, y, name, alignment)
 	{
 		mypixmap = pixmap;

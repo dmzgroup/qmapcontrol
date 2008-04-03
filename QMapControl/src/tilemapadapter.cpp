@@ -102,19 +102,19 @@ namespace qmapcontrol
 	
 	}
 
-	double TileMapAdapter::deg_rad(double x) const
+	qreal TileMapAdapter::deg_rad(qreal x) const
 	{
 		return x * (PI/180.0);
 	}
-	double TileMapAdapter::rad_deg(double x) const
+	qreal TileMapAdapter::rad_deg(qreal x) const
 	{
 		return x * (180/PI);
 	}
 
-	QString TileMapAdapter::getQuery		(int x, int y, int z) const
+	QString TileMapAdapter::query(int x, int y, int z) const
 	{
-		x = getxoffset(x);
-		y = getyoffset(y);
+		x = xoffset(x);
+		y = yoffset(y);
 	
 		int a[3] = {z, x, y};
 		return QString(serverPath).replace(order[2][0],2, loc.toString(a[order[2][1]]))
@@ -127,8 +127,8 @@ namespace qmapcontrol
 	{
 // 	qDebug() << "numberOfTiles: " << numberOfTiles;
 
-		double x = (coordinate.x()+180) * (numberOfTiles*tilesize)/360.;		// coord to pixel!
-		double y = (1-(log(tan(PI/4+deg_rad(coordinate.y())/2)) /PI)) /2  * (numberOfTiles*tilesize);
+		qreal x = (coordinate.x()+180) * (numberOfTiles*mytilesize)/360.;		// coord to pixel!
+		qreal y = (1-(log(tan(PI/4+deg_rad(coordinate.y())/2)) /PI)) /2  * (numberOfTiles*mytilesize);
 
 		return QPoint(int(x), int(y));
 	
@@ -136,8 +136,8 @@ namespace qmapcontrol
 
 	QPointF TileMapAdapter::displayToCoordinate(const QPoint& point) const
 	{
-		double longitude = (point.x()*(360/(numberOfTiles*tilesize)))-180;
-		double latitude = rad_deg(atan(sinh((1-point.y()*(2/(numberOfTiles*tilesize)))*PI)));
+		qreal longitude = (point.x()*(360/(numberOfTiles*mytilesize)))-180;
+		qreal latitude = rad_deg(atan(sinh((1-point.y()*(2/(numberOfTiles*mytilesize)))*PI)));
 
 		return QPointF(longitude, latitude);
 
@@ -162,11 +162,11 @@ namespace qmapcontrol
 	{
 		return int(pow(2, zoomlevel));
 	}
-	int TileMapAdapter::getxoffset(int x) const
+	int TileMapAdapter::xoffset(int x) const
 	{
 		return x;
 	}
-	int TileMapAdapter::getyoffset(int y) const
+	int TileMapAdapter::yoffset(int y) const
 	{
 		return y;
 	}
