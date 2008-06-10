@@ -21,7 +21,7 @@
 namespace qmapcontrol
 {
 	MapControl::MapControl(QSize size, MouseMode mousemode)
-	: size(size), mymousemode(mousemode)
+	: size(size), mymousemode(mousemode), scaleVisible(false)
 	{
 		layermanager = new LayerManager(this, size);
 		screen_middle = QPoint(size.width()/2, size.height()/2);
@@ -139,6 +139,39 @@ namespace qmapcontrol
 
 		layermanager->drawImage(&painter);
 		layermanager->drawGeoms(&painter);
+		
+		// added by wolf
+		// draw scale
+		if (scaleVisible)
+		{
+			QList<double> distanceList;
+			distanceList<<5000000<<2000000<<1000000<<1000000<<1000000<<100000<<100000<<50000<<50000<<10000<<10000<<10000<<1000<<1000<<500<<200<<100<<50<<25;
+			double line;
+			line = distanceList.at( currentZoom() ) / pow(2, 18-currentZoom() ) / 0.597164;
+	
+			// draw the scale
+			painter.setPen(Qt::black);
+			QPoint p1(10,size.height()-20);
+			QPoint p2((int)line,size.height()-20);
+			painter.drawLine(p1,p2);
+	
+			painter.drawLine(10,size.height()-15, 10,size.height()-25); 
+			painter.drawLine((int)line,size.height()-15, (int)line,size.height()-25); 
+			
+			QString distance;
+			if (distanceList.at(currentZoom()) >= 1000) 
+			{
+				distance = QVariant( distanceList.at(currentZoom())/1000 )  .toString()+ " km";
+			}
+			else
+			{
+				distance = QVariant( distanceList.at(currentZoom()) ).toString() + " m";
+			}
+	
+			painter.drawText(QPoint((int)line+10,size.height()-15), distance);
+		}
+		
+		
 	
 		painter.drawLine(screen_middle.x(), screen_middle.y()-10,
 							  screen_middle.x(), screen_middle.y()+10); // |
@@ -348,4 +381,20 @@ namespace qmapcontrol
 	{
 		geom->disconnect(SIGNAL(positionChanged(Geometry*)));
 	}
+	
+	void MapControl::enablePersistentCache(const QDir& path)
+	{
+		ImageManager::instance()->setCacheDir(path);
+	}
+	
+	void MapControl::setProxy(QString host, int port)
+	{
+		ImageManager::instance()->setProxy(host, port);
+	}
+	
+	void MapControl::showScale(bool show)
+	{
+		scaleVisible = show;
+	}
+	
 }

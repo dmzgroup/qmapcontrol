@@ -1,3 +1,8 @@
+0.9.5
+=====
+- new method "enablePersistentCache()" allows to store map tiles
+- new method "showScale(bool)" allows to display the scale of the current map
+
 0.9.4
 =====
 - removed "get" prefixes from ancessor functions, to improve Qt-like design

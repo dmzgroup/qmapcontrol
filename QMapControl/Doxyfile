@@ -4,7 +4,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 PROJECT_NAME           = QMapControl
-PROJECT_NUMBER         = 0.9.4
+PROJECT_NUMBER         = 0.9.5
 OUTPUT_DIRECTORY       = 
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
@@ -135,17 +135,18 @@ FILE_PATTERNS          = *.c \
 RECURSIVE              = YES
 EXCLUDE                = ./src/layermanager.cpp \
                          ./src/layermanager.h \
-                         ./src/imagemanager.cpp \
                          ./src/imagemanager.h \
+                         ./Samples/Mapviewer/src/mapviewer.h \
                          ./Samples/Multidemo/src/gps_modul.cpp \
                          ./Samples/Multidemo/src/gps_modul.h \
+                         ./Samples/Multidemo/src/multidemo.h \
                          ./Samples/GPS/src/gps_neo.cpp \
                          ./Samples/GPS/src/gps_neo.h \
-                         ./Samples/Multidemo/src/gps_modul.cpp \
-                         ./Samples/Multidemo/src/gps_modul.h \
-                         ./Samples/Multidemo/src/gps_modul.cpp \
+			 ./Samples/Citymap/src/citymap.h \
 			 ./Samples/Citymap/src/dialogs.h \
-			 ./Samples/Citymap/src/dialogs.cpp
+			 ./Samples/Citymap/src/dialogs.cpp \
+			 ./Samples/Phonebook/src/phonebook.h \
+			 ./Samples/LinesAndPoints/src/linesandpoints.h
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = 
 EXAMPLE_PATH           = ./Samples

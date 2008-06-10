@@ -1226,6 +1226,13 @@
     </member>
     <member kind="function">
       <type>void</type>
+      <name>enablePersistentCache</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>f27ac1bc11a80f7ff9a4bd3ec2527df7</anchor>
+      <arglist>(const QDir &amp;path=QDir::homePath()+&quot;/QMapControl.cache&quot;)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
       <name>followGeometry</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
       <anchor>6f7a69381097c74928af4ab3aa970386</anchor>
@@ -1282,6 +1289,13 @@
     </member>
     <member kind="function">
       <type>void</type>
+      <name>setProxy</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>ffaa4e5f0b461da0a1016d5459a550e0</anchor>
+      <arglist>(QString host, int port)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
       <name>setView</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
       <anchor>4ea85421ec8df905fba209510c909e2c</anchor>
@@ -1307,6 +1321,13 @@
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
       <anchor>e8c52337a968729d53c1ba57bfd65ea4</anchor>
       <arglist>(const QList&lt; QPointF &gt; coordinates) const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>showScale</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>a98cf43403323f601b3c91c6fe26a30c</anchor>
+      <arglist>(bool show)</arglist>
     </member>
     <member kind="function">
       <type>void</type>

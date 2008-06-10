@@ -178,7 +178,34 @@ namespace qmapcontrol
 		 */
 			MapControl::MouseMode mouseMode();
 		
-			int rotation;
+			//int rotation;
+			
+		//! Enable persistent caching of map tiles
+		/*!
+			* Call this method to allow the QMapControl widget to save map tiles
+			* persistent (also over application restarts).
+			* Tiles are stored in the subdirectory "QMapControl.cache" within the 
+			* user's home directory. This can be changed by giving a path.
+			* @param path the path to the cache directory
+		*/
+			void enablePersistentCache(const QDir& path=QDir::homePath() + "/QMapControl.cache");
+			
+			
+		//! Sets the proxy for HTTP connections
+		/*!
+			 * This method sets the proxy for HTTP connections.
+			 * This is not provided by the current Qtopia version!
+			 * @param host the proxy´s hostname or ip
+			 * @param port the proxy´s port
+		 */
+			void setProxy(QString host, int port);
+			
+		//! Displays the scale within the widget
+		/*!
+			* 
+			* @param show true if the scale should be displayed
+		*/
+			void showScale(bool show);
 		
 		private:
 			LayerManager*	layermanager;
@@ -190,8 +217,10 @@ namespace qmapcontrol
 			QSize size;		// size of the widget
 		
 			bool mousepressed;
-		
 			MouseMode mymousemode;
+			bool scaleVisible;
+			
+			bool m_loadingFlag;
 		
 			QMutex moveMutex;	// used for method moveTo()
 			QPointF target;	// used for method moveTo()

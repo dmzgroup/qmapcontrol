@@ -22,7 +22,7 @@ namespace qmapcontrol
 {
 	ImageManager* ImageManager::m_Instance = 0;
 	ImageManager::ImageManager(QObject* parent)
-	:QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this))
+	:QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this)), doPersistentCaching(false)
 	{
 		emptyPixmap.fill(Qt::transparent);
 	
@@ -44,14 +44,23 @@ namespace qmapcontrol
 		QPixmap pm;
 // 		pm.fill(Qt::black);
 	
-	// is image cached or currently loading?
+	// is image cached (memory) or currently loading?
 		if (!QPixmapCache::find(url, pm) && !net->imageIsLoading(url))
 // 	if (!images.contains(url) && !net->imageIsLoading(url))
 		{
-		// load from net, add empty image
-			net->loadImage(host, url);
-// 		QPixmapCache::insert(url, emptyPixmap);
-			return emptyPixmap;
+			// image cached (persistent)?
+			if (doPersistentCaching && tileExist(url))
+			{
+				loadTile(url,pm);
+				QPixmapCache::insert(url, pm);
+			}
+			else
+			{
+				// load from net, add empty image
+				net->loadImage(host, url);
+				//QPixmapCache::insert(url, emptyPixmap);
+				return emptyPixmap;
+			}
 		}
 		return pm;
 	}
@@ -72,6 +81,10 @@ namespace qmapcontrol
 // 	qDebug() << "ImageManager::receivedImage";
 		QPixmapCache::insert(url, pixmap);
 // 	images[url] = pixmap;
+		
+		// needed?
+		if (doPersistentCaching && !tileExist(url) )
+			saveTile(url,pixmap);
 	
 // 	((Layer*)this->parent())->imageReceived();
 	
@@ -103,5 +116,56 @@ namespace qmapcontrol
 	void ImageManager::setProxy(QString host, int port)
 	{
 		net->setProxy(host, port);
+	}
+	
+	void ImageManager::setCacheDir(const QDir& path)
+	{
+		doPersistentCaching = true;
+		cacheDir = path;
+		if (!cacheDir.exists())
+		{
+			cacheDir.mkpath(cacheDir.absolutePath());
+		}
+	}
+	
+	bool ImageManager::saveTile(QString tileName,QPixmap tileData)
+	{
+		tileName.replace("/","-");
+
+		QFile file(cacheDir.absolutePath() + "/" + tileName);
+		qDebug() << "writing: " << file.fileName();
+		if (!file.open(QIODevice::ReadWrite )){
+			qDebug()<<"error reading file";
+			return false;
+		}
+		QByteArray bytes;
+		QBuffer buffer(&bytes);
+		buffer.open(QIODevice::WriteOnly);
+		tileData.save(&buffer, "PNG");
+
+		file.write(bytes);
+		file.close();
+		return true;
+	}
+	bool ImageManager::loadTile(QString tileName,QPixmap &tileData)
+	{
+		tileName.replace("/","-");
+		QFile file(cacheDir.absolutePath() + "/" + tileName);
+		if (!file.open(QIODevice::ReadOnly )) {
+			return false;
+		}
+		tileData.loadFromData( file.readAll() );
+
+		file.close();
+		return true;
+	}
+	bool ImageManager::tileExist(QString tileName)
+	{
+		tileName.replace("/","-");
+		QFile file(cacheDir.absolutePath() + "/" + tileName);
+		if (file.exists())
+			return true;
+		else
+			return false;
 	}
 }

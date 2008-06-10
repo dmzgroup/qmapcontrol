@@ -24,6 +24,9 @@
 #include <QPixmapCache>
 #include <QDebug>
 #include <QMutex>
+#include <QFile>
+#include <QBuffer>
+#include <QDir>
 #include "mapnetwork.h"
 
 namespace qmapcontrol
@@ -82,6 +85,14 @@ namespace qmapcontrol
 			 * @param port the proxy´s port
 		 */
 			void setProxy(QString host, int port);
+				
+		//! sets the cache directory for persistently saving map tiles
+		/*!
+			* 
+			* @param path the path where map tiles should be stored
+			* @todo add maximum size
+		*/
+			void setCacheDir(const QDir& path);
 
 		private:
 			ImageManager(QObject* parent = 0);
@@ -90,8 +101,14 @@ namespace qmapcontrol
 			QPixmap emptyPixmap;
 			MapNetwork* net;
 			QVector<QString> prefetch;
+			QDir cacheDir;
+			bool doPersistentCaching;
 	
 			static ImageManager* m_Instance;
+			
+			bool saveTile(QString tileName,QPixmap tileData);
+			bool loadTile(QString tileName,QPixmap &tileData);
+			bool tileExist(QString tileName);
 		
 		signals:
 			void imageReceived();
