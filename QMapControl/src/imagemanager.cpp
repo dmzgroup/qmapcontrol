@@ -58,7 +58,7 @@ namespace qmapcontrol
 			if (doPersistentCaching && tileExist(url))
 			{
 				loadTile(url,pm);
-				QPixmapCache::insert(url, pm);
+				QPixmapCache::insert(url.toAscii().toBase64(), pm);
 			}
 			else
 			{
@@ -138,7 +138,8 @@ namespace qmapcontrol
 	{
 		tileName.replace("/","-");
 
-		QFile file(cacheDir.absolutePath() + "/" + tileName);
+		QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
+
 		qDebug() << "writing: " << file.fileName();
 		if (!file.open(QIODevice::ReadWrite )){
 			qDebug()<<"error reading file";
@@ -156,7 +157,7 @@ namespace qmapcontrol
 	bool ImageManager::loadTile(QString tileName,QPixmap &tileData)
 	{
 		tileName.replace("/","-");
-		QFile file(cacheDir.absolutePath() + "/" + tileName);
+		QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
 		if (!file.open(QIODevice::ReadOnly )) {
 			return false;
 		}
@@ -168,7 +169,7 @@ namespace qmapcontrol
 	bool ImageManager::tileExist(QString tileName)
 	{
 		tileName.replace("/","-");
-		QFile file(cacheDir.absolutePath() + "/" + tileName);
+		QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
 		if (file.exists())
 			return true;
 		else
