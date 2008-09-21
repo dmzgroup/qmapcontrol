@@ -13,7 +13,7 @@ Mapviewer::Mapviewer(QWidget *parent)
 {
 	// create MapControl
 	mc = new MapControl(QSize(380, 540));
-
+    mc->showScale(true);
 	// create mapadapter, for mainlayer and overlay
 	mapadapter = new OSMMapAdapter();
 	MapAdapter* mapadapter_overlay = new YahooMapAdapter("us.maps3.yimg.com", "/aerial.maps.yimg.com/png?v=2.2&t=h&s=256&x=%2&y=%3&z=%1");
@@ -63,13 +63,11 @@ void Mapviewer::createActions()
 	yahooActionMap = new QAction(tr("Yahoo: Map"), mapproviderGroup);
 	yahooActionSatellite = new QAction(tr("Yahoo: Satellite"), mapproviderGroup);
 	googleActionMap = new QAction(tr("Google: Map"), mapproviderGroup);
-	googleActionSat = new QAction(tr("Google: Satellite"), mapproviderGroup);
 	wmsAction = new QAction(tr("WMS"), mapproviderGroup);
 	osmAction->setCheckable(true);
 	yahooActionMap->setCheckable(true);
 	yahooActionSatellite->setCheckable(true);
 	googleActionMap->setCheckable(true);
-	googleActionSat->setCheckable(true);
 	osmAction->setChecked(true);
 	wmsAction->setCheckable(true);
 	connect(mapproviderGroup, SIGNAL(triggered(QAction*)),
@@ -89,7 +87,6 @@ void Mapviewer::createMenu()
 	mapMenu->addAction(yahooActionMap);
 	mapMenu->addAction(yahooActionSatellite);
 	mapMenu->addAction(googleActionMap);
-	mapMenu->addAction(googleActionSat);
 	mapMenu->addAction(wmsAction);
 	mapMenu->addSeparator();
 	mapMenu->addAction(yahooActionOverlay);
@@ -141,18 +138,7 @@ void Mapviewer::mapproviderSelected(QAction* action)
 		int zoom = mapadapter->adaptedZoom();
 		mc->setZoom(0);
 		mapadapter = new GoogleMapAdapter();
-		mainlayer->setMapAdapter(mapadapter);
-		
-		mc->updateRequestNew();
-		mc->setZoom(zoom);
-		yahooActionOverlay->setEnabled(false);
-		overlay->setVisible(false);
-		yahooActionOverlay->setChecked(false);
-	} else if (action == googleActionSat)
-	{
-		int zoom = mapadapter->adaptedZoom();
-		mc->setZoom(0);
-		mapadapter = new GoogleSatMapAdapter();
+        //mapadapter = new TileMapAdapter("mt0.google.com", "/mt?v=w2t.80&hl=de&x=%2&s=&y=%3&zoom=%1&s=G", 256, 17, 0);
 		mainlayer->setMapAdapter(mapadapter);
 		
 		mc->updateRequestNew();

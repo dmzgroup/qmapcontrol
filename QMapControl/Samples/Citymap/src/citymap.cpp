@@ -17,9 +17,7 @@ Citymap::Citymap(QWidget*)
 {
 	// create MapControl
 	mc = new MapControl(QSize(380,540));
-// 	mc = new MapControl(QSize(480,480));
-// 	mc->setMinimumHeight(400);
-	
+    mc->showScale(true);
 	// display the MapControl in the application
 	QVBoxLayout* layout = new QVBoxLayout;
 	layout->addWidget(mc);
@@ -33,15 +31,9 @@ Citymap::Citymap(QWidget*)
 	
 	coord1 = QPointF();
 	coord2 = QPointF();
-// 	OSMMapAdapter* mapadapter = new OSMMapAdapter();
-// 	mapadapter = new WMSMapAdapter("online.mainz.de", "/gint-cgi/mapserv?map=/data/mapbender2-int/umn-www/client/uebersicht.map&VERSION=1.1.0&REQUEST=GetMap&SERVICE=WMS&LAYERS=Stadtgrenzen_01,Bebauung_01,Bebauung_02,Kreisstrassen,Landstrassen,Bundesstrassen,Autobahn,Stadtgrenzen_02,Autobahn_Label,Totaltxt&STYLES=,,,,,,,,,&SRS=EPSG:4326&FORMAT=image/png&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=application/vnd.ogc.se_xml", 256);
-	
 	mapadapter = new OSMMapAdapter();
 	MapAdapter* mapadapter_overlay = new YahooMapAdapter("us.maps3.yimg.com", "/aerial.maps.yimg.com/png?v=2.2&t=h&s=256&x=%2&y=%3&z=%1");
-// 	mapadapter = new YahooMapAdapter();
-// 	mapadapter = new GoogleMapAdapter();
-// 	MapAdapter* mapadapter2 = new TileMapAdapter("mt0.google.com", "/mt?n=404&v=w2t.66&x=%2&s=&y=%3&zoom=%1", 256, 17, 0);
-	
+
 	// create a layer with the mapadapter and type MapLayer
 	l = new MapLayer("Custom Layer", mapadapter);
 	overlay = new MapLayer("Overlay", mapadapter_overlay);
