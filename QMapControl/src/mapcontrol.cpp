@@ -152,7 +152,7 @@ namespace qmapcontrol
 		{
 			QList<double> distanceList;
 			distanceList<<5000000<<2000000<<1000000<<1000000<<1000000<<100000<<100000<<50000<<50000<<10000<<10000<<10000<<1000<<1000<<500<<200<<100<<50<<25;
-			if (distanceList.size() > currentZoom())
+			if (currentZoom() >= 0 && distanceList.size() > currentZoom())
 			{
 				double line;
 				line = distanceList.at( currentZoom() ) / pow(2, 18-currentZoom() ) / 0.597164;

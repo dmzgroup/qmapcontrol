@@ -30,8 +30,6 @@ namespace qmapcontrol
 	:MapAdapter(host, serverPath, tilesize, minZoom, maxZoom)
 	{
 		PI = acos(-1.0);
-
-// 	qDebug() << "creating adapter: min, max, current: " << minZoom << ", " << maxZoom << ", " << current_zoom << ", " << (min_zoom < max_zoom);
 	
 	/*
 		Initialize the "substring replace engine". First the string replacement
@@ -84,28 +82,39 @@ namespace qmapcontrol
 	TileMapAdapter::~TileMapAdapter()
 	{
 	}
-//TODO: rausziehen? ->MapAdapter?
+	//TODO: pull out
 	void TileMapAdapter::zoom_in()
 	{
 		if (min_zoom > max_zoom)
-			current_zoom = current_zoom-1;
+		{
+			//current_zoom = current_zoom-1;
+			current_zoom = current_zoom > max_zoom ? current_zoom-1 : max_zoom;
+		}
 		else if (min_zoom < max_zoom)
-			current_zoom = current_zoom+1;
+		{
+			//current_zoom = current_zoom+1;
+			current_zoom = current_zoom < max_zoom ? current_zoom+1 : max_zoom;
+		}
 	
 		int zoom = max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
-		numberOfTiles = tilesonzoomlevel(zoom);//pow(2, zoom);
+		numberOfTiles = tilesonzoomlevel(zoom);
 	
 	}
 	void TileMapAdapter::zoom_out()
 	{
 		if (min_zoom > max_zoom)
-			current_zoom = current_zoom+1;
+		{
+			//current_zoom = current_zoom+1;
+			current_zoom = current_zoom < min_zoom ? current_zoom+1 : min_zoom;
+		}
 		else if (min_zoom < max_zoom)
-			current_zoom = current_zoom-1;
+		{
+			//current_zoom = current_zoom-1;
+			current_zoom = current_zoom > min_zoom ? current_zoom-1 : min_zoom;
+		}
 	
 		int zoom = max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
-		numberOfTiles = tilesonzoomlevel(zoom);//pow(2, zoom);
-	
+		numberOfTiles = tilesonzoomlevel(zoom);
 	}
 
 	qreal TileMapAdapter::deg_rad(qreal x) const
@@ -131,13 +140,10 @@ namespace qmapcontrol
 
 	QPoint TileMapAdapter::coordinateToDisplay(const QPointF& coordinate) const
 	{
-// 	qDebug() << "numberOfTiles: " << numberOfTiles;
-
 		qreal x = (coordinate.x()+180) * (numberOfTiles*mytilesize)/360.;		// coord to pixel!
 		qreal y = (1-(log(tan(PI/4+deg_rad(coordinate.y())/2)) /PI)) /2  * (numberOfTiles*mytilesize);
 
 		return QPoint(int(x), int(y));
-	
 	}
 
 	QPointF TileMapAdapter::displayToCoordinate(const QPoint& point) const
