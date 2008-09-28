@@ -88,7 +88,15 @@ namespace qmapcontrol
 			}
 		}
 	}
-
+	
+	void Layer::clearGeometries()
+	{
+		foreach(Geometry *geometry, geometries){
+			disconnect(geometry);
+		}
+		geometries.clear();
+	}	
+	
 	bool Layer::isVisible() const
 	{
 		return visible;

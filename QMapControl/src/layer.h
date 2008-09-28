@@ -102,11 +102,19 @@ namespace qmapcontrol
 			 * @param  geometry the new Geometry
 	 */
 			void	addGeometry(Geometry* geometry);
-	
+	//!
+	/*! removes the Geometry object from this Layer
+			* This method removes a Geometry object from this Layer.
+	*/
 			void	removeGeometry(Geometry* geometry);
-	
+	//!
+	/*! removes all Geometry objects from this Layer
+			* This method removes all Geometry objects from this Layer.
+	*/
+			void 	clearGeometries();
+			
 	//! return true if the layer is visible
-	/**
+	/*!
 			 * @return if the layer is visible
 	 */
 			bool	isVisible() const;
