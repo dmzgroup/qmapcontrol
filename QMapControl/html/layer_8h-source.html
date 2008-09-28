@@ -83,61 +83,63 @@
 <a name="l00098"></a>00098         
 <a name="l00100"></a>00100 
 <a name="l00104"></a>00104                         <span class="keywordtype">void</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#b692d7d08414ed2b744946b88872827f" title="adds a Geometry object to this Layer">addGeometry</a>(<a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>* geometry);
-<a name="l00105"></a>00105         
-<a name="l00106"></a>00106                         <span class="keywordtype">void</span>    removeGeometry(<a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>* geometry);
-<a name="l00107"></a>00107         
-<a name="l00109"></a>00109 
-<a name="l00112"></a>00112                         <span class="keywordtype">bool</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#08422ee75ab02691943c1ca87e2bc563" title="return true if the layer is visible">isVisible</a>() <span class="keyword">const</span>;
-<a name="l00113"></a>00113         
-<a name="l00115"></a>00115 
-<a name="l00119"></a>00119                         <a class="code" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4" title="sets the type of a layer, see Layer class doc for further information">Layer::LayerType</a> <a class="code" href="classqmapcontrol_1_1Layer.html#1cfbd8a5c27cf9cb400fa458a1f70ba5" title="returns the LayerType of the Layer">layertype</a>() <span class="keyword">const</span>;
-<a name="l00120"></a>00120         
-<a name="l00121"></a>00121                         <span class="keywordtype">void</span> setMapAdapter(<a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* <a class="code" href="classqmapcontrol_1_1Layer.html#23cb6462136a0920739cdeb5f1709fa7" title="returns the layer´s MapAdapter">mapadapter</a>);
-<a name="l00122"></a>00122         
-<a name="l00123"></a>00123                         <a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>&amp; rhs);
-<a name="l00124"></a>00124                         <a class="code" href="classqmapcontrol_1_1Layer.html#7ffb001076dc500ad13e523836bda23d" title="Layer constructor.">Layer</a>(<span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>&amp; old);
-<a name="l00125"></a>00125         
-<a name="l00126"></a>00126                 <span class="keyword">private</span>:
-<a name="l00127"></a>00127                         <span class="keywordtype">void</span> moveWidgets(<span class="keyword">const</span> QPoint mapmiddle_px) <span class="keyword">const</span>;
-<a name="l00128"></a>00128                         <span class="keywordtype">void</span> drawYourImage(QPainter* painter, <span class="keyword">const</span> QPoint mapmiddle_px) <span class="keyword">const</span>;
-<a name="l00129"></a>00129                         <span class="keywordtype">void</span> drawYourGeometries(QPainter* painter, <span class="keyword">const</span> QPoint mapmiddle_px, QRect viewport) <span class="keyword">const</span>;
-<a name="l00130"></a>00130                         <span class="keywordtype">void</span> setSize(QSize size);
-<a name="l00131"></a>00131                         QRect offscreenViewport() <span class="keyword">const</span>;
-<a name="l00132"></a>00132                         <span class="keywordtype">bool</span> takesMouseEvents() <span class="keyword">const</span>;
-<a name="l00133"></a>00133                         <span class="keywordtype">void</span> mouseEvent(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPoint mapmiddle_px);
-<a name="l00134"></a>00134                         <span class="keywordtype">void</span> zoomIn() <span class="keyword">const</span>;
-<a name="l00135"></a>00135                         <span class="keywordtype">void</span> zoomOut() <span class="keyword">const</span>;
-<a name="l00136"></a>00136                         <span class="keywordtype">void</span> _draw(QPainter* painter, <span class="keyword">const</span> QPoint mapmiddle_px) <span class="keyword">const</span>;
-<a name="l00137"></a>00137         
-<a name="l00138"></a>00138                         <span class="keywordtype">bool</span> visible;
-<a name="l00139"></a>00139                         QString mylayername;
-<a name="l00140"></a>00140                         <a class="code" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4" title="sets the type of a layer, see Layer class doc for further information">LayerType</a> mylayertype;
-<a name="l00141"></a>00141                         QSize size;     
-<a name="l00142"></a>00142                         QPoint screenmiddle;
-<a name="l00143"></a>00143         
-<a name="l00144"></a>00144                         QList&lt;Geometry*&gt; geometries;
-<a name="l00145"></a>00145                         <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>*     mapAdapter;
-<a name="l00146"></a>00146                         <span class="keywordtype">bool</span> takeevents;
-<a name="l00147"></a>00147                         <span class="keyword">mutable</span> QRect myoffscreenViewport;
-<a name="l00148"></a>00148 
-<a name="l00149"></a>00149         
-<a name="l00150"></a>00150         
-<a name="l00151"></a>00151                 signals:
-<a name="l00153"></a>00153 
-<a name="l00159"></a>00159                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1Layer.html#685dcab83356e5cc449475f177bb487d" title="This signal is emitted when a Geometry is clicked.">geometryClicked</a>(<a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>* geometry, QPoint point);
-<a name="l00160"></a>00160         
-<a name="l00161"></a>00161                         <span class="keywordtype">void</span> updateRequest(QRectF rect);
-<a name="l00162"></a>00162                         <span class="keywordtype">void</span> updateRequest();
-<a name="l00163"></a>00163                 
-<a name="l00164"></a>00164                 <span class="keyword">public</span> slots:
-<a name="l00166"></a>00166 
-<a name="l00169"></a>00169                         <span class="keywordtype">void</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#18e44e30b31525a243960ca3928125aa" title="if visible is true, the layer is made visible">setVisible</a>(<span class="keywordtype">bool</span> visible);
-<a name="l00170"></a>00170         
-<a name="l00171"></a>00171         };
-<a name="l00172"></a>00172 }
-<a name="l00173"></a>00173 <span class="preprocessor">#endif</span>
+<a name="l00106"></a>00106 
+<a name="l00109"></a>00109                         <span class="keywordtype">void</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#b34ffa138d7262b801cdfedaf4a129d3">removeGeometry</a>(<a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>* geometry);
+<a name="l00111"></a>00111 
+<a name="l00114"></a>00114                         <span class="keywordtype">void</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#0b551ef8f4d0fd26cfa2ed0ec4c981b3">clearGeometries</a>();
+<a name="l00115"></a>00115                         
+<a name="l00117"></a>00117 
+<a name="l00120"></a>00120                         <span class="keywordtype">bool</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#08422ee75ab02691943c1ca87e2bc563" title="return true if the layer is visible">isVisible</a>() <span class="keyword">const</span>;
+<a name="l00121"></a>00121         
+<a name="l00123"></a>00123 
+<a name="l00127"></a>00127                         <a class="code" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4" title="sets the type of a layer, see Layer class doc for further information">Layer::LayerType</a> <a class="code" href="classqmapcontrol_1_1Layer.html#1cfbd8a5c27cf9cb400fa458a1f70ba5" title="returns the LayerType of the Layer">layertype</a>() <span class="keyword">const</span>;
+<a name="l00128"></a>00128         
+<a name="l00129"></a>00129                         <span class="keywordtype">void</span> setMapAdapter(<a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>* <a class="code" href="classqmapcontrol_1_1Layer.html#23cb6462136a0920739cdeb5f1709fa7" title="returns the layer´s MapAdapter">mapadapter</a>);
+<a name="l00130"></a>00130         
+<a name="l00131"></a>00131                         <a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>&amp; rhs);
+<a name="l00132"></a>00132                         <a class="code" href="classqmapcontrol_1_1Layer.html#7ffb001076dc500ad13e523836bda23d" title="Layer constructor.">Layer</a>(<span class="keyword">const</span> <a class="code" href="classqmapcontrol_1_1Layer.html" title="Layer class.">Layer</a>&amp; old);
+<a name="l00133"></a>00133         
+<a name="l00134"></a>00134                 <span class="keyword">private</span>:
+<a name="l00135"></a>00135                         <span class="keywordtype">void</span> moveWidgets(<span class="keyword">const</span> QPoint mapmiddle_px) <span class="keyword">const</span>;
+<a name="l00136"></a>00136                         <span class="keywordtype">void</span> drawYourImage(QPainter* painter, <span class="keyword">const</span> QPoint mapmiddle_px) <span class="keyword">const</span>;
+<a name="l00137"></a>00137                         <span class="keywordtype">void</span> drawYourGeometries(QPainter* painter, <span class="keyword">const</span> QPoint mapmiddle_px, QRect viewport) <span class="keyword">const</span>;
+<a name="l00138"></a>00138                         <span class="keywordtype">void</span> setSize(QSize size);
+<a name="l00139"></a>00139                         QRect offscreenViewport() <span class="keyword">const</span>;
+<a name="l00140"></a>00140                         <span class="keywordtype">bool</span> takesMouseEvents() <span class="keyword">const</span>;
+<a name="l00141"></a>00141                         <span class="keywordtype">void</span> mouseEvent(<span class="keyword">const</span> QMouseEvent*, <span class="keyword">const</span> QPoint mapmiddle_px);
+<a name="l00142"></a>00142                         <span class="keywordtype">void</span> zoomIn() <span class="keyword">const</span>;
+<a name="l00143"></a>00143                         <span class="keywordtype">void</span> zoomOut() <span class="keyword">const</span>;
+<a name="l00144"></a>00144                         <span class="keywordtype">void</span> _draw(QPainter* painter, <span class="keyword">const</span> QPoint mapmiddle_px) <span class="keyword">const</span>;
+<a name="l00145"></a>00145         
+<a name="l00146"></a>00146                         <span class="keywordtype">bool</span> visible;
+<a name="l00147"></a>00147                         QString mylayername;
+<a name="l00148"></a>00148                         <a class="code" href="classqmapcontrol_1_1Layer.html#56943a0946e5f15e5e58054b8e7a04a4" title="sets the type of a layer, see Layer class doc for further information">LayerType</a> mylayertype;
+<a name="l00149"></a>00149                         QSize size;     
+<a name="l00150"></a>00150                         QPoint screenmiddle;
+<a name="l00151"></a>00151         
+<a name="l00152"></a>00152                         QList&lt;Geometry*&gt; geometries;
+<a name="l00153"></a>00153                         <a class="code" href="classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl.">MapAdapter</a>*     mapAdapter;
+<a name="l00154"></a>00154                         <span class="keywordtype">bool</span> takeevents;
+<a name="l00155"></a>00155                         <span class="keyword">mutable</span> QRect myoffscreenViewport;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         
+<a name="l00158"></a>00158         
+<a name="l00159"></a>00159                 signals:
+<a name="l00161"></a>00161 
+<a name="l00167"></a>00167                         <span class="keywordtype">void</span> <a class="code" href="classqmapcontrol_1_1Layer.html#685dcab83356e5cc449475f177bb487d" title="This signal is emitted when a Geometry is clicked.">geometryClicked</a>(<a class="code" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a>* geometry, QPoint point);
+<a name="l00168"></a>00168         
+<a name="l00169"></a>00169                         <span class="keywordtype">void</span> updateRequest(QRectF rect);
+<a name="l00170"></a>00170                         <span class="keywordtype">void</span> updateRequest();
+<a name="l00171"></a>00171                 
+<a name="l00172"></a>00172                 <span class="keyword">public</span> slots:
+<a name="l00174"></a>00174 
+<a name="l00177"></a>00177                         <span class="keywordtype">void</span>    <a class="code" href="classqmapcontrol_1_1Layer.html#18e44e30b31525a243960ca3928125aa" title="if visible is true, the layer is made visible">setVisible</a>(<span class="keywordtype">bool</span> visible);
+<a name="l00178"></a>00178         
+<a name="l00179"></a>00179         };
+<a name="l00180"></a>00180 }
+<a name="l00181"></a>00181 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 4 21:33:47 2008 for QMapControl by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Sep 21 01:54:18 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

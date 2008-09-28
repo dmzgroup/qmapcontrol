@@ -27,7 +27,7 @@ Mapviewer::Mapviewer(QWidget *parent)
 {
         <span class="comment">// create MapControl</span>
         mc = <span class="keyword">new</span> MapControl(QSize(380, 540));
-
+    mc-&gt;showScale(<span class="keyword">true</span>);
         <span class="comment">// create mapadapter, for mainlayer and overlay</span>
         mapadapter = <span class="keyword">new</span> OSMMapAdapter();
         MapAdapter* mapadapter_overlay = <span class="keyword">new</span> YahooMapAdapter(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=2.2&amp;t=h&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
@@ -77,13 +77,11 @@ Mapviewer::Mapviewer(QWidget *parent)
         yahooActionMap = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: Map"</span>), mapproviderGroup);
         yahooActionSatellite = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: Satellite"</span>), mapproviderGroup);
         googleActionMap = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Google: Map"</span>), mapproviderGroup);
-        googleActionSat = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Google: Satellite"</span>), mapproviderGroup);
         wmsAction = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"WMS"</span>), mapproviderGroup);
         osmAction-&gt;setCheckable(<span class="keyword">true</span>);
         yahooActionMap-&gt;setCheckable(<span class="keyword">true</span>);
         yahooActionSatellite-&gt;setCheckable(<span class="keyword">true</span>);
         googleActionMap-&gt;setCheckable(<span class="keyword">true</span>);
-        googleActionSat-&gt;setCheckable(<span class="keyword">true</span>);
         osmAction-&gt;setChecked(<span class="keyword">true</span>);
         wmsAction-&gt;setCheckable(<span class="keyword">true</span>);
         connect(mapproviderGroup, SIGNAL(triggered(QAction*)),
@@ -103,7 +101,6 @@ Mapviewer::Mapviewer(QWidget *parent)
         mapMenu-&gt;addAction(yahooActionMap);
         mapMenu-&gt;addAction(yahooActionSatellite);
         mapMenu-&gt;addAction(googleActionMap);
-        mapMenu-&gt;addAction(googleActionSat);
         mapMenu-&gt;addAction(wmsAction);
         mapMenu-&gt;addSeparator();
         mapMenu-&gt;addAction(yahooActionOverlay);
@@ -155,18 +152,7 @@ Mapviewer::Mapviewer(QWidget *parent)
                 <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
                 mc-&gt;setZoom(0);
                 mapadapter = <span class="keyword">new</span> GoogleMapAdapter();
-                mainlayer-&gt;setMapAdapter(mapadapter);
-                
-                mc-&gt;updateRequestNew();
-                mc-&gt;setZoom(zoom);
-                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
-                overlay-&gt;setVisible(<span class="keyword">false</span>);
-                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
-        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == googleActionSat)
-        {
-                <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
-                mc-&gt;setZoom(0);
-                mapadapter = <span class="keyword">new</span> GoogleSatMapAdapter();
+        <span class="comment">//mapadapter = new TileMapAdapter("mt0.google.com", "/mt?v=w2t.80&amp;hl=de&amp;x=%2&amp;s=&amp;y=%3&amp;zoom=%1&amp;s=G", 256, 17, 0);</span>
                 mainlayer-&gt;setMapAdapter(mapadapter);
                 
                 mc-&gt;updateRequestNew();
@@ -194,7 +180,7 @@ Mapviewer::~Mapviewer()
 {
 }
 </pre></div> </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 4 21:33:47 2008 for QMapControl by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Sep 21 01:54:18 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>
