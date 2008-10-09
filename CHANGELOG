@@ -1,3 +1,7 @@
+2008-10-09
+----------
+- New MapControl-signal: viewChanged(coordinate, zoom) which emits the current center coordinate and zoom level after an view update (Thanks to Lorenzo)
+
 2008-09-28
 ----------
 - New layer-method clearGeometries() to remove all Geometry objects of a layer

@@ -92,10 +92,13 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Emitted, after a Rectangular is dragged.  <a href="#1fd82da86a16f8932d45f4a0cadb60d1"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#cc9ddd8e1721682682f85e73dae5f768">geometryClicked</a> (<a class="el" href="classqmapcontrol_1_1Geometry.html">Geometry</a> *geometry, QPoint coord_px)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emmited, when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#cc9ddd8e1721682682f85e73dae5f768"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted, when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked.  <a href="#cc9ddd8e1721682682f85e73dae5f768"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#a463d9dfa43fa385b48aab115d374637">mouseEventCoordinate</a> (const QMouseEvent *evnt, const QPointF coordinate)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Emitted AFTER a MouseEvent occured.  <a href="#a463d9dfa43fa385b48aab115d374637"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#08eac7c36a9f2b940daa171d450f6d76">viewChanged</a> (const QPointF &amp;coordinate, int zoom)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This signal is emitted, after the view have changed.  <a href="#08eac7c36a9f2b940daa171d450f6d76"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqmapcontrol_1_1MapControl.html#87c6ef3c45ee9c21e173db2aa16cf567">addLayer</a> (<a class="el" href="classqmapcontrol_1_1Layer.html">Layer</a> *layer)</td></tr>
 
@@ -224,7 +227,7 @@ The <a class="el" href="classqmapcontrol_1_1MapControl.html" title="The control 
   </table>
 </dl>
 
-<p>References <a class="el" href="mapcontrol_8cpp-source.html#l00298">MapControl::updateRequestNew()</a>.</p>
+<p>References <a class="el" href="mapcontrol_8cpp-source.html#l00299">MapControl::updateRequestNew()</a>.</p>
 
 </div>
 </div><p>
@@ -407,12 +410,12 @@ To stop the following the method <a class="el" href="classqmapcontrol_1_1MapCont
 <div class="memdoc">
 
 <p>
-This signal is emmited, when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked. 
+This signal is emitted, when a <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> is clicked. 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>geometry</em>&nbsp;</td><td></td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>coord_px</em>&nbsp;</td><td>asd </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>geometry</em>&nbsp;</td><td>The clicked <a class="el" href="classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps.">Geometry</a> object </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>coord_px</em>&nbsp;</td><td>The coordinate in pixel coordinates </td></tr>
   </table>
 </dl>
 
@@ -859,8 +862,45 @@ updates the map for the given rect
 
 </div>
 </div><p>
+<a class="anchor" name="08eac7c36a9f2b940daa171d450f6d76"></a><!-- doxytag: member="qmapcontrol::MapControl::viewChanged" ref="08eac7c36a9f2b940daa171d450f6d76" args="(const QPointF &amp;coordinate, int zoom)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void viewChanged           </td>
+          <td>(</td>
+          <td class="paramtype">const QPointF &amp;&nbsp;</td>
+          <td class="paramname"> <em>coordinate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>zoom</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [signal]</code></td>
+        </tr>
+      </table>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Sep 21 01:54:22 2008 for QMapControl by&nbsp;
+<div class="memdoc">
+
+<p>
+This signal is emitted, after the view have changed. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>coordinate</em>&nbsp;</td><td>The current coordinate </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>zoom</em>&nbsp;</td><td>The current zoom </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 11:39:49 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>
