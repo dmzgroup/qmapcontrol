@@ -35,22 +35,11 @@ class Mapviewer : public QMainWindow
 		MapControl* mc;
 		MapAdapter* mapadapter;
 		Layer* mainlayer;
-		Layer* overlay;
-		
-		QMenu* mapMenu;
-		QAction* osmAction;
-		QAction* yahooActionMap;
-		QAction* yahooActionSatellite;
-		QAction* yahooActionOverlay;
-		QAction* googleActionMap;
-		QAction* wmsAction;
 		
 		void addZoomButtons();
-		void createActions();
-		void createMenu();
 		
-	public slots:
-		void mapproviderSelected(QAction*);
+	protected:
+		virtual void resizeEvent ( QResizeEvent * event );
 };
 
 #endif

@@ -432,6 +432,13 @@
       <arglist>(Geometry *geometry)</arglist>
     </member>
     <member kind="function">
+      <type>void</type>
+      <name>clearGeometries</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>0b551ef8f4d0fd26cfa2ed0ec4c981b3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type></type>
       <name>GeometryLayer</name>
       <anchorfile>classqmapcontrol_1_1GeometryLayer.html</anchorfile>
@@ -465,6 +472,13 @@
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
       <anchor>23cb6462136a0920739cdeb5f1709fa7</anchor>
       <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>removeGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>b34ffa138d7262b801cdfedaf4a129d3</anchor>
+      <arglist>(Geometry *geometry)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -859,6 +873,13 @@
       <arglist>(Geometry *geometry)</arglist>
     </member>
     <member kind="function">
+      <type>void</type>
+      <name>clearGeometries</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>0b551ef8f4d0fd26cfa2ed0ec4c981b3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
@@ -892,6 +913,13 @@
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
       <anchor>23cb6462136a0920739cdeb5f1709fa7</anchor>
       <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>removeGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>b34ffa138d7262b801cdfedaf4a129d3</anchor>
+      <arglist>(Geometry *geometry)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -1114,6 +1142,13 @@
     </member>
     <member kind="slot">
       <type>void</type>
+      <name>resize</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>148f8aec7ea97e2e465cf2bd979846ab</anchor>
+      <arglist>(const QSize newSize)</arglist>
+    </member>
+    <member kind="slot">
+      <type>void</type>
       <name>scroll</name>
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
       <anchor>527394cb8e8aa2d77f7a50a07b9e9f3e</anchor>
@@ -1202,6 +1237,13 @@
       <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
       <anchor>a463d9dfa43fa385b48aab115d374637</anchor>
       <arglist>(const QMouseEvent *evnt, const QPointF coordinate)</arglist>
+    </member>
+    <member kind="signal">
+      <type>void</type>
+      <name>viewChanged</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>08eac7c36a9f2b940daa171d450f6d76</anchor>
+      <arglist>(const QPointF &amp;coordinate, int zoom)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -1381,6 +1423,13 @@
       <arglist>(Geometry *geometry)</arglist>
     </member>
     <member kind="function">
+      <type>void</type>
+      <name>clearGeometries</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>0b551ef8f4d0fd26cfa2ed0ec4c981b3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
       <type>bool</type>
       <name>isVisible</name>
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
@@ -1414,6 +1463,13 @@
       <anchorfile>classqmapcontrol_1_1MapLayer.html</anchorfile>
       <anchor>c50a4fcff04c6859ce5601543b8ac821</anchor>
       <arglist>(QString layername, MapAdapter *mapadapter, bool takeevents=true)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>removeGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>b34ffa138d7262b801cdfedaf4a129d3</anchor>
+      <arglist>(Geometry *geometry)</arglist>
     </member>
   </compound>
   <compound kind="class">

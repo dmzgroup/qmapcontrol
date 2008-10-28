@@ -28,6 +28,7 @@
 
 #include <QObject>
 #include <QMap>
+#include <QListIterator>
 #include "layer.h"
 #include "mapadapter.h"
 #include "mapcontrol.h"
@@ -58,20 +59,20 @@ namespace qmapcontrol
 		/*!
 			 * @return returns the coordinate of the middle of the screen
 		 */
-			QPointF		currentCoordinate	() const;
+			QPointF currentCoordinate() const;
 		
 		//! returns the current offscreen image
 		/*!
 			 * @return the current offscreen image
 		 */
-			QPixmap		getImage					() const;
+			QPixmap getImage() const;
 		
 		//! returns the layer with the given name
 		/*!
 			 * @param  layername name of the wanted layer
 			 * @return the layer with the given name
 		 */
-			Layer*		layer					(const QString&) const;
+			Layer* layer(const QString&) const;
 		
 		//! returns the base layer
 		/*!
@@ -79,25 +80,25 @@ namespace qmapcontrol
 			 * The base layer is the one which is used to do internal coordinate calculations.
 			 * @return the base layer 
 		 */
-			Layer*		layer					() const;
+			Layer* layer() const;
 		
 		//! returns the names of all layers
 		/*!
 			 * @return returns a QList with the names of all layers
 		 */
-			QList<QString> layers			() const;
+			QList<QString> layers() const;
 
 		//! sets the middle of the map to the given coordinate
 		/*!
 			 * @param  coordinate the coordinate which the view´s middle should be set to
 		 */
-			void			setView					(const QPointF& coordinate);
+			void setView(const QPointF& coordinate);
 		
 		//! sets the view, so all coordinates are visible
 		/*!
 			 * @param  coordinates the Coorinates which should be visible
 		 */
-			void			setView					(const QList<QPointF> coordinates);
+			void setView(const QList<QPointF> coordinates);
 		
 		//! sets the view and zooms in, so all coordinates are visible
 		/*!
@@ -108,16 +109,16 @@ namespace qmapcontrol
 			void			setViewAndZoomIn		(const QList<QPointF> coordinates);
 		
 		//! zooms in one step
-			void			zoomIn					();
+			void zoomIn();
 		
 		//! zooms out one step
-			void			zoomOut					();
+			void zoomOut();
 		
 		//! sets the given zoomlevel
 		/*!
 			 * @param zoomlevel the zoomlevel
 		 */
-			void 			setZoom(int zoomlevel);
+			void setZoom(int zoomlevel);
 	
 		//! The Viewport of the display
 		/*!
@@ -205,6 +206,7 @@ namespace qmapcontrol
 		public slots:
 			void updateRequest(QRectF rect);
 			void updateRequest();
+			void resize(QSize newSize);
 	};
 }
 #endif

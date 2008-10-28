@@ -448,4 +448,24 @@ namespace qmapcontrol
 	{
 		return layer()->mapadapter()->currentZoom();
 	}
+	
+	void LayerManager::resize(QSize newSize)
+	{
+		offSize = newSize *2;
+		composedOffscreenImage = QPixmap(offSize);
+		composedOffscreenImage2 = QPixmap(offSize);
+		zoomImage = QPixmap(newSize);
+		zoomImage.fill(Qt::white);
+
+		screenmiddle = QPoint(newSize.width()/2, newSize.height()/2);
+		
+		QListIterator<Layer*> it(mylayers);
+		while (it.hasNext())
+		{
+			Layer* l = it.next();
+			l->setSize(newSize);
+		}
+		
+		newOffscreenImage();
+	}
 }

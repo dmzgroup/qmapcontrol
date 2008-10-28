@@ -317,6 +317,12 @@ namespace qmapcontrol
 				 *
 			 */
 			void updateRequestNew();
+			
+			//! Resizes the map to the given size
+			/*!
+			* @param newSize The new size
+			*/
+			void resize(const QSize newSize);
 
 		private slots:
 			void tick();

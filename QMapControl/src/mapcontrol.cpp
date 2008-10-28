@@ -407,4 +407,12 @@ namespace qmapcontrol
 		scaleVisible = show;
 	}
 	
+	void MapControl::resize(const QSize newSize)
+	{
+		this->size = newSize;
+		screen_middle = QPoint(newSize.width()/2, newSize.height()/2);
+	
+		this->setMaximumSize(newSize.width()+1, newSize.height()+1);
+		layermanager->resize(newSize);
+	}
 }

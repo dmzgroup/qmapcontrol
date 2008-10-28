@@ -27,25 +27,18 @@ Mapviewer::Mapviewer(QWidget *parent)
 {
         <span class="comment">// create MapControl</span>
         mc = <span class="keyword">new</span> MapControl(QSize(380, 540));
-    mc-&gt;showScale(<span class="keyword">true</span>);
+   mc-&gt;showScale(<span class="keyword">true</span>);
+        
         <span class="comment">// create mapadapter, for mainlayer and overlay</span>
         mapadapter = <span class="keyword">new</span> OSMMapAdapter();
-        MapAdapter* mapadapter_overlay = <span class="keyword">new</span> YahooMapAdapter(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=2.2&amp;t=h&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
         
         <span class="comment">// create a layer with the mapadapter and type MapLayer</span>
-        mainlayer = <span class="keyword">new</span> MapLayer(<span class="stringliteral">"Custom Layer"</span>, mapadapter);
-        
-        <span class="comment">// create yahoo satellite overlay</span>
-        overlay = <span class="keyword">new</span> MapLayer(<span class="stringliteral">"Overlay"</span>, mapadapter_overlay);
-        overlay-&gt;setVisible(<span class="keyword">false</span>);
+        mainlayer = <span class="keyword">new</span> MapLayer(<span class="stringliteral">"OpenStreetMap-Layer"</span>, mapadapter);
         
         <span class="comment">// add Layer to the MapControl</span>
         mc-&gt;addLayer(mainlayer);
-        mc-&gt;addLayer(overlay);
 
         addZoomButtons();
-        createActions();
-        createMenu();
         
         <span class="comment">// show mapcontrol in mainwindow</span>
         setCentralWidget(mc);
@@ -70,117 +63,19 @@ Mapviewer::Mapviewer(QWidget *parent)
         mc-&gt;setLayout(innerlayout);
 }
 
-<span class="keywordtype">void</span> Mapviewer::createActions()
-{
-        QActionGroup* mapproviderGroup = <span class="keyword">new</span> QActionGroup(<span class="keyword">this</span>);
-        osmAction = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"OpenStreetMap"</span>), mapproviderGroup);
-        yahooActionMap = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: Map"</span>), mapproviderGroup);
-        yahooActionSatellite = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: Satellite"</span>), mapproviderGroup);
-        googleActionMap = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Google: Map"</span>), mapproviderGroup);
-        wmsAction = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"WMS"</span>), mapproviderGroup);
-        osmAction-&gt;setCheckable(<span class="keyword">true</span>);
-        yahooActionMap-&gt;setCheckable(<span class="keyword">true</span>);
-        yahooActionSatellite-&gt;setCheckable(<span class="keyword">true</span>);
-        googleActionMap-&gt;setCheckable(<span class="keyword">true</span>);
-        osmAction-&gt;setChecked(<span class="keyword">true</span>);
-        wmsAction-&gt;setCheckable(<span class="keyword">true</span>);
-        connect(mapproviderGroup, SIGNAL(triggered(QAction*)),
-                          <span class="keyword">this</span>, SLOT(mapproviderSelected(QAction*)));
-        
-        yahooActionOverlay = <span class="keyword">new</span> QAction(tr(<span class="stringliteral">"Yahoo: street overlay"</span>), <span class="keyword">this</span>);
-        yahooActionOverlay-&gt;setCheckable(<span class="keyword">true</span>);
-        yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
-        connect(yahooActionOverlay, SIGNAL(toggled(<span class="keywordtype">bool</span>)),
-                          overlay, SLOT(setVisible(<span class="keywordtype">bool</span>)));
-}
-
-<span class="keywordtype">void</span> Mapviewer::createMenu()
-{
-        mapMenu = menuBar()-&gt;addMenu(tr(<span class="stringliteral">"&amp;Map Provider"</span>));
-        mapMenu-&gt;addAction(osmAction);
-        mapMenu-&gt;addAction(yahooActionMap);
-        mapMenu-&gt;addAction(yahooActionSatellite);
-        mapMenu-&gt;addAction(googleActionMap);
-        mapMenu-&gt;addAction(wmsAction);
-        mapMenu-&gt;addSeparator();
-        mapMenu-&gt;addAction(yahooActionOverlay);
-}
-
-<span class="keywordtype">void</span> Mapviewer::mapproviderSelected(QAction* action)
-{
-        <span class="keywordflow">if</span> (action == osmAction)
-        {
-                <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
-                mc-&gt;setZoom(0);
-                
-                mapadapter = <span class="keyword">new</span> OSMMapAdapter();
-                mainlayer-&gt;setMapAdapter(mapadapter);
-                
-                mc-&gt;updateRequestNew();
-                mc-&gt;setZoom(zoom);
-                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
-                overlay-&gt;setVisible(<span class="keyword">false</span>);
-                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
-                
-        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == yahooActionMap)
-        {
-                <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
-                mc-&gt;setZoom(0);
-                
-                mapadapter = <span class="keyword">new</span> YahooMapAdapter();
-                mainlayer-&gt;setMapAdapter(mapadapter);
-        
-                mc-&gt;updateRequestNew();
-                mc-&gt;setZoom(zoom);
-                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
-                overlay-&gt;setVisible(<span class="keyword">false</span>);
-                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
-        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == yahooActionSatellite)
-        {
-                <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
-                QPointF a = mc-&gt;currentCoordinate();
-                mc-&gt;setZoom(0);
-                
-                mapadapter = <span class="keyword">new</span> YahooMapAdapter(<span class="stringliteral">"us.maps3.yimg.com"</span>, <span class="stringliteral">"/aerial.maps.yimg.com/png?v=1.7&amp;t=a&amp;s=256&amp;x=%2&amp;y=%3&amp;z=%1"</span>);
-                mainlayer-&gt;setMapAdapter(mapadapter);
-                
-                mc-&gt;updateRequestNew();
-                mc-&gt;setZoom(zoom);
-                yahooActionOverlay-&gt;setEnabled(<span class="keyword">true</span>);
-        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == googleActionMap)
-        {
-                <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
-                mc-&gt;setZoom(0);
-                mapadapter = <span class="keyword">new</span> GoogleMapAdapter();
-        <span class="comment">//mapadapter = new TileMapAdapter("mt0.google.com", "/mt?v=w2t.80&amp;hl=de&amp;x=%2&amp;s=&amp;y=%3&amp;zoom=%1&amp;s=G", 256, 17, 0);</span>
-                mainlayer-&gt;setMapAdapter(mapadapter);
-                
-                mc-&gt;updateRequestNew();
-                mc-&gt;setZoom(zoom);
-                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
-                overlay-&gt;setVisible(<span class="keyword">false</span>);
-                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
-        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (action == wmsAction)
-        {
-                <span class="keywordtype">int</span> zoom = mapadapter-&gt;adaptedZoom();
-                mc-&gt;setZoom(0);
-                
-                mapadapter = <span class="keyword">new</span> WMSMapAdapter(<span class="stringliteral">"www2.demis.nl"</span>, <span class="stringliteral">"/wms/wms.asp?wms=WorldMap&amp;LAYERS=Countries,Borders,Cities,Rivers,Settlements,Hillshading,Waterbodies,Railroads,Highways,Roads&amp;FORMAT=image/png&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetMap&amp;STYLES=&amp;EXCEPTIONS=application/vnd.ogc.se_inimage&amp;SRS=EPSG:4326&amp;TRANSPARENT=FALSE"</span>, 256);
-                mainlayer-&gt;setMapAdapter(mapadapter);
-        
-                mc-&gt;updateRequestNew();
-                mc-&gt;setZoom(zoom);
-                yahooActionOverlay-&gt;setEnabled(<span class="keyword">false</span>);
-                overlay-&gt;setVisible(<span class="keyword">false</span>);
-                yahooActionOverlay-&gt;setChecked(<span class="keyword">false</span>);
-        }
-}
 
 Mapviewer::~Mapviewer()
 {
 }
+
+<span class="comment">// resize the widget </span>
+<span class="keywordtype">void</span> Mapviewer::resizeEvent ( QResizeEvent * event )    
+{
+        <span class="comment">//TODO: get inset size</span>
+        mc-&gt;resize(event-&gt;size()-QSize(20,30));
+}
 </pre></div> </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 11:39:48 2008 for QMapControl by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue Oct 21 13:37:28 2008 for QMapControl by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,3 +1,7 @@
+2008-10-28
+----------
+- New MapControl slot: resize(QSize) which resizes layers to the given size. So you can connect a widget's resize event to this slot. (See sample "Mapviewer".
+
 2008-10-09
 ----------
 - New MapControl-signal: viewChanged(coordinate, zoom) which emits the current center coordinate and zoom level after an view update (Thanks to Lorenzo)
