@@ -30,11 +30,11 @@ namespace qmapcontrol
 	:mapcontrol(mapcontrol), scroll(QPoint(0,0)), size(size), whilenewscroll(QPoint(0,0))
 	{
 // 	genauer berechnen?
-		offSize = size + QSize(256*2, 256*2);
+        offSize = size *2;
 		composedOffscreenImage = QPixmap(offSize);
 		composedOffscreenImage2 = QPixmap(offSize);
 		zoomImage = QPixmap(size);
-		zoomImage.fill(Qt::white);
+        zoomImage.fill(Qt::white);
 
 		screenmiddle = QPoint(size.width()/2, size.height()/2);	
 	}
@@ -225,13 +225,14 @@ namespace qmapcontrol
 // 	qDebug() << "LayerManager::newOffscreenImage()";
 // 	if (refreshMutex.tryLock())
 		{
-			QPainter painter(&composedOffscreenImage2);
 			whilenewscroll = mapmiddle_px;
 		
 			if (clearImage)
 			{
 				composedOffscreenImage2.fill(Qt::white);
 			}
+
+            QPainter painter(&composedOffscreenImage2);
 			if (showZoomImage)
 			{
 				painter.drawPixmap(screenmiddle.x()-zoomImageScroll.x(), screenmiddle.y()-zoomImageScroll.y(),zoomImage);
@@ -256,7 +257,7 @@ namespace qmapcontrol
 // 			scroll = QPoint(0,0);
 // 			scrollMutex.unlock();
 			}
-			mapcontrol->update();
+            mapcontrol->update();
 // 		refreshMutex.unlock();
 		}
 	
@@ -270,7 +271,7 @@ namespace qmapcontrol
 	// layer rendern abbrechen?
 		zoomImageScroll = QPoint(0,0);
 	
-		zoomImage.fill(Qt::white);
+        zoomImage.fill(Qt::white);
 		QPixmap tmpImg = composedOffscreenImage.copy(screenmiddle.x()+scroll.x(),screenmiddle.y()+scroll.y(), size.width(), size.height());
 	
 		QPainter painter(&zoomImage);
@@ -449,23 +450,24 @@ namespace qmapcontrol
 		return layer()->mapadapter()->currentZoom();
 	}
 	
-	void LayerManager::resize(QSize newSize)
+        void LayerManager::resize(QSize newSize)
 	{
-		offSize = newSize *2;
-		composedOffscreenImage = QPixmap(offSize);
-		composedOffscreenImage2 = QPixmap(offSize);
-		zoomImage = QPixmap(newSize);
-		zoomImage.fill(Qt::white);
+            size = newSize;
+            offSize = newSize *2;
+            composedOffscreenImage = QPixmap(offSize);
+            composedOffscreenImage2 = QPixmap(offSize);
+            zoomImage = QPixmap(newSize);
+            zoomImage.fill(Qt::white);
 
-		screenmiddle = QPoint(newSize.width()/2, newSize.height()/2);
-		
-		QListIterator<Layer*> it(mylayers);
-		while (it.hasNext())
-		{
-			Layer* l = it.next();
-			l->setSize(newSize);
-		}
-		
-		newOffscreenImage();
+            screenmiddle = QPoint(newSize.width()/2, newSize.height()/2);
+
+            QListIterator<Layer*> it(mylayers);
+            while (it.hasNext())
+            {
+                    Layer* l = it.next();
+                    l->setSize(newSize);
+            }
+
+            newOffscreenImage();
 	}
 }
