@@ -1,6 +1,10 @@
+2009-02-28
+-----------
+- Fixed bug which didn't painted the zoomed image correct after the QMapControl widget was resized 
+
 2008-10-28
 ----------
-- New MapControl slot: resize(QSize) which resizes layers to the given size. So you can connect a widget's resize event to this slot. (See sample "Mapviewer".
+- New MapControl slot: resize(QSize) which resizes layers to the given size. So you can connect a widget's resize event to this slot. (See sample "Mapviewer").
 
 2008-10-09
 ----------
