@@ -26,16 +26,16 @@
 #include "curve.h"
 namespace qmapcontrol
 {
-	Curve::Curve(QString name)
-	: Geometry(name)
-	{
-	}
+    Curve::Curve(QString name)
+        : Geometry(name)
+    {
+    }
 
 
-	Curve::~Curve()
-	{
-	}
+    Curve::~Curve()
+    {
+    }
 }
-// Geometry		Curve::Clone(){}
+// Geometry Curve::Clone(){}
 
-// QRectF	Curve::GetBoundingBox(){}
+// QRectF Curve::GetBoundingBox(){}

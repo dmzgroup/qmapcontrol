@@ -30,91 +30,91 @@
 
 namespace qmapcontrol
 {
-	//! A collection of Point objects to describe a line
-	/*!
-	 * A LineString is a Curve with linear interpolation between Points. Each consecutive pair of Points defines a Line segment.
-	 *	@author Kai Winter <kaiwinter@gmx.de>
-	 */
-	class LineString : public Curve
-	{
-			Q_OBJECT
-		public:
-			LineString();
-			//! constructor
-			/*!
-				 * The constructor of a LineString takes a list of Points to form a line.
-				 * @param points a list of points
-				 * @param name the name of the LineString
-				 * @param pen a QPen can be used to modify the look of the line.
-				 * @see http://doc.trolltech.com/4.3/qpen.html
-			 */
-			LineString ( QList<Point*> const points, QString name = QString(), QPen* pen = 0 );
-			virtual ~LineString();
+    //! A collection of Point objects to describe a line
+    /*!
+     * A LineString is a Curve with linear interpolation between Points. Each consecutive pair of Points defines a Line segment.
+     *	@author Kai Winter <kaiwinter@gmx.de>
+     */
+    class LineString : public Curve
+    {
+        Q_OBJECT
 
-			//! returns the points of the LineString
-			/*!
-				 * @return  a list with the points of the LineString
-			 */
-			QList<Point*>	points();
+    public:
+        LineString();
+        //! constructor
+        /*!
+         * The constructor of a LineString takes a list of Points to form a line.
+         * @param points a list of points
+         * @param name the name of the LineString
+         * @param pen a QPen can be used to modify the look of the line.
+         * @see http://doc.trolltech.com/4.3/qpen.html
+         */
+        LineString ( QList<Point*> const points, QString name = QString(), QPen* pen = 0 );
+        virtual ~LineString();
 
-			//! adds a point at the end of the LineString
-			/*!
-				 * @param point the point which should be added to the LineString
-			 */
-			void addPoint ( Point* point );
+        //! returns the points of the LineString
+        /*!
+         * @return  a list with the points of the LineString
+         */
+        QList<Point*>	points();
 
-			//! sets the given list as points of the LineString
-			/*!
-				 * @param points the points which should be set for the LineString
-			 */
-			void setPoints ( QList<Point*> points );
+        //! adds a point at the end of the LineString
+        /*!
+         * @param point the point which should be added to the LineString
+         */
+        void addPoint ( Point* point );
 
-			//! returns the number of Points the LineString consists of
-			/*!
-				 * @return the number of the LineStringÂ´s Points
-			 */
-			int numberOfPoints() const;
+        //! sets the given list as points of the LineString
+        /*!
+         * @param points the points which should be set for the LineString
+         */
+        void setPoints ( QList<Point*> points );
 
-// 		virtual Geometry	Clone();
-			virtual QRectF		boundingBox();
-// 		virtual Point 		EndPoint();
-// 		virtual Point 		StartPoint();
-// 		virtual Point 		Value();
+        //! returns the number of Points the LineString consists of
+        /*!
+         * @return the number of the LineStringÂ´s Points
+         */
+        int numberOfPoints() const;
 
-			//! returns true if the LineString has Childs
-			/*!
-				 * This is equal to: numberOfPoints() > 0
-				 * @return true it the LineString has Childs (=Points)
-				 * @see clickedPoints()
-			 */
-			virtual bool hasPoints() const;
+        // virtual Geometry	Clone();
+        virtual QRectF boundingBox();
+        // virtual Point EndPoint();
+        // virtual Point StartPoint();
+        // virtual Point Value();
 
-			//! returns true if the LineString has clicked Points
-			/*!
-				 * @return true if childs of a LineString were clicked
-				 * @see clickedPoints()
-			 */
-			virtual bool hasClickedPoints() const;
+        //! returns true if the LineString has Childs
+        /*!
+         * This is equal to: numberOfPoints() > 0
+         * @return true it the LineString has Childs (=Points)
+         * @see clickedPoints()
+         */
+        virtual bool hasPoints() const;
 
-			//! returns the clicked Points
-			/*!
-				 * If a LineString was clicked it could be neccessary to figure out which of its points where clicked.
-				 * Do do so the methods hasPoints() and clickedPoints() can be used.
-				 * When a point is added to a LineString the Point becomes its child.
-				 * It is possible (depending on the zoomfactor) to click more than one Point of a LineString, so this method returns a list.
-				 * @return the clicked Points of the LineString
-			 */
-			virtual QList<Geometry*> clickedPoints();
+        //! returns true if the LineString has clicked Points
+        /*!
+         * @return true if childs of a LineString were clicked
+         * @see clickedPoints()
+         */
+        virtual bool hasClickedPoints() const;
 
-		protected:
-			virtual bool Touches ( Geometry* geom, const MapAdapter* mapadapter );
-			virtual bool Touches ( Point* geom, const MapAdapter* mapadapter );
-			virtual void draw ( QPainter* painter, const MapAdapter* mapadapter, const QRect &screensize, const QPoint offset );
+        //! returns the clicked Points
+        /*!
+         * If a LineString was clicked it could be neccessary to figure out which of its points where clicked.
+         * Do do so the methods hasPoints() and clickedPoints() can be used.
+         * When a point is added to a LineString the Point becomes its child.
+         * It is possible (depending on the zoomfactor) to click more than one Point of a LineString, so this method returns a list.
+         * @return the clicked Points of the LineString
+         */
+        virtual QList<Geometry*> clickedPoints();
 
-		private:
-			QList<Point*>	vertices;
-			QList<Geometry*> 	touchedPoints;
+    protected:
+        virtual bool Touches ( Geometry* geom, const MapAdapter* mapadapter );
+        virtual bool Touches ( Point* geom, const MapAdapter* mapadapter );
+        virtual void draw ( QPainter* painter, const MapAdapter* mapadapter, const QRect &screensize, const QPoint offset );
 
-	};
+    private:
+        QList<Point*>	vertices;
+        QList<Geometry*> 	touchedPoints;
+    };
 }
 #endif

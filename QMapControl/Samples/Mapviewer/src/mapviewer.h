@@ -17,29 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef BUSPLAN_H
-#define BUSPLAN_H
+#ifndef MAPVIEWER_H
+#define MAPVIEWER_H
 
 #include <QtGui>
 #include "../../../qmapcontrol.h"
 using namespace qmapcontrol;
 class Mapviewer : public QMainWindow
 {
-	Q_OBJECT
-	public:
-		Mapviewer(QWidget *parent = 0);
+    Q_OBJECT
 
-		~Mapviewer();
+public:
+    Mapviewer(QWidget *parent = 0);
 
-	private:
-		MapControl* mc;
-		MapAdapter* mapadapter;
-		Layer* mainlayer;
-		
-		void addZoomButtons();
-		
-	protected:
-		virtual void resizeEvent ( QResizeEvent * event );
+    ~Mapviewer();
+
+private:
+    MapControl* mc;
+    MapAdapter* mapadapter;
+    Layer* mainlayer;
+
+    void addZoomButtons();
+
+protected:
+    virtual void resizeEvent ( QResizeEvent * event );
 };
 
 #endif

@@ -26,153 +26,153 @@
 #include "imagemanager.h"
 namespace qmapcontrol
 {
-	ImageManager* ImageManager::m_Instance = 0;
-	ImageManager::ImageManager(QObject* parent)
-	:QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this)), doPersistentCaching(false)
-	{
-		emptyPixmap.fill(Qt::transparent);
-	
-		if (QPixmapCache::cacheLimit() <= 20000)
-		{
-			QPixmapCache::setCacheLimit(20000);	// in kb
-		}
-	}
+    ImageManager* ImageManager::m_Instance = 0;
+    ImageManager::ImageManager(QObject* parent)
+        :QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this)), doPersistentCaching(false)
+    {
+        emptyPixmap.fill(Qt::transparent);
+
+        if (QPixmapCache::cacheLimit() <= 20000)
+        {
+            QPixmapCache::setCacheLimit(20000);	// in kb
+        }
+    }
 
 
-	ImageManager::~ImageManager()
-	{
-		delete net;
-	}
+    ImageManager::~ImageManager()
+    {
+        delete net;
+    }
 
-	QPixmap ImageManager::getImage(const QString& host, const QString& url)
-	{
-// 	qDebug() << "ImageManager::getImage";
-		QPixmap pm;
-// 		pm.fill(Qt::black);
-	
-	// is image cached (memory) or currently loading?
-		if (!QPixmapCache::find(url, pm) && !net->imageIsLoading(url))
-// 	if (!images.contains(url) && !net->imageIsLoading(url))
-		{
-			// image cached (persistent)?
-			if (doPersistentCaching && tileExist(url))
-			{
-				loadTile(url,pm);
-				QPixmapCache::insert(url.toAscii().toBase64(), pm);
-			}
-			else
-			{
-				// load from net, add empty image
-				net->loadImage(host, url);
-				//QPixmapCache::insert(url, emptyPixmap);
-				return emptyPixmap;
-			}
-		}
-		return pm;
-	}
+    QPixmap ImageManager::getImage(const QString& host, const QString& url)
+    {
+        //qDebug() << "ImageManager::getImage";
+        QPixmap pm;
+        //pm.fill(Qt::black);
 
-	QPixmap ImageManager::prefetchImage(const QString& host, const QString& url)
-	{
+        //is image cached (memory) or currently loading?
+        if (!QPixmapCache::find(url, pm) && !net->imageIsLoading(url))
+            //	if (!images.contains(url) && !net->imageIsLoading(url))
+        {
+            //image cached (persistent)?
+            if (doPersistentCaching && tileExist(url))
+            {
+                loadTile(url,pm);
+                QPixmapCache::insert(url.toAscii().toBase64(), pm);
+            }
+            else
+            {
+                //load from net, add empty image
+                net->loadImage(host, url);
+                //QPixmapCache::insert(url, emptyPixmap);
+                return emptyPixmap;
+            }
+        }
+        return pm;
+    }
+
+    QPixmap ImageManager::prefetchImage(const QString& host, const QString& url)
+    {
 #ifdef Q_WS_QWS
-		// on mobile devices we don´t want the display resfreshing when tiles are received which are 
-		// prefetched... This is a performance issue, because mobile devices are very slow in 
-		// repainting the screen
-		prefetch.append(url);
+        // on mobile devices we don´t want the display resfreshing when tiles are received which are
+        // prefetched... This is a performance issue, because mobile devices are very slow in
+        // repainting the screen
+        prefetch.append(url);
 #endif
-		return getImage(host, url);
-	}
+        return getImage(host, url);
+    }
 
-	void ImageManager::receivedImage(const QPixmap pixmap, const QString& url)
-	{
-// 	qDebug() << "ImageManager::receivedImage";
-		QPixmapCache::insert(url, pixmap);
-// 	images[url] = pixmap;
-		
-		// needed?
-		if (doPersistentCaching && !tileExist(url) )
-			saveTile(url,pixmap);
-	
-// 	((Layer*)this->parent())->imageReceived();
-	
-		if (!prefetch.contains(url))
-		{
-			emit(imageReceived());
-		}
-		else
-		{
-			
+    void ImageManager::receivedImage(const QPixmap pixmap, const QString& url)
+    {
+        //qDebug() << "ImageManager::receivedImage";
+        QPixmapCache::insert(url, pixmap);
+        //images[url] = pixmap;
+
+        // needed?
+        if (doPersistentCaching && !tileExist(url) )
+            saveTile(url,pixmap);
+
+        //((Layer*)this->parent())->imageReceived();
+
+        if (!prefetch.contains(url))
+        {
+            emit(imageReceived());
+        }
+        else
+        {
+
 #ifdef Q_WS_QWS
-			prefetch.remove(prefetch.indexOf(url));
+            prefetch.remove(prefetch.indexOf(url));
 #endif
-		}
-	}
+        }
+    }
 
-	void ImageManager::loadingQueueEmpty()
-	{
-		emit(loadingFinished());
-// 	((Layer*)this->parent())->removeZoomImage();
-// 	qDebug() << "size of image-map: " << images.size();
-// 	qDebug() << "size: " << QPixmapCache::cacheLimit();
-	}
+    void ImageManager::loadingQueueEmpty()
+    {
+        emit(loadingFinished());
+        //((Layer*)this->parent())->removeZoomImage();
+        //qDebug() << "size of image-map: " << images.size();
+        //qDebug() << "size: " << QPixmapCache::cacheLimit();
+    }
 
-	void ImageManager::abortLoading()
-	{
-		net->abortLoading();
-	}
-	void ImageManager::setProxy(QString host, int port)
-	{
-		net->setProxy(host, port);
-	}
-	
-	void ImageManager::setCacheDir(const QDir& path)
-	{
-		doPersistentCaching = true;
-		cacheDir = path;
-		if (!cacheDir.exists())
-		{
-			cacheDir.mkpath(cacheDir.absolutePath());
-		}
-	}
-	
-	bool ImageManager::saveTile(QString tileName,QPixmap tileData)
-	{
-		tileName.replace("/","-");
+    void ImageManager::abortLoading()
+    {
+        net->abortLoading();
+    }
+    void ImageManager::setProxy(QString host, int port)
+    {
+        net->setProxy(host, port);
+    }
 
-		QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
+    void ImageManager::setCacheDir(const QDir& path)
+    {
+        doPersistentCaching = true;
+        cacheDir = path;
+        if (!cacheDir.exists())
+        {
+            cacheDir.mkpath(cacheDir.absolutePath());
+        }
+    }
 
-		qDebug() << "writing: " << file.fileName();
-		if (!file.open(QIODevice::ReadWrite )){
-			qDebug()<<"error reading file";
-			return false;
-		}
-		QByteArray bytes;
-		QBuffer buffer(&bytes);
-		buffer.open(QIODevice::WriteOnly);
-		tileData.save(&buffer, "PNG");
+    bool ImageManager::saveTile(QString tileName,QPixmap tileData)
+    {
+        tileName.replace("/","-");
 
-		file.write(bytes);
-		file.close();
-		return true;
-	}
-	bool ImageManager::loadTile(QString tileName,QPixmap &tileData)
-	{
-		tileName.replace("/","-");
-		QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
-		if (!file.open(QIODevice::ReadOnly )) {
-			return false;
-		}
-		tileData.loadFromData( file.readAll() );
+        QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
 
-		file.close();
-		return true;
-	}
-	bool ImageManager::tileExist(QString tileName)
-	{
-		tileName.replace("/","-");
-		QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
-		if (file.exists())
-			return true;
-		else
-			return false;
-	}
+        //qDebug() << "writing: " << file.fileName();
+        if (!file.open(QIODevice::ReadWrite )){
+            qDebug()<<"error reading file";
+            return false;
+        }
+        QByteArray bytes;
+        QBuffer buffer(&bytes);
+        buffer.open(QIODevice::WriteOnly);
+        tileData.save(&buffer, "PNG");
+
+        file.write(bytes);
+        file.close();
+        return true;
+    }
+    bool ImageManager::loadTile(QString tileName,QPixmap &tileData)
+    {
+        tileName.replace("/","-");
+        QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
+        if (!file.open(QIODevice::ReadOnly )) {
+            return false;
+        }
+        tileData.loadFromData( file.readAll() );
+
+        file.close();
+        return true;
+    }
+    bool ImageManager::tileExist(QString tileName)
+    {
+        tileName.replace("/","-");
+        QFile file(cacheDir.absolutePath() + "/" + tileName.toAscii().toBase64());
+        if (file.exists())
+            return true;
+        else
+            return false;
+    }
 }
