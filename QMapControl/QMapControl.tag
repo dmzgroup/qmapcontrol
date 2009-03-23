@@ -392,24 +392,6 @@
     <name>qmapcontrol::GeometryLayer</name>
     <filename>classqmapcontrol_1_1GeometryLayer.html</filename>
     <base>qmapcontrol::Layer</base>
-    <member kind="enumeration">
-      <name>LayerType</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a4</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>MapLayer</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a4fe7df421203e4175d260b8dabcbe3002</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>GeometryLayer</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a46c04bd58c42df8a7539aba782503fee0</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="slot">
       <type>void</type>
       <name>setVisible</name>
@@ -611,31 +593,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>qmapcontrol::GPS_Position</name>
-    <filename>classqmapcontrol_1_1GPS__Position.html</filename>
-    <member kind="variable">
-      <type>float</type>
-      <name>latitude</name>
-      <anchorfile>classqmapcontrol_1_1GPS__Position.html</anchorfile>
-      <anchor>d9e643bc6bd5a62b9b5011cf1c93629e</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>float</type>
-      <name>longitude</name>
-      <anchorfile>classqmapcontrol_1_1GPS__Position.html</anchorfile>
-      <anchor>006303577d6adb772761727538b74f80</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>float</type>
-      <name>time</name>
-      <anchorfile>classqmapcontrol_1_1GPS__Position.html</anchorfile>
-      <anchor>8b8dfe2335a5bf90695960dc6a1c5d3b</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>qmapcontrol::ImagePoint</name>
     <filename>classqmapcontrol_1_1ImagePoint.html</filename>
     <base>qmapcontrol::Point</base>
@@ -833,24 +790,6 @@
   <compound kind="class">
     <name>qmapcontrol::Layer</name>
     <filename>classqmapcontrol_1_1Layer.html</filename>
-    <member kind="enumeration">
-      <name>LayerType</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a4</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>MapLayer</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a4fe7df421203e4175d260b8dabcbe3002</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>GeometryLayer</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a46c04bd58c42df8a7539aba782503fee0</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="slot">
       <type>void</type>
       <name>setVisible</name>
@@ -1116,30 +1055,6 @@
   <compound kind="class">
     <name>qmapcontrol::MapControl</name>
     <filename>classqmapcontrol_1_1MapControl.html</filename>
-    <member kind="enumeration">
-      <name>MouseMode</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>034ae8169a2202325de4ef39ffd3e431</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>Panning</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>034ae8169a2202325de4ef39ffd3e431e105bcd8daf776fd01704a7186c49608</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>Dragging</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>034ae8169a2202325de4ef39ffd3e431ea74c0c82481d6d724a43536424e3977</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>None</name>
-      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
-      <anchor>034ae8169a2202325de4ef39ffd3e431c9d3e887722f2bc482bcca9d41c512af</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="slot">
       <type>void</type>
       <name>resize</name>
@@ -1383,24 +1298,6 @@
     <name>qmapcontrol::MapLayer</name>
     <filename>classqmapcontrol_1_1MapLayer.html</filename>
     <base>qmapcontrol::Layer</base>
-    <member kind="enumeration">
-      <name>LayerType</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a4</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>MapLayer</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a4fe7df421203e4175d260b8dabcbe3002</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>GeometryLayer</name>
-      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
-      <anchor>56943a0946e5f15e5e58054b8e7a04a46c04bd58c42df8a7539aba782503fee0</anchor>
-      <arglist></arglist>
-    </member>
     <member kind="slot">
       <type>void</type>
       <name>setVisible</name>

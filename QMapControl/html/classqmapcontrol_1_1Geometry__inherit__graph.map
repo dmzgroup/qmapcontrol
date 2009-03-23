@@ -1,5 +1,5 @@
-<area shape="rect" href="$classqmapcontrol_1_1Curve.html" title="A Curve Geometry, implemented to fullfil OGC Spec." alt="" coords="37,161,101,188">
-<area shape="rect" href="$classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps." alt="" coords="144,161,200,188">
-<area shape="rect" href="$classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line." alt="" coords="5,239,99,265">
-<area shape="rect" href="$classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map." alt="" coords="123,239,221,265">
-<area shape="rect" href="$classqmapcontrol_1_1ImagePoint.html" title="Draws an image into the map." alt="" coords="245,239,349,265">
+<area shape="rect" href="$classqmapcontrol_1_1Curve.html" title="A Curve Geometry, implemented to fullfil OGC Spec." alt="" coords="33,155,87,181">
+<area shape="rect" href="$classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps." alt="" coords="125,155,176,181">
+<area shape="rect" href="$classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line." alt="" coords="5,229,85,256">
+<area shape="rect" href="$classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map." alt="" coords="109,229,192,256">
+<area shape="rect" href="$classqmapcontrol_1_1ImagePoint.html" title="Draws an image into the map." alt="" coords="216,229,301,256">
