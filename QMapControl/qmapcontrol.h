@@ -13,3 +13,4 @@
 #include "src/yahoomapadapter.h"
 #include "src/googlemapadapter.h"
 #include "src/googlesatmapadapter.h"
+#include "src/openaerialmapadapter.h"
