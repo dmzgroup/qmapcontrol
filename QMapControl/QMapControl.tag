@@ -17,6 +17,7 @@
     <class kind="class">qmapcontrol::MapControl</class>
     <class kind="class">qmapcontrol::MapLayer</class>
     <class kind="class">qmapcontrol::MapNetwork</class>
+    <class kind="class">qmapcontrol::OpenAerialMapAdapter</class>
     <class kind="class">qmapcontrol::OSMMapAdapter</class>
     <class kind="class">qmapcontrol::Point</class>
     <class kind="class">qmapcontrol::TileMapAdapter</class>
@@ -1367,6 +1368,67 @@
       <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
       <anchor>b34ffa138d7262b801cdfedaf4a129d3</anchor>
       <arglist>(Geometry *geometry)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>qmapcontrol::OpenAerialMapAdapter</name>
+    <filename>classqmapcontrol_1_1OpenAerialMapAdapter.html</filename>
+    <base>qmapcontrol::TileMapAdapter</base>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QPoint</type>
+      <name>coordinateToDisplay</name>
+      <anchorfile>classqmapcontrol_1_1TileMapAdapter.html</anchorfile>
+      <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
+      <arglist>(const QPointF &amp;) const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QPointF</type>
+      <name>displayToCoordinate</name>
+      <anchorfile>classqmapcontrol_1_1TileMapAdapter.html</anchorfile>
+      <anchor>601b4631d9d891eabffb063c510cc088</anchor>
+      <arglist>(const QPoint &amp;) const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>host</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>maxZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>minZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>OpenAerialMapAdapter</name>
+      <anchorfile>classqmapcontrol_1_1OpenAerialMapAdapter.html</anchorfile>
+      <anchor>8b9f8f912aa1bf34e1b4d11e7dfec394</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tilesize</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
+      <arglist>() const </arglist>
     </member>
   </compound>
   <compound kind="class">
