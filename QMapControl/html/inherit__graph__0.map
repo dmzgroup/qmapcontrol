@@ -1,0 +1,18 @@
+<area shape="rect" href="$classqmapcontrol_1_1Geometry.html" title="Main class for objects that should be painted in maps." alt="" coords="140,56,231,83">
+<area shape="rect" href="$classqmapcontrol_1_1Layer.html" title="Layer class." alt="" coords="156,146,215,172">
+<area shape="rect" href="$classqmapcontrol_1_1MapAdapter.html" title="Used to fit map servers into QMapControl." alt="" coords="133,222,237,248">
+<area shape="rect" href="$classqmapcontrol_1_1Curve.html" title="A Curve Geometry, implemented to fullfil OGC Spec." alt="" coords="341,6,403,32">
+<area shape="rect" href="$classqmapcontrol_1_1Point.html" title="A geometric point to draw objects into maps." alt="" coords="344,56,400,83">
+<area shape="rect" href="$classqmapcontrol_1_1LineString.html" title="A collection of Point objects to describe a line." alt="" coords="551,6,639,32">
+<area shape="rect" href="$classqmapcontrol_1_1CirclePoint.html" title="Draws a circle into the map." alt="" coords="548,56,641,83">
+<area shape="rect" href="$classqmapcontrol_1_1ImagePoint.html" title="Draws an image into the map." alt="" coords="545,107,644,134">
+<area shape="rect" href="$classqmapcontrol_1_1FixedImageOverlay.html" title="Draws a fixed image into the map." alt="" coords="732,107,881,134">
+<area shape="rect" href="$classqmapcontrol_1_1GeometryLayer.html" title="GeometryLayer class." alt="" coords="308,107,436,134">
+<area shape="rect" href="$classqmapcontrol_1_1MapLayer.html" title="MapLayer class." alt="" coords="328,158,416,184">
+<area shape="rect" href="$classqmapcontrol_1_1GoogleSatMapAdapter.html" title="MapAdapter for Google." alt="" coords="287,208,457,235">
+<area shape="rect" href="$classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles." alt="" coords="309,259,435,286">
+<area shape="rect" href="$classqmapcontrol_1_1WMSMapAdapter.html" title="MapAdapter for WMS servers." alt="" coords="304,310,440,336">
+<area shape="rect" href="$classqmapcontrol_1_1GoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="520,183,669,210">
+<area shape="rect" href="$classqmapcontrol_1_1OpenAerialMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="507,234,683,260">
+<area shape="rect" href="$classqmapcontrol_1_1OSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="528,284,661,311">
+<area shape="rect" href="$classqmapcontrol_1_1YahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="524,335,665,362">

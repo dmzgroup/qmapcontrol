@@ -129,7 +129,7 @@ namespace qmapcontrol
         /*!
          * @return the latitude of the point
          */
-        qreal	latitude() const;
+        qreal latitude() const;
 
         //! returns the coordinate of the point
         /*!
@@ -137,7 +137,7 @@ namespace qmapcontrol
          * the y component the latitude
          * @return the coordinate of a point
          */
-        QPointF	coordinate() const;
+        QPointF coordinate() const;
 
         virtual QList<Point*> points();
 
@@ -152,7 +152,7 @@ namespace qmapcontrol
          */
         QPixmap* pixmap();
 
-        //! Sets the zoom level on which the point´s pixmap gets displayed on full size
+        //! Sets the zoom level on which the pointï¿½s pixmap gets displayed on full size
         /*!
          * Use this method to set a zoom level on which the pixmap gets displayed with its real size.
          * On zoomlevels below it will be displayed smaller, and on zoom levels thereover it will be displayed larger
@@ -163,7 +163,7 @@ namespace qmapcontrol
 
         //! sets a minimal size for the pixmap
         /*!
-         * When the point´s pixmap should change its size on zooming, this method sets the minimal size.
+         * When the point's pixmap should change its size on zooming, this method sets the minimal size.
          * @see setBaselevel
          * @param minsize the minimal size which the pixmap should have
          */

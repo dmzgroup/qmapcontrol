@@ -5,6 +5,7 @@
     <filename>namespaceqmapcontrol.html</filename>
     <class kind="class">qmapcontrol::CirclePoint</class>
     <class kind="class">qmapcontrol::Curve</class>
+    <class kind="class">qmapcontrol::FixedImageOverlay</class>
     <class kind="class">qmapcontrol::Geometry</class>
     <class kind="class">qmapcontrol::GeometryLayer</class>
     <class kind="class">qmapcontrol::GoogleMapAdapter</class>
@@ -309,6 +310,201 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>qmapcontrol::FixedImageOverlay</name>
+    <filename>classqmapcontrol_1_1FixedImageOverlay.html</filename>
+    <base>qmapcontrol::ImagePoint</base>
+    <member kind="enumeration">
+      <name>Alignment</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cdfaca60ec19c0265bac2692d7982726</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>TopLeft</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cdfaca60ec19c0265bac2692d798272661f66ddc6702462a94d3e231f02b9017</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>TopRight</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cdfaca60ec19c0265bac2692d79827267e42a96f07eab63a8c9fa8a0526f34f4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>BottomLeft</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cdfaca60ec19c0265bac2692d7982726e61b9b6ea2fa75ca500d5bb1eaf6f6fc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>BottomRight</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cdfaca60ec19c0265bac2692d79827261640f649d644701a2f4633e6bd88b20c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>Middle</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cdfaca60ec19c0265bac2692d7982726673e6efef9aafe98078c5552e99c923c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="slot" virtualness="virtual">
+      <type>virtual void</type>
+      <name>setVisible</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>18e44e30b31525a243960ca3928125aa</anchor>
+      <arglist>(bool visible)</arglist>
+    </member>
+    <member kind="signal">
+      <type>void</type>
+      <name>geometryClicked</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>685dcab83356e5cc449475f177bb487d</anchor>
+      <arglist>(Geometry *geometry, QPoint point)</arglist>
+    </member>
+    <member kind="signal">
+      <type>void</type>
+      <name>positionChanged</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>807f9cfb1b9d680ca76cf825cc9cf46a</anchor>
+      <arglist>(Geometry *geom)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QRectF</type>
+      <name>boundingBox</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>cbb256b5f9f888e9cd3bb475108ece24</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QPointF</type>
+      <name>coordinate</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2fbb44b2ed047287d715484d2fda7299</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>Equals</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>029a8b50c439c719aac173bffe4cfb71</anchor>
+      <arglist>(Geometry *geom)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>FixedImageOverlay</name>
+      <anchorfile>classqmapcontrol_1_1FixedImageOverlay.html</anchorfile>
+      <anchor>a3cc273119f113f1ba255315b9327d0e</anchor>
+      <arglist>(qreal x_upperleft, qreal y_upperleft, qreal x_lowerright, qreal y_lowerright, QPixmap *pixmap, QString name=QString())</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>FixedImageOverlay</name>
+      <anchorfile>classqmapcontrol_1_1FixedImageOverlay.html</anchorfile>
+      <anchor>621806ec022f1b35a2383b64787a5827</anchor>
+      <arglist>(qreal x_upperleft, qreal y_upperleft, qreal x_lowerright, qreal y_lowerright, QString filename, QString name=QString())</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isVisible</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>08422ee75ab02691943c1ca87e2bc563</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>latitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>6311aabecac471455760aae4790cff91</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>qreal</type>
+      <name>longitude</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>2b0f7ec9068af09bcf151af61a785845</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>name</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>2b0a198f837184bf6fff555cee3ce770</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Geometry *</type>
+      <name>parentGeometry</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>771cc513dc079219d5da2c4b81019d7c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPen *</type>
+      <name>pen</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>ed7be2fcd2c1d7bccb55f5ac73d7a662</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>QPixmap *</type>
+      <name>pixmap</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>166d4272301d85cc53e114ce4d26caf5</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setBaselevel</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>91f1496833bfda9f7a7ec5fcb02a1895</anchor>
+      <arglist>(int zoomlevel)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setMaxsize</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>dc2724c4e195727b823ff55c940283de</anchor>
+      <arglist>(QSize maxsize)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setMinsize</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>c40b3e44f54fab1330b9309ac7bd84d2</anchor>
+      <arglist>(QSize minsize)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setName</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>6220fae15759fd0fa7d75e415df34e83</anchor>
+      <arglist>(QString name)</arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>toString</name>
+      <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
+      <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>QWidget *</type>
+      <name>widget</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>d1eaabeb2b227cd055ccf4b4e2818480</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="protected" virtualness="virtual">
+      <type>virtual bool</type>
+      <name>Touches</name>
+      <anchorfile>classqmapcontrol_1_1Point.html</anchorfile>
+      <anchor>73504541bf9e21ceceb82c6b4c3f2b04</anchor>
+      <arglist>(Point *geom, const MapAdapter *mapadapter)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>qmapcontrol::Geometry</name>
     <filename>classqmapcontrol_1_1Geometry.html</filename>
     <member kind="slot" virtualness="virtual">
@@ -393,6 +589,24 @@
     <name>qmapcontrol::GeometryLayer</name>
     <filename>classqmapcontrol_1_1GeometryLayer.html</filename>
     <base>qmapcontrol::Layer</base>
+    <member kind="enumeration">
+      <name>LayerType</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>MapLayer</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a4fe7df421203e4175d260b8dabcbe3002</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>GeometryLayer</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a46c04bd58c42df8a7539aba782503fee0</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="slot">
       <type>void</type>
       <name>setVisible</name>
@@ -791,6 +1005,24 @@
   <compound kind="class">
     <name>qmapcontrol::Layer</name>
     <filename>classqmapcontrol_1_1Layer.html</filename>
+    <member kind="enumeration">
+      <name>LayerType</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>MapLayer</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a4fe7df421203e4175d260b8dabcbe3002</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>GeometryLayer</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a46c04bd58c42df8a7539aba782503fee0</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="slot">
       <type>void</type>
       <name>setVisible</name>
@@ -1056,6 +1288,30 @@
   <compound kind="class">
     <name>qmapcontrol::MapControl</name>
     <filename>classqmapcontrol_1_1MapControl.html</filename>
+    <member kind="enumeration">
+      <name>MouseMode</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>034ae8169a2202325de4ef39ffd3e431</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>Panning</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>034ae8169a2202325de4ef39ffd3e431e105bcd8daf776fd01704a7186c49608</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>Dragging</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>034ae8169a2202325de4ef39ffd3e431ea74c0c82481d6d724a43536424e3977</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>None</name>
+      <anchorfile>classqmapcontrol_1_1MapControl.html</anchorfile>
+      <anchor>034ae8169a2202325de4ef39ffd3e431c9d3e887722f2bc482bcca9d41c512af</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="slot">
       <type>void</type>
       <name>resize</name>
@@ -1299,6 +1555,24 @@
     <name>qmapcontrol::MapLayer</name>
     <filename>classqmapcontrol_1_1MapLayer.html</filename>
     <base>qmapcontrol::Layer</base>
+    <member kind="enumeration">
+      <name>LayerType</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>MapLayer</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a4fe7df421203e4175d260b8dabcbe3002</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>GeometryLayer</name>
+      <anchorfile>classqmapcontrol_1_1Layer.html</anchorfile>
+      <anchor>56943a0946e5f15e5e58054b8e7a04a46c04bd58c42df8a7539aba782503fee0</anchor>
+      <arglist></arglist>
+    </member>
     <member kind="slot">
       <type>void</type>
       <name>setVisible</name>

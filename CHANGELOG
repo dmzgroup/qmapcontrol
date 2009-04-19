@@ -1,3 +1,9 @@
+2009-04-19
+----------
+- new class FixedImageOverlay for drawing an image overlay onto a map, whose upper left and lower 
+  right corners lay always on the given coordinates. Inheritance is not perfect here: 
+  the methods setBaselevel, setMaxsize and setMinsize have no effect for this class.
+
 2009-02-28
 -----------
 - Fixed bug which didn't painted the zoomed image correct after the QMapControl widget was resized 
