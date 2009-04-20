@@ -54,7 +54,7 @@ namespace qmapcontrol
             const QPointF c = QPointF(X, Y);
             QPoint topleft = mapadapter->coordinateToDisplay(c);
 
-            const QPointF c2 = QPoint(x_lowerright, y_lowerright);
+            const QPointF c2 = QPointF(x_lowerright, y_lowerright);
             QPoint lowerright = mapadapter->coordinateToDisplay(c2);
 
             painter->drawPixmap(topleft.x(), topleft.y(), lowerright.x()-topleft.x(), lowerright.y()-topleft.y(), *mypixmap);
