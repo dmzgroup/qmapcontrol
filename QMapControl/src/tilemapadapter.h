@@ -25,7 +25,7 @@
 
 #ifndef TILEMAPADAPTER_H
 #define TILEMAPADAPTER_H
-
+#include <qmapcontrolexport.h>
 #include "mapadapter.h"
 
 namespace qmapcontrol
@@ -35,7 +35,7 @@ namespace qmapcontrol
      * Use this derived MapAdapter to display maps from OpenStreetMap
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class TileMapAdapter : public MapAdapter
+    class QMAPCONTROL_LINK_SYMBOL TileMapAdapter : public MapAdapter
     {
         Q_OBJECT
                 public:

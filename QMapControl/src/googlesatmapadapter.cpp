@@ -25,6 +25,10 @@
 
 #include "googlesatmapadapter.h"
 
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES 1
+#endif
+
 #include <math.h>
 namespace qmapcontrol
 {

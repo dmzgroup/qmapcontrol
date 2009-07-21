@@ -25,7 +25,7 @@
 
 #ifndef IMAGEPOINT_H
 #define IMAGEPOINT_H
-
+#include <qmapcontrolexport.h>
 #include "point.h"
 
 namespace qmapcontrol
@@ -38,7 +38,7 @@ namespace qmapcontrol
      *
      * @author Kai Winter <kaiwinter@gmx.de>
      */
-    class ImagePoint : public Point
+    class QMAPCONTROL_LINK_SYMBOL ImagePoint : public Point
     {
     public:
         //! Creates a point which loads and displays the given image file

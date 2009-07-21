@@ -25,8 +25,8 @@
 
 #ifndef POINT_H
 #define POINT_H
-#include <QWidget>
-
+#include <QtGui/QWidget>
+#include <qmapcontrolexport.h>
 #include "geometry.h"
 
 namespace qmapcontrol
@@ -54,7 +54,7 @@ namespace qmapcontrol
      *
      * @author Kai Winter <kaiwinter@gmx.de>
      */
-    class Point : public Geometry
+    class QMAPCONTROL_LINK_SYMBOL Point : public Geometry
     {
         Q_OBJECT
 

@@ -25,11 +25,11 @@
 
 #ifndef LAYER_H
 #define LAYER_H
-
-#include <QObject>
-#include <QDebug>
-#include <QPainter>
-#include <QMouseEvent>
+#include <qmapcontrolexport.h>
+#include <QtCore/QObject>
+#include <QtCore/QDebug>
+#include <QtGui/QPainter>
+#include <QtGui/QMouseEvent>
 
 #include "mapadapter.h"
 #include "layermanager.h"
@@ -56,7 +56,7 @@ namespace qmapcontrol
      *
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class Layer : public QObject
+    class QMAPCONTROL_LINK_SYMBOL Layer : public QObject
     {
         Q_OBJECT
 
@@ -131,9 +131,19 @@ namespace qmapcontrol
 
         void setMapAdapter(MapAdapter* mapadapter);
 
-        Layer& operator=(const Layer& rhs);
-        Layer(const Layer& old);
+    signals:
+        //! This signal is emitted when a Geometry is clicked
+        /*!
+         * A Geometry is clickable, if the containing layer is clickable.
+         * The layer emits a signal for every clicked geometry
+         * @param  geometry The clicked Geometry
+         * @param  point The coordinate (in widget coordinates) of the click
+         */
+        void geometryClicked(Geometry* geometry, QPoint point);
 
+        void updateRequest(QRectF rect);
+        void updateRequest();
+        
     private:
         void moveWidgets(const QPoint mapmiddle_px) const;
         void drawYourImage(QPainter* painter, const QPoint mapmiddle_px) const;
@@ -157,18 +167,8 @@ namespace qmapcontrol
         bool takeevents;
         mutable QRect myoffscreenViewport;
 
-    signals:
-        //! This signal is emitted when a Geometry is clicked
-        /*!
-         * A Geometry is clickable, if the containing layer is clickable.
-         * The layer emits a signal for every clicked geometry
-         * @param  geometry The clicked Geometry
-         * @param  point The coordinate (in widget coordinates) of the click
-         */
-        void geometryClicked(Geometry* geometry, QPoint point);
-
-        void updateRequest(QRectF rect);
-        void updateRequest();
+        Layer& operator=(const Layer& rhs);
+        Layer(const Layer& old);
 
     public slots:
         //! if visible is true, the layer is made visible

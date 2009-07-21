@@ -24,7 +24,8 @@
 */
 
 #include "mapnetwork.h"
-#include <QWaitCondition>
+#include <QtCore/QWaitCondition>
+
 namespace qmapcontrol
 {
     MapNetwork::MapNetwork(ImageManager* parent)

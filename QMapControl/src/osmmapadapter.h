@@ -25,7 +25,7 @@
 
 #ifndef OSMMAPADAPTER_H
 #define OSMMAPADAPTER_H
-
+#include <qmapcontrolexport.h>
 #include "tilemapadapter.h"
 namespace qmapcontrol
 {
@@ -34,7 +34,7 @@ namespace qmapcontrol
      * This is a conveniece class, which extends and configures a TileMapAdapter
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class OSMMapAdapter : public TileMapAdapter
+    class QMAPCONTROL_LINK_SYMBOL OSMMapAdapter : public TileMapAdapter
     {
         Q_OBJECT
                 public:

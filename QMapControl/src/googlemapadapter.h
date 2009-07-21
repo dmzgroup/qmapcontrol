@@ -25,7 +25,7 @@
 
 #ifndef GOOGLEMAPADAPTER_H
 #define GOOGLEMAPADAPTER_H
-
+#include <qmapcontrolexport.h>
 #include "tilemapadapter.h"
 
 namespace qmapcontrol
@@ -35,7 +35,7 @@ namespace qmapcontrol
      * This is a conveniece class, which extends and configures a TileMapAdapter
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class GoogleMapAdapter : public TileMapAdapter
+    class QMAPCONTROL_LINK_SYMBOL GoogleMapAdapter : public TileMapAdapter
     {
         Q_OBJECT
 

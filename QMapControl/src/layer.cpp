@@ -217,9 +217,12 @@ namespace qmapcontrol
                                 ImageManager::instance()->getImage(mapAdapter->host(), mapAdapter->query(mapmiddle_tile_x, mapmiddle_tile_y, mapAdapter->currentZoom())));
         }
 
-        for (int i=-tiles_left+mapmiddle_tile_x; i<=tiles_right+mapmiddle_tile_x; i++)
+        int i = 0;
+        int j = 0;
+        
+        for (i=-tiles_left+mapmiddle_tile_x; i<=tiles_right+mapmiddle_tile_x; i++)
         {
-            for (int j=-tiles_above+mapmiddle_tile_y; j<=tiles_bottom+mapmiddle_tile_y; j++)
+            for (j=-tiles_above+mapmiddle_tile_y; j<=tiles_bottom+mapmiddle_tile_y; j++)
             {
                 // check if image is valid
                 if (!(i==mapmiddle_tile_x && j==mapmiddle_tile_y))
@@ -242,26 +245,26 @@ namespace qmapcontrol
         int left = mapmiddle_tile_x-tiles_right-1;
         int lower = mapmiddle_tile_y+tiles_bottom+1;
 
-        int j = upper;
-        for (int i=left; i<=right; i++)
+        j = upper;
+        for (i=left; i<=right; i++)
         {
             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
         }
         j = lower;
-        for (int i=left; i<=right; i++)
+        for (i=left; i<=right; i++)
         {
             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
         }
-        int i = left;
-        for (int j=upper+1; j<=lower-1; j++)
+        i = left;
+        for (j=upper+1; j<=lower-1; j++)
         {
             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
         }
         i = right;
-        for (int j=upper+1; j<=lower-1; j++)
+        for (j=upper+1; j<=lower-1; j++)
         {
             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));

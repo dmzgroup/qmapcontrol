@@ -25,8 +25,8 @@
 
 #ifndef GPS_POSITION_H
 #define GPS_POSITION_H
-
-#include <QString>
+#include <qmapcontrolexport.h>
+#include <QtCore/QString>
 
 namespace qmapcontrol
 {
@@ -36,7 +36,7 @@ namespace qmapcontrol
      * This is not fully integrated in the API. An example which uses this data type can be found under Samples.
      * @author Kai Winter
      */
-    class GPS_Position
+    class QMAPCONTROL_LINK_SYMBOL GPS_Position
     {
     public:
         GPS_Position(float time, float longitude, QString longitude_dir, float latitude, QString latitude_dir);

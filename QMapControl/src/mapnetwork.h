@@ -25,12 +25,12 @@
 
 #ifndef MAPNETWORK_H
 #define MAPNETWORK_H
-
-#include <QObject>
-#include <QDebug>
-#include <QHttp>
-#include <QVector>
-#include <QPixmap>
+#include <qmapcontrolexport.h>
+#include <QtCore/QObject>
+#include <QtCore/QDebug>
+#include <QtNetwork/QHttp>
+#include <QtCore/QVector>
+#include <QtGui/QPixmap>
 #include "imagemanager.h"
 /**
         @author Kai Winter <kaiwinter@gmx.de>
@@ -38,7 +38,7 @@
 namespace qmapcontrol
 {
     class ImageManager;
-    class MapNetwork : QObject
+    class QMAPCONTROL_LINK_SYMBOL MapNetwork : QObject
     {
         Q_OBJECT
 

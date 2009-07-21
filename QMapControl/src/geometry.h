@@ -25,9 +25,10 @@
 
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
-#include <QObject>
-#include <QPainter>
-#include <QDebug>
+#include <qmapcontrolexport.h>
+#include <QtCore/QObject>
+#include <QtGui/QPainter>
+#include <QtCore/QDebug>
 #include "mapadapter.h"
 
 namespace qmapcontrol
@@ -43,7 +44,7 @@ namespace qmapcontrol
      *
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class Geometry : public QObject
+    class QMAPCONTROL_LINK_SYMBOL Geometry : public QObject
     {
         friend class LineString;
         Q_OBJECT

@@ -1,0 +1,83 @@
+require "lmkQt"
+lmkQt.set_name "QMapControl"
+lmk.set_type "shared"
+lmk.add_files {
+   "qmapcontrol.h",
+   "qmapcontrolexport.h",
+   "src/circlepoint.h",
+   "src/curve.h",
+   "src/fixedimageoverlay.h",
+   "src/geometry.h",
+   "src/geometrylayer.h",
+   "src/googlemapadapter.h",
+   "src/googlesatmapadapter.h",
+   "src/gps_position.h",
+   "src/imagemanager.h",
+   "src/imagepoint.h",
+   "src/layer.h",
+   "src/layermanager.h",
+   "src/linestring.h",
+   "src/mapadapter.h",
+   "src/mapcontrol.h",
+   "src/maplayer.h",
+   "src/mapnetwork.h",
+   "src/openaerialmapadapter.h",
+   "src/osmmapadapter.h",
+   "src/point.h",
+   "src/tilemapadapter.h",
+   "src/wmsmapadapter.h",
+   "src/yahoomapadapter.h",
+}
+
+lmk.add_files ({
+   "src/curve.h",
+   "src/geometry.h",
+   "src/geometrylayer.h",
+   "src/googlemapadapter.h",
+   "src/googlesatmapadapter.h",
+   "src/imagemanager.h",
+   "src/layer.h",
+   "src/layermanager.h",
+   "src/linestring.h",
+   "src/mapadapter.h",
+   "src/mapcontrol.h",
+   "src/maplayer.h",
+   "src/mapnetwork.h",
+   "src/openaerialmapadapter.h",
+   "src/osmmapadapter.h",
+   "src/point.h",
+   "src/tilemapadapter.h",
+   "src/yahoomapadapter.h",
+},{src = "moc"})
+
+lmk.add_files {
+   "src/circlepoint.cpp",
+   "src/curve.cpp",
+   "src/fixedimageoverlay.cpp",
+   "src/geometry.cpp",
+   "src/geometrylayer.cpp",
+   "src/googlemapadapter.cpp",
+   "src/googlesatmapadapter.cpp",
+   "src/gps_position.cpp",
+   "src/imagemanager.cpp",
+   "src/imagepoint.cpp",
+   "src/layer.cpp",
+   "src/layermanager.cpp",
+   "src/linestring.cpp",
+   "src/mapadapter.cpp",
+   "src/mapcontrol.cpp",
+   "src/maplayer.cpp",
+   "src/mapnetwork.cpp",
+   "src/openaerialmapadapter.cpp",
+   "src/osmmapadapter.cpp",
+   "src/point.cpp",
+   "src/tilemapadapter.cpp",
+   "src/wmsmapadapter.cpp",
+   "src/yahoomapadapter.cpp",
+}
+
+lmkQt.add_libs {"QtCore","QtGui","QtNetwork",}
+
+lmk.add_vars ({
+   localDefines = "$(lmk.defineFlag)QMAPCONTROL_EXPORT"
+}, {win32 = true})

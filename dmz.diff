@@ -1,0 +1,1057 @@
+diff --git a/QMapControl/qmapcontrol.h b/QMapControl/qmapcontrol.h
+old mode 100644
+new mode 100755
+index 7b88efe..7c62364
+--- a/QMapControl/qmapcontrol.h
++++ b/QMapControl/qmapcontrol.h
+@@ -1,17 +1,17 @@
+-#include "src/mapcontrol.h"
+-#include "src/gps_position.h"
+-#include "src/wmsmapadapter.h"
+-#include "src/geometry.h"
+-#include "src/point.h"
+-#include "src/imagepoint.h"
+-#include "src/circlepoint.h"
+-#include "src/linestring.h"
+-#include "src/gps_position.h"
+-#include "src/osmmapadapter.h"
+-#include "src/maplayer.h"
+-#include "src/geometrylayer.h"
+-#include "src/yahoomapadapter.h"
+-#include "src/googlemapadapter.h"
+-#include "src/googlesatmapadapter.h"
+-#include "src/openaerialmapadapter.h"
+-#include "src/fixedimageoverlay.h"
++#include "mapcontrol.h"
++#include "gps_position.h"
++#include "wmsmapadapter.h"
++#include "geometry.h"
++#include "point.h"
++#include "imagepoint.h"
++#include "circlepoint.h"
++#include "linestring.h"
++#include "gps_position.h"
++#include "osmmapadapter.h"
++#include "maplayer.h"
++#include "geometrylayer.h"
++#include "yahoomapadapter.h"
++#include "googlemapadapter.h"
++#include "googlesatmapadapter.h"
++#include "openaerialmapadapter.h"
++#include "fixedimageoverlay.h"
+\ No newline at end of file
+diff --git a/QMapControl/src/circlepoint.h b/QMapControl/src/circlepoint.h
+old mode 100644
+new mode 100755
+index 9c90be2..ac96e88
+--- a/QMapControl/src/circlepoint.h
++++ b/QMapControl/src/circlepoint.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef CIRCLEPOINT_H
+ #define CIRCLEPOINT_H
+-
++#include <qmapcontrolexport.h>
+ #include "point.h"
+ 
+ namespace qmapcontrol
+@@ -37,7 +37,7 @@ namespace qmapcontrol
+      *
+      * @author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class CirclePoint : public Point
++    class QMAPCONTROL_LINK_SYMBOL CirclePoint : public Point
+     {
+     public:
+         //!
+diff --git a/QMapControl/src/curve.h b/QMapControl/src/curve.h
+old mode 100644
+new mode 100755
+index 5a71c01..33b6e25
+--- a/QMapControl/src/curve.h
++++ b/QMapControl/src/curve.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef CURVE_H
+ #define CURVE_H
+-
++#include <qmapcontrolexport.h>
+ #include "geometry.h"
+ #include "point.h"
+ 
+@@ -42,7 +42,7 @@ namespace qmapcontrol
+      * LineString, which uses a linear interpolation between Points."
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class Curve : public Geometry
++    class QMAPCONTROL_LINK_SYMBOL Curve : public Geometry
+     {
+         Q_OBJECT
+     public:
+diff --git a/QMapControl/src/fixedimageoverlay.h b/QMapControl/src/fixedimageoverlay.h
+old mode 100644
+new mode 100755
+index 6d154af..2be46a6
+--- a/QMapControl/src/fixedimageoverlay.h
++++ b/QMapControl/src/fixedimageoverlay.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef FIXEDIMAGEOVERLAY_H
+ #define FIXEDIMAGEOVERLAY_H
+-
++#include <qmapcontrolexport.h>
+ #include "imagepoint.h"
+ 
+ namespace qmapcontrol
+@@ -39,7 +39,7 @@ namespace qmapcontrol
+      *
+      * @author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class FixedImageOverlay : public ImagePoint
++    class QMAPCONTROL_LINK_SYMBOL FixedImageOverlay : public ImagePoint
+     {
+     public:
+        //! Creates an image overlay which loads and displays the given image file
+diff --git a/QMapControl/src/geometry.h b/QMapControl/src/geometry.h
+old mode 100644
+new mode 100755
+index dca4780..46550a2
+--- a/QMapControl/src/geometry.h
++++ b/QMapControl/src/geometry.h
+@@ -25,9 +25,10 @@
+ 
+ #ifndef GEOMETRY_H
+ #define GEOMETRY_H
+-#include <QObject>
+-#include <QPainter>
+-#include <QDebug>
++#include <qmapcontrolexport.h>
++#include <QtCore/QObject>
++#include <QtGui/QPainter>
++#include <QtCore/QDebug>
+ #include "mapadapter.h"
+ 
+ namespace qmapcontrol
+@@ -43,7 +44,7 @@ namespace qmapcontrol
+      *
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class Geometry : public QObject
++    class QMAPCONTROL_LINK_SYMBOL Geometry : public QObject
+     {
+         friend class LineString;
+         Q_OBJECT
+diff --git a/QMapControl/src/geometrylayer.h b/QMapControl/src/geometrylayer.h
+old mode 100644
+new mode 100755
+index 93bda47..21fb52d
+--- a/QMapControl/src/geometrylayer.h
++++ b/QMapControl/src/geometrylayer.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef GEOMETRYLAYER_H
+ #define GEOMETRYLAYER_H
+-
++#include <qmapcontrolexport.h>
+ #include "layer.h"
+ 
+ namespace qmapcontrol
+@@ -44,7 +44,7 @@ namespace qmapcontrol
+          *
+          *	@author Kai Winter <kaiwinter@gmx.de>
+          */
+-    class GeometryLayer : public Layer
++    class QMAPCONTROL_LINK_SYMBOL GeometryLayer : public Layer
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/googlemapadapter.h b/QMapControl/src/googlemapadapter.h
+old mode 100644
+new mode 100755
+index 46ceea7..4ec950f
+--- a/QMapControl/src/googlemapadapter.h
++++ b/QMapControl/src/googlemapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef GOOGLEMAPADAPTER_H
+ #define GOOGLEMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "tilemapadapter.h"
+ 
+ namespace qmapcontrol
+@@ -35,7 +35,7 @@ namespace qmapcontrol
+      * This is a conveniece class, which extends and configures a TileMapAdapter
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class GoogleMapAdapter : public TileMapAdapter
++    class QMAPCONTROL_LINK_SYMBOL GoogleMapAdapter : public TileMapAdapter
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/googlesatmapadapter.cpp b/QMapControl/src/googlesatmapadapter.cpp
+index 602b818..61451b0 100755
+--- a/QMapControl/src/googlesatmapadapter.cpp
++++ b/QMapControl/src/googlesatmapadapter.cpp
+@@ -25,6 +25,10 @@
+ 
+ #include "googlesatmapadapter.h"
+ 
++#ifndef _USE_MATH_DEFINES
++#define _USE_MATH_DEFINES 1
++#endif
++
+ #include <math.h>
+ namespace qmapcontrol
+ {
+diff --git a/QMapControl/src/googlesatmapadapter.h b/QMapControl/src/googlesatmapadapter.h
+index c6b0395..4056898 100755
+--- a/QMapControl/src/googlesatmapadapter.h
++++ b/QMapControl/src/googlesatmapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef GOOGLESATMAPADAPTER_H
+ #define GOOGLESATMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "mapadapter.h"
+ namespace qmapcontrol
+ {
+@@ -34,7 +34,7 @@ namespace qmapcontrol
+      * This is a conveniece class, which extends and configures a TileMapAdapter
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class GoogleSatMapAdapter : public MapAdapter
++    class QMAPCONTROL_LINK_SYMBOL GoogleSatMapAdapter : public MapAdapter
+     {
+         Q_OBJECT
+     public:
+diff --git a/QMapControl/src/gps_position.h b/QMapControl/src/gps_position.h
+old mode 100644
+new mode 100755
+index 46aeb2e..b22c73d
+--- a/QMapControl/src/gps_position.h
++++ b/QMapControl/src/gps_position.h
+@@ -25,8 +25,8 @@
+ 
+ #ifndef GPS_POSITION_H
+ #define GPS_POSITION_H
+-
+-#include <QString>
++#include <qmapcontrolexport.h>
++#include <QtCore/QString>
+ 
+ namespace qmapcontrol
+ {
+@@ -36,7 +36,7 @@ namespace qmapcontrol
+      * This is not fully integrated in the API. An example which uses this data type can be found under Samples.
+      * @author Kai Winter
+      */
+-    class GPS_Position
++    class QMAPCONTROL_LINK_SYMBOL GPS_Position
+     {
+     public:
+         GPS_Position(float time, float longitude, QString longitude_dir, float latitude, QString latitude_dir);
+diff --git a/QMapControl/src/imagemanager.h b/QMapControl/src/imagemanager.h
+old mode 100644
+new mode 100755
+index d4b36f1..a7aecd0
+--- a/QMapControl/src/imagemanager.h
++++ b/QMapControl/src/imagemanager.h
+@@ -25,14 +25,14 @@
+ 
+ #ifndef IMAGEMANAGER_H
+ #define IMAGEMANAGER_H
+-
+-#include <QObject>
+-#include <QPixmapCache>
+-#include <QDebug>
+-#include <QMutex>
+-#include <QFile>
+-#include <QBuffer>
+-#include <QDir>
++#include <qmapcontrolexport.h>
++#include <QtCore/QObject>
++#include <QtGui/QPixmapCache>
++#include <QtCore/QDebug>
++#include <QtCore/QMutex>
++#include <QtCore/QFile>
++#include <QtCore/QBuffer>
++#include <QtCore/QDir>
+ #include "mapnetwork.h"
+ 
+ namespace qmapcontrol
+@@ -41,7 +41,7 @@ namespace qmapcontrol
+     /**
+     @author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class ImageManager : public QObject
++    class QMAPCONTROL_LINK_SYMBOL ImageManager : public QObject
+     {
+         Q_OBJECT;
+ 
+diff --git a/QMapControl/src/imagepoint.h b/QMapControl/src/imagepoint.h
+old mode 100644
+new mode 100755
+index dde2b9b..a4db1c9
+--- a/QMapControl/src/imagepoint.h
++++ b/QMapControl/src/imagepoint.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef IMAGEPOINT_H
+ #define IMAGEPOINT_H
+-
++#include <qmapcontrolexport.h>
+ #include "point.h"
+ 
+ namespace qmapcontrol
+@@ -38,7 +38,7 @@ namespace qmapcontrol
+      *
+      * @author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class ImagePoint : public Point
++    class QMAPCONTROL_LINK_SYMBOL ImagePoint : public Point
+     {
+     public:
+         //! Creates a point which loads and displays the given image file
+diff --git a/QMapControl/src/layer.cpp b/QMapControl/src/layer.cpp
+old mode 100644
+new mode 100755
+index ee4f841..3c1ba95
+--- a/QMapControl/src/layer.cpp
++++ b/QMapControl/src/layer.cpp
+@@ -217,9 +217,12 @@ namespace qmapcontrol
+                                 ImageManager::instance()->getImage(mapAdapter->host(), mapAdapter->query(mapmiddle_tile_x, mapmiddle_tile_y, mapAdapter->currentZoom())));
+         }
+ 
+-        for (int i=-tiles_left+mapmiddle_tile_x; i<=tiles_right+mapmiddle_tile_x; i++)
++        int i = 0;
++        int j = 0;
++        
++        for (i=-tiles_left+mapmiddle_tile_x; i<=tiles_right+mapmiddle_tile_x; i++)
+         {
+-            for (int j=-tiles_above+mapmiddle_tile_y; j<=tiles_bottom+mapmiddle_tile_y; j++)
++            for (j=-tiles_above+mapmiddle_tile_y; j<=tiles_bottom+mapmiddle_tile_y; j++)
+             {
+                 // check if image is valid
+                 if (!(i==mapmiddle_tile_x && j==mapmiddle_tile_y))
+@@ -242,26 +245,26 @@ namespace qmapcontrol
+         int left = mapmiddle_tile_x-tiles_right-1;
+         int lower = mapmiddle_tile_y+tiles_bottom+1;
+ 
+-        int j = upper;
+-        for (int i=left; i<=right; i++)
++        j = upper;
++        for (i=left; i<=right; i++)
+         {
+             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
+                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
+         }
+         j = lower;
+-        for (int i=left; i<=right; i++)
++        for (i=left; i<=right; i++)
+         {
+             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
+                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
+         }
+-        int i = left;
+-        for (int j=upper+1; j<=lower-1; j++)
++        i = left;
++        for (j=upper+1; j<=lower-1; j++)
+         {
+             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
+                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
+         }
+         i = right;
+-        for (int j=upper+1; j<=lower-1; j++)
++        for (j=upper+1; j<=lower-1; j++)
+         {
+             if (mapAdapter->isValid(i, j, mapAdapter->currentZoom()))
+                 ImageManager::instance()->prefetchImage(mapAdapter->host(), mapAdapter->query(i, j, mapAdapter->currentZoom()));
+diff --git a/QMapControl/src/layer.h b/QMapControl/src/layer.h
+old mode 100644
+new mode 100755
+index 14debea..e4d63cb
+--- a/QMapControl/src/layer.h
++++ b/QMapControl/src/layer.h
+@@ -25,11 +25,11 @@
+ 
+ #ifndef LAYER_H
+ #define LAYER_H
+-
+-#include <QObject>
+-#include <QDebug>
+-#include <QPainter>
+-#include <QMouseEvent>
++#include <qmapcontrolexport.h>
++#include <QtCore/QObject>
++#include <QtCore/QDebug>
++#include <QtGui/QPainter>
++#include <QtGui/QMouseEvent>
+ 
+ #include "mapadapter.h"
+ #include "layermanager.h"
+@@ -56,7 +56,7 @@ namespace qmapcontrol
+      *
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class Layer : public QObject
++    class QMAPCONTROL_LINK_SYMBOL Layer : public QObject
+     {
+         Q_OBJECT
+ 
+@@ -131,9 +131,19 @@ namespace qmapcontrol
+ 
+         void setMapAdapter(MapAdapter* mapadapter);
+ 
+-        Layer& operator=(const Layer& rhs);
+-        Layer(const Layer& old);
++    signals:
++        //! This signal is emitted when a Geometry is clicked
++        /*!
++         * A Geometry is clickable, if the containing layer is clickable.
++         * The layer emits a signal for every clicked geometry
++         * @param  geometry The clicked Geometry
++         * @param  point The coordinate (in widget coordinates) of the click
++         */
++        void geometryClicked(Geometry* geometry, QPoint point);
+ 
++        void updateRequest(QRectF rect);
++        void updateRequest();
++        
+     private:
+         void moveWidgets(const QPoint mapmiddle_px) const;
+         void drawYourImage(QPainter* painter, const QPoint mapmiddle_px) const;
+@@ -157,18 +167,8 @@ namespace qmapcontrol
+         bool takeevents;
+         mutable QRect myoffscreenViewport;
+ 
+-    signals:
+-        //! This signal is emitted when a Geometry is clicked
+-        /*!
+-         * A Geometry is clickable, if the containing layer is clickable.
+-         * The layer emits a signal for every clicked geometry
+-         * @param  geometry The clicked Geometry
+-         * @param  point The coordinate (in widget coordinates) of the click
+-         */
+-        void geometryClicked(Geometry* geometry, QPoint point);
+-
+-        void updateRequest(QRectF rect);
+-        void updateRequest();
++        Layer& operator=(const Layer& rhs);
++        Layer(const Layer& old);
+ 
+     public slots:
+         //! if visible is true, the layer is made visible
+diff --git a/QMapControl/src/layermanager.cpp b/QMapControl/src/layermanager.cpp
+index 9b9d9ae..5a1be4e 100644
+--- a/QMapControl/src/layermanager.cpp
++++ b/QMapControl/src/layermanager.cpp
+@@ -23,7 +23,9 @@
+ *
+ */
+ 
++#include <QtCore/QCoreApplication>
+ #include "layermanager.h"
++
+ namespace qmapcontrol
+ {
+     LayerManager::LayerManager(MapControl* mapcontrol, QSize size)
+diff --git a/QMapControl/src/layermanager.h b/QMapControl/src/layermanager.h
+old mode 100644
+new mode 100755
+index 4757557..6298d7d
+--- a/QMapControl/src/layermanager.h
++++ b/QMapControl/src/layermanager.h
+@@ -25,10 +25,11 @@
+ 
+ #ifndef LAYERMANAGER_H
+ #define LAYERMANAGER_H
+-
+-#include <QObject>
+-#include <QMap>
+-#include <QListIterator>
++#include <qmapcontrolexport.h>
++#include <QtCore/QObject>
++#include <QtCore/QMap>
++#include <QtCore/QMutex>
++#include <QtCore/QListIterator>
+ #include "layer.h"
+ #include "mapadapter.h"
+ #include "mapcontrol.h"
+@@ -48,7 +49,7 @@ namespace qmapcontrol
+      * It initiates the creation of a new offscreen image and on zooming the zoom images gets here created.
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class LayerManager : public QObject
++    class QMAPCONTROL_LINK_SYMBOL LayerManager : public QObject
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/linestring.h b/QMapControl/src/linestring.h
+old mode 100644
+new mode 100755
+index f00a585..e000ce6
+--- a/QMapControl/src/linestring.h
++++ b/QMapControl/src/linestring.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef LINESTRING_H
+ #define LINESTRING_H
+-
++#include <qmapcontrolexport.h>
+ #include "curve.h"
+ 
+ namespace qmapcontrol
+@@ -35,7 +35,7 @@ namespace qmapcontrol
+      * A LineString is a Curve with linear interpolation between Points. Each consecutive pair of Points defines a Line segment.
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class LineString : public Curve
++    class QMAPCONTROL_LINK_SYMBOL LineString : public Curve
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/mapadapter.h b/QMapControl/src/mapadapter.h
+old mode 100644
+new mode 100755
+index be52c71..44c2cef
+--- a/QMapControl/src/mapadapter.h
++++ b/QMapControl/src/mapadapter.h
+@@ -25,13 +25,13 @@
+ 
+ #ifndef MAPADAPTER_H
+ #define MAPADAPTER_H
+-
+-#include <QObject>
+-#include <QSize>
+-#include <QPoint>
+-#include <QPointF>
+-#include <QLocale>
+-#include <QDebug>
++#include <qmapcontrolexport.h>
++#include <QtCore/QObject>
++#include <QtCore/QSize>
++#include <QtCore/QPoint>
++#include <QtCore/QPointF>
++#include <QtCore/QLocale>
++#include <QtCore/QDebug>
+ #include <cmath>
+ 
+ namespace qmapcontrol
+@@ -51,7 +51,7 @@ namespace qmapcontrol
+      *
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class MapAdapter : public QObject
++    class QMAPCONTROL_LINK_SYMBOL MapAdapter : public QObject
+     {
+         friend class Layer;
+ 
+diff --git a/QMapControl/src/mapcontrol.cpp b/QMapControl/src/mapcontrol.cpp
+old mode 100644
+new mode 100755
+index 8090c74..b723a11
+--- a/QMapControl/src/mapcontrol.cpp
++++ b/QMapControl/src/mapcontrol.cpp
+@@ -23,7 +23,9 @@
+ *
+ */
+ 
++#include <QtCore/QTimer>
+ #include "mapcontrol.h"
++
+ namespace qmapcontrol
+ {
+     MapControl::MapControl(QSize size, MouseMode mousemode)
+@@ -155,7 +157,7 @@ namespace qmapcontrol
+             if (currentZoom() >= 0 && distanceList.size() > currentZoom())
+             {
+                 double line;
+-                line = distanceList.at( currentZoom() ) / pow(2, 18-currentZoom() ) / 0.597164;
++                line = distanceList.at( currentZoom() ) / pow(2.0, 18-currentZoom() ) / 0.597164;
+ 
+                 // draw the scale
+                 painter.setPen(Qt::black);
+@@ -303,16 +305,19 @@ namespace qmapcontrol
+     {
+         layermanager->zoomIn();
+         update();
++        emit zoomChanged (currentZoom ());
+     }
+     void MapControl::zoomOut()
+     {
+         layermanager->zoomOut();
+         update();
++        emit zoomChanged (currentZoom ());
+     }
+     void MapControl::setZoom(int zoomlevel)
+     {
+         layermanager->setZoom(zoomlevel);
+         update();
++        emit zoomChanged (currentZoom ());
+     }
+     int MapControl::currentZoom() const
+     {
+@@ -402,6 +407,18 @@ namespace qmapcontrol
+     {
+         scaleVisible = show;
+     }
++    
++   QPointF MapControl::screenToWorldCoordinate (const QPoint &Screen)
++   {
++       return clickToWorldCoordinate (Screen);
++   }
++
++   QPoint MapControl::worldCoordinateToScreen (const QPointF &Coordinate)
++   {
++      QPoint displayToImage = layermanager->layer ()->mapadapter ()->coordinateToDisplay (Coordinate);
++
++      return (displayToImage + screen_middle - layermanager->getMapmiddle_px ());
++   }
+ 
+     void MapControl::resize(const QSize newSize)
+     {
+diff --git a/QMapControl/src/mapcontrol.h b/QMapControl/src/mapcontrol.h
+old mode 100644
+new mode 100755
+index a730770..a910c7a
+--- a/QMapControl/src/mapcontrol.h
++++ b/QMapControl/src/mapcontrol.h
+@@ -25,8 +25,8 @@
+ 
+ #ifndef MAPCONTROL_H
+ #define MAPCONTROL_H
+-
+-#include <QtGui>
++#include <qmapcontrolexport.h>
++#include <QtGui/QWidget>
+ 
+ #include "layermanager.h"
+ #include "layer.h"
+@@ -50,7 +50,7 @@ namespace qmapcontrol
+      *
+      * @author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class MapControl : public QWidget
++    class QMAPCONTROL_LINK_SYMBOL MapControl : public QWidget
+     {
+         Q_OBJECT
+ 
+@@ -213,36 +213,11 @@ namespace qmapcontrol
+          * @param show true if the scale should be displayed
+          */
+         void showScale ( bool show );
+-
+-    private:
+-        LayerManager* layermanager;
+-        QPoint screen_middle; // middle of the widget (half size)
+-
+-        QPoint pre_click_px; // used for scrolling (MouseMode Panning)
+-        QPoint current_mouse_pos; // used for scrolling and dragging (MouseMode Panning/Dragging)
+-
+-        QSize size; // size of the widget
+-
+-        bool mousepressed;
+-        MouseMode mymousemode;
+-        bool scaleVisible;
+-
+-        bool m_loadingFlag;
+-
+-        QMutex moveMutex; // used for method moveTo()
+-        QPointF target; // used for method moveTo()
+-        int steps; // used for method moveTo()
+-
+-        QPointF clickToWorldCoordinate ( QPoint click );
+-        MapControl& operator= ( const MapControl& rhs );
+-        MapControl ( const MapControl& old );
+-
+-    protected:
+-        void paintEvent ( QPaintEvent* evnt );
+-        void mousePressEvent ( QMouseEvent* evnt );
+-        void mouseReleaseEvent ( QMouseEvent* evnt );
+-        void mouseMoveEvent ( QMouseEvent* evnt );
+-
++        
++        //DMZ
++        QPointF screenToWorldCoordinate (const QPoint &Screen);
++        QPoint worldCoordinateToScreen (const QPointF &Coordinate);
++        
+     signals:
+         // void mouseEvent(const QMouseEvent* evnt);
+ 
+@@ -277,6 +252,42 @@ namespace qmapcontrol
+          * @param zoom The current zoom
+          */
+         void viewChanged ( const QPointF &coordinate, int zoom );
++        
++        //DMZ
++        //! This signal is emitted, after the zoom have changes
++         /*!
++          * @param zoom The current zoom
++          */
++        void zoomChanged ( int zoom );
++
++    private:
++        LayerManager* layermanager;
++        QPoint screen_middle; // middle of the widget (half size)
++
++        QPoint pre_click_px; // used for scrolling (MouseMode Panning)
++        QPoint current_mouse_pos; // used for scrolling and dragging (MouseMode Panning/Dragging)
++
++        QSize size; // size of the widget
++
++        bool mousepressed;
++        MouseMode mymousemode;
++        bool scaleVisible;
++
++        bool m_loadingFlag;
++
++        QMutex moveMutex; // used for method moveTo()
++        QPointF target; // used for method moveTo()
++        int steps; // used for method moveTo()
++
++        QPointF clickToWorldCoordinate ( QPoint click );
++        MapControl& operator= ( const MapControl& rhs );
++        MapControl ( const MapControl& old );
++
++    protected:
++        void paintEvent ( QPaintEvent* evnt );
++        void mousePressEvent ( QMouseEvent* evnt );
++        void mouseReleaseEvent ( QMouseEvent* evnt );
++        void mouseMoveEvent ( QMouseEvent* evnt );
+ 
+     public slots:
+         //! zooms in one step
+diff --git a/QMapControl/src/maplayer.h b/QMapControl/src/maplayer.h
+old mode 100644
+new mode 100755
+index 97b1701..0f35791
+--- a/QMapControl/src/maplayer.h
++++ b/QMapControl/src/maplayer.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef MAPLAYER_H
+ #define MAPLAYER_H
+-
++#include <qmapcontrolexport.h>
+ #include "layer.h"
+ 
+ namespace qmapcontrol
+@@ -44,7 +44,7 @@ namespace qmapcontrol
+      *
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class MapLayer : public Layer
++    class QMAPCONTROL_LINK_SYMBOL MapLayer : public Layer
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/mapnetwork.cpp b/QMapControl/src/mapnetwork.cpp
+index 28fc02c..48f3454 100644
+--- a/QMapControl/src/mapnetwork.cpp
++++ b/QMapControl/src/mapnetwork.cpp
+@@ -24,7 +24,8 @@
+ */
+ 
+ #include "mapnetwork.h"
+-#include <QWaitCondition>
++#include <QtCore/QWaitCondition>
++
+ namespace qmapcontrol
+ {
+     MapNetwork::MapNetwork(ImageManager* parent)
+diff --git a/QMapControl/src/mapnetwork.h b/QMapControl/src/mapnetwork.h
+old mode 100644
+new mode 100755
+index ec41841..5b63061
+--- a/QMapControl/src/mapnetwork.h
++++ b/QMapControl/src/mapnetwork.h
+@@ -25,12 +25,12 @@
+ 
+ #ifndef MAPNETWORK_H
+ #define MAPNETWORK_H
+-
+-#include <QObject>
+-#include <QDebug>
+-#include <QHttp>
+-#include <QVector>
+-#include <QPixmap>
++#include <qmapcontrolexport.h>
++#include <QtCore/QObject>
++#include <QtCore/QDebug>
++#include <QtNetwork/QHttp>
++#include <QtCore/QVector>
++#include <QtGui/QPixmap>
+ #include "imagemanager.h"
+ /**
+         @author Kai Winter <kaiwinter@gmx.de>
+@@ -38,7 +38,7 @@
+ namespace qmapcontrol
+ {
+     class ImageManager;
+-    class MapNetwork : QObject
++    class QMAPCONTROL_LINK_SYMBOL MapNetwork : QObject
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/openaerialmapadapter.h b/QMapControl/src/openaerialmapadapter.h
+old mode 100644
+new mode 100755
+index d49029c..ca5d086
+--- a/QMapControl/src/openaerialmapadapter.h
++++ b/QMapControl/src/openaerialmapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef OPENAERIALMAPADAPTER_H
+ #define OPENAERIALMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "tilemapadapter.h"
+ namespace qmapcontrol
+ {
+@@ -34,7 +34,7 @@ namespace qmapcontrol
+      * This is a conveniece class, which extends and configures a TileMapAdapter. Source of maps is http://www.openaerialmap.org/
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class OpenAerialMapAdapter : public TileMapAdapter
++    class QMAPCONTROL_LINK_SYMBOL OpenAerialMapAdapter : public TileMapAdapter
+     {
+         Q_OBJECT
+                 public:
+diff --git a/QMapControl/src/osmmapadapter.h b/QMapControl/src/osmmapadapter.h
+old mode 100644
+new mode 100755
+index a139880..c0b0fee
+--- a/QMapControl/src/osmmapadapter.h
++++ b/QMapControl/src/osmmapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef OSMMAPADAPTER_H
+ #define OSMMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "tilemapadapter.h"
+ namespace qmapcontrol
+ {
+@@ -34,7 +34,7 @@ namespace qmapcontrol
+      * This is a conveniece class, which extends and configures a TileMapAdapter
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class OSMMapAdapter : public TileMapAdapter
++    class QMAPCONTROL_LINK_SYMBOL OSMMapAdapter : public TileMapAdapter
+     {
+         Q_OBJECT
+                 public:
+diff --git a/QMapControl/src/point.cpp b/QMapControl/src/point.cpp
+old mode 100644
+new mode 100755
+index e1831be..45793a6
+--- a/QMapControl/src/point.cpp
++++ b/QMapControl/src/point.cpp
+@@ -144,8 +144,8 @@ namespace qmapcontrol
+             int diffzoom = homelevel-currentzoom;
+             int viewheight = size.height();
+             int viewwidth = size.width();
+-            viewheight = int(viewheight / pow(2, diffzoom));
+-            viewwidth = int(viewwidth / pow(2, diffzoom));
++            viewheight = int(viewheight / pow(2.0, diffzoom));
++            viewwidth = int(viewwidth / pow(2.0, diffzoom));
+ 
+             if (minsize.height()!= -1 && viewheight < minsize.height())
+                 viewheight = minsize.height();
+diff --git a/QMapControl/src/point.h b/QMapControl/src/point.h
+old mode 100644
+new mode 100755
+index 426748a..ec863a6
+--- a/QMapControl/src/point.h
++++ b/QMapControl/src/point.h
+@@ -25,8 +25,8 @@
+ 
+ #ifndef POINT_H
+ #define POINT_H
+-#include <QWidget>
+-
++#include <QtGui/QWidget>
++#include <qmapcontrolexport.h>
+ #include "geometry.h"
+ 
+ namespace qmapcontrol
+@@ -54,7 +54,7 @@ namespace qmapcontrol
+      *
+      * @author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class Point : public Geometry
++    class QMAPCONTROL_LINK_SYMBOL Point : public Geometry
+     {
+         Q_OBJECT
+ 
+diff --git a/QMapControl/src/tilemapadapter.cpp b/QMapControl/src/tilemapadapter.cpp
+old mode 100644
+new mode 100755
+index e61cbc9..17d0e3b
+--- a/QMapControl/src/tilemapadapter.cpp
++++ b/QMapControl/src/tilemapadapter.cpp
+@@ -162,8 +162,8 @@ namespace qmapcontrol
+             z= min_zoom - z;
+         }
+ 
+-        if (x<0 || x>pow(2,z)-1 ||
+-            y<0 || y>pow(2,z)-1)
++        if (x<0 || x>pow(2.0,z)-1 ||
++            y<0 || y>pow(2.0,z)-1)
+         {
+             return false;
+         }
+@@ -172,7 +172,7 @@ namespace qmapcontrol
+     }
+     int TileMapAdapter::tilesonzoomlevel(int zoomlevel) const
+     {
+-        return int(pow(2, zoomlevel));
++        return int(pow(2.0, zoomlevel));
+     }
+     int TileMapAdapter::xoffset(int x) const
+     {
+diff --git a/QMapControl/src/tilemapadapter.h b/QMapControl/src/tilemapadapter.h
+old mode 100644
+new mode 100755
+index 15c44d3..b3ed304
+--- a/QMapControl/src/tilemapadapter.h
++++ b/QMapControl/src/tilemapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef TILEMAPADAPTER_H
+ #define TILEMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "mapadapter.h"
+ 
+ namespace qmapcontrol
+@@ -35,7 +35,7 @@ namespace qmapcontrol
+      * Use this derived MapAdapter to display maps from OpenStreetMap
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class TileMapAdapter : public MapAdapter
++    class QMAPCONTROL_LINK_SYMBOL TileMapAdapter : public MapAdapter
+     {
+         Q_OBJECT
+                 public:
+diff --git a/QMapControl/src/wmsmapadapter.cpp b/QMapControl/src/wmsmapadapter.cpp
+old mode 100644
+new mode 100755
+index 96fa4fe..c6441a9
+--- a/QMapControl/src/wmsmapadapter.cpp
++++ b/QMapControl/src/wmsmapadapter.cpp
+@@ -47,7 +47,7 @@ namespace qmapcontrol
+         this->serverPath.append("&WIDTH=").append(loc.toString(tilesize))
+                 .append("&HEIGHT=").append(loc.toString(tilesize))
+                 .append("&BBOX=");
+-        numberOfTiles = pow(2, current_zoom);
++        numberOfTiles = pow(2.0, current_zoom);
+         coord_per_x_tile = 360. / numberOfTiles;
+         coord_per_y_tile = 180. / numberOfTiles;
+     }
+@@ -72,14 +72,14 @@ namespace qmapcontrol
+     void WMSMapAdapter::zoom_in()
+     {
+         current_zoom+=1;
+-        numberOfTiles = pow(2, current_zoom);
++        numberOfTiles = pow(2.0, current_zoom);
+         coord_per_x_tile = 360. / numberOfTiles;
+         coord_per_y_tile = 180. / numberOfTiles;
+     }
+     void WMSMapAdapter::zoom_out()
+     {
+         current_zoom-=1;
+-        numberOfTiles = pow(2, current_zoom);
++        numberOfTiles = pow(2.0, current_zoom);
+         coord_per_x_tile = 360. / numberOfTiles;
+         coord_per_y_tile = 180. / numberOfTiles;
+     }
+diff --git a/QMapControl/src/wmsmapadapter.h b/QMapControl/src/wmsmapadapter.h
+old mode 100644
+new mode 100755
+index 42fd5fb..b7041bd
+--- a/QMapControl/src/wmsmapadapter.h
++++ b/QMapControl/src/wmsmapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef WMSMAPADAPTER_H
+ #define WMSMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "mapadapter.h"
+ 
+ namespace qmapcontrol
+@@ -35,7 +35,7 @@ namespace qmapcontrol
+      * Use this derived MapAdapter to display maps from WMS servers
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class WMSMapAdapter : public MapAdapter
++    class QMAPCONTROL_LINK_SYMBOL WMSMapAdapter : public MapAdapter
+     {
+     public:
+         //! constructor
+diff --git a/QMapControl/src/yahoomapadapter.cpp b/QMapControl/src/yahoomapadapter.cpp
+old mode 100644
+new mode 100755
+index 863d7c2..b264080
+--- a/QMapControl/src/yahoomapadapter.cpp
++++ b/QMapControl/src/yahoomapadapter.cpp
+@@ -30,13 +30,13 @@ namespace qmapcontrol
+         : TileMapAdapter("png.maps.yimg.com", "/png?v=3.1.0&x=%2&y=%3&z=%1", 256, 17,0)
+     {
+         int zoom = max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
+-        numberOfTiles = pow(2, zoom+1);
++        numberOfTiles = pow(2.0, zoom+1);
+     }
+     YahooMapAdapter::YahooMapAdapter(QString host, QString url)
+         : TileMapAdapter(host, url, 256, 17,0)
+     {
+         int zoom = max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
+-        numberOfTiles = pow(2, zoom+1);
++        numberOfTiles = pow(2.0, zoom+1);
+     }
+     YahooMapAdapter::~YahooMapAdapter()
+     {
+@@ -49,14 +49,14 @@ namespace qmapcontrol
+ 
+     int YahooMapAdapter::tilesonzoomlevel(int zoomlevel) const
+     {
+-        return int(pow(2, zoomlevel+1));
++        return int(pow(2.0, zoomlevel+1));
+     }
+ 
+     int YahooMapAdapter::yoffset(int y) const
+     {
+         int zoom = max_zoom < min_zoom ? min_zoom - current_zoom : current_zoom;
+ 
+-        int tiles = int(pow(2, zoom));
++        int tiles = int(pow(2.0, zoom));
+         y = y*(-1)+tiles-1;
+         return int(y);
+     }
+diff --git a/QMapControl/src/yahoomapadapter.h b/QMapControl/src/yahoomapadapter.h
+old mode 100644
+new mode 100755
+index ae03bba..547c639
+--- a/QMapControl/src/yahoomapadapter.h
++++ b/QMapControl/src/yahoomapadapter.h
+@@ -25,7 +25,7 @@
+ 
+ #ifndef YAHOOMAPADAPTER_H
+ #define YAHOOMAPADAPTER_H
+-
++#include <qmapcontrolexport.h>
+ #include "tilemapadapter.h"
+ 
+ namespace qmapcontrol
+@@ -34,7 +34,7 @@ namespace qmapcontrol
+     /*!
+      *	@author Kai Winter <kaiwinter@gmx.de>
+      */
+-    class YahooMapAdapter : public TileMapAdapter
++    class QMAPCONTROL_LINK_SYMBOL YahooMapAdapter : public TileMapAdapter
+     {
+         Q_OBJECT
+ 

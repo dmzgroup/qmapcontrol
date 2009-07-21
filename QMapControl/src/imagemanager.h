@@ -25,14 +25,14 @@
 
 #ifndef IMAGEMANAGER_H
 #define IMAGEMANAGER_H
-
-#include <QObject>
-#include <QPixmapCache>
-#include <QDebug>
-#include <QMutex>
-#include <QFile>
-#include <QBuffer>
-#include <QDir>
+#include <qmapcontrolexport.h>
+#include <QtCore/QObject>
+#include <QtGui/QPixmapCache>
+#include <QtCore/QDebug>
+#include <QtCore/QMutex>
+#include <QtCore/QFile>
+#include <QtCore/QBuffer>
+#include <QtCore/QDir>
 #include "mapnetwork.h"
 
 namespace qmapcontrol
@@ -41,7 +41,7 @@ namespace qmapcontrol
     /**
     @author Kai Winter <kaiwinter@gmx.de>
      */
-    class ImageManager : public QObject
+    class QMAPCONTROL_LINK_SYMBOL ImageManager : public QObject
     {
         Q_OBJECT;
 

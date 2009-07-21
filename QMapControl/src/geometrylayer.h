@@ -25,7 +25,7 @@
 
 #ifndef GEOMETRYLAYER_H
 #define GEOMETRYLAYER_H
-
+#include <qmapcontrolexport.h>
 #include "layer.h"
 
 namespace qmapcontrol
@@ -44,7 +44,7 @@ namespace qmapcontrol
          *
          *	@author Kai Winter <kaiwinter@gmx.de>
          */
-    class GeometryLayer : public Layer
+    class QMAPCONTROL_LINK_SYMBOL GeometryLayer : public Layer
     {
         Q_OBJECT
 

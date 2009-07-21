@@ -25,7 +25,7 @@
 
 #ifndef FIXEDIMAGEOVERLAY_H
 #define FIXEDIMAGEOVERLAY_H
-
+#include <qmapcontrolexport.h>
 #include "imagepoint.h"
 
 namespace qmapcontrol
@@ -39,7 +39,7 @@ namespace qmapcontrol
      *
      * @author Kai Winter <kaiwinter@gmx.de>
      */
-    class FixedImageOverlay : public ImagePoint
+    class QMAPCONTROL_LINK_SYMBOL FixedImageOverlay : public ImagePoint
     {
     public:
        //! Creates an image overlay which loads and displays the given image file

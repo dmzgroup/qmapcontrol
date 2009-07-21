@@ -23,7 +23,9 @@
 *
 */
 
+#include <QtCore/QCoreApplication>
 #include "layermanager.h"
+
 namespace qmapcontrol
 {
     LayerManager::LayerManager(MapControl* mapcontrol, QSize size)

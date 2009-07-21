@@ -25,7 +25,7 @@
 
 #ifndef YAHOOMAPADAPTER_H
 #define YAHOOMAPADAPTER_H
-
+#include <qmapcontrolexport.h>
 #include "tilemapadapter.h"
 
 namespace qmapcontrol
@@ -34,7 +34,7 @@ namespace qmapcontrol
     /*!
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class YahooMapAdapter : public TileMapAdapter
+    class QMAPCONTROL_LINK_SYMBOL YahooMapAdapter : public TileMapAdapter
     {
         Q_OBJECT
 

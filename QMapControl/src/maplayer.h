@@ -25,7 +25,7 @@
 
 #ifndef MAPLAYER_H
 #define MAPLAYER_H
-
+#include <qmapcontrolexport.h>
 #include "layer.h"
 
 namespace qmapcontrol
@@ -44,7 +44,7 @@ namespace qmapcontrol
      *
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class MapLayer : public Layer
+    class QMAPCONTROL_LINK_SYMBOL MapLayer : public Layer
     {
         Q_OBJECT
 

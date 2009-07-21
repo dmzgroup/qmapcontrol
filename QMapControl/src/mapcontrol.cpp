@@ -23,7 +23,9 @@
 *
 */
 
+#include <QtCore/QTimer>
 #include "mapcontrol.h"
+
 namespace qmapcontrol
 {
     MapControl::MapControl(QSize size, MouseMode mousemode)
@@ -155,7 +157,7 @@ namespace qmapcontrol
             if (currentZoom() >= 0 && distanceList.size() > currentZoom())
             {
                 double line;
-                line = distanceList.at( currentZoom() ) / pow(2, 18-currentZoom() ) / 0.597164;
+                line = distanceList.at( currentZoom() ) / pow(2.0, 18-currentZoom() ) / 0.597164;
 
                 // draw the scale
                 painter.setPen(Qt::black);
@@ -303,16 +305,19 @@ namespace qmapcontrol
     {
         layermanager->zoomIn();
         update();
+        emit zoomChanged (currentZoom ());
     }
     void MapControl::zoomOut()
     {
         layermanager->zoomOut();
         update();
+        emit zoomChanged (currentZoom ());
     }
     void MapControl::setZoom(int zoomlevel)
     {
         layermanager->setZoom(zoomlevel);
         update();
+        emit zoomChanged (currentZoom ());
     }
     int MapControl::currentZoom() const
     {
@@ -402,6 +407,18 @@ namespace qmapcontrol
     {
         scaleVisible = show;
     }
+    
+   QPointF MapControl::screenToWorldCoordinate (const QPoint &Screen)
+   {
+       return clickToWorldCoordinate (Screen);
+   }
+
+   QPoint MapControl::worldCoordinateToScreen (const QPointF &Coordinate)
+   {
+      QPoint displayToImage = layermanager->layer ()->mapadapter ()->coordinateToDisplay (Coordinate);
+
+      return (displayToImage + screen_middle - layermanager->getMapmiddle_px ());
+   }
 
     void MapControl::resize(const QSize newSize)
     {
