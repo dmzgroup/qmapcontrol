@@ -100,7 +100,9 @@ namespace qmapcontrol
          * @todo add maximum size
          */
         void setCacheDir(const QDir& path);
-
+        
+        void workOffline (bool value);
+        
     private:
         ImageManager(QObject* parent = 0);
         ImageManager(const ImageManager&);
@@ -110,7 +112,8 @@ namespace qmapcontrol
         QVector<QString> prefetch;
         QDir cacheDir;
         bool doPersistentCaching;
-
+        bool offline;
+        
         static ImageManager* m_Instance;
 
         bool saveTile(QString tileName,QPixmap tileData);

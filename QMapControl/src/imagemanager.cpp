@@ -28,7 +28,7 @@ namespace qmapcontrol
 {
     ImageManager* ImageManager::m_Instance = 0;
     ImageManager::ImageManager(QObject* parent)
-        :QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this)), doPersistentCaching(false)
+        :QObject(parent), emptyPixmap(QPixmap(1,1)), net(new MapNetwork(this)), doPersistentCaching(false), offline (false)
     {
         emptyPixmap.fill(Qt::transparent);
 
@@ -60,7 +60,7 @@ namespace qmapcontrol
                 loadTile(url,pm);
                 QPixmapCache::insert(url.toAscii().toBase64(), pm);
             }
-            else
+            else if (!offline)
             {
                 //load from net, add empty image
                 net->loadImage(host, url);
@@ -174,5 +174,10 @@ namespace qmapcontrol
             return true;
         else
             return false;
+    }
+    
+    void ImageManager::workOffline (bool value)
+    {
+       offline = value;
     }
 }
