@@ -34,6 +34,9 @@
 #include "geometry.h"
 #include "imagemanager.h"
 
+class QLabel;
+
+
 //! QMapControl namespace
 namespace qmapcontrol
 {
@@ -213,6 +216,13 @@ namespace qmapcontrol
          * @param show true if the scale should be displayed
          */
         void showScale ( bool show );
+
+        //! Displays an animated loading image within the widget
+        /*!
+         *
+         * @param show true if the loading image should be displayed
+         */        
+        void showLoading (bool show);
         
         //DMZ
         QPointF screenToWorldCoordinate (const QPoint &Screen);
@@ -274,6 +284,9 @@ namespace qmapcontrol
         bool scaleVisible;
 
         bool m_loadingFlag;
+        
+        bool loadingVisible;
+        QLabel *loadingLabel;
 
         QMutex moveMutex; // used for method moveTo()
         QPointF target; // used for method moveTo()
@@ -337,6 +350,7 @@ namespace qmapcontrol
 
     private slots:
         void tick();
+        void imageRequested();
         void loadingFinished();
         void positionChanged ( Geometry* geom );
     };

@@ -121,6 +121,7 @@ namespace qmapcontrol
         bool tileExist(QString tileName);
 
     signals:
+        void imageRequested();
         void imageReceived();
         void loadingFinished();
     };

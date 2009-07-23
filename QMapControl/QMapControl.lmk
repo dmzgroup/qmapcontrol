@@ -1,6 +1,7 @@
 require "lmkQt"
 lmkQt.set_name "QMapControl"
 lmk.set_type "shared"
+lmk.add_files {"QMapControl.qrc"}
 lmk.add_files {
    "qmapcontrol.h",
    "qmapcontrolexport.h",

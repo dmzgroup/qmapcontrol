@@ -65,6 +65,8 @@ namespace qmapcontrol
                 //load from net, add empty image
                 net->loadImage(host, url);
                 //QPixmapCache::insert(url, emptyPixmap);
+                
+                emit (imageRequested());
                 return emptyPixmap;
             }
         }

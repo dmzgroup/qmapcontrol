@@ -24,17 +24,22 @@
 */
 
 #include <QtCore/QTimer>
+#include <QtGui/QLabel>
+#include <QtGui/QMovie>
 #include "mapcontrol.h"
 
 namespace qmapcontrol
 {
     MapControl::MapControl(QSize size, MouseMode mousemode)
-        : size(size), mymousemode(mousemode), scaleVisible(false)
+        : size(size), mymousemode(mousemode), scaleVisible(false), loadingVisible (false), loadingLabel (0)
     {
         layermanager = new LayerManager(this, size);
         screen_middle = QPoint(size.width()/2, size.height()/2);
 
         mousepressed = false;
+
+        connect(ImageManager::instance(), SIGNAL(imageRequested()),
+                this, SLOT(imageRequested()));
 
         connect(ImageManager::instance(), SIGNAL(imageReceived()),
                 this, SLOT(updateRequestNew()));
@@ -43,6 +48,11 @@ namespace qmapcontrol
                 this, SLOT(loadingFinished()));
 
         this->setMaximumSize(size.width()+1, size.height()+1);
+        
+        loadingLabel = new QLabel (this);
+        QMovie *movie = new QMovie (":/images/loading.gif", QByteArray (), loadingLabel);
+        loadingLabel->setMovie (movie);
+        loadingLabel->hide ();
     }
 
     MapControl::~MapControl()
@@ -369,10 +379,24 @@ namespace qmapcontrol
         layermanager->setView(point->coordinate());
     }
 
+    void MapControl::imageRequested()
+    {
+       if (loadingVisible) {
+          
+          loadingLabel->movie ()->start ();
+          loadingLabel->show ();
+       }
+    }
+
     void MapControl::loadingFinished()
     {
-        // qDebug() << "MapControl::loadingFinished()";
-        layermanager->removeZoomImage();
+       layermanager->removeZoomImage();
+       
+       if (loadingVisible) {
+          
+          loadingLabel->movie ()->stop ();
+          loadingLabel->hide ();
+       }
     }
     void MapControl::addLayer(Layer* layer)
     {
@@ -408,6 +432,11 @@ namespace qmapcontrol
         scaleVisible = show;
     }
     
+    void MapControl::showLoading (bool show)
+    {
+       loadingVisible = show;
+    }
+    
    QPointF MapControl::screenToWorldCoordinate (const QPoint &Screen)
    {
        return clickToWorldCoordinate (Screen);
@@ -427,5 +456,11 @@ namespace qmapcontrol
 
         this->setMaximumSize(newSize.width()+1, newSize.height()+1);
         layermanager->resize(newSize);
+        
+        QRect rect (loadingLabel->geometry ()); 
+        rect.moveBottomRight  (geometry ().bottomRight ());
+        rect.moveBottom (rect.bottom () - 5);
+        rect.moveRight (rect.right () - 5);
+        loadingLabel->setGeometry (rect);
     }
 }
