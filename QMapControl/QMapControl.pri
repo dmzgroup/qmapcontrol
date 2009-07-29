@@ -26,7 +26,8 @@ HEADERS += curve.h \
            googlemapadapter.h \
            googlesatmapadapter.h \
            openaerialmapadapter.h \
-           fixedimageoverlay.h
+	   fixedimageoverlay.h \
+	   emptymapadapter.h
 SOURCES += curve.cpp \
            geometry.cpp \
            imagemanager.cpp \
@@ -49,6 +50,7 @@ SOURCES += curve.cpp \
            googlemapadapter.cpp \
            googlesatmapadapter.cpp \
            openaerialmapadapter.cpp \
-           fixedimageoverlay.cpp
+	   fixedimageoverlay.cpp \
+	   emptymapadapter.cpp
 
 QT += network

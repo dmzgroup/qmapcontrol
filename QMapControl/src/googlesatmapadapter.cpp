@@ -29,7 +29,7 @@
 namespace qmapcontrol
 {
     GoogleSatMapAdapter::GoogleSatMapAdapter()
-        : MapAdapter("kh2.google.com", "/kh?n=404&v=8&t=trtqtt", 256, 0, 19)
+	: TileMapAdapter("kh2.google.com", "/kh?n=404&v=8&t=trtqtt", 256, 0, 19)
     {
         // name = "googlesat";
 

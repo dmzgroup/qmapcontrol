@@ -1,3 +1,7 @@
+0.9.5.2 (2009-07-29)
+=====
+- The new EmptyMapAdapter allows it to just display and navigate through an defined image and not to load map tiles. See new sample application.
+
 2009-04-19
 ----------
 - new class FixedImageOverlay for drawing an image overlay onto a map, whose upper left and lower 
