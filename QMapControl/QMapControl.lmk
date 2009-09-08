@@ -7,6 +7,7 @@ lmk.add_files {
    "qmapcontrolexport.h",
    "src/circlepoint.h",
    "src/curve.h",
+   "src/emptymapadapter.h",
    "src/fixedimageoverlay.h",
    "src/geometry.h",
    "src/geometrylayer.h",
@@ -32,6 +33,7 @@ lmk.add_files {
 
 lmk.add_files ({
    "src/curve.h",
+   "src/emptymapadapter.h",
    "src/geometry.h",
    "src/geometrylayer.h",
    "src/googlemapadapter.h",
@@ -54,6 +56,7 @@ lmk.add_files ({
 lmk.add_files {
    "src/circlepoint.cpp",
    "src/curve.cpp",
+   "src/emptymapadapter.cpp",
    "src/fixedimageoverlay.cpp",
    "src/geometry.cpp",
    "src/geometrylayer.cpp",

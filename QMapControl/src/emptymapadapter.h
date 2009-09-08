@@ -25,7 +25,7 @@
 
 #ifndef EMPTYMAPADAPTER_H
 #define EMPTYMAPADAPTER_H
-
+#include <qmapcontrolexport.h>
 #include "mapadapter.h"
 
 namespace qmapcontrol
@@ -36,7 +36,7 @@ namespace qmapcontrol
      * only want to display an image through a FixedImageOverlay e.g.
      *	@author Kai Winter <kaiwinter@gmx.de>
      */
-    class EmptyMapAdapter : public MapAdapter
+    class QMAPCONTROL_LINK_SYMBOL EmptyMapAdapter : public MapAdapter
     {
 	Q_OBJECT
     public:
