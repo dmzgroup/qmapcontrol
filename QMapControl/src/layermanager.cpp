@@ -262,13 +262,11 @@ namespace qmapcontrol
         QPixmap tmpImg = composedOffscreenImage.copy(screenmiddle.x()+scroll.x(),screenmiddle.y()+scroll.y(), size.width(), size.height());
 
         QPainter painter(&zoomImage);
-        painter.save();
         painter.translate(screenmiddle);
         painter.scale(2, 2);
         painter.translate(-screenmiddle);
 
         painter.drawPixmap(0,0,tmpImg);
-        painter.restore();
 
         QListIterator<Layer*> it(mylayers);
         //TODO: remove hack, that mapadapters wont get set zoom multiple times
@@ -314,7 +312,7 @@ namespace qmapcontrol
         QPixmap tmpImg = composedOffscreenImage.copy(screenmiddle.x()+scroll.x(),screenmiddle.y()+scroll.y(), size.width(), size.height());
         QPainter painter(&zoomImage);
         painter.translate(screenmiddle);
-        painter.scale(0.5,0.5);
+        painter.scale(0.500001,0.500001);
         painter.translate(-screenmiddle);
         painter.drawPixmap(0,0,tmpImg);
 

@@ -114,8 +114,7 @@ namespace qmapcontrol
 
     void MapNetwork::abortLoading()
     {
-        http->clearPendingRequests();
-        // http->abort();
+	http->clearPendingRequests();
         if (vectorMutex.tryLock())
         {
             loadingMap.clear();

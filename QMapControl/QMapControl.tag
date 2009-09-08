@@ -5,6 +5,7 @@
     <filename>namespaceqmapcontrol.html</filename>
     <class kind="class">qmapcontrol::CirclePoint</class>
     <class kind="class">qmapcontrol::Curve</class>
+    <class kind="class">qmapcontrol::EmptyMapAdapter</class>
     <class kind="class">qmapcontrol::FixedImageOverlay</class>
     <class kind="class">qmapcontrol::Geometry</class>
     <class kind="class">qmapcontrol::GeometryLayer</class>
@@ -307,6 +308,67 @@
       <anchorfile>classqmapcontrol_1_1Geometry.html</anchorfile>
       <anchor>3a013a6edb6d10a71297978bc31a796b</anchor>
       <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>qmapcontrol::EmptyMapAdapter</name>
+    <filename>classqmapcontrol_1_1EmptyMapAdapter.html</filename>
+    <base>qmapcontrol::MapAdapter</base>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QPoint</type>
+      <name>coordinateToDisplay</name>
+      <anchorfile>classqmapcontrol_1_1EmptyMapAdapter.html</anchorfile>
+      <anchor>94134b06e350d302f5b3a63f0016aa60</anchor>
+      <arglist>(const QPointF &amp;) const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>currentZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>8c7b803b9faa35db237e40c361e1c036</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual QPointF</type>
+      <name>displayToCoordinate</name>
+      <anchorfile>classqmapcontrol_1_1EmptyMapAdapter.html</anchorfile>
+      <anchor>601b4631d9d891eabffb063c510cc088</anchor>
+      <arglist>(const QPoint &amp;) const </arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>EmptyMapAdapter</name>
+      <anchorfile>classqmapcontrol_1_1EmptyMapAdapter.html</anchorfile>
+      <anchor>9208e1a9da209564f85a50318cda7310</anchor>
+      <arglist>(int tileSize=256, int minZoom=0, int maxZoom=17)</arglist>
+    </member>
+    <member kind="function">
+      <type>QString</type>
+      <name>host</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7ee8388c7880d8a3466967464f5034b6</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>maxZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>3a33e897bc474405772d17a7c81f8747</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>minZoom</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>7457f51db57914a85bbefcc8c9fa97b4</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>tilesize</name>
+      <anchorfile>classqmapcontrol_1_1MapAdapter.html</anchorfile>
+      <anchor>f105c5a0cf588a3f60d67744bd353391</anchor>
+      <arglist>() const </arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -742,7 +804,7 @@
   <compound kind="class">
     <name>qmapcontrol::GoogleSatMapAdapter</name>
     <filename>classqmapcontrol_1_1GoogleSatMapAdapter.html</filename>
-    <base>qmapcontrol::MapAdapter</base>
+    <base>qmapcontrol::TileMapAdapter</base>
     <member kind="function" virtualness="virtual">
       <type>virtual QPoint</type>
       <name>coordinateToDisplay</name>

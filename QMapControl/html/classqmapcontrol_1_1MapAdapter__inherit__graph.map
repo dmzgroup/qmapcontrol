@@ -1,7 +1,0 @@
-<area shape="rect" href="$classqmapcontrol_1_1GoogleSatMapAdapter.html" title="MapAdapter for Google." alt="" coords="99,161,269,188">
-<area shape="rect" href="$classqmapcontrol_1_1TileMapAdapter.html" title="MapAdapter for servers with image tiles." alt="" coords="293,161,419,188">
-<area shape="rect" href="$classqmapcontrol_1_1WMSMapAdapter.html" title="MapAdapter for WMS servers." alt="" coords="443,161,579,188">
-<area shape="rect" href="$classqmapcontrol_1_1GoogleMapAdapter.html" title="MapAdapter for Google." alt="" coords="5,239,155,265">
-<area shape="rect" href="$classqmapcontrol_1_1OpenAerialMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="179,239,355,265">
-<area shape="rect" href="$classqmapcontrol_1_1OSMMapAdapter.html" title="MapAdapter for OpenStreetMap." alt="" coords="379,239,512,265">
-<area shape="rect" href="$classqmapcontrol_1_1YahooMapAdapter.html" title="MapAdapter for Yahoo Maps." alt="" coords="536,239,677,265">

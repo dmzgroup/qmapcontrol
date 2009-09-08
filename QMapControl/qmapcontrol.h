@@ -15,3 +15,4 @@
 #include "googlesatmapadapter.h"
 #include "openaerialmapadapter.h"
 #include "fixedimageoverlay.h"
+#include "emptymapadapter.h

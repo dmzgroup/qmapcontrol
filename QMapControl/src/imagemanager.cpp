@@ -41,6 +41,10 @@ namespace qmapcontrol
 
     ImageManager::~ImageManager()
     {
+	if (ImageManager::m_Instance != 0)
+	{
+	    delete ImageManager::m_Instance;
+	}
         delete net;
     }
 

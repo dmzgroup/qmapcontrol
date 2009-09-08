@@ -201,9 +201,7 @@ namespace qmapcontrol
         QPoint mapmiddle_px; // projection-display coordinates
         QPointF mapmiddle; // world coordinate
 
-        QMutex scrollMutex;
         QPoint whilenewscroll;
-        mutable QMutex refreshMutex;
 
     public slots:
         void updateRequest(QRectF rect);
