@@ -71,7 +71,7 @@ namespace qmapcontrol
         qreal lon = (point.x()*(360./(numberOfTiles*mytilesize)))-180.;
         //double lat = -(point.y()*(180./(numberOfTiles*tilesize)))+90;
         //qreal lat = getMercatorLatitude(point.y()*-1*(2*M_PI/(numberOfTiles*tilesize)) + M_PI);
-        qreal lat = lat *180./M_PI;
+        qreal lat = point.y () *180./M_PI;
         return QPointF(lon, lat);
     }
 
